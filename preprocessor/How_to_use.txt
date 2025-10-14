@@ -12,3 +12,5 @@ and then modify the "pdf_path" fields in the python files.
 The results will appear in the res/ folder similar to what's already available as demonstration. You can have the result files
 be placed somewhere else by modifying the "output_text_file" variable in text_extract or "output_dir" in image_extract.
 
+The text_extract.py can now clean the data by removing the caption of images and "Further Reading" section in order to reduce noise
+in the input for the embedding step.
