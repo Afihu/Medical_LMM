@@ -1,0 +1,14 @@
+- Remember to install PyMuPDF to your virtual environment and activate the .venv 
+- Create a folder "source_materials" and place all the pdf files you will use in there, or you can name the folder differently
+and then modify the "pdf_path" fields in the python files. 
+
+* To run the text_extract.py, type into terminal:
+    python preprocessor/text_extract.py
+
+* Similarly, to run the image_extract.py, type:
+    python preprocessor/image_extract.py
+
+
+The results will appear in the res/ folder similar to what's already available as demonstration. You can have the result files
+be placed somewhere else by modifying the "output_text_file" variable in text_extract or "output_dir" in image_extract.
+
