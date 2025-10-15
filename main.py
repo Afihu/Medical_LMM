@@ -10,9 +10,9 @@ from dotenv import load_dotenv
 # You can also set it as an environment variable named "GEMINI_API_KEY"
 # Execute the command to load the file
 load_dotenv()
-API_KEY = os.getenv("GEMINI_API_KEY")
 
 # --- Configuration ---
+API_KEY = os.getenv("GEMINI_API_KEY")
 CASES_FOLDER = "cases"
 RESPONSES_FOLDER = "responses"
 MODEL_NAME = 'models/gemini-2.5-pro'
@@ -66,9 +66,6 @@ def main():
     print("Type 'quit' or 'exit' to end.")
 
     while True:
-        # Load cases every time to catch any updates
-        similar_cases = load_similar_cases()
-        
         # Get input from the user for the new case
         new_case_description = input("\nEnter new patient's symptoms and history: ")
 
@@ -79,6 +76,9 @@ def main():
         if not new_case_description:
             print("Please enter a description.")
             continue
+
+        # Load cases every time to catch any updates
+        similar_cases = load_similar_cases()
 
         # --- Prompt Engineering --- (example, because we haven't figured it out yet)
         prompt_parts = [
