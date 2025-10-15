@@ -183,3 +183,4 @@ cython_debug/
 # Other non-essential folders
 /responses
 /cases
+.env
