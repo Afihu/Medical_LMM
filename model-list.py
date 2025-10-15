@@ -3,7 +3,7 @@ import os
 
 # --- PASTE YOUR API KEY HERE ---
 # This is the same key you used before.
-API_KEY = "AIzaSyDplDb3lir6NPq3GNwTAAKvlOmJv5as9lg"
+API_KEY = ""
 
 # Configure the library with your API key
 try:
