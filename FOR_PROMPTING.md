@@ -1,3 +1,7 @@
+# Update 21.10.2025
+I have found a way that make Gemini remember the chat contents, even after we close the terminal (chat). 
+We will upgrade the chatting methods into few-shot prompting. ETA: 4pm 22.10.2025
+
 # Update 20.10.2025
 The system is still using one-shot prompting method. Meaning the result is usable for one time.
 I will upgrade it to let user chat subsequently later.
