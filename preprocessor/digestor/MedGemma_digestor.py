@@ -1,33 +1,63 @@
-from transformers import pipeline
+from transformers import AutoProcessor, AutoModelForImageTextToText
 from PIL import Image
+import requests
 import torch
+import time
+import os
 
-pipe = pipeline(
-    "image-to-text",
-    model="google/medgemma-4b-it",
+start_time = time.perf_counter()
+
+model_id = "google/medgemma-4b-it"
+
+model = AutoModelForImageTextToText.from_pretrained(
+    model_id,
     torch_dtype=torch.bfloat16,
-    device="cuda" # Specify "cuda" if you have a GPU, otherwise use "cpu"
+    device_map="auto",
 )
+processor = AutoProcessor.from_pretrained(model_id)
 
+# Image attribution: Stillwaterising, CC0, via Wikimedia Commons
+image_path = "embedder_img/img/page2_img2.jpeg"
 try:
-    image = Image.open('../res/extracted_images/page2_img1.jpeg')
+    image = Image.open(image_path)
+    print("Found")
 except FileNotFoundError:
-    print("Error: Image file not found. Please update the path.")
+    print(f"Error: Image file not found at {image_path}")
+    print("Please update the 'image_path' variable to a valid file.")
     exit()
 
-prompt = "Analyze this medical image and generate a detailed report, summarizing all significant findings and a potential impression."
+messages = [
+    {
+        "role": "system",
+        "content": [{"type": "text", "text": "You are an expert doctor."}]
+    },
+    {
+        "role": "user",
+        "content": [
+            {"type": "text", "text": "Describe this image of a patient"},
+            {"type": "image", "image": image}
+        ]
+    }
+]
 
-print("Generating report...")
-output = pipe(
-    images=image,
-    text=prompt,
-    max_new_tokens=1024,  # Adjust token length for detailed reports
-)
+inputs = processor.apply_chat_template(
+    messages, add_generation_prompt=True, tokenize=True,
+    return_dict=True, return_tensors="pt"
+).to(model.device, dtype=torch.bfloat16)
 
-# 5. Print the result
-if output and output[0].get("generated_text"):
-    summary = output[0]["generated_text"]
-    print("\n--- Generated Summary ---")
-    print(summary)
-else:
-    print("Model did not generate a summary.")
+input_len = inputs["input_ids"].shape[-1]
+
+with torch.inference_mode():
+    generation = model.generate(**inputs, max_new_tokens=512, do_sample=False)
+    generation = generation[0][input_len:]
+
+decoded = processor.decode(generation, skip_special_tokens=True)
+print(decoded)
+
+end_time = time.perf_counter()
+
+duration = end_time - start_time
+print(f"The program ran for: {duration:.4f} seconds")
+
+# output = pipe(text=messages, max_new_tokens=200)
+# print(output[0]["generated_text"][-1]["content"])
