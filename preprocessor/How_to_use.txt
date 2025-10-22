@@ -17,3 +17,6 @@ in the input for the embedding step.
 
 image_extract.py can extract the dimensions of the images and prints them out as in the demonstration code. Knowing these dimensions are 
 really important for normalizing and resizing the images to conform with the embedders' dimension limitation.
+
+
+--TODO: Refine caption extraction method
