@@ -1,3 +1,7 @@
+# Update 22.10.2025
+I cannot think of a way except pushing all the content from the previous run, which is inefficient.
+I will try to figure it out later 
+
 # Update 21.10.2025
 - Scripts for uploading embedded vectors are done. Usable now
 - Conversation with the model is limited with one-time prompting. This is due to the fact that we are using the terminal and we do not know if Gemini can retain the memory of the chat after we close the terminal.

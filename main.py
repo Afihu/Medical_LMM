@@ -65,8 +65,8 @@ def main():
             print("Please enter a valid description.")
             continue
 
-        # Step 1: (Placeholder) Generate CLIP embedding for query
-        # Replace this with real CLIP encoder later
+        # Step 1: (Placeholder) Generate embedding for query
+        # Replace this with real encoder later
         query_vector = [0.12, -0.45, 0.78, 0.66]
         run_query(query_vector)
 

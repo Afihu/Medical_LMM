@@ -1,3 +1,7 @@
+# Update 22.10.2025
+I cannot think of a way except pushing all the content from the previous run, which is inefficient.
+I will try to figure it out later 
+
 # Update 21.10.2025
 I have found a way that make Gemini remember the chat contents, even after we close the terminal (chat). 
 We will upgrade the chatting methods into few-shot prompting. ETA: 4pm 22.10.2025
