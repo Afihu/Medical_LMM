@@ -1,9 +1,3 @@
-# Update 23.10.2025
-Turns out Qdrant does not support partial vector updates.
-Two separate scripts for uploading text vectors and image vectors will be made. This will create 2 different Collections for a cases (either text_vec or image_vec, or both)
-ETA: 2pm 24.10.2025
-For more information, see at [General Update](GENERAL_UPDATE.md)
-
 # Update 22.10.2025
 I cannot think of a way except pushing all the content from the previous run, which is inefficient.
 I will try to figure it out later 
