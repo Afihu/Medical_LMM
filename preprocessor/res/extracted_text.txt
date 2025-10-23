@@ -1,149 +1,199 @@
-1
-A 20-Year-Old Woman from Sudan
-With Fever, Haemorrhage and Shock
-DANIEL G. BAUSCH
+3
+A 26-Year-Old Woman from Malawi
+with Headache, Confusion
+and Unilateral Ptosis
+JURI KATCHANOV
 Clinical Presentation
 History
-A 20-year-old housewife presents to a hospital in northern
-Uganda with a 2-day history of fever, severe asthenia, chest
-and abdominal pain, nausea, vomiting, diarrhoea and slight
-non-productive cough. The patient isa Sudaneserefugee living
-inacampintheregion.Shedeniesanycontactwithsickpeople.
+A 26-year-old Malawian woman is brought to the emergency
+department of a local central hospital by two relatives. She
+has been unwell for at least 1 week. She complained of a
+headache of insidious onset and has been confused for 2 days.
+One day before presentation the relatives (‘guardians’)
+noticed an eyelid drooping on the left side.
+The guardians say her past medical history is unremarkable.
+The patient lives in an urban high-density area. She works as a
+businesswoman, selling vegetables. She has three healthy chil-
+dren, but another four of her children have died as toddlers.
+Her husband died a year ago of ‘high fever.’
 Clinical Findings
-The patient is prostrate and semiconscious on admission.
-Vital signs: temperature 39.6°C, (103.3°F) blood pressure
-90/60mmHg, pulse 90bpm, and respiratory rate 24 cycles
-per minute. Physical examination revealed abdominal ten-
-derness, especially in the right upper quadrant, hepatosple-
-nomegaly and bleeding from the gums. The lungs were
-clear. No rash or lymphadenopathy was noted.
+On examination she looks seriously unwell. Glasgow Coma
+Scale 14/15, temperature 38.4°C (101.1°F), blood pressure
+115/75mmHg, heart rate 86bpm, respiratory rate 18 breath
+cycles per minute. There is no neck stiffness. The chest is
+clear. Figure 3.1 shows the examination of her eyes. The
+remainder of her neurological examination is normal.
+Laboratory Results
+Her blood results are shown in Table 3.1. A lumbar puncture
+is done. The opening pressure is markedly raised, at
+32cmH2O (12–20cmH2O). The available CSF results are
+shown in Table 3.2.
 Questions
-1. Is the patient’s history and clinical presentation consistent
-with a haemorrhagic fever (HF) syndrome?
-2. What degree of nursing precautions need to be
-implemented?
+1. What is the clinical syndrome and what is the differential
+diagnosis?
+2. How would you manage this patient?
 Discussion
-This patient was seen during an outbreak of Ebola virus dis-
-ease in northern Uganda, so the diagnosis was strongly sus-
-pected. She was admitted to the isolation ward that had
-been established as part of the international outbreak response.
-No clinical laboratory data were available because, for
-biosafety reasons, such testing was suspended. Although it is
-a reasonable precaution, the suspension of routine testing
-often causes difficulty in ruling out the many other febrile syn-
-dromes in the differential diagnosis and increases mortality
-from other non-Ebola disease. Fortunately, many clinical lab-
-oratory tests can now be safely performed with point-of-care
-instruments, often brought into a specialized laboratory in
-the isolation ward, as long as the laboratory personnel are
-properly trained and equipped.
-Answer to Question 1
-Is the Patient’s History and Clinical Presentation
-Consistent with an HF Syndrome?
-The clinical presentation is indeed one of classic viral HF.
-However, most times the diagnosis is not so easy. Although
-some patients, such as this one, do progress to the classic syn-
-drome with haemorrhage, multiple organ dysfunction syn-
-drome and shock, haemorrhage is not invariably seen (and
-may even be noted in only a minority of cases with some
-virus species), and severe and fatal disease may still occur
-in its absence. The clinical presentation of viral HF is often
-very non-specific. Furthermore, haemorrhage may be seen in
-numerous other syndromes, such as complicated malaria,
-typhoid fever, bacterial gastroenteritis and leptospirosis,
-which are the primary differential diagnoses, depending on
-the region.
-Answer to Question 2
-What Degree of Nursing Precautions Needs to be
-Implemented?
-The spread of Ebola virus between humans is through direct
-contact with blood or bodily fluids. Secondary attack rates
-are generally 15% to 20% during outbreaks in Africa, and
-much lower if proper universal precautions are maintained.
-Specialized viral HF precautions and personal protective
-equipment are warranted when there is a confirmed case
-or high index of suspicion, such as in this case.
-The Case Continued. . .
-Intravenous fluids, broad-spectrum antibiotics and analge-
-sics were begun on admission. Nevertheless, the patient’s
-condition rapidly worsened, with subconjunctival haemor-
-rhage, copious bleeding from the mouth, nose and rectum
-1
+A young Malawian widow presents with headache and con-
+fusion. She is febrile and has a unilateral third nerve palsy.
+The CSF examination reveals an inflammatory picture with
+low glucose.
+• (A) There is complete ptosis on the left. (B) On primary gaze,
+the left eye is in a ‘down and out’ position.
+7
 
-(Figs. 1.1 and 1.2), dyspnoea and hypothermic shock (tem-
-perature 36.0°C, blood pressure ¼ unreadable, pulse
-150bpm, respiratory rate 36 cycles per minute). She became
-comatose and died approximately 24 hours after admission.
-Laboratory testing at a specialized laboratory established as
-part of the outbreak response showed positive ELISA antigen
-and PCR tests for Ebola virus and a negative result for ELISA
-IgG antibody, confirming the diagnosis of Ebola virus
-disease.
+Answer to Question 1
+What Is the Clinical Syndrome and What Is the
+Differential Diagnosis?
+The clinical syndrome is that of infectious meningitis. Infec-
+tious encephalitis should also be considered; however, the
+cranial nerve involvement makes this diagnosis less likely.
+Moreover, the main causes of infectious encephalitis are viral
+or – less commonly – protozoan (e.g. cerebral toxoplasmosis,
+human African trypanosomiasis), and the CSF findings of
+very high protein and very low glucose are not consistent
+with a viral or protozoan CNS infection. Cerebral malaria
+has to be considered in any patient with fever and impaired
+consciousness living in a malarious area. However, cerebral
+malaria would be an uncommonly severe manifestation in
+a most probably semi-immune adult residing in a holoen-
+demic area. In addition, cranial nerve palsies are an unusual
+feature of cerebral malaria.
+The differential diagnosis comprises bacterial, tuberculous
+and cryptococcal meningitis (Table 3.3). Neither the
+patient’s clinical presentation nor her CSF results can help
+differentiate reliably between the three. Furthermore, onset,
+acuteness and duration of symptoms and signs may have to be
+interpreted with caution in many cultures, particularly when
+the history cannot be taken from the patients themselves.
+Answer to Question 2
+How Would You Manage This Patient?
+The patient has a suspected CNS infection and is seriously ill
+with confusion, cranial nerve palsy and a high fever. Imme-
+diate action should be taken, and treatment should not be
+delayed whilst further test results are being awaited. Prag-
+matic treatment should cover bacterial, cryptococcal and
+tuberculous meningitis.
+Gram-stain and bacterial culture should be done from the
+CSF. If available, an ultrasensitive PCR for M. tuberculosis
+(e.g. Xpert MTB/RIF Ultra) should be ordered. The sensi-
+tivity of Ziehl–Neelsen stain from the CSF is low in many
+settings. Cryptococcal antigen (CrAG) testing should be
+done from CSF and serum; additionally, India ink stain
+and fungal culture should be done for detection of Cryptococ-
+cus neoformans.
+An HIV-serology study is crucial because cryptococcal
+meningitis is associated with immunosuppression. Tubercu-
+lous meningitis is also more common in HIV-positive than
+in uninfected persons.
+The Case Continued. . .
+The patient was started on ceftriaxone 2g bid, fluconazole
+1200mg od (local protocol for cryptococcal meningitis in
+the absence of amphotericin B and flucytosin) and on treat-
+ment for presumptive TB-meningitis.
+TABLE
+3.3
+Clinical and CSF Features of Acute Bacterial, Tuberculous and Cryptococcal Meningitis
+Bacterial Pathogen
+Clinical Features
+CSF Features
+Acute Bacterial
+Meningitis
+Streptococcus pneumoniae,
+Neisseria meningitidis,
+Streptococcus suis (Asia)
+Often very rapid onset with high fever and
+meningism, cranial nerve involvement less
+common
+Often cloudy, high leukocyte cell
+count, predominance of
+polymorphs, low glucose
+Tuberculous
+Meningitis
+Mycobacterium tuberculosis
+Often a history of several days of illness,
+onset less abrupt, cranial nerve involvement
+common
+Often clear, high CSF protein, low
+CSF glucose
+Cryptococcal
+Meningitis
+Cryptococcus neoformans
+Often subacute onset, severe headache
+common, cranial nerve involvement
+common
+CSF can be normal in at least 25% of
+cases
+TABLE
+3.1
+Blood Results on Admission
+Parameter
+Patient
+Reference
+WBC (109/L)
+3.2
+4–10
+Hb (g/dL)
+10.2
+12–14
+Platelets (109/L)
+155
+150–350
+Serum glucose (mmol/L)
+4.0
+3.9–11.1
+Thick film for malaria and
+trypanosomes
+Negative
+Negative
+TABLE
+3.2
+CSF Results on Admission
+Parameter
+Patient
+Reference
+White cell count (/μL)
+54
+0–5
+CSF protein (g/L)
+3.0
+0.25–0.55
+CSF glucose (mmol/L)
+1.3
+2.0–2.64∗
+∗½ to ⅔of paired serum glucose sample.
+8 CHAPTER 3
+A 26-Year-Old Woman from Malawi with Headache, Confusion and Unilateral Ptosis
+
+The HIV test came back reactive. India Ink stain, crypto-
+coccal and bacterial culture were reported negative, but acid-
+fast bacilli were detected in the CSF ().
+The diagnosis of tuberculous meningitis was established.
+A few days into treatment the patient slipped into a coma. An
+MRI scan of her brain revealed bilateral basal ganglia infarc-
+tions. She died in the hospital.
 SUMMARY BOX
-Filoviral Diseases
-Ebola and Marburg virus disease are the two syndromes caused
-by filoviruses. Microvascular instability with capillary leak and
-impaired haemostasis, often including disseminated intravascular
-coagulation, are the pathogenic hallmarks. There are four known
-pathogenic species of Ebola and one of Marburg virus, with rel-
-atively consistent case fatality associated with each species,
-ranging from 25% to 85%. Ebola and Marburg diseases are
-generally indistinguishable, both with non-specific presentations
-typically including fever, headache, asthenia, myalgias, abdominal
-pain, nausea, vomiting and diarrhoea. Conjunctival injection and
-subconjunctival haemorrhage are common. A fleeting maculo-
-papular rash is occasionally seen. Typical laboratory findings
-include mild lymphopenia and thrombocytopenia, and elevated
-hepatic transaminases, with AST>ALT. Leucocytosis may be
-seen in late stages. The differential diagnosis is extremely broad,
-including almost all febrile diseases common in the tropics.
-Ebola and Marburg virus diseases are endemic in sub-
-Saharan Africa, with Ebola virus typically found in tropical rain-
-forests in the central and western parts of the continent and
-Marburg virus in the drier forest or savannah in the east. Evidence
-strongly implicates fruit bats as the filovirus reservoir, especially
-the Egyptian fruit bat (Rousettus aegyptiacus) as the reservoir for
-Marburg virus. Human infection likely occurs from inadvertent
-exposure to infected bat excreta or saliva. Male-to-female sexual
-transmission may occur months after infection because of the
-virus’s persistence in the semen, although these events are
-relatively rare.
-Miners, spelunkers, forestry workers and others with expo-
-sure in environments typically inhabited by bats are at risk,
-especially for Marburg virus disease. Non-human primates,
-especially gorillas and chimpanzees, and other wild animals may
-serve as intermediate hosts that transmit filoviruses to humans
-through contact with their blood and bodily fluids, usually asso-
-ciated with hunting and butchering. These wild animals are pre-
-sumably also infected by exposure to bats and usually develop
-severe and fatal disease similar to human viral HF. Most outbreaks
-are thought to result from a single or very few human introductions
-from a zoonotic source followed by nosocomial amplification
-through person-to-person transmission in a setting of inadequate
-universal precautions, usually in rural areas of countries where civil
-unrest has decimated the healthcare infrastructure.
-Because symptoms are generally non-specific and laboratory
-testing is not widely available, viral HF outbreaks are usually
-recognized only if a cluster of cases occurs, especially when
-healthcare workers are involved. Having been into caves or
-mines, and direct or indirect contact with wild animals or people
-with suspected viral HF, are key diagnostic clues, but these are
-not uniformly present. Outside consultation with experts in the
-field and testing of suspected cases should be rapidly undertaken
-and public health authorities must be alerted.
-Contact tracing should be undertaken to identify all persons
-with direct unprotected exposure with the case patient, with
-surveillance of contacts for fever for 21 days (the maximum
-incubation period for Ebola and Marburg virus diseases). Any
-contact developing fever or showing other signs of viral HF should
-immediately be isolated and tested.
-Treatment is supportive. Antimalarials and broad-spectrum
-antibiotics should be given until the diagnosis of viral HF is con-
-firmed. Preliminary results from a clinical trial of experimental
-compounds conducted during an outbreak in the Democratic
-Republic of the Congo show very promising results, reducing
-case fatality to as low as 10% if treatment is administered early in
-the course of disease. Similarly, a clinical trial of an Ebola vaccine
-in the Democratic Republic of the Congo and during the massive
-2013 to 2016 outbreak in West Africa showed protective efficacy
-of over 90%.
+Tuberculous Meningitis
+Tuberculous (TB) meningitis is the most dramatic form of tuber-
+culosis. After the release of bacilli and granulomatous material into
+the subarachnoid space, a florid gelatinous exudate forms, which
+may impair CSF circulation and cause hydrocephalus, cranial
+nerve palsies and vasculitis. Vasculitis is the most serious com-
+plication of tuberculous meningitis and may lead to cerebrovas-
+cular accidents.
+A definitive diagnosis of TB-meningitis is established when
+acid-fast bacilli are seen in the CSF or detected by a reliable
+molecular method such as PCR, or if Mycobacterium tuberculosis
+is cultured from the CSF. It is crucial to maintain a high index of
+suspicion in settings with high TB prevalence (Table 3.4). The
+WHO now recommends the use of Xpert MTB/RIF Ultra as the
+initial diagnostic test for suspected tuberculous meningitis. The
+Xpert is a cartridge-based fully automated PCR test that can
+easily be used, even in resource-limited settings.
+TB-meningitis is an emergency. Treatment should be started
+without delay once the diagnosis is considered. The WHO
+recommends treatment with the same regimen as any form of
+tuberculosis starting with isoniazid, rifampicin, ethambutol
+and pyrazinamide. Usually, treatment is for 9 to 12 months.
+Corticosteroids seem to improve clinical outcomes and are cur-
+rently recommended; however, their effects may vary in different
+clinical settings.
