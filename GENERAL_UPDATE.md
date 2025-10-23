@@ -12,7 +12,7 @@ Each point in that collection can contain both, one, or even neither vector. But
 - If later someone upserts { "image_vec": [...] } without including text_vec, Qdrant will remove the old text_vec, because the new upsert overwrote the entire vector dictionary for that point.
 
 ## Solution
-Two separate scripts for uploading text vectors and image vectors will be made. This will create 2 different Collections for a cases (either text_vec or image_vec, or both)
+Two separate scripts for uploading text vectors and image vectors will be made. This will create 2 different Collections for cases (either text_vec or image_vec, or both)
 
 ## Motivation for the solution
 - Thanh has just found out that there are some cases that only contains texts, without images, and vice versa. Therefore, it is optimal to split into 2 Collections for querying.
