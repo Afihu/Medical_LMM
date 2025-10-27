@@ -1,3 +1,10 @@
+# Update 27.10.2025
+Sorry for the long wait, but here is the upload_cases_image.py and upload_cases_text.py
+
+With both of the files, the backend is now functionally complete.
+
+Feel free to remind me for adjustment!
+
 # Update 23.10.2025
 Turns out Qdrant does not support partial vector updates.
 
