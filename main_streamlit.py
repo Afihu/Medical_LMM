@@ -1,100 +1,94 @@
 """
 main_streamlit.py
 -----------------
-Streamlit-based version of the Medical_LMM chatbot.
-This app connects to Gemini and Qdrant to provide contextual medical analysis.
-
-Run with:
-    streamlit run main_streamlit.py
+Streamlit interface for the Medical_LMM system.
+Users can enter text input like a chat, and see Gemini’s output in real time.
+Each conversation is also logged to /responses/ as a Markdown file for debugging.
 """
 
 import os
 from datetime import datetime
-from dotenv import load_dotenv
 import streamlit as st
 import google.generativeai as genai
+from dotenv import load_dotenv
 
-# Import local modules
+# Custom modules
 from scripts.query import run_query
 from scripts.prompt_generate import generate_prompt
+from scripts.streamlit_ui_helper import load_conversation, save_conversation
 
-# --- Streamlit Page Setup ---
-st.set_page_config(page_title="🩺 Medical LMM Chat", page_icon="💬", layout="centered")
-st.title("🩺 Medical Diagnostic Assistant")
-st.caption("🚀 Powered by Gemini + Qdrant + CLIP")
+# --- Path configuration ---
+# Get the project root (where main.py is located)
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+CASES_FOLDER = os.path.join(PROJECT_ROOT, "cases")
+RESPONSES_FOLDER = os.path.join(PROJECT_ROOT, "responses")
 
-# --- Sidebar ---
-with st.sidebar:
-    st.header("⚙️ Configuration")
-    st.markdown("Enter your Gemini API key:")
-    gemini_api_key = st.text_input("Gemini API Key", key="gemini_api_key", type="password")
-    st.markdown("[Get an API key](https://aistudio.google.com/app/apikey)")
-    st.divider()
-    st.markdown("**Project Info:**")
-    st.markdown("• Data retrieved from Qdrant Cloud\n• Prompt composed from retrieved cases")
+# --- Configuration ---
+MODEL_NAME = "models/gemini-2.5-pro"
 
-# --- Session State ---
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [
-        {"role": "assistant", "content": "Hello 👋! Describe your symptoms and I’ll analyze them based on similar medical cases."}
-    ]
-
-# --- Display Chat History ---
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(msg["content"])
-
-# --- Setup Gemini ---
-def setup_gemini(api_key: str):
+# --- Setup ---
+def setup():
+    """Configure Gemini API and ensure directories exist."""
+    load_dotenv()
+    api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
-        st.warning("Please provide your Gemini API key in the sidebar to continue.")
+        st.error("Missing GEMINI_API_KEY in .env file.")
         st.stop()
+
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("models/gemini-2.5-pro")
-    return model
+    os.makedirs(RESPONSES_FOLDER, exist_ok=True)
+    os.makedirs(CASES_FOLDER, exist_ok=True)
 
-# --- Chat Input ---
-if user_input := st.chat_input("Enter patient symptoms or medical history..."):
-    if not gemini_api_key:
-        st.info("Please add your Gemini API key to continue.")
-        st.stop()
+# --- Main Loop ---
+def main():
+    setup()
+    st.set_page_config(page_title="Medical LMM", page_icon="💬", layout="wide")
+    st.title("💬 Medical LMM Diagnostic Assistant")
+    st.caption("AI-assisted medical case reasoning using Gemini + Qdrant")
 
-    # Append user message
-    st.session_state.messages.append({"role": "user", "content": user_input})
-    st.chat_message("user").write(user_input)
+    # --- Sidebar: history ---
+    with st.sidebar:
+        st.header("🗂️ Chat History")
+        response_files = sorted(
+            [f for f in os.listdir(RESPONSES_FOLDER) if f.endswith(".md")],
+            reverse=True
+        )
+        selected_file = st.selectbox("Select a past conversation:", ["(New Chat)"] + response_files)
 
-    # Step 1: Generate CLIP embedding (placeholder)
-    query_vector = [0.12, -0.45, 0.78, 0.66]
+        if selected_file != "(New Chat)":
+            st.session_state["messages"] = load_conversation(os.path.join(RESPONSES_FOLDER, selected_file))
+            st.info(f"Loaded conversation from: {selected_file}")
+        else:
+            st.session_state["messages"] = [{"role": "assistant", "content": "Hello! How can I assist you today?"}]
 
-    # Step 2: Query Qdrant
-    with st.spinner("🔍 Searching for similar cases..."):
+    # --- Display chat ---
+    for msg in st.session_state["messages"]:
+        st.chat_message(msg["role"]).write(msg["content"])
+
+    # --- Chat input ---
+    if prompt := st.chat_input("Enter new patient's symptoms and history..."):
+        model = genai.GenerativeModel(MODEL_NAME)
+        st.session_state["messages"].append({"role": "user", "content": prompt})
+        st.chat_message("user").write(prompt)
+
+        # Step 1: Query Qdrant
+        query_vector = [0.43, -0.45, 0.78, 0.72]  # placeholder
         run_query(query_vector)
 
-    # Step 3: Generate prompt from retrieved cases
-    with st.spinner("🧠 Building contextual prompt..."):
-        final_prompt = generate_prompt(user_input)
-
-    # Step 4: Send to Gemini API
-    with st.spinner("🤖 Generating diagnostic report..."):
-        try:
-            model = setup_gemini(gemini_api_key)
+        # Step 2: Build prompt
+        with st.spinner("Building prompt and generating analysis..."):
+            final_prompt = generate_prompt(prompt)
             response = model.generate_content(final_prompt)
-            ai_message = response.text
+            ai_text = response.text
 
-            # Append to chat and display
-            st.session_state.messages.append({"role": "assistant", "content": ai_message})
-            st.chat_message("assistant").write(ai_message)
+        # Step 3: Display AI response
+        st.session_state["messages"].append({"role": "assistant", "content": ai_text})
+        st.chat_message("assistant").write(ai_text)
 
-            # Step 5: Save to Markdown log
-            responses_folder = os.path.join(os.path.dirname(__file__), "responses")
-            os.makedirs(responses_folder, exist_ok=True)
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"analysis_{timestamp}.md"
-            filepath = os.path.join(responses_folder, filename)
+        # Step 4: Save full chat to markdown
+        filename = save_conversation(st.session_state["messages"])
+        st.sidebar.success(f"Conversation saved as {filename}")
 
-            with open(filepath, "w", encoding="utf-8") as f:
-                f.write(f"User: {user_input}\n\nAI: {ai_message}\n")
-
-            st.toast(f"💾 Saved conversation to {filename}")
-
-        except Exception as e:
-            st.error(f"Error during Gemini generation: {e}")
+# --- Run app ---
+if __name__ == "__main__":
+    main()

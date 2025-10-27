@@ -1,3 +1,13 @@
+# Update 27.10.2025 (Part 2)
+You can now interact with the system via main_streamlit.py, which makes use of Streamlit, an open-source library for data science project.
+
+This only supports chatting with the model, not yet for uploading cases (will be added later).
+
+To run the project, run in the terminal:
+```bash
+uv run streamlit run main_streamlit.py
+```
+
 # Update 27.10.2025
 Sorry for the long wait, but here is the upload_cases_image.py and upload_cases_text.py
 
