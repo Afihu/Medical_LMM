@@ -3,6 +3,8 @@ import re
 
 def txt_print(texts):
 
+    print(f"Writing content to out.txt")
+
     file_name = "out.txt"
     try:
         with open(file_name, 'w', encoding='utf-8') as file:
