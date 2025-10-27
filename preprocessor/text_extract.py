@@ -1,6 +1,19 @@
 import fitz  # import  PyMuPDF library
 import re
 
+def txt_print(texts):
+
+    file_name = "out.txt"
+    try:
+        with open(file_name, 'w', encoding='utf-8') as file:
+            # 2. Write the text to the file
+            file.write(texts)
+        
+        print(f"Successfully wrote the text to '{file_name}'")
+
+    except IOError as e:
+        print(f"An error occurred while writing to the file: {e}")
+
 def extract_text(pdf_path):
     try:
         doc = fitz.open(pdf_path)
