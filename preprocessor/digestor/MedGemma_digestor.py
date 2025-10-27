@@ -15,7 +15,7 @@ model = AutoModelForImageTextToText.from_pretrained(
 processor = AutoProcessor.from_pretrained(model_id)
 
 # Image attribution: Stillwaterising, CC0, via Wikimedia Commons
-image_path = "embedder_img/img/page2_img2.jpeg"
+image_path = "embedder_img/img/page2_img1.jpeg"
 try:
     image = Image.open(image_path)
     print("Found")

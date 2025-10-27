@@ -31,7 +31,6 @@ def extract_text(pdf_path):
         phrase = "Further Reading"
         parts = full_text.split(phrase)
         cleaned = parts[0]
-        cleaned = re.sub(r'• Figure|Fig\.\s\d+\.\d+\s*', '', cleaned)
 
         doc.close()
 
