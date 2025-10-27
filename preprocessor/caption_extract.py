@@ -1,7 +1,6 @@
 import re
 
 def extract_captions(text_doc):
-
     captions  = []
     patterns = r"^(•\s*)?(fig|figure|table)\.?\s*\d"
 

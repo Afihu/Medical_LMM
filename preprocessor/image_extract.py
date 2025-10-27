@@ -3,11 +3,67 @@ import os
 import glob
 import numpy as np  
 
-def extract_images_as_rgb_arrays(pdf_directory):
+# Function of interest
+def extract_image(pdf_path):
+    image_data = []
+    
+    pdf_name = os.path.basename(pdf_path)
+    print(f"\n--- Processing: {pdf_name} ---")
+
+    try:
+        doc = fitz.open(pdf_path)
+    except FileNotFoundError:
+        print(f"Error: The file '{pdf_path}' was not found.")
+        return image_data
+    except Exception as e:
+        print(f"Error opening {pdf_path}: {e}")
+        return image_data
+
+    for page_num in range(doc.page_count):
+        page = doc.load_page(page_num)
+        
+        # Get the list of images (xref is the first element)
+        image_list = page.get_images(full=True)
+        
+        if not image_list:
+            continue
+
+        for img_index, img_info in enumerate(image_list):
+            xref = img_info[0]
+            
+            try:
+                # Get the image as a Pixmap (in-memory bitmap)
+                pix = fitz.Pixmap(doc, xref)
+
+                # Convert to RGB 
+                if pix.n > 3:  # Checks if it has more than 3 color components
+                    pix = fitz.Pixmap(fitz.csRGB, pix)
+                elif pix.colorspace.name != "DeviceRGB":
+                    pix = fitz.Pixmap(fitz.csRGB, pix)
+
+                image_array = np.frombuffer(
+                    pix.samples,
+                    dtype=np.uint8
+                ).reshape(pix.height, pix.width, 3)
+
+                print(f"  Extracted image {img_index+1} from page {page_num+1} (Shape: {image_array.shape})")
+
+                image_data.append(image_array)
+
+            except Exception as e:
+                print(f"  Error processing image xref {xref} on page {page_num+1}: {e}")
+            
+            pix = None
+
+    doc.close()
+    
+    print(f"--- Finished processing {pdf_name}. Total extracted: {len(image_data)} images. ---")
+    return image_data
+
+# Just in case
+def extract_images(pdf_directory): #returns an rgb array
     
     all_images_data = []
-    
-    # Find all PDF files
     pdf_paths = glob.glob(os.path.join(pdf_directory, "*.pdf"))
     
     if not pdf_paths:
@@ -45,13 +101,11 @@ def extract_images_as_rgb_arrays(pdf_directory):
                     if pix.colorspace.name != "DeviceRGB" or pix.alpha:
                         pix = fitz.Pixmap(fitz.csRGB, pix)
 
-                    # Convert the Pixmap's samples into a NumPy array
                     image_array = np.frombuffer(
                         pix.samples,
                         dtype=np.uint8
                     ).reshape(pix.height, pix.width, 3)
 
-                    # Add the RGB array to master list
                     all_images_data.append(image_array)
                     
                     print(f"  Extracted image {img_index+1} from page {page_num+1} (Shape: {image_array.shape})")
@@ -64,23 +118,5 @@ def extract_images_as_rgb_arrays(pdf_directory):
         doc.close()
 
     print(f"\n--- Extraction Complete ---")
-    print(f"Successfully extracted {len(all_images_data)} images into memory.")
+    print(f"Successfully extracted {len(all_images_data)} images")
     return all_images_data
-
-
-if __name__ == "__main__":
-    pdf_folder_path = "source_materials" 
-
-    if not os.path.isdir(pdf_folder_path):
-        print(f"Directory not found: '{pdf_folder_path}'")
-        print("Please update the 'pdf_folder_path' variable in the script.")
-    else:
-        # extraction
-        list_of_rgb_arrays = extract_images_as_rgb_arrays(pdf_folder_path)
-
-        # Debug
-        if list_of_rgb_arrays:
-            # Print info about the first image as a demo
-            print(f"\nTotal images in list: {len(list_of_rgb_arrays)}")
-            print(f"Type of first item: {type(list_of_rgb_arrays[0])}")
-            print(f"Shape of first image array: {list_of_rgb_arrays[0].shape}")
