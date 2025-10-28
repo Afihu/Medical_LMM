@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 
 # Custom modules
-from scripts.query import run_query
+from scripts.query import run_query_text
 from scripts.prompt_generate import generate_prompt
 
 # --- Path configuration ---
@@ -68,7 +68,7 @@ def main():
         # Step 1: (Placeholder) Generate embedding for query
         # Replace this with real encoder later
         query_vector = [0.12, -0.45, 0.78, 0.66]
-        run_query(query_vector)
+        run_query_text(query_vector)
 
         # Step 2: Generate the full prompt for Gemini
         print("Building prompt from retrieved cases...")

@@ -1,30 +1,33 @@
 """
 prompt_generate.py
 ------------------
-Combines the base prompt (from prompt.txt) with the top 5 retrieved cases in /cases/.
-This script is used by main.py before sending the prompt to Gemini.
+Combines the base prompt (from prompt.txt) with retrieved cases
+from both /cases-text/ and /cases-image/ folders.
+Used by main_streamlit.py (or main.py) before sending the final
+prompt to Gemini for analysis.
 """
 
 import os
 import json
 
 # --- Path configuration ---
-# Get the root directory of the project (where main.py is located)
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # as this will return /scripts, so we wrap in another one
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROMPT_FILE = os.path.join(PROJECT_ROOT, "scripts/prompt.txt")
-CASES_FOLDER = os.path.join(PROJECT_ROOT, "cases")
+CASES_FOLDER_TEXT = os.path.join(PROJECT_ROOT, "cases-text")
+CASES_FOLDER_IMAGE = os.path.join(PROJECT_ROOT, "cases-image")
+
 # -------------------------------------------------------------------
 
-def load_cases():
-    """Load all case JSON files from /cases folder."""
+def load_cases(folder_path):
+    """Load all case JSON files from the specified folder."""
     cases = []
-    if not os.path.exists(CASES_FOLDER):
-        print(f"Warning: '{CASES_FOLDER}' directory not found.")
+    if not os.path.exists(folder_path):
+        print(f"Warning: '{folder_path}' not found.")
         return cases
 
-    for filename in sorted(os.listdir(CASES_FOLDER)):
+    for filename in sorted(os.listdir(folder_path)):
         if filename.endswith(".json"):
-            path = os.path.join(CASES_FOLDER, filename)
+            path = os.path.join(folder_path, filename)
             try:
                 with open(path, "r", encoding="utf-8") as f:
                     data = json.load(f)
@@ -34,38 +37,52 @@ def load_cases():
     return cases
 
 
-def format_cases(cases):
-    """Format all cases as markdown text."""
-    if not cases:
-        return "No similar cases were provided for context."
+def format_cases_markdown(cases_text, cases_image):
+    """Format both text-based and image-based cases into Markdown sections."""
+    if not cases_text and not cases_image:
+        return "No similar cases were found for context."
 
-    formatted = []
-    for i, case in enumerate(cases):
-        payload = case.get("payload", {})
-        case_md = (
-            f"\n**Case {i+1} (ID: {case.get('id', 'N/A')})**\n"
-            f"- **Diagnosis:** {payload.get('diagnosis', 'N/A')}\n"
-            f"- **Symptoms:** {payload.get('symptoms', 'N/A')}\n"
-            f"- **History:** {payload.get('history', 'N/A')}\n"
-        )
-        formatted.append(case_md)
-    return "\n".join(formatted)
+    formatted_sections = []
+
+    # --- Text-based cases ---
+    if cases_text:
+        formatted_sections.append("#### Text-Based Similar Cases:")
+        for i, case in enumerate(cases_text):
+            try:
+                case_json = json.dumps(case, indent=4, ensure_ascii=False)
+                formatted_sections.append(f"**Text Case {i+1}:**\n```json\n{case_json}\n```")
+            except Exception as e:
+                formatted_sections.append(f"Error formatting case {i+1}: {e}")
+
+    # --- Image-based cases ---
+    if cases_image:
+        formatted_sections.append("\n#### Image-Based Similar Cases:")
+        for i, case in enumerate(cases_image):
+            try:
+                case_json = json.dumps(case, indent=4, ensure_ascii=False)
+                formatted_sections.append(f"**Image Case {i+1}:**\n```json\n{case_json}\n```")
+            except Exception as e:
+                formatted_sections.append(f"Error formatting image case {i+1}: {e}")
+
+    return "\n\n".join(formatted_sections)
 
 
 def generate_prompt(user_input):
-    """Generate the final prompt string by merging base prompt + cases."""
-    # Load base prompt
+    """Generate the final prompt string by merging base prompt + text & image cases."""
     if not os.path.exists(PROMPT_FILE):
         raise FileNotFoundError(f"Missing {PROMPT_FILE}")
 
     with open(PROMPT_FILE, "r", encoding="utf-8") as f:
         base_prompt = f.read()
 
-    # Load cases
-    cases = load_cases()
-    cases_section = format_cases(cases)
+    # Load cases from both sources
+    text_cases = load_cases(CASES_FOLDER_TEXT)
+    image_cases = load_cases(CASES_FOLDER_IMAGE)
 
-    # Replace placeholders
+    # Combine into one section
+    cases_section = format_cases_markdown(text_cases, image_cases)
+
+    # Replace placeholders in the base prompt
     final_prompt = (
         base_prompt
         .replace("{user_input}", user_input.strip())
@@ -75,9 +92,9 @@ def generate_prompt(user_input):
     return final_prompt
 
 
-# if __name__ == "__main__":
-#     # Example run
-#     example_input = "Patient reports shortness of breath and mild chest discomfort."
-#     prompt = generate_prompt(example_input)
-#     print("\nGenerated Prompt:\n")
-#     print(prompt)
+# --- Test run (optional) ---
+if __name__ == "__main__":
+    example_input = "Patient reports blurred vision and fatigue."
+    prompt = generate_prompt(example_input)
+    print("\nGenerated Prompt:\n")
+    print(prompt)

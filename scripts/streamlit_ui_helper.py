@@ -8,12 +8,13 @@ Helper functions for Streamlit interface:
 
 import os
 from datetime import datetime
+from PIL import Image
 
 # --- Path configuration ---
 # Get the project root (where main.py is located)
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # as this will return /scripts, so we wrap in another one
 RESPONSES_FOLDER = os.path.join(PROJECT_ROOT, "responses")
-
+UPLOADED_IMAGES_FOLDER = os.path.join(PROJECT_ROOT, "uploaded_images")
 
 def load_conversation(md_path):
     """Parse a Markdown conversation file into a list of messages."""
@@ -46,3 +47,13 @@ def save_conversation(messages):
             f.write(f"**{role}:** {msg['content']}\n\n")
 
     return filename
+
+def save_uploaded_image(uploaded_file):
+    """Save uploaded image to /uploaded_images with unique filename and return its path."""
+    os.makedirs(UPLOADED_IMAGES_FOLDER, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    filename = f"user_image_{timestamp}.png"
+    save_path = os.path.join(UPLOADED_IMAGES_FOLDER, filename)
+    image = Image.open(uploaded_file)
+    image.save(save_path)
+    return save_path
