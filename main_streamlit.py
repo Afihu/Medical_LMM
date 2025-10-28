@@ -19,6 +19,7 @@ from scripts.query import run_query
 from scripts.prompt_generate import generate_prompt
 from scripts.streamlit_ui_helper import load_conversation, save_conversation, save_uploaded_image
 from scripts.u_i_a import embed_img as embed_image
+from scripts.u_a_i import embed_text
 from scripts.clean_folder import clean_folder
 
 
@@ -141,8 +142,13 @@ def main():
         image_vector = None
 
         if prompt:
-            # TODO: Replace with actual text embedding
-            text_vector = [0.12, -0.45, 0.78, 0.66]
+            st.info("Computing text embedding...")
+            try:
+                text_vector = embed_text(prompt)
+                st.success(f"Generated text embedding of dimension {len(text_vector)}")
+            except Exception as e:
+                st.error(f"Text embedding failed: {e}")
+                text_vector = None
 
         if uploaded_files:
             uploaded_folder = os.path.join(PROJECT_ROOT, "uploaded_images")

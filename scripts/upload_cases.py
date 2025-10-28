@@ -1,4 +1,5 @@
 """
+[DEPRECATED - PLEASE REFER TO upload_cases_image.py and upload_cases_text.py]
 upload_cases.py
 ---------------
 Uploads case data from /temp_data to Qdrant Cloud.

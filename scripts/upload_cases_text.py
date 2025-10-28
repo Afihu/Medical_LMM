@@ -8,7 +8,7 @@ Each JSON file in /temp_data should contain:
   {
     "id": "case_001",
     "vector": { "text_vector": [...] },
-    "payload": { "diagnosis": "...", "symptoms": "...", "history": "..." }
+    "payload": {}
   },
   ...
 ]
