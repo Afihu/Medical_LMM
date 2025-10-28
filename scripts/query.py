@@ -23,7 +23,7 @@ CASES_FOLDER_IMAGE = os.path.join(PROJECT_ROOT, "cases_image")
 load_dotenv()
 QDRANT_URL = os.getenv("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
-COLLECTION_NAME_TEXT = "star_charts"  # Change to your Qdrant collection name
+COLLECTION_NAME_TEXT = "medical_case_summaries_qdrant"
 COLLECTION_NAME_IMAGE = "image_embedding"
 
 # -------------------------------------------------------------------
