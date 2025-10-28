@@ -6,7 +6,7 @@ import os
 def test_embedder():
     all_document_embeddings = [] 
     
-    pdf_directory = "source_materials"
+    pdf_directory = "D:/Bao/Document/_VGU/_Semester 5/Projects/ScienceDirect_articles_21Mar2025_16-17-58.017"
 
     pdf_paths = glob.glob(os.path.join(pdf_directory, "*.pdf"))
     
