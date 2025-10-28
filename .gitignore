@@ -184,3 +184,7 @@ cython_debug/
 /responses
 /cases
 .env
+/cases_text
+/cases_image
+/decoded_images
+/uploaded_images

@@ -119,11 +119,21 @@ def upload_image_cases():
         except Exception as e:
             print(f"Skipped a case due to error: {e}")
 
-    if points:
-        client.upsert(collection_name=collection_name, points=points)
-        print(f"Uploaded {len(points)} image cases to '{collection_name}' collection.")
-    else:
+    if not points:
         print("No valid image points to upload.")
+        return
+
+    # Batch upload to prevent connection reset
+    BATCH_SIZE = 10
+    print(f"Uploading {len(points)} points in batches of {BATCH_SIZE}...\n")
+
+    for i in range(0, len(points), BATCH_SIZE):
+        batch = points[i:i+BATCH_SIZE]
+        try:
+            client.upsert(collection_name=collection_name, points=batch)
+            print(f"Uploaded batch {i//BATCH_SIZE + 1} ({len(batch)} points)")
+        except Exception as e:
+            print(f"Failed batch {i//BATCH_SIZE + 1}: {e}")
 
     print("\nUpload complete. Exiting.\n")
 

@@ -11,7 +11,6 @@ from datetime import datetime
 import streamlit as st
 import google.generativeai as genai
 from dotenv import load_dotenv
-from PIL import Image
 #import io
 import numpy as np
 
@@ -20,6 +19,8 @@ from scripts.query import run_query
 from scripts.prompt_generate import generate_prompt
 from scripts.streamlit_ui_helper import load_conversation, save_conversation, save_uploaded_image
 from scripts.u_i_a import embed_img as embed_image
+from scripts.clean_folder import clean_folder
+
 
 # --- Path configuration ---
 # Get the project root (where main.py is located)
@@ -28,6 +29,7 @@ CASES_FOLDER_TEXT = os.path.join(PROJECT_ROOT, "cases_text")
 CASES_FOLDER_IMAGE = os.path.join(PROJECT_ROOT, "cases_image")
 RESPONSES_FOLDER = os.path.join(PROJECT_ROOT, "responses")
 UPLOADED_IMAGES_FOLDER = os.path.join(PROJECT_ROOT, "uploaded_images")
+DECODED_IMG_FOLDER = os.path.join(PROJECT_ROOT, "decoded_images")
 
 # --- Configuration ---
 MODEL_NAME = "models/gemini-2.5-pro"
@@ -46,6 +48,7 @@ def setup():
     os.makedirs(CASES_FOLDER_TEXT, exist_ok=True)
     os.makedirs(CASES_FOLDER_IMAGE, exist_ok=True)
     os.makedirs(UPLOADED_IMAGES_FOLDER, exist_ok=True)
+    os.makedirs(DECODED_IMG_FOLDER, exist_ok=True)
 
 # --- Main Loop ---
 def main():
@@ -79,10 +82,6 @@ def main():
             st.chat_message(msg["role"]).write(msg["content"])
 
     # --- Chat input ---
-    # if prompt := st.chat_input("Enter new patient's symptoms and history..."):
-    #     model = genai.GenerativeModel(MODEL_NAME)
-    #     st.session_state["messages"].append({"role": "user", "content": prompt})
-    #     st.chat_message("user").write(prompt)
     st.divider()
     col1, col2 = st.columns([8, 1])
     with col1:
@@ -108,18 +107,25 @@ def main():
 
         model = genai.GenerativeModel(MODEL_NAME)
 
-        # --- Save uploaded images ---
+        # --- Clear old uploads & save new images ---
         image_paths = []
         if uploaded_files:
+            # Clean all relevant temp folders before new query
+            print("\nClearing temporary directories for a new query...\n")
+            clean_folder(os.path.join(PROJECT_ROOT, "uploaded_images"))
+            clean_folder(os.path.join(PROJECT_ROOT, "decoded_images"))
+            clean_folder(os.path.join(PROJECT_ROOT, "cases_image"))
+            clean_folder(os.path.join(PROJECT_ROOT, "cases_text"))
+            print("\nClearing done! Begin saving uplaoded images...\n")
             for f in uploaded_files:
                 path = save_uploaded_image(f)
                 image_paths.append(path)
 
+
         # Add user message to chat
         user_msg = {"role": "user", "content": prompt or ""}
-        if uploaded_files:
-            image = Image.open(uploaded_files)
-            user_msg["image"] = image
+        if image_paths:  # already contains saved file paths
+            user_msg["images"] = image_paths
         st.session_state["messages"].append(user_msg)
 
         # --- Display in chat ---
@@ -141,7 +147,7 @@ def main():
         if uploaded_files:
             uploaded_folder = os.path.join(PROJECT_ROOT, "uploaded_images")
 
-            # Collect all image files in /uploaded_images
+            # Expect exactly one image file
             image_files = [
                 os.path.join(uploaded_folder, f)
                 for f in os.listdir(uploaded_folder)
@@ -151,22 +157,31 @@ def main():
             if not image_files:
                 st.warning("No images found in /uploaded_images to embed.")
             else:
-                st.info(f"Found {len(image_files)} uploaded image(s). Computing embeddings...")
+                image_path = image_files[0]
+                st.info(f"Embedding image: {os.path.basename(image_path)}")
 
-                image_embeddings = []
-                for image_path in image_files:
-                    try:
-                        emb = embed_image(image_path, caption=None)
-                        image_embeddings.append(emb[0])  # emb[0] = single vector for one image
-                    except Exception as e:
-                        st.error(f"Error embedding {os.path.basename(image_path)}: {e}")
+                try:
+                    # Use filename (without extension) as caption
+                    caption = os.path.splitext(os.path.basename(image_path))[0]
+                    emb = embed_image(image_path, caption=[caption])
 
-                # Average embeddings across all images
-                if image_embeddings:
-                    image_vector = np.mean(np.array(image_embeddings), axis=0).tolist()
-                    st.success(f"Computed averaged image embedding of dimension {len(image_vector)}")
-                else:
+                    # Extract actual image embedding tensor
+                    if hasattr(emb, "image_embeds"):
+                        image_vector = emb.image_embeds.squeeze().tolist()
+                    else:
+                        st.error("Embedding output missing 'image_embeds' attribute.")
+                        image_vector = None
+
+                    if image_vector:
+                        st.success(f"Computed image embedding of dimension {len(image_vector)}")
+                    else:
+                        st.warning("Image embedding returned empty vector.")
+
+                except Exception as e:
+                    st.error(f"Error embedding {os.path.basename(image_path)}: {e}")
                     image_vector = None
+        else:
+            image_vector = None
 
 
         # # Step 1: Query Qdrant
@@ -177,9 +192,33 @@ def main():
 
         # Step 2: Build prompt
         with st.spinner("Building prompt and generating analysis..."):
-            final_prompt = generate_prompt(prompt)
-            response = model.generate_content(final_prompt)
-            ai_text = response.text
+            # generate_prompt now returns (text_prompt, decoded_image_paths)
+            final_prompt, decoded_images_path = generate_prompt(prompt)
+
+            # Build multimodal content parts: text followed by inline images
+            content_parts = [{"text": final_prompt}]
+
+            # Attach decoded images if any
+            for img_path in decoded_images_path:
+                try:
+                    with open(img_path, "rb") as f:
+                        data = f.read()
+                    content_parts.append({
+                        "inline_data": {
+                            "mime_type": "image/png",
+                            "data": data
+                        }
+                    })
+                except Exception as e:
+                    st.warning(f"Could not attach image {img_path}: {e}")
+            
+            # Send to Gemini as multimodal parts
+            try:
+                response = model.generate_content(content_parts)
+                ai_text = response.text
+            except Exception as e:
+                st.error(f"Error calling Gemini: {e}")
+                ai_text = f"Error during model generation: {e}"
 
         # Step 3: Display AI response
         st.session_state["messages"].append({"role": "assistant", "content": ai_text})
