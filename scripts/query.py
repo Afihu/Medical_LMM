@@ -51,7 +51,7 @@ def query_similar_cases(client, query_vector, limit=5, mode = 'text'):
         results = client.search(
             collection_name=COLLECTION_NAME_IMAGE,
             query_vector=query_vector,
-            limit=limit,
+            limit=1,    # MUST BE CHANGED LATER
             with_payload=True
         )
         return results

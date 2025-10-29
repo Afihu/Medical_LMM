@@ -10,6 +10,7 @@ prompt to Gemini for analysis.
 import os
 import json
 import base64
+from scripts.image_utils import compress_image
 
 # --- Path configuration ---
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,16 +42,37 @@ def load_cases(folder_path):
                 print(f"Could not read {filename}: {e}")
     return cases
 
+# def decode_and_save_image(base64_str, case_id, index):
+#     """Decode base64 image and save to /decoded_images. Returns the saved path."""
+#     try:
+#         image_bytes = base64.b64decode(base64_str)
+#         image_path = os.path.join(DECODED_IMG_FOLDER, f"{case_id}_{index}.png")
+#         with open(image_path, "wb") as f:
+#             f.write(image_bytes)
+#         return image_path
+#     except Exception as e:
+#         print(f"Error decoding image for {case_id}: {e}")
+#         return None
+
 def decode_and_save_image(base64_str, case_id, index):
-    """Decode base64 image and save to /decoded_images. Returns the saved path."""
+    """Decode base64 image, save to /decoded_images, compress it, and return final path."""
     try:
         image_bytes = base64.b64decode(base64_str)
-        image_path = os.path.join(DECODED_IMG_FOLDER, f"{case_id}_{index}.png")
-        with open(image_path, "wb") as f:
+        raw_path = os.path.join(DECODED_IMG_FOLDER, f"{case_id}_{index}.png")
+        with open(raw_path, "wb") as f:
             f.write(image_bytes)
-        return image_path
+
+        # Compress the image to reduce Gemini upload size
+        compressed_path = compress_image(
+            raw_path,
+            output_path=os.path.join(DECODED_IMG_FOLDER, f"{case_id}_{index}_compressed.jpg"),
+            max_size=(512, 512),
+            quality=80
+        )
+
+        return compressed_path
     except Exception as e:
-        print(f"Error decoding image for {case_id}: {e}")
+        print(f"Error decoding or compressing image for {case_id}: {e}")
         return None
 
 def format_cases_markdown(cases_text, cases_image):
