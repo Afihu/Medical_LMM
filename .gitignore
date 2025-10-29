@@ -184,3 +184,8 @@ cython_debug/
 /responses
 /cases
 .env
+
+/.serena
+/staged_embeddings
+/extracted_data
+/source_materials

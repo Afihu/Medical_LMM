@@ -1,0 +1,1 @@
+"""Embedding mode orchestration module."""
