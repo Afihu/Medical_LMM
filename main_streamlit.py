@@ -33,7 +33,7 @@ UPLOADED_IMAGES_FOLDER = os.path.join(PROJECT_ROOT, "uploaded_images")
 DECODED_IMG_FOLDER = os.path.join(PROJECT_ROOT, "decoded_images")
 
 # --- Configuration ---
-MODEL_NAME = "models/gemini-2.5-pro"
+MODEL_NAME = "models/gemini-2.5-flash"
 
 # --- Setup ---
 def setup():

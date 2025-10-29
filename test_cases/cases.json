@@ -1,0 +1,62 @@
+[
+  {
+    "id": "case-001",
+    "prompt": "A 28-year-old woman from rural Ghana presents with high fever, chills, headache, and sweating after several days of mosquito exposure near stagnant water. She looks pale and slightly jaundiced. What is the most likely diagnosis?",
+    "diagnosis": "Malaria (Plasmodium falciparum)"
+  },
+  {
+    "id": "case-002",
+    "prompt": "A 19-year-old man from Manila develops high fever, severe headache behind the eyes, joint pain, nausea, and a maculopapular rash on day 3. He reports multiple mosquito bites last week. What is the most likely diagnosis?",
+    "diagnosis": "Dengue fever"
+  },
+  {
+    "id": "case-003",
+    "prompt": "A 34-year-old woman from rural India presents with a 6-day history of high fever, abdominal pain, headache, and alternating constipation and diarrhea. She has a faint rash on her trunk. What is the most likely diagnosis?",
+    "diagnosis": "Typhoid fever"
+  },
+  {
+    "id": "case-004",
+    "prompt": "A 7-year-old boy living in a refugee camp in Bangladesh suddenly develops profuse watery diarrhea that looks like rice water, vomiting, and signs of dehydration after flooding in the area. What is the most likely diagnosis?",
+    "diagnosis": "Cholera"
+  },
+  {
+    "id": "case-005",
+    "prompt": "A 42-year-old rice farmer in the Philippines reports fever, chills, muscle pain, headache, and yellowing of the eyes. He frequently works barefoot in flooded fields. What is the most likely diagnosis?",
+    "diagnosis": "Leptospirosis"
+  },
+  {
+    "id": "case-006",
+    "prompt": "A 29-year-old woman from Hanoi has a persistent productive cough for over three weeks, fever, night sweats, and mild weight loss. She reports a household contact with similar symptoms. What is the most likely diagnosis?",
+    "diagnosis": "Pulmonary tuberculosis"
+  },
+  {
+    "id": "case-007",
+    "prompt": "A 36-year-old HIV-positive man in Rwanda presents with fever, headache, confusion, and neck stiffness that developed over a few days. What is the most likely diagnosis?",
+    "diagnosis": "Cryptococcal meningitis"
+  },
+  {
+    "id": "case-008",
+    "prompt": "A 25-year-old woman from rural Brazil presents with intermittent fever, fatigue, and an enlarged spleen. She has been working outdoors and frequently bitten by sandflies. What is the most likely diagnosis?",
+    "diagnosis": "Visceral leishmaniasis (kala-azar)"
+  },
+  {
+    "id": "case-009",
+    "prompt": "A 48-year-old woman from Brazil develops sudden high fever, severe joint pains in wrists and ankles, and a rash after mosquito bites. What is the most likely diagnosis?",
+    "diagnosis": "Chikungunya virus infection"
+  },
+  {
+    "id": "case-010",
+    "prompt": "A 30-year-old man from rural Morocco presents with a painless ulcer on his forearm that slowly enlarged over several weeks. He often works outdoors where sandflies are common. What is the most likely diagnosis?",
+    "diagnosis": "Cutaneous leishmaniasis"
+  },
+  {
+    "id": "case-011",
+    "prompt": "A 45-year-old man from rural Mexico has fever, right upper abdominal pain, and weight loss two months after an episode of bloody diarrhea. Examination shows tender hepatomegaly. What is the most likely diagnosis?",
+    "diagnosis": "Amebic liver abscess"
+  },
+  {
+    "id": "case-012",
+    "prompt": "A 32-year-old woman working on a tea plantation in Northeast Thailand presents with fever, severe headache, body aches, and a dark scab (eschar) on her leg surrounded by a rash. What is the most likely diagnosis?",
+    "diagnosis": "Scrub typhus"
+  }
+]
