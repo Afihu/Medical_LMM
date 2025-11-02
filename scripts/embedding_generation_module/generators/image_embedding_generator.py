@@ -67,20 +67,30 @@ class ImageEmbeddingGenerator:
         else:
             print(f"[OK] Image embedding dimension verified: {actual_dim}D")
     
-    def generate_embedding(self, image_path, caption_text):
+    def generate_embedding(self, image_path, caption_text=None):
         """
-        Generate embedding from an image and its caption.
+        Generate embedding from an image and optional caption.
         
         Args:
             image_path: Path to the image file (.png)
-            caption_text: Caption text for the image
+            caption_text: Caption text for the image (optional, but recommended for better embeddings)
             
         Returns:
             numpy.ndarray: Image embedding vector of shape (embedding_dim,)
+            
+        Note:
+            - If caption_text is None or empty, only image will be used
+            - For best results, provide meaningful captions
         """
         try:
             # Load image
             image = Image.open(image_path).convert('RGB')
+            
+            # Use caption if provided and non-empty, otherwise use image-only encoding
+            if not caption_text or caption_text.strip() == "":
+                # Image-only encoding: use empty string for text
+                caption_text = ""
+                print(f"    [WARN] No caption provided, using image-only encoding")
             
             # Generate embedding
             inputs = self.processor(text=[caption_text], images=[image], padding="max_length", return_tensors="pt").to(self.device)
@@ -96,13 +106,13 @@ class ImageEmbeddingGenerator:
             print(f"  [ERROR] Error generating embedding for {image_path}: {e}")
             return None
     
-    def generate_and_save_embedding(self, image_path, caption_text, case_id, image_id):
+    def generate_and_save_embedding(self, image_path, caption_text=None, case_id=None, image_id=None):
         """
-        Generate embedding from image and caption, then save as .npy file.
+        Generate embedding from image and optional caption, then save as .npy file.
         
         Args:
             image_path: Path to the extracted image PNG file
-            caption_text: Caption text for the image
+            caption_text: Caption text for the image (optional, but recommended)
             case_id: Case ID for naming
             image_id: Image ID for naming
             
@@ -110,7 +120,7 @@ class ImageEmbeddingGenerator:
             dict: Result with status and path to saved embedding
         """
         try:
-            # Generate embedding
+            # Generate embedding (works with or without caption)
             embedding = self.generate_embedding(image_path, caption_text)
             
             if embedding is None:
@@ -122,7 +132,8 @@ class ImageEmbeddingGenerator:
             
             np.save(output_path, embedding)
             
-            print(f"  [OK] Saved image embedding: {output_filename}")
+            caption_status = "with caption" if caption_text and caption_text.strip() else "image-only"
+            print(f"  [OK] Saved image embedding ({caption_status}): {output_filename}")
             print(f"    Shape: {embedding.shape}, Path: {output_path}")
             
             return {"success": True, "path": output_path, "shape": embedding.shape}
@@ -182,11 +193,11 @@ def process_all_image_embeddings(input_dir_images=None, input_dir_captions=None,
         
         image_path = os.path.join(input_dir_images, image_file)
         
-        # Load caption for this image
+        # Load caption for this image (optional but recommended)
+        caption_text = None
         caption_file = f"case_{case_id:03d}_captions.json"
         caption_path = os.path.join(input_dir_captions, caption_file)
         
-        caption_text = None
         if os.path.exists(caption_path):
             try:
                 with open(caption_path, 'r', encoding='utf-8') as f:
@@ -195,13 +206,16 @@ def process_all_image_embeddings(input_dir_images=None, input_dir_captions=None,
                         # Find caption matching image_id
                         for cap in caption_data["captions"]:
                             if cap.get("id") == image_id:
-                                caption_text = cap.get("text", "")
+                                caption_text = cap.get("text", "").strip()
                                 break
             except Exception as e:
                 print(f"  [WARN] Could not load caption from {caption_file}: {e}")
         
-        if not caption_text:
-            caption_text = f"Image {image_id} from case {case_id}"
+        # Caption is optional - proceed even if not found
+        if caption_text:
+            print(f"  Caption found: '{caption_text[:50]}...'")
+        else:
+            print(f"  [WARN] No caption available - will use image-only encoding")
         
         print(f"Processing: {image_file}")
         result = generator.generate_and_save_embedding(image_path, caption_text, case_id, image_id)

@@ -34,6 +34,7 @@ PATHS = {
         "root": "staged_embeddings",
         "text": "staged_embeddings/text_embeddings",
         "images": "staged_embeddings/image_embeddings",
+        "captions": "staged_embeddings/caption_embeddings",
     },
 }
 
@@ -44,4 +45,5 @@ NAMING_CONVENTIONS = {
     "caption": "case_{case_id:03d}_caption_{caption_id:03d}.json",
     "text_embedding": "case_{case_id:03d}_text_embedding.npy",
     "image_embedding": "case_{case_id:03d}_image_{image_id:03d}_embedding.npy",
+    "caption_embedding": "case_{case_id:03d}_caption_{caption_id:03d}_embedding.npy",
 }

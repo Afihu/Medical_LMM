@@ -2,7 +2,7 @@ import re
 
 def extract_captions(text_doc):
     captions  = []
-    patterns = r"^(•\s*)?(fig|figure|table)\.?\s*\d"
+    patterns = r"^(•\s*)?(fig|figure)\.?\s*\d"
 
     print(f"--- Searching for captions ---")
 

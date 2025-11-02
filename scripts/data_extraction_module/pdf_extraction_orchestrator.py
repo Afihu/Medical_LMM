@@ -16,9 +16,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
 # Resolve project root (go up from scripts/embedding_mode to root)
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 
-from text_extract import extract_text, txt_print
-from image_extract import extract_image
-from caption_extract import extract_captions
+from scripts.data_extraction_module.text_extract import extract_text, txt_print
+from scripts.data_extraction_module.image_extract import extract_image
+from scripts.data_extraction_module.caption_extract import extract_captions
 from scripts.config.embedding_config import CONFIG, PATHS, NAMING_CONVENTIONS
 
 

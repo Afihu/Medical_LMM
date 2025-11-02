@@ -16,7 +16,7 @@ from PIL import Image
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../..'))
 
 from scripts.config.embedding_config import CONFIG, PATHS, NAMING_CONVENTIONS
-from scripts.embedding_generation_module.orchestrators.embedding_orchestrator import ModelManager
+from scripts.utils.model_manager import ModelManager
 
 
 class QueryOrchestrator:

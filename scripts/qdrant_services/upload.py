@@ -76,22 +76,48 @@ class QdrantUploadService:
             print(f"[ERROR] Failed to connect to Qdrant: {e}")
             raise
     
-    def _ensure_collection(self, collection_name: str, vector_size: int) -> None:
-        """Create collection if it doesn't exist."""
+    def _ensure_collection(self, collection_name: str, vector_size: int, named_vectors: bool = False) -> None:
+        """
+        Create collection if it doesn't exist.
+        
+        Args:
+            collection_name: Name of the collection
+            vector_size: Size of the embedding vectors
+            named_vectors: If True, create collection with named vectors for image embeddings
+                          (both "image" and "caption" vectors)
+        """
         try:
             collections = [col.name for col in self.client.get_collections().collections]
             if collection_name in collections:
                 print(f"[INFO] Collection '{collection_name}' already exists")
                 return
             
-            self.client.create_collection(
-                collection_name=collection_name,
-                vectors_config=models.VectorParams(
-                    size=vector_size,
-                    distance=models.Distance.COSINE,
-                ),
-            )
-            print(f"[OK] Created collection '{collection_name}' (vector_size={vector_size}D)")
+            if named_vectors and collection_name == self.COLLECTION_IMAGE:
+                # For image embeddings, use named vectors to support both image and caption embeddings
+                self.client.create_collection(
+                    collection_name=collection_name,
+                    vectors_config={
+                        "image": models.VectorParams(
+                            size=vector_size,
+                            distance=models.Distance.COSINE,
+                        ),
+                        "caption": models.VectorParams(
+                            size=vector_size,
+                            distance=models.Distance.COSINE,
+                        ),
+                    },
+                )
+                print(f"[OK] Created collection '{collection_name}' with named vectors (image & caption, {vector_size}D)")
+            else:
+                # For text embeddings, use single vector
+                self.client.create_collection(
+                    collection_name=collection_name,
+                    vectors_config=models.VectorParams(
+                        size=vector_size,
+                        distance=models.Distance.COSINE,
+                    ),
+                )
+                print(f"[OK] Created collection '{collection_name}' (vector_size={vector_size}D)")
         except Exception as e:
             print(f"[ERROR] Failed to create/check collection '{collection_name}': {e}")
             raise
@@ -232,6 +258,39 @@ class QdrantUploadService:
         
         return embeddings
     
+    def _load_caption_embeddings(self) -> List[Tuple[str, np.ndarray, int, int]]:
+        """
+        Load all caption embeddings from staged_embeddings/caption_embeddings/.
+        
+        Returns:
+            List of (filename, embedding_vector, case_id, caption_id)
+        """
+        caption_emb_dir = os.path.join(self.project_root, PATHS["staged_embeddings"]["captions"])
+        
+        if not os.path.exists(caption_emb_dir):
+            print(f"[INFO] Caption embeddings directory not found: {caption_emb_dir} (optional)")
+            return []
+        
+        embeddings = []
+        npy_files = sorted([f for f in os.listdir(caption_emb_dir) if f.endswith("_embedding.npy")])
+        
+        print(f"[INFO] Found {len(npy_files)} caption embedding file(s)")
+        
+        for filename in npy_files:
+            try:
+                # Extract case_id and caption_id from filename: case_001_caption_001_embedding.npy
+                parts = filename.replace("_embedding.npy", "").split("_")
+                case_id = int(parts[1])
+                caption_id = int(parts[3])
+                filepath = os.path.join(caption_emb_dir, filename)
+                embedding = np.load(filepath)
+                embeddings.append((filename, embedding, case_id, caption_id))
+                print(f"  [OK] Loaded {filename} (case_id={case_id:03d}, caption_id={caption_id:03d}, shape={embedding.shape})")
+            except Exception as e:
+                print(f"  [ERROR] Failed to load {filename}: {e}")
+        
+        return embeddings
+    
     def upload_text_embeddings(self) -> Dict:
         """
         Upload text embeddings to Qdrant.
@@ -292,48 +351,77 @@ class QdrantUploadService:
     
     def upload_image_embeddings(self) -> Dict:
         """
-        Upload image embeddings to Qdrant.
+        Upload image embeddings to Qdrant with associated caption embeddings.
+        Uses named vectors to store both image and caption embeddings in the same point.
         
         Returns:
             Dictionary with upload statistics
         """
         print(f"\n{'='*70}")
-        print("UPLOADING IMAGE EMBEDDINGS")
+        print("UPLOADING IMAGE EMBEDDINGS (with captions)")
         print(f"{'='*70}\n")
         
         # Load embeddings
-        embeddings = self._load_image_embeddings()
-        if not embeddings:
+        image_embeddings = self._load_image_embeddings()
+        if not image_embeddings:
             print("[WARN] No image embeddings found to upload")
             return {"success": False, "uploaded": 0, "total": 0}
         
-        # Ensure collection
-        vector_size = len(embeddings[0][1])  # Size of first embedding
-        self._ensure_collection(self.COLLECTION_IMAGE, vector_size)
+        # Load caption embeddings
+        caption_embeddings = self._load_caption_embeddings()
+        
+        # Create a map of caption_id to embedding for quick lookup: (case_id, caption_id) -> embedding
+        caption_map = {}
+        for filename, embedding, case_id, caption_id in caption_embeddings:
+            caption_map[(case_id, caption_id)] = embedding
+        
+        # Ensure collection with named vectors
+        vector_size = len(image_embeddings[0][1])  # Size of image embedding
+        self._ensure_collection(self.COLLECTION_IMAGE, vector_size, named_vectors=True)
         
         # Create points
         points = []
-        for filename, embedding, case_id, image_id in embeddings:
+        for filename, image_embedding, case_id, image_id in image_embeddings:
             try:
                 # Load text sections for payload (shared across images of same case)
                 text_payload = self._load_extracted_text(case_id)
                 
-                # Load caption for this specific image
-                caption = self._load_image_caption(case_id, image_id)
+                # Load caption text for this specific image
+                caption_text = self._load_image_caption(case_id, image_id)
                 
-                # Create point with standardized structure
+                # Try to get caption embedding for this image
+                caption_embedding = caption_map.get((case_id, image_id))
+                
+                # Build payload
+                payload = {
+                    "case_id": case_id,
+                    "image_id": image_id,
+                    "Caption": caption_text,
+                    **text_payload  # Merge text sections into payload
+                }
+                
+                # Create named vectors dict with image and caption vectors
+                vectors = {
+                    "image": image_embedding.tolist(),
+                }
+                
+                if caption_embedding is not None:
+                    vectors["caption"] = caption_embedding.tolist()
+                    payload["has_caption_embedding"] = True
+                    print(f"  [OK] case_{case_id:03d}, image_{image_id:03d}: with caption embedding")
+                else:
+                    # If no caption embedding, use image embedding for caption vector as fallback
+                    vectors["caption"] = image_embedding.tolist()
+                    payload["has_caption_embedding"] = False
+                    print(f"  [WARN] case_{case_id:03d}, image_{image_id:03d}: no caption embedding (using image embedding)")
+                
+                # Create point with named vectors structure
                 point = models.PointStruct(
                     id=str(uuid.uuid4()),  # Qdrant generates UUIDs
-                    vector=embedding.tolist(),
-                    payload={
-                        "case_id": case_id,
-                        "image_id": image_id,
-                        "Caption": caption,
-                        **text_payload  # Merge text sections into payload
-                    }
+                    vector=vectors,
+                    payload=payload
                 )
                 points.append(point)
-                print(f"  [OK] Created point for case_{case_id:03d}, image_{image_id:03d}")
             except Exception as e:
                 print(f"  [ERROR] Failed to create point from {filename}: {e}")
         
@@ -345,13 +433,13 @@ class QdrantUploadService:
                     points=points
                 )
                 print(f"\n[OK] Uploaded {len(points)} image embeddings to '{self.COLLECTION_IMAGE}'")
-                return {"success": True, "uploaded": len(points), "total": len(embeddings)}
+                return {"success": True, "uploaded": len(points), "total": len(image_embeddings)}
             except Exception as e:
                 print(f"[ERROR] Failed to upload points: {e}")
-                return {"success": False, "uploaded": 0, "total": len(embeddings)}
+                return {"success": False, "uploaded": 0, "total": len(image_embeddings)}
         else:
             print("[WARN] No valid points to upload")
-            return {"success": False, "uploaded": 0, "total": len(embeddings)}
+            return {"success": False, "uploaded": 0, "total": len(image_embeddings)}
     
     def upload_all_embeddings(self) -> Dict:
         """
