@@ -28,6 +28,9 @@ def test_embedder():
             
             caption_list = caption_extract.extract_captions(document_text)
 
+            for caption in caption_list:
+                print(caption)
+
             if not image_arrays or not caption_list:
                 print(f"Skipping {pdf_name}: Images={len(image_arrays)}, Captions={len(caption_list)}. Cannot proceed with embedding.")
                 continue

@@ -58,7 +58,7 @@ def test_embedder():
     all_document_embeddings = [] 
 
     # === CONFIG ===
-    pdf_directory = "D:/Bao/Document/_VGU/_Semester 5/Projects/ScienceDirect_articles_21Mar2025_16-17-58.017"
+    pdf_directory = "source_materials"
     output_json_path = os.path.join(os.getcwd(), "embedded_cases.json")
 
     pdf_paths = glob.glob(os.path.join(pdf_directory, "*.pdf"))
@@ -76,7 +76,7 @@ def test_embedder():
         try:
             print(f"\n--- Starting embedding for: {pdf_name} ---")
 
-            # === Extract content ===
+            
             image_arrays = image_extract.extract_image(pdf_path)
             document_text = text_extract.extract_text(pdf_path)
             caption_list = caption_extract.extract_captions(document_text)
@@ -85,11 +85,11 @@ def test_embedder():
                 print(f"Skipping {pdf_name}: No images found.")
                 continue
 
-            # Ensure captions match image count
+            
             if len(caption_list) < len(image_arrays):
                 caption_list += [""] * (len(image_arrays) - len(caption_list))
 
-            # === Embed images ===
+            
             embeddings_for_pdf = embedder.embed_imgs(image_arrays, caption_list, pdf_name)
 
             for emb, img_arr in zip(embeddings_for_pdf, image_arrays):
@@ -97,7 +97,7 @@ def test_embedder():
                 image_b64 = image_to_base64(img_arr)
 
                 point = {
-                    "id": str(uuid.uuid4()),  # unique id for Qdrant
+                    "id": str(uuid.uuid4()),  
                     "vector": { "image_vector": image_vector },
                     "payload": {
                         "case_id": case_id,
@@ -112,7 +112,6 @@ def test_embedder():
             print(f"Error processing {pdf_name}: {e}")
             continue
 
-    # === Save output JSON ===
     if all_document_embeddings:
         with open(output_json_path, "w", encoding="utf-8") as f:
             json.dump(all_document_embeddings, f, indent=4, ensure_ascii=False)
