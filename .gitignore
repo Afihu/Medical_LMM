@@ -183,3 +183,4 @@ cython_debug/
 sandbox/
 source_materials/
 secret.txt
+out.txt

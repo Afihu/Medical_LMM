@@ -11,6 +11,7 @@ import torch
 ### Embedder function of interest
 ### The main embedding mechanism will go through each PDF to extract images and captions, store in arrays, 
 # then feed into embedder
+
 def embed_imgs(imagelist, caption_list, pdf_name):
     if len(imagelist) != len(caption_list):
         raise ValueError(
@@ -32,7 +33,16 @@ def embed_imgs(imagelist, caption_list, pdf_name):
     for i, (image_array, caption_text) in enumerate(zip(imagelist, caption_list)):
         img = [Image.fromarray(image_array).convert("RGB")]
         
-        inputs = processor(text=[caption_text], images=img, padding="max_length", return_tensors="pt").to(device)
+        inputs = processor(
+            text=[caption_text], 
+            images=img, 
+            padding="max_length", 
+            return_tensors="pt",
+            
+            # Capping text length
+            truncation=True,
+            max_length=64
+        ).to(device)
 
         with torch.no_grad():
             outputs = model(**inputs)
