@@ -188,3 +188,8 @@ cython_debug/
 /cases_image
 /decoded_images
 /uploaded_images
+
+out.txt
+secret.txt
+source_materials/
+sandbox/
