@@ -15,9 +15,13 @@ from PIL import Image
 
 
 # --- Path configuration ---
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROMPT_FILE = os.path.join(PROJECT_ROOT, "scripts/main_runtime/prompt.txt")
+# PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# PROMPT_FILE = os.path.join(PROJECT_ROOT, "/main_runtime/prompt.txt")
+# TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PROMPT_FILE = os.path.join(PROJECT_ROOT, "scripts", "main_runtime", "prompt.txt")
 TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
+
 
 # -------------------------------------------------------------------
 
