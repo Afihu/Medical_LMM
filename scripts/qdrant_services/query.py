@@ -23,8 +23,8 @@ os.makedirs(TEMP_QUERY_DATA, exist_ok=True)
 load_dotenv()
 QDRANT_URL = os.getenv("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
-COLLECTION_NAME_TEXT = "medical_case_summaries_qdrant"  # Change to your Qdrant collection name
-COLLECTION_NAME_IMAGE = "image_embedding"
+COLLECTION_NAME_TEXT = "medical_case_texts"  # Change to your Qdrant collection name
+COLLECTION_NAME_IMAGE = "medical_case_images"
 
 # -------------------------------------------------------------------
 
