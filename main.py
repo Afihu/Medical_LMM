@@ -1,5 +1,5 @@
 """
-main.py
+main.py [DEPRECATED]
 -------
 Main driver script for the Medical_LMM system.
 
@@ -20,7 +20,7 @@ import google.generativeai as genai
 
 # Custom modules
 from scripts.query import run_query_text
-from scripts.prompt_generate import generate_prompt
+from scripts.main_runtime.prompt_generate import generate_prompt
 
 # --- Path configuration ---
 # Get the project root (where main.py is located)

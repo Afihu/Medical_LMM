@@ -1,9 +1,9 @@
 """
-main_streamlit.py
------------------
-Streamlit interface for the Medical_LMM system.
-Users can enter text input like a chat, and see Gemini’s output in real time.
-Each conversation is also logged to /responses/ as a Markdown file for debugging.
+main_streamlit.py (Refactored)
+------------------------------
+Streamlit interface for the Medical_LMM system (Refactored Main Pipeline).
+Uses QueryOrchestrator to handle user query embeddings for both text and image.
+Temporary data is staged in /temp_query_data/<session_id>/ for each session.
 """
 
 import os
@@ -11,23 +11,22 @@ from datetime import datetime
 import streamlit as st
 import google.generativeai as genai
 from dotenv import load_dotenv
-from PIL import Image
-#import io
 import numpy as np
+import json
 
 # Custom modules
-from scripts.query import run_query
-from scripts.prompt_generate import generate_prompt
-from scripts.streamlit_ui_helper import load_conversation, save_conversation, save_uploaded_image
-from scripts.u_i_a import embed_img as embed_image
+from scripts.qdrant_services.query import run_query
+from scripts.main_runtime.prompt_generate import generate_prompt
+from scripts.main_runtime.streamlit_ui_helper import load_conversation, save_conversation, save_uploaded_image
+from scripts.main_runtime.clean_folder import clean_folder
+from scripts.embedding_generation_module.orchestrators import QueryOrchestrator
 
 # --- Path configuration ---
 # Get the project root (where main.py is located)
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-CASES_FOLDER_TEXT = os.path.join(PROJECT_ROOT, "cases_text")
-CASES_FOLDER_IMAGE = os.path.join(PROJECT_ROOT, "cases_image")
-RESPONSES_FOLDER = os.path.join(PROJECT_ROOT, "responses")
+DIAGNOSED_CASES_FOLDER = os.path.join(PROJECT_ROOT, "diagnosed_cases")
 UPLOADED_IMAGES_FOLDER = os.path.join(PROJECT_ROOT, "uploaded_images")
+TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
 
 # --- Configuration ---
 MODEL_NAME = "models/gemini-2.5-pro"
@@ -42,10 +41,9 @@ def setup():
         st.stop()
 
     genai.configure(api_key=api_key)
-    os.makedirs(RESPONSES_FOLDER, exist_ok=True)
-    os.makedirs(CASES_FOLDER_TEXT, exist_ok=True)
-    os.makedirs(CASES_FOLDER_IMAGE, exist_ok=True)
+    os.makedirs(DIAGNOSED_CASES_FOLDER, exist_ok=True)
     os.makedirs(UPLOADED_IMAGES_FOLDER, exist_ok=True)
+    os.makedirs(TEMP_QUERY_DATA, exist_ok=True)
 
 # --- Main Loop ---
 def main():
@@ -58,31 +56,28 @@ def main():
     with st.sidebar:
         st.header("🗂️ Chat History")
         response_files = sorted(
-            [f for f in os.listdir(RESPONSES_FOLDER) if f.endswith(".md")],
+            [f for f in os.listdir(DIAGNOSED_CASES_FOLDER) if f.endswith(".md")],
             reverse=True
         )
         selected_file = st.selectbox("Select a past conversation:", ["(New Chat)"] + response_files)
 
         if selected_file != "(New Chat)":
-            st.session_state["messages"] = load_conversation(os.path.join(RESPONSES_FOLDER, selected_file))
+            st.session_state["messages"] = load_conversation(os.path.join(DIAGNOSED_CASES_FOLDER, selected_file))
             st.info(f"Loaded conversation from: {selected_file}")
         else:
             st.session_state["messages"] = [{"role": "assistant", "content": "Hello! How can I assist you today?"}]
 
     # --- Display chat ---
     for msg in st.session_state["messages"]:
-        if msg["role"] == "user" and msg.get("image"):  # display image that user has added for querying
+        if msg["role"] == "user" and msg.get("images"):
             with st.chat_message("user"):
                 st.write(msg["content"])
-                st.image(msg["image"], caption="User image", use_container_width=True)
+                for img in msg["images"]:
+                    st.image(img, caption="User image", use_container_width=True)
         else:
             st.chat_message(msg["role"]).write(msg["content"])
 
     # --- Chat input ---
-    # if prompt := st.chat_input("Enter new patient's symptoms and history..."):
-    #     model = genai.GenerativeModel(MODEL_NAME)
-    #     st.session_state["messages"].append({"role": "user", "content": prompt})
-    #     st.chat_message("user").write(prompt)
     st.divider()
     col1, col2 = st.columns([8, 1])
     with col1:
@@ -106,7 +101,12 @@ def main():
             st.warning("Please enter text or upload an image.")
             st.stop()
 
+        session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
         model = genai.GenerativeModel(MODEL_NAME)
+
+        # --- Clean temporary directories ---
+        clean_folder(UPLOADED_IMAGES_FOLDER)
+        clean_folder(TEMP_QUERY_DATA)
 
         # --- Save uploaded images ---
         image_paths = []
@@ -115,11 +115,10 @@ def main():
                 path = save_uploaded_image(f)
                 image_paths.append(path)
 
-        # Add user message to chat
+        # --- Add user message to session ---
         user_msg = {"role": "user", "content": prompt or ""}
-        if uploaded_files:
-            image = Image.open(uploaded_files)
-            user_msg["image"] = image
+        if image_paths:
+            user_msg["images"] = image_paths
         st.session_state["messages"].append(user_msg)
 
         # --- Display in chat ---
@@ -130,64 +129,118 @@ def main():
                 for img in image_paths:
                     st.image(img, caption="Uploaded image", use_container_width=True)
 
-        # --- Embedding placeholders ---
-        text_vector = None
-        image_vector = None
+        with QueryOrchestrator(session_id=session_id) as orchestrator:
+            # --- Text embedding ---
+            if prompt:
+                st.info("Computing text embedding...")
+                try:
+                    text_vector = orchestrator.embed_text_query(prompt)
+                    st.success(f"Generated text embedding of shape {text_vector.shape}")
+                except Exception as e:
+                    st.error(f"Text embedding failed: {e}")
+                    text_vector = None
 
-        if prompt:
-            # TODO: Replace with actual text embedding
-            text_vector = [0.12, -0.45, 0.78, 0.66]
-
-        if uploaded_files:
-            uploaded_folder = os.path.join(PROJECT_ROOT, "uploaded_images")
-
-            # Collect all image files in /uploaded_images
-            image_files = [
-                os.path.join(uploaded_folder, f)
-                for f in os.listdir(uploaded_folder)
-                if f.lower().endswith((".png", ".jpg", ".jpeg"))
-            ]
-
-            if not image_files:
-                st.warning("No images found in /uploaded_images to embed.")
-            else:
-                st.info(f"Found {len(image_files)} uploaded image(s). Computing embeddings...")
-
-                image_embeddings = []
-                for image_path in image_files:
+            # --- Image embedding ---
+            if image_paths:
+                for img_path in image_paths:
+                    st.info(f"Embedding image: {os.path.basename(img_path)}")
                     try:
-                        emb = embed_image(image_path, caption=None)
-                        image_embeddings.append(emb[0])  # emb[0] = single vector for one image
+                        caption = os.path.splitext(os.path.basename(img_path))[0]
+                        image_vector = orchestrator.embed_image_query(img_path, caption_text=caption)
+                        st.success(f"Computed image embedding of shape {image_vector.shape}")
                     except Exception as e:
-                        st.error(f"Error embedding {os.path.basename(image_path)}: {e}")
+                        st.error(f"Error embedding image {os.path.basename(img_path)}: {e}")
+                        image_vector = None
 
-                # Average embeddings across all images
-                if image_embeddings:
-                    image_vector = np.mean(np.array(image_embeddings), axis=0).tolist()
-                    st.success(f"Computed averaged image embedding of dimension {len(image_vector)}")
-                else:
-                    image_vector = None
+        # --- Step 1: Query Qdrant ---
+        st.info("Querying Qdrant for similar cases...")
 
+        try:
+            # Call refactored run_query with both modalities
+            retrieved_cases, saved_dir = run_query(
+                text_vector=text_vector.tolist() if text_vector is not None else None,
+                image_vector=image_vector.tolist() if image_vector is not None else None,
+                top_k=5,
+                session_id=session_id
+            )
 
-        # # Step 1: Query Qdrant
-        if text_vector:
-            run_query(text_vector, mode="text")
-        if image_vector:
-            run_query(image_vector, mode="image")
+            st.success(f"Retrieved {len(retrieved_cases)} cases from Qdrant.")
+            st.caption(f"Results saved in: {saved_dir}")
 
-        # Step 2: Build prompt
+        except Exception as e:
+            st.error(f"Qdrant query failed: {e}")
+            retrieved_cases, saved_dir = {}, None
+
+        # --- Step 2: Prompt Generation + Gemini ---
         with st.spinner("Building prompt and generating analysis..."):
-            final_prompt = generate_prompt(prompt)
-            response = model.generate_content(final_prompt)
-            ai_text = response.text
+            final_prompt, decoded_images_path = generate_prompt(prompt, session_id=session_id)
 
-        # Step 3: Display AI response
+            # Build multimodal content
+            content_parts = [{"text": final_prompt}]
+            for img_path in decoded_images_path:
+                try:
+                    with open(img_path, "rb") as f:
+                        data = f.read()
+                    content_parts.append({
+                        "inline_data": {"mime_type": "image/png", "data": data}
+                    })
+                except Exception as e:
+                    st.warning(f"Could not attach image {img_path}: {e}")
+
+            # Generate with Gemini
+            try:
+                response = model.generate_content(content_parts)
+                ai_text = response.text.strip()
+
+                # Try parsing Gemini output as JSON (since prompt enforces JSON format)
+                try:
+                    ai_output = json.loads(ai_text)
+                    st.success("Gemini output parsed as valid JSON.")
+                except json.JSONDecodeError:
+                    st.warning("Gemini output was not valid JSON. Saving raw text instead.")
+                    ai_output = {"raw_output": ai_text, "error": "Invalid JSON format"}
+
+            except Exception as e:
+                st.error(f"Error calling Gemini: {e}")
+                ai_output = {"raw_output": f"Error during model generation: {e}"}
+                ai_text = str(ai_output)
+
+
+        # --- Debug: Show full Gemini prompt content ---
+        st.caption(f"Prompt built from retrieved cases in: {saved_dir}")
+        with st.expander("🔍 View Full Gemini Prompt (Debug Mode)"):
+            st.text_area("Final Gemini Prompt:", final_prompt, height=400)
+
+        # --- Step 3: Display AI response ---
         st.session_state["messages"].append({"role": "assistant", "content": ai_text})
         st.chat_message("assistant").write(ai_text)
 
-        # Step 4: Save full chat to markdown
-        filename = save_conversation(st.session_state["messages"])
-        st.sidebar.success(f"Conversation saved as {filename}")
+        # --- Step 4: Save diagnostic record as JSON ---
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        filename = f"diagnosis_{timestamp}.json"
+        output_path = os.path.join(DIAGNOSED_CASES_FOLDER, filename)
+
+        diagnostic_record = {
+            "timestamp": timestamp,
+            "user_query": {
+                "text": prompt,
+                "images": image_paths if image_paths else [],
+            },
+            "has_image": bool(image_paths),
+            "retrieved_cases": retrieved_cases if isinstance(retrieved_cases, dict) else {},
+            "generated_prompt": final_prompt,
+            "ai_response": ai_output,   # full structured Gemini JSON
+            "diagnosis": ai_output.get("analysis", None),
+            "correct": None  # can be filled manually for evaluation
+        }
+
+        try:
+            with open(output_path, "w", encoding="utf-8") as f:
+                json.dump(diagnostic_record, f, indent=4, ensure_ascii=False)
+            st.sidebar.success(f"🩺 Diagnosis saved: {filename}")
+        except Exception as e:
+            st.sidebar.error(f"Error saving diagnostic record: {e}")
+
 
 # --- Run app ---
 if __name__ == "__main__":
