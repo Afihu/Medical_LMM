@@ -106,23 +106,42 @@ def run_query(text_vector=None, image_vector=None, top_k=5, session_id=None):
         image_vector: numpy array or list for image query (optional)
         top_k: number of results to return
         session_id: session identifier (for temp data path)
+    
+    Returns:
+        tuple: (retrieved_cases dict, saved_dir path) or (None, None) if no vectors provided
     """
+    # Validate that at least one vector is provided
+    if text_vector is None and image_vector is None:
+        print("[WARN] No query vectors provided — nothing to search.")
+        return None, None
+    
     client = setup_qdrant_client()
-
     text_results = []
     image_results = []
 
+    # Query text modality if provided
     if text_vector is not None:
+        print("[INFO] Text vector provided. Querying text collection...")
         text_results = query_collection(client, text_vector, COLLECTION_NAME_TEXT, top_k)
+    else:
+        print("[INFO] No text vector provided. Skipping text search.")
+    
+    # Query image modality if provided
     if image_vector is not None:
+        print("[INFO] Image vector provided. Querying image collection...")
         image_results = query_collection(client, image_vector, COLLECTION_NAME_IMAGE, top_k)
+    else:
+        print("[INFO] No image vector provided. Skipping image search.")
 
-    if not text_results and not image_results:
-        print("[WARN] No query vectors provided — nothing to search.")
-        return None
-
+    # Merge results and return
     retrieved_cases = merge_results(text_results, image_results)
+    
+    if not retrieved_cases:
+        print("[WARN] No cases retrieved from any modality.")
+        return None, None
+    
     saved_dir = save_retrieved_cases(retrieved_cases, session_id=session_id or datetime.now().strftime("%Y%m%d_%H%M%S"))
+    print(f"[OK] Query complete. Retrieved {len(retrieved_cases)} cases total.")
     return retrieved_cases, saved_dir
 
 

@@ -129,6 +129,10 @@ def main():
                 for img in image_paths:
                     st.image(img, caption="Uploaded image", use_container_width=True)
 
+        # --- Initialize embedding vectors ---
+        text_vector = None
+        image_vector = None
+
         with QueryOrchestrator(session_id=session_id) as orchestrator:
             # --- Text embedding ---
             if prompt:

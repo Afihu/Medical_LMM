@@ -46,19 +46,19 @@ class QdrantUploadService:
         Initialize the Qdrant upload service.
         
         Args:
-            qdrant_url: Qdrant Cloud URL (default: from QDRANT_URL_v2 env var)
-            qdrant_api_key: Qdrant API key (default: from QDRANT_API_KEY_v2 env var)
+            qdrant_url: Qdrant Cloud URL (default: from QDRANT_URL env var)
+            qdrant_api_key: Qdrant API key (default: from QDRANT_API_KEY env var)
         """
         # Load environment variables
         load_dotenv()
         
         # Use v2 credentials by default (newer API)
-        self.qdrant_url = qdrant_url or os.getenv("QDRANT_URL_v2")
-        self.qdrant_api_key = qdrant_api_key or os.getenv("QDRANT_API_KEY_v2")
+        self.qdrant_url = qdrant_url or os.getenv("QDRANT_URL")
+        self.qdrant_api_key = qdrant_api_key or os.getenv("QDRANT_API_KEY")
         
         if not self.qdrant_url or not self.qdrant_api_key:
             raise ValueError(
-                "Missing Qdrant credentials. Ensure QDRANT_URL_v2 and QDRANT_API_KEY_v2 "
+                "Missing Qdrant credentials. Ensure QDRANT_URL and QDRANT_API_KEY "
                 "are set in .env file"
             )
         
