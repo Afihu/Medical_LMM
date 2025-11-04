@@ -47,3 +47,13 @@ NAMING_CONVENTIONS = {
     "image_embedding": "case_{case_id:03d}_image_{image_id:03d}_embedding.npy",
     "caption_embedding": "case_{case_id:03d}_caption_{caption_id:03d}_embedding.npy",
 }
+
+# Target Qdrant instance and collection names
+QDRANT_CONFIG = {
+    "url": os.getenv("QDRANT_URL"),
+    "api_key": os.getenv("QDRANT_API_KEY"),
+    "collections": {
+        "text_embeddings": "medical_case_texts",
+        "image_embeddings": "medical_case_images",
+    }
+}

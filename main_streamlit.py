@@ -29,7 +29,7 @@ UPLOADED_IMAGES_FOLDER = os.path.join(PROJECT_ROOT, "uploaded_images")
 TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
 
 # --- Configuration ---
-MODEL_NAME = "models/gemini-2.5-pro"
+MODEL_NAME = "models/gemini-2.5-flash"
 
 # --- Setup ---
 def setup():
@@ -181,6 +181,8 @@ def main():
 
             # Build multimodal content
             content_parts = [{"text": final_prompt}]
+            
+            # Add reference images from retrieved cases
             for img_path in decoded_images_path:
                 try:
                     with open(img_path, "rb") as f:
@@ -189,7 +191,23 @@ def main():
                         "inline_data": {"mime_type": "image/png", "data": data}
                     })
                 except Exception as e:
-                    st.warning(f"Could not attach image {img_path}: {e}")
+                    st.warning(f"Could not attach reference image {img_path}: {e}")
+            
+            # Add user-uploaded images to Gemini
+            for img_path in image_paths:
+                try:
+                    with open(img_path, "rb") as f:
+                        data = f.read()
+                    # Determine MIME type based on file extension
+                    ext = os.path.splitext(img_path)[1].lower()
+                    mime_type = "image/jpeg" if ext in [".jpg", ".jpeg"] else "image/png"
+                    
+                    content_parts.append({
+                        "inline_data": {"mime_type": mime_type, "data": data}
+                    })
+                    st.info(f"✓ Attached user image to Gemini: {os.path.basename(img_path)}")
+                except Exception as e:
+                    st.warning(f"Could not attach user image {os.path.basename(img_path)} to Gemini: {e}")
 
             # Generate with Gemini
             try:
