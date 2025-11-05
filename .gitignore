@@ -188,3 +188,7 @@ cython_debug/
 /cases_image
 /decoded_images
 /uploaded_images
+/diagnosed_cases
+/staged_embeddings
+/temp_query_data
+/uploaded_images
