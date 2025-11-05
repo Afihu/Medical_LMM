@@ -13,6 +13,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import numpy as np
 import json
+import re
 
 # Custom modules
 from scripts.qdrant_services.query import run_query
@@ -29,7 +30,7 @@ UPLOADED_IMAGES_FOLDER = os.path.join(PROJECT_ROOT, "uploaded_images")
 TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
 
 # --- Configuration ---
-MODEL_NAME = "models/gemini-2.5-flash"
+MODEL_NAME = "models/gemini-2.5-pro"
 
 # --- Setup ---
 def setup():
@@ -44,6 +45,13 @@ def setup():
     os.makedirs(DIAGNOSED_CASES_FOLDER, exist_ok=True)
     os.makedirs(UPLOADED_IMAGES_FOLDER, exist_ok=True)
     os.makedirs(TEMP_QUERY_DATA, exist_ok=True)
+
+def extract_json(text):
+    # Remove Markdown code block if present
+    match = re.search(r'```(?:json)?\s*([\s\S]+?)\s*```', text)
+    if match:
+        return match.group(1).strip()
+    return text.strip()
 
 # --- Main Loop ---
 def main():
@@ -213,10 +221,11 @@ def main():
             try:
                 response = model.generate_content(content_parts)
                 ai_text = response.text.strip()
+                cleaned_ai_text = extract_json(ai_text)
 
                 # Try parsing Gemini output as JSON (since prompt enforces JSON format)
                 try:
-                    ai_output = json.loads(ai_text)
+                    ai_output = json.loads(cleaned_ai_text)
                     st.success("Gemini output parsed as valid JSON.")
                 except json.JSONDecodeError:
                     st.warning("Gemini output was not valid JSON. Saving raw text instead.")
