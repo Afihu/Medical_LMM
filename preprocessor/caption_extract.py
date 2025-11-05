@@ -56,10 +56,11 @@ def extract_keyword(text_doc):
     keywords = kw_extractor.extract_keywords(text_doc)
 
     print("keywords: \n")
-    count = 0
+    result = ""
     for kw, score in keywords:
-        print(kw)
+        result += " " + kw
 
+    return result
 
 
 # if __name__ == "__main__":
@@ -74,4 +75,4 @@ if __name__ == "__main__":
     text = """
         Ms. Anya Sharma, a 28-year-old software engineer, presented to the clinic with an acute onset of high fever, severe retro-orbital pain, and debilitating joint and muscle pain, often referred to as "breakbone fever." She returned four days ago from a week-long vacation in Southeast Asia where she reported frequent daytime mosquito bites. Initial blood work reveals leukopenia and progressive thrombocytopenia (platelets currently 90,000/μL), raising strong clinical suspicion for Dengue Fever. The patient is currently being monitored for any warning signs of severe plasma leakage or bleeding complications, requiring close management of fluid balance.
     """
-    extract_keyword(text)
+    print(extract_keyword(text))
