@@ -14,6 +14,11 @@ from datetime import datetime
 from qdrant_client import QdrantClient
 from dotenv import load_dotenv
 
+# Import query configuration
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+from scripts.config.query_config import QUERY_CONFIG, QDRANT_COLLECTIONS
+
 # --- Path configuration ---
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
@@ -23,8 +28,8 @@ os.makedirs(TEMP_QUERY_DATA, exist_ok=True)
 load_dotenv()
 QDRANT_URL = os.getenv("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
-COLLECTION_NAME_TEXT = "medical_case_texts"  # Change to your Qdrant collection name
-COLLECTION_NAME_IMAGE = "medical_case_images"
+COLLECTION_NAME_TEXT = QDRANT_COLLECTIONS.get("text", "medical_case_texts")
+COLLECTION_NAME_IMAGE = QDRANT_COLLECTIONS.get("image", "medical_case_images")
 
 # -------------------------------------------------------------------
 
@@ -186,6 +191,44 @@ def merge_results(text_results, image_results):
     print(f"[OK] Merged {len(retrieved_cases)} unique cases.")
     return retrieved_cases
 
+def normalize_cases_for_output(retrieved_cases):
+    """
+    Normalize retrieved cases for final diagnostic output.
+    Extracts only the specified fields per the plan: title, history, clinical_findings, 
+    discussion, and summary_box_first_line (regardless of modality).
+    Removes redundant image payloads and nested structures.
+    
+    Args:
+        retrieved_cases: Dict of retrieved cases from merge_results
+        
+    Returns:
+        dict: Normalized cases with only essential fields, keyed by case_id
+    """
+    normalized = {}
+    
+    # Field name mappings: database names -> output names (lowercase)
+    FIELD_MAPPING = {
+        "Title": "title",
+        "History": "history",
+        "Clinical_Findings": "clinical_findings",
+        "Discussion": "discussion",
+        "Summary_Box_First_Line": "summary_box_first_line"
+    }
+    
+    for case_id, case_data in retrieved_cases.items():
+        # Extract text summary (can come from either text or images)
+        text_payload = case_data.get("text", {})
+        
+        # Create normalized case with only specified fields
+        normalized_case = {}
+        for db_field, output_field in FIELD_MAPPING.items():
+            normalized_case[output_field] = text_payload.get(db_field, "")
+        
+        normalized[f"case_{case_id}"] = normalized_case
+    
+    print(f"[OK] Normalized {len(normalized)} cases for final output.")
+    return normalized
+
 def save_retrieved_cases(retrieved_cases, session_id="default_session"):
     """Save retrieved cases as JSON files under temp_query_data/<session_id>/retrieved_cases/."""
     session_dir = os.path.join(TEMP_QUERY_DATA, session_id, "retrieved_cases")
@@ -201,7 +244,7 @@ def save_retrieved_cases(retrieved_cases, session_id="default_session"):
     print(f"[OK] Saved {len(retrieved_cases)} merged cases to '{session_dir}'")
     return session_dir
 
-def run_query(text_vector=None, image_vector=None, top_k=5, session_id=None):
+def run_query(text_vector=None, image_vector=None, top_k=None, session_id=None):
     """
     Orchestrate Qdrant query for one or both modalities.
     Robust to individual modality failures - returns whatever results are available.
@@ -209,13 +252,23 @@ def run_query(text_vector=None, image_vector=None, top_k=5, session_id=None):
     Args:
         text_vector: numpy array or list for text query (optional)
         image_vector: numpy array or list for image query (optional)
-        top_k: number of results to return
+        top_k: number of results to return (optional, uses config if not specified)
         session_id: session identifier (for temp data path)
     
     Returns:
         tuple: (retrieved_cases dict, saved_dir path) or (None, None) if no vectors provided
                Returns partial results if one modality fails
     """
+    # Use config values if top_k not specified
+    if top_k is None:
+        # For consistency, use text_top_k as default; caller can specify if needed
+        text_top_k = QUERY_CONFIG.get("text_top_k", 5)
+        image_top_k = QUERY_CONFIG.get("image_top_k", 5)
+    else:
+        # If single top_k provided, use for both
+        text_top_k = top_k
+        image_top_k = top_k
+    
     # Validate that at least one vector is provided
     if text_vector is None and image_vector is None:
         print("[WARN] No query vectors provided — nothing to search.")
@@ -235,10 +288,10 @@ def run_query(text_vector=None, image_vector=None, top_k=5, session_id=None):
     if text_vector is not None:
         print("[INFO] Text vector provided. Querying text collection...")
         try:
-            text_results = query_collection(client, text_vector, COLLECTION_NAME_TEXT, top_k)
+            text_results = query_collection(client, text_vector, COLLECTION_NAME_TEXT, text_top_k)
             if text_results:
                 query_status.append("✓ Text query successful")
-                print(f"[OK] Text query returned {len(text_results)} results.")
+                print(f"[OK] Text query returned {len(text_results)} results (top_k={text_top_k}).")
             else:
                 query_status.append("⚠ Text query returned no results")
                 print("[WARN] Text query returned no results.")
@@ -255,10 +308,10 @@ def run_query(text_vector=None, image_vector=None, top_k=5, session_id=None):
         print(f"[DEBUG] Image vector shape/dimension: {len(image_vector) if isinstance(image_vector, list) else image_vector.shape}")
         try:
             # Image collection has named vectors, try with 'image' vector name
-            image_results = query_collection(client, image_vector, COLLECTION_NAME_IMAGE, top_k, vector_name="image")
+            image_results = query_collection(client, image_vector, COLLECTION_NAME_IMAGE, image_top_k, vector_name="image")
             if image_results:
                 query_status.append("✓ Image query successful")
-                print(f"[OK] Image query returned {len(image_results)} results.")
+                print(f"[OK] Image query returned {len(image_results)} results (top_k={image_top_k}).")
             else:
                 query_status.append("⚠ Image query returned no results")
                 print("[WARN] Image query returned no results (see hints above for diagnostics).")

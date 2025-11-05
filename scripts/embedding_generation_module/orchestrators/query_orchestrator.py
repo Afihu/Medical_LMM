@@ -9,6 +9,7 @@ import os
 import sys
 import json
 import shutil
+from datetime import datetime
 from pathlib import Path
 from PIL import Image
 
@@ -71,10 +72,14 @@ class QueryOrchestrator:
         
         if embedding is not None:
             print(f"[OK] Text query embedded (shape: {embedding.shape})")
-            # Save to temp for reference
-            temp_embedding_path = os.path.join(self.temp_dir, "query_text_embedding.npy")
+            # Save to temp with naming convention per plan: user_query_text_embedding_timestamp.npy
+            temp_embedding_dir = os.path.join(self.output_base, "temp_query_data", "embeddings")
+            os.makedirs(temp_embedding_dir, exist_ok=True)
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            temp_embedding_path = os.path.join(temp_embedding_dir, f"user_query_text_embedding_{timestamp}.npy")
             import numpy as np
             np.save(temp_embedding_path, embedding)
+            print(f"[OK] Saved text embedding to: {temp_embedding_path}")
         
         return embedding
     
@@ -103,10 +108,14 @@ class QueryOrchestrator:
         
         if embedding is not None:
             print(f"[OK] Image query embedded (shape: {embedding.shape})")
-            # Save to temp for reference
-            temp_embedding_path = os.path.join(self.temp_dir, "query_image_embedding.npy")
+            # Save to temp with naming convention per plan: user_query_image_embedding_timestamp.npy
+            temp_embedding_dir = os.path.join(self.output_base, "temp_query_data", "embeddings")
+            os.makedirs(temp_embedding_dir, exist_ok=True)
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            temp_embedding_path = os.path.join(temp_embedding_dir, f"user_query_image_embedding_{timestamp}.npy")
             import numpy as np
             np.save(temp_embedding_path, embedding)
+            print(f"[OK] Saved image embedding to: {temp_embedding_path}")
         
         return embedding
     
