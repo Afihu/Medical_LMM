@@ -14,7 +14,7 @@ if not api_key:
     raise ValueError("❌ Missing GEMINI_API_KEY in .env")
 
 # --- Load your case file --- change the case number as needed to eval different cases, batch eval comes later
-with open("split_cases/case_3.json", "r", encoding="utf-8") as f:
+with open("split_cases/case_21.json", "r", encoding="utf-8") as f:
     case = json.load(f)
 
 # --- Build sample directly from your JSON ---
