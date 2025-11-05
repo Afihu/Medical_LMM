@@ -1,3 +1,6 @@
+# Update 4.11.2025
+The refactoring for the backend is done. App can now work normally (with Streamlit too!).
+
 # Update 27.10.2025 (Part 2)
 You can now interact with the system via main_streamlit.py, which makes use of Streamlit, an open-source library for data science project.
 

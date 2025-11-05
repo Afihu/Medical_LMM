@@ -133,12 +133,12 @@
   },
   {
     "id": "case-027",
-    "prompt": "A 24-year-old man presents with an acute febrile illness after a kayaking trip in a tropical region, where he was exposed to contaminated water after a heavy rainstorm. He presents with fever, myalgias, and conjunctival suffusion. His condition is severe (\"Weil's syndrome\"), presenting with high fever, intense jaundice, and bleeding, progressing to massive hemoptysis and respiratory failure.",
+    "prompt": "A 24-year-old man presents with an acute febrile illness after a kayaking trip in a tropical region, where he was exposed to contaminated water after a heavy rainstorm. He presents with fever, myalgias, and conjunctival suffusion. His condition is severe, presenting with high fever, intense jaundice, and bleeding, progressing to massive hemoptysis and respiratory failure.",
     "diagnosis": "Leptospirosis"
   },
   {
     "id": "case-028",
-    "prompt": "A 40-year-old man who works cleaning building ledges (covered in pigeon droppings) in Southern California presents with a prolonged cough, fever, and pneumonia. A bronchoscopy with bronchoalveolar lavage is performed. The Serology (cryptococcal antigen test) is very sensitive and specific, confirming the diagnosis. A pleural effusion is present, which is a lymphocyte-predominant exudate.",
+    "prompt": "A 40-year-old man who works cleaning building ledges covered in bird droppings in Southern California presents with a prolonged cough, fever, and signs of pneumonia. A bronchoscopy with bronchoalveolar lavage is performed for diagnostic evaluation. Serologic testing confirms the diagnosis. A pleural effusion is present, which is a lymphocyte-predominant exudate.",
     "diagnosis": "Cryptococcosis"
   },
   {
@@ -168,7 +168,7 @@
   },
   {
     "id": "case-034",
-    "prompt": "A 62-year-old man presents with an acute respiratory illness 5 days after returning from a cruise, where he frequently used the whirlpool spa. The illness began with malaise, fever, and chills, and has now progressed to respiratory failure. The initial alveolar infiltrate was patchy but is now progressing, despite antibiotics. The urinary antigen test is positive.",
-    "diagnosis": "Legionnaires' Disease"
+    "prompt": "A 28-year-old healthcare worker presents with sudden onset of high fever, severe headache, myalgia, and profound weakness after returning from an aid mission in the Democratic Republic of Congo. Over the next few days, she develops vomiting, diarrhea, conjunctival injection, and diffuse bleeding from venipuncture sites. Laboratory findings reveal thrombocytopenia and elevated liver enzymes. RT-PCR testing confirms infection with a filovirus.",
+    "diagnosis": "Ebola virus disease"
   }
 ]

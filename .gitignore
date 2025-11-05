@@ -184,12 +184,12 @@ cython_debug/
 /responses
 /cases
 .env
-/cases_text
-/cases_image
-/decoded_images
-/uploaded_images
 
-out.txt
-secret.txt
-source_materials/
-sandbox/
+/.serena
+/staged_embeddings
+/extracted_data
+/source_materials
+/temp_data
+/temp_query_data
+/uploaded_images
+/diagnosed_cases
