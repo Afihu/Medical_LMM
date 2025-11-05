@@ -193,3 +193,7 @@ cython_debug/
 /temp_query_data
 /uploaded_images
 /diagnosed_cases
+sandbox/
+source_materials/
+secret.txt
+out.txt
