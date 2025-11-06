@@ -1,0 +1,16 @@
+[
+  {
+    "case_id": "case-001",
+    "diagnosis": "Malaria",
+    "prompt": "A 28-year-old woman from rural Ghana presents with high fever, chills, headache, and sweating after ...",
+    "timestamp": "2025-11-06T09:38:43.895269",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-06_09-39-25.json",
+    "scores": {
+      "context_precision": 0.7499999999625,
+      "context_recall": 1.0,
+      "faithfulness": NaN,
+      "answer_relevancy": 0.709608756781973
+    },
+    "status": "completed"
+  }
+]

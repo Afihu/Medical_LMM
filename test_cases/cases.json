@@ -2,17 +2,17 @@
   {
     "id": "case-001",
     "prompt": "A 28-year-old woman from rural Ghana presents with high fever, chills, headache, and sweating after several days of mosquito exposure near stagnant water. She looks pale and slightly jaundiced. What is the most likely diagnosis?",
-    "diagnosis": "Malaria (Plasmodium falciparum)"
+    "diagnosis": "Malaria"
   },
   {
     "id": "case-002",
     "prompt": "A 19-year-old man from Manila develops high fever, severe headache behind the eyes, joint pain, nausea, and a maculopapular rash on day 3. He reports multiple mosquito bites last week. What is the most likely diagnosis?",
-    "diagnosis": "Dengue fever"
+    "diagnosis": "Dengue"
   },
   {
     "id": "case-003",
     "prompt": "A 34-year-old woman from rural India presents with a 6-day history of high fever, abdominal pain, headache, and alternating constipation and diarrhea. She has a faint rash on her trunk. What is the most likely diagnosis?",
-    "diagnosis": "Typhoid fever"
+    "diagnosis": "Typhoid Fever"
   },
   {
     "id": "case-004",
@@ -27,79 +27,52 @@
   {
     "id": "case-006",
     "prompt": "A 29-year-old woman from Hanoi has a persistent productive cough for over three weeks, fever, night sweats, and mild weight loss. She reports a household contact with similar symptoms. What is the most likely diagnosis?",
-    "diagnosis": "Pulmonary tuberculosis"
+    "diagnosis": "Tuberculosis"
   },
   {
     "id": "case-007",
     "prompt": "A 36-year-old HIV-positive man in Rwanda presents with fever, headache, confusion, and neck stiffness that developed over a few days. What is the most likely diagnosis?",
-    "diagnosis": "Cryptococcal meningitis"
+    "diagnosis": "Cryptococcal Meningitis"
   },
   {
     "id": "case-008",
     "prompt": "A 25-year-old woman from rural Brazil presents with intermittent fever, fatigue, and an enlarged spleen. She has been working outdoors and frequently bitten by sandflies. What is the most likely diagnosis?",
-    "diagnosis": "Visceral leishmaniasis (kala-azar)"
-  },
-  {
-    "id": "case-009",
-    "prompt": "A 48-year-old woman from Brazil develops sudden high fever, severe joint pains in wrists and ankles, and a rash after mosquito bites. What is the most likely diagnosis?",
-    "diagnosis": "Chikungunya virus infection"
+    "diagnosis": "Visceral Leishmaniasis (Kala-Azar)"
   },
   {
     "id": "case-010",
     "prompt": "A 30-year-old man from rural Morocco presents with a painless ulcer on his forearm that slowly enlarged over several weeks. He often works outdoors where sandflies are common. What is the most likely diagnosis?",
-    "diagnosis": "Cutaneous leishmaniasis"
+    "diagnosis": "Cutaneous Leishmaniasis"
   },
   {
     "id": "case-011",
     "prompt": "A 45-year-old man from rural Mexico has fever, right upper abdominal pain, and weight loss two months after an episode of bloody diarrhea. Examination shows tender hepatomegaly. What is the most likely diagnosis?",
-    "diagnosis": "Amebic liver abscess"
+    "diagnosis": "Amoebic Liver Abscess"
   },
   {
     "id": "case-012",
     "prompt": "A 32-year-old woman working on a tea plantation in Northeast Thailand presents with fever, severe headache, body aches, and a dark scab (eschar) on her leg surrounded by a rash. What is the most likely diagnosis?",
-    "diagnosis": "Scrub typhus"
+    "diagnosis": "Scrub Typhus"
   },
-
-
   {
     "id": "case-013",
     "prompt": "A 25-year-old man who lives in Addis Ababa, Ethiopia attends your clinic complaining of a progressive skin eruption of the body and limbs for 1 year. The rash is not itchy or painful.  He has had no previous skin problems and no contact with a similarly affected person. His appearance gradually changed over 12 months. There is a papular and nodular eruption on the extensor aspects of the forearms, arms, thighs and trunk. Furthermore, there is a diffuse infiltration of the skin of the face and nodules on the pinnae, with madarosis (loss of eyebrows and eyelashes). There is no loss of sensation within the skin lesions and no sensory or motor loss in the hands or feet. What is the most likely diagnosis?",
-    "diagnosis": "erythema nodosum leprosum"
-  },
-  {
-    "id": "case-014",
-    "prompt": "A 46-year-old male Swiss traveller spent a 2-week holiday in the border region of Argentine and Brazil. Two weeks after his return, he developed flu-like symptoms and exertional dyspnoea. Ten days after the onset of symptoms, the patient presented at his general practitioner with fever and a pronounced frontal headache.",
-    "diagnosis": "Schistosomiasis"
+    "diagnosis": "Leprosy"
   },
   {
     "id": "case-015",
     "prompt": "A 34-year-old man from a high HIV-prevalence area in sub-Saharan Africa presents with a history of recurrent pneumonia. His chest X-ray reveals hilar lymphadenopathy, pleural effusions, and middle/lower lung infiltrates with minimal cavitation. A bronchoscopy confirms the presence of ulcerative mucosa and endobronchial polyps.",
-    "diagnosis": "Tuberculosis (TB)"
-  },
-  {
-    "id": "case-016",
-    "prompt": "A 28-year-old woman with a known but untreated HIV infection presents with new symptoms of bronchopulmonary disease. Clinical investigation reveals she has developed tuberculosis, which is the most frequent complication. Fungal infections are considered rare in this context, but common bacterial infections like Streptococcus are also present.",
-    "diagnosis": "HIV (Pulmonary Complications)"
+    "diagnosis": "Tuberculosis"
   },
   {
     "id": "case-017",
     "prompt": "A young man in Central Africa, recently diagnosed with AIDS, presents with progressive violaceous skin nodules and hemoptysis (coughing up blood). A chest radiograph shows diffuse interstitial nodulation and hilar adenopathy. Bronchoscopy reveals characteristic pinkish, red, flat lesions on the bronchial walls that bleed easily.",
-    "diagnosis": "Kaposi's Sarcoma (KS)"
-  },
-  {
-    "id": "case-018",
-    "prompt": "A 45-year-old man, who traveled to India 18 months ago, presents with a nonproductive cough and severe right shoulder pain. He reports coughing up a dark, \"anchovy paste-like\" sputum. A chest X-ray shows a significant elevation of the right hemidiaphragm, and a subsequent aspirate of the pleural fluid reveals a \"chocolate sauce\" appearance. A liver abscess is also identified.",
-    "diagnosis": "Amebiasis (Pleuropulmonary)"
+    "diagnosis": "Kaposi's Sarcoma"
   },
   {
     "id": "case-019",
     "prompt": "A 50-year-old asymptomatic farmer from a Mediterranean country, who works closely with sheep and domesticated dogs, undergoes a routine chest X-ray. The image reveals a large, well-defined, homogenous nodule in the right lung lobe. A CT scan confirms it is a fluid-filled cyst. Calcification is notably absent, which is typical for pulmonary cysts.",
-    "diagnosis": "Hydatid Disease (Echinococcosis)"
-  },
-  {
-    "id": "case-020",
-    "prompt": "A 60-year-old man, who left an endemic area in Southeast Asia 25 years ago, presents with severe bronchospasm, extensive pneumonia, and cough. His symptoms have rapidly progressed to ARDS. Serial chest X-rays show ill-defined, patchy consolidations that appear to be migrating. A pleural effusion is also present. Larvae are subsequently isolated from his respiratory samples.",
-    "diagnosis": "Pulmonary Strongyloidiasis"
+    "diagnosis": "Cystic Echinococcosis"
   },
   {
     "id": "case-021",
@@ -112,21 +85,6 @@
     "diagnosis": "Melioidosis"
   },
   {
-    "id": "case-023",
-    "prompt": "A 42-year-old healthcare worker from southern China presents after a known droplet-exposure event. The patient has a fever, chills, myalgia, shortness of breath, and diarrhea. An early chest X-ray shows a peripheral, ground-glass opacity. This rapidly progresses to widespread consolidative opacification in the lower zones, with air-bronchograms. Notably, there is no cavitation or pleural effusion.",
-    "diagnosis": "SARS (Severe Acute Respiratory Syndrome)"
-  },
-  {
-    "id": "case-024",
-    "prompt": "A 52-year-old woman with a history of malignancy and currently on immunosuppressive therapy presents with respiratory symptoms. A pleural effusion is seen in 25-50% of cases, and the fluid is an exudate. A bronchoscopy is performed, and the organism is identified on a modified acid-fast stain of the specimen.",
-    "diagnosis": "Nocardiosis"
-  },
-  {
-    "id": "case-025",
-    "prompt": "A 48-year-old veterinarian who recently assisted in birthing cattle presents with an acute illness. The patient presents with pneumonia, fever, headache, cough, and myalgia. Radiography shows multiple round opacities and lower lobe-based infiltrates. Diagnosis is made by serologic assays showing a rise in serum antibodies in acute and convalescent specimens.",
-    "diagnosis": "Q Fever"
-  },
-  {
     "id": "case-026",
     "prompt": "A 50-year-old slaughterhouse worker from the Mediterranean region presents to the clinic. He complains of fever, chills, aches and pains, and weakness, along with a mild cough. His chest radiograph is normal, though in rare cases, findings can include miliary infiltration or pleural effusion. Diagnosis is based on his occupational history, clinical features, and positive serological tests.",
     "diagnosis": "Brucellosis"
@@ -137,38 +95,19 @@
     "diagnosis": "Leptospirosis"
   },
   {
-    "id": "case-028",
-    "prompt": "A 40-year-old man who works cleaning building ledges covered in bird droppings in Southern California presents with a prolonged cough, fever, and signs of pneumonia. A bronchoscopy with bronchoalveolar lavage is performed for diagnostic evaluation. Serologic testing confirms the diagnosis. A pleural effusion is present, which is a lymphocyte-predominant exudate.",
-    "diagnosis": "Cryptococcosis"
-  },
-  {
     "id": "case-029",
     "prompt": "A 33-year-old woman presents with a \"flu-like illness\" after exploring a cave known to house bats in the Midwestern United States. She reports an abrupt onset of fever, chills, substernal chest discomfort, a harsh, nonproductive cough, and headache. Radiography shows a single area of pneumonitis with enlarged ipsilateral hilar and mediastinal lymph nodes. Serologic tests (complement fixation) are positive.",
     "diagnosis": "Histoplasmosis"
   },
   {
-    "id": "case-030",
-    "prompt": "A 25-year-old construction worker from Arizona presents with an influenza-like respiratory illness. He has a cough, fever, pleuritic chest pain, arthralgias, and skin lesions (Erythema nodosum), consistent with \"Valley fever.\" Radiography shows multiple areas of patchy pneumonitis and enlarged ipsilateral hilar nodes. Serologic tests (tube precipitin for IgM) are positive.",
-    "diagnosis": "Coccidioidomycosis"
-  },
-  {
-    "id": "case-031",
-    "prompt": "A 30-year-old man from the Indian subcontinent presents with a persistent cough, dyspnea, and nocturnal wheezing, as well as fever and weight loss. Lab work shows a marked peripheral blood eosinophilia (>3000 cells/mm3) and striking elevations of total IgE. Radiography reveals diffuse reticulo-nodular infiltrates. Lung function tests show a restrictive ventilation defect with superimposed airways obstruction.",
-    "diagnosis": "Tropical Pulmonary Eosinophilia (TPE)"
-  },
-  {
-    "id": "case-032",
-    "prompt": "A 45-year-old immunocompromised man, who owns several cats, presents with fever, cough, and dyspnea. Radiography shows interstitial pneumonia, lobar consolidation, nodules, and a pleural effusion. Bronchoscopy with BAL is performed, and serologic tests (ELISA IgM/IgG) confirm an acute exposure.",
-    "diagnosis": "Toxoplasmosis"
-  },
-  {
-    "id": "case-033",
-    "prompt": "A 39-year-old woman, recently returned from a trip to Thailand, presents with a chronic cough, wheezing, pleuritic chest pain, hemoptysis, and fever. A bronchoscopy is performed, and the parasites (known as \"gapeworms\") are visualized and extracted, as they are attached to the respiratory mucosa of the trachea and bronchi.",
-    "diagnosis": "Syngamosis"
-  },
-  {
     "id": "case-034",
     "prompt": "A 28-year-old healthcare worker presents with sudden onset of high fever, severe headache, myalgia, and profound weakness after returning from an aid mission in the Democratic Republic of Congo. Over the next few days, she develops vomiting, diarrhea, conjunctival injection, and diffuse bleeding from venipuncture sites. Laboratory findings reveal thrombocytopenia and elevated liver enzymes. RT-PCR testing confirms infection with a filovirus.",
-    "diagnosis": "Ebola virus disease"
+    "diagnosis": "Filoviral Diseases"
+  },
+  {
+    "id": "case-035",
+    "prompt": "A 12 year old girl with fever, reduced appetite, and pus-like oozing from her ear.",
+    "diagnosis": "Melioidosis"
   }
+
 ]
