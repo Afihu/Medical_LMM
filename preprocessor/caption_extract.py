@@ -45,11 +45,11 @@ def extract_captions(text_doc):
     return captions
 
 # Run pip install yake before running this code
-def extract_keyword(text_doc):
+def synthesize_caption(text_doc):
     kw_extractor = yake.KeywordExtractor(
         lan = "en",
         n=5,
-        dedupLim=0.9,
+        dedupLim=1,
         top=15
     )
 
@@ -73,6 +73,6 @@ def extract_keyword(text_doc):
 
 if __name__ == "__main__":
     text = """
-        Ms. Anya Sharma, a 28-year-old software engineer, presented to the clinic with an acute onset of high fever, severe retro-orbital pain, and debilitating joint and muscle pain, often referred to as "breakbone fever." She returned four days ago from a week-long vacation in Southeast Asia where she reported frequent daytime mosquito bites. Initial blood work reveals leukopenia and progressive thrombocytopenia (platelets currently 90,000/μL), raising strong clinical suspicion for Dengue Fever. The patient is currently being monitored for any warning signs of severe plasma leakage or bleeding complications, requiring close management of fluid balance.
+        A 45-year-old man, who traveled to India 18 months ago, presents with a nonproductive cough and severe right shoulder pain. He reports coughing up a dark, \"anchovy paste-like\" sputum. A chest X-ray shows a significant elevation of the right hemidiaphragm, and a subsequent aspirate of the pleural fluid reveals a \"chocolate sauce\" appearance. A liver abscess is also identified.
     """
-    print(extract_keyword(text))
+    print(synthesize_caption(text))
