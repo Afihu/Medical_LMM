@@ -8,10 +8,13 @@ Automated RAGAS evaluation for Medical_LMM test cases.
 # Test with 3 cases (recommended first run)
 python evaluate/quick_eval.py --limit 3
 
-# Evaluate all 22 test cases (~20-30 minutes)
+# Evaluate all 22 test cases (~45-90 minutes)
 python evaluate/quick_eval.py
 
-# Use existing diagnosis files (skip diagnosis step)
+# Test specific case (e.g., case-022, which is index 21)
+python evaluate/quick_eval.py --limit 1 --skip 21
+
+# Skip diagnosis step, use existing diagnosis files
 python evaluate/quick_eval.py --skip-diagnosis
 ```
 
@@ -30,14 +33,25 @@ Results saved in `evaluate/batch_results/`:
 - **JSON** - Full metadata with scores and contexts
 - **Markdown** - Human-readable summary report
 
-## RAGAS Metrics
+## Command Options
 
-| Metric | What It Measures | Target |
-|--------|------------------|--------|
-| **Context Precision** | Retrieved contexts relevant? | > 0.8 |
-| **Context Recall** | All needed info retrieved? | > 0.8 |
-| **Faithfulness** | Answer grounded in context? | > 0.7 |
-| **Answer Relevancy** | Answer addresses question? | > 0.8 |
+- `--limit N` - Evaluate only first N cases (useful for testing)
+- `--skip N` - Skip first N cases (useful for testing specific cases)
+- `--skip-diagnosis` - Skip diagnosis generation, use existing files from `diagnosed_cases/`
+
+**Examples:**
+```bash
+# Test first 5 cases
+python evaluate/quick_eval.py --limit 5
+
+# Test case-010 only (skip first 9, limit to 1)
+python evaluate/quick_eval.py --skip 9 --limit 1
+
+# Re-evaluate using existing diagnosis files
+python evaluate/quick_eval.py --skip-diagnosis
+```
+
+
 
 ## Requirements
 
@@ -53,8 +67,3 @@ Ensure `.env` contains: `GEMINI_API_KEY=your_api_key_here`
 **Rate Limiting**: Use `--limit` to run smaller batches  
 **Module Errors**: Install all requirements above
 
-## Performance
-
-- ~30-60 seconds per case (6-10 Gemini API calls each)
-- 22 test cases = ~20-30 minutes total
-- Safe to interrupt (progress saved after each case)
