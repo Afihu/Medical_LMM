@@ -1,6 +1,6 @@
 # Medical_LMM Batch Evaluation Report
 
-**Generated:** 2025-11-06 09:40:44
+**Generated:** 2025-11-09 00:01:08
 
 ## Summary
 
@@ -12,20 +12,19 @@
 
 | Metric | Score |
 |--------|-------|
-| Context Precision | 0.7500 |
+| Context Precision | 0.5000 |
 | Context Recall | 1.0000 |
-| Faithfulness | nan |
-| Answer Relevancy | 0.7096 |
+| Faithfulness | 0.3667 |
+| Answer Relevancy | 0.6175 |
 
 ## Individual Case Results
 
-### case-001 - Malaria
+### case-022 - Melioidosis
 
 **Scores:**
-- Context Precision: 0.7500
+- Context Precision: 0.5000
 - Context Recall: 1.0000
-- Faithfulness: nan
-- Answer Relevancy: 0.7096
+- Faithfulness: 0.3667
+- Answer Relevancy: 0.6175
 
 ---
-

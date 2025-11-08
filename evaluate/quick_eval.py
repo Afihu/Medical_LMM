@@ -27,25 +27,26 @@ import argparse
 def main():
     parser = argparse.ArgumentParser(description="Quick batch evaluation launcher")
     parser.add_argument("--limit", type=int, help="Limit number of test cases")
+    parser.add_argument("--skip", type=int, help="Skip first N test cases")
     parser.add_argument("--skip-diagnosis", action="store_true", help="Use existing diagnosis files")
     
     args = parser.parse_args()
     
     print("""
 ╔══════════════════════════════════════════════════════════╗
-║     Medical_LMM Batch Evaluation Pipeline               ║
+║     Medical_LMM Batch Evaluation Pipeline                ║
 ║                                                          ║
 ║  This script will:                                       ║
-║  1. Run diagnosis on all test cases                     ║
-║  2. Match with ground truth                             ║
-║  3. Evaluate with RAGAS metrics                         ║
-║  4. Generate JSON + CSV + Markdown reports              ║
+║  1. Run diagnosis on all test cases                      ║
+║  2. Match with ground truth                              ║
+║  3. Evaluate with RAGAS metrics                          ║
+║  4. Generate JSON + CSV + Markdown reports               ║
 ╚══════════════════════════════════════════════════════════╝
     """)
     
     try:
         evaluator = BatchEvaluator(skip_diagnosis=args.skip_diagnosis)
-        evaluator.run_batch_evaluation(limit=args.limit)
+        evaluator.run_batch_evaluation(limit=args.limit, skip=args.skip)
         print("\n🎉 Evaluation pipeline completed successfully!")
         
     except KeyboardInterrupt:
