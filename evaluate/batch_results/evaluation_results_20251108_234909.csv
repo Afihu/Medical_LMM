@@ -1,2 +1,0 @@
-case_id,diagnosis,status,context_precision,context_recall,faithfulness,answer_relevancy,timestamp,error
-case-022,Melioidosis,completed,0.49999999995,1.0,nan,0.8284334750092021,2025-11-08T23:49:09.750737,
