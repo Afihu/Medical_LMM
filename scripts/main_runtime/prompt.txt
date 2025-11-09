@@ -13,10 +13,11 @@ Analyze the patient information using ONLY the retrieved cases:
 2. **Compare with retrieved cases** - For EACH retrieved case, explicitly state which symptoms/findings match or differ. Reference specific case_id(s) and quote exact text from those cases.
 3. **Form diagnostic hypotheses** - Your differential diagnosis MUST be based ONLY on diseases mentioned in the retrieved cases. Quote specific evidence from the cases to support each hypothesis.
 
-After your analysis, output ONLY a valid **JSON object** containing the differential diagnosis list.
+After your analysis, output ONLY a valid **JSON object** with the following structure:
 
 Expected JSON schema (output ONLY this):
 {
+  "concise_answer": "One-sentence diagnosis with primary disease and key supporting evidence from retrieved case. Example: 'Melioidosis (high likelihood) - matches purulent ear discharge in Case 15.'",
   "differential_diagnosis": [
     {
       "disease": "Disease name from retrieved case",
@@ -30,6 +31,10 @@ Expected JSON schema (output ONLY this):
     }
   ]
 }
+
+**REQUIRED FIELDS:**
+- "concise_answer": A single sentence (max 150 characters) stating the most likely diagnosis with one key piece of evidence. This provides a quick summary.
+- "differential_diagnosis": Detailed list with full reasoning (as shown above). Include 1-3 most likely diagnoses only.
 
 ---
 
@@ -45,12 +50,14 @@ Expected JSON schema (output ONLY this):
 
 ### Important:
 - **STRICT RETRIEVAL-ONLY MODE**: Base ALL reasoning on retrieved cases ONLY
+- **concise_answer is REQUIRED**: Must be present at the top of your JSON output
 - You MUST quote exact text from retrieved cases using format: "Case [ID] states: [exact quote]"
 - Do NOT mention diseases not present in the retrieved cases
 - Do NOT use general medical knowledge (e.g., "malaria causes hemolysis", "mosquitoes transmit disease")
 - Do NOT make inferences beyond what is explicitly stated in the cases
-- If retrieved cases don't match patient symptoms well, acknowledge this and explain why
+- If retrieved cases don't match patient symptoms well, acknowledge this in both concise_answer and differential_diagnosis
 - For each diagnosis, cite the specific case_id where that disease appears
 - Likelihood options: high, moderate, low, unlikely
-- Output ONLY the JSON object with differential_diagnosis, starting with '{' and ending with '}'.
-- Do NOT include any text, Markdown, code block formatting, or other fields outside differential_diagnosis.
+- Limit differential_diagnosis to 1-3 most relevant entries (prioritize quality over quantity)
+- Output ONLY the JSON object with concise_answer and differential_diagnosis, starting with '{' and ending with '}'.
+- Do NOT include any text, Markdown, code block formatting, or other fields outside the required JSON structure.

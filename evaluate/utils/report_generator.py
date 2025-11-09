@@ -2,6 +2,7 @@
 
 import csv
 import json
+import math
 from pathlib import Path
 from datetime import datetime
 from typing import List, Dict
@@ -9,6 +10,16 @@ from typing import List, Dict
 
 class ReportGenerator:
     """Generates evaluation reports in multiple formats."""
+    
+    @staticmethod
+    def _format_score(score, precision=4):
+        """Format score, handling NaN values."""
+        if score is None or (isinstance(score, float) and math.isnan(score)):
+            return "N/A"
+        try:
+            return f"{float(score):.{precision}f}"
+        except (ValueError, TypeError):
+            return "N/A"
     
     @staticmethod
     def save_json(results: List[Dict], output_file: Path):
@@ -52,13 +63,14 @@ class ReportGenerator:
         completed = [r for r in results if r.get("status") == "completed"]
         failed = [r for r in results if r.get("status") != "completed"]
         
-        # Calculate averages
+        # Calculate averages (excluding NaN values)
         avg_scores = {}
         if completed:
             for metric in ["context_precision", "context_recall", "faithfulness", "answer_relevancy"]:
                 scores = [r["scores"][metric] for r in completed 
-                         if r["scores"].get(metric) is not None]
-                avg_scores[metric] = sum(scores) / len(scores) if scores else 0
+                         if r["scores"].get(metric) is not None 
+                         and not (isinstance(r["scores"].get(metric), float) and math.isnan(r["scores"].get(metric)))]
+                avg_scores[metric] = sum(scores) / len(scores) if scores else float('nan')
         
         # Build report
         lines = [
@@ -71,25 +83,32 @@ class ReportGenerator:
             "## Average RAGAS Scores\n",
             "| Metric | Score |",
             "|--------|-------|",
-            f"| Context Precision | {avg_scores.get('context_precision', 0):.4f} |",
-            f"| Context Recall | {avg_scores.get('context_recall', 0):.4f} |",
-            f"| Faithfulness | {avg_scores.get('faithfulness', 0):.4f} |",
-            f"| Answer Relevancy | {avg_scores.get('answer_relevancy', 0):.4f} |\n",
+            f"| Context Precision | {ReportGenerator._format_score(avg_scores.get('context_precision'))} |",
+            f"| Context Recall | {ReportGenerator._format_score(avg_scores.get('context_recall'))} |",
+            f"| Faithfulness | {ReportGenerator._format_score(avg_scores.get('faithfulness'))} |",
+            f"| Answer Relevancy | {ReportGenerator._format_score(avg_scores.get('answer_relevancy'))} |\n",
             "## Individual Case Results\n"
         ]
         
         # Add individual results
         for result in completed:
             scores = result.get("scores", {})
+            eval_errors = result.get("evaluation_errors", "")
+            
             lines.extend([
                 f"### {result['case_id']} - {result['diagnosis']}\n",
                 "**Scores:**",
-                f"- Context Precision: {scores.get('context_precision', 'N/A'):.4f}",
-                f"- Context Recall: {scores.get('context_recall', 'N/A'):.4f}",
-                f"- Faithfulness: {scores.get('faithfulness', 'N/A'):.4f}",
-                f"- Answer Relevancy: {scores.get('answer_relevancy', 'N/A'):.4f}\n",
-                "---\n"
+                f"- Context Precision: {ReportGenerator._format_score(scores.get('context_precision'))}",
+                f"- Context Recall: {ReportGenerator._format_score(scores.get('context_recall'))}",
+                f"- Faithfulness: {ReportGenerator._format_score(scores.get('faithfulness'))}",
+                f"- Answer Relevancy: {ReportGenerator._format_score(scores.get('answer_relevancy'))}\n"
             ])
+            
+            # Add evaluation errors if any
+            if eval_errors:
+                lines.append(f"**⚠️ Evaluation Issues:** {eval_errors}\n")
+            
+            lines.append("---\n")
         
         # Add failed cases
         if failed:

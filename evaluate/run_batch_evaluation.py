@@ -69,9 +69,14 @@ class BatchEvaluator:
             skip: Number of cases to skip from the beginning
         """
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        results_file = self.results_dir / f"evaluation_results_{timestamp}.json"
-        csv_file = self.results_dir / f"evaluation_results_{timestamp}.csv"
-        report_file = self.results_dir / f"evaluation_report_{timestamp}.md"
+        
+        # Create session-specific folder
+        session_dir = self.results_dir / f"session_{timestamp}"
+        session_dir.mkdir(exist_ok=True)
+        
+        results_file = session_dir / f"evaluation_results_{timestamp}.json"
+        csv_file = session_dir / f"evaluation_results_{timestamp}.csv"
+        report_file = session_dir / f"evaluation_report_{timestamp}.md"
         
         # Apply skip and limit
         test_cases = self.test_cases[skip:]
@@ -120,8 +125,15 @@ class BatchEvaluator:
             
             # Step 2: Evaluate with RAGAS
             scores = self.evaluator.evaluate_case(case_id, diag_file, case['diagnosis'])
+            
+            # Extract evaluation errors if present
+            evaluation_errors = scores.pop("evaluation_errors", None)
+            
             case_result["scores"] = scores
             case_result["status"] = "completed"
+            
+            if evaluation_errors:
+                case_result["evaluation_errors"] = evaluation_errors
             
         except Exception as e:
             print(f"❌ Error processing {case_id}: {e}")
@@ -158,11 +170,13 @@ class BatchEvaluator:
     
     def _print_summary(self, json_file: Path, csv_file: Path, report_file: Path):
         """Print completion summary."""
+        session_folder = json_file.parent
         print(f"\n{'='*60}")
         print(f"✅ Batch Evaluation Complete!")
-        print(f"   JSON results: {json_file}")
-        print(f"   CSV results: {csv_file}")
-        print(f"   Report: {report_file}")
+        print(f"   Session folder: {session_folder}")
+        print(f"   - JSON results: {json_file.name}")
+        print(f"   - CSV results: {csv_file.name}")
+        print(f"   - Report: {report_file.name}")
         print(f"{'='*60}\n")
 
 

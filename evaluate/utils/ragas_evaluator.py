@@ -1,11 +1,21 @@
 """RAGAS evaluation utilities."""
 
 import json
-from typing import Dict, Any
+import time
+import warnings
+import traceback
+import subprocess
+import sys
+from pathlib import Path
+from typing import Dict, Any, Optional, List
 from ragas import EvaluationDataset, SingleTurnSample, evaluate
 from ragas.metrics import context_precision, context_recall, faithfulness, answer_relevancy
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import HuggingFaceEmbeddings
+
+# Suppress gRPC async cleanup warnings
+warnings.filterwarnings('ignore', category=RuntimeWarning, module='threading')
+warnings.filterwarnings('ignore', message='.*InterceptedCall.*')
 
 
 class RAGASEvaluator:
@@ -21,6 +31,108 @@ class RAGASEvaluator:
             max_output_tokens=5130,
         )
         self.embeddings = HuggingFaceEmbeddings(model_name="abhinand/MedEmbed-base-v0.1")
+        self.worker_path = Path(__file__).parent / "ragas_worker.py"
+    
+    def _evaluate_in_subprocess(self, samples: List[Dict], metrics: List[str]) -> Optional[Dict[str, float]]:
+        """Run RAGAS evaluation in isolated subprocess to avoid event loop issues.
+        
+        Args:
+            samples: List of sample dicts with user_input, retrieved_contexts, response, reference
+            metrics: List of metric names to evaluate
+        
+        Returns:
+            Dict of metric scores, or None if subprocess fails
+        """
+        try:
+            # Prepare input data
+            input_data = {
+                'api_key': self.api_key,
+                'samples': samples,
+                'metrics': metrics
+            }
+            input_json = json.dumps(input_data)
+            
+            # Run worker in subprocess
+            result = subprocess.run(
+                [sys.executable, str(self.worker_path)],
+                input=input_json,
+                capture_output=True,
+                text=True,
+                timeout=300  # 5 minute timeout
+            )
+            
+            if result.returncode != 0:
+                print(f"   ⚠️  Subprocess failed with code {result.returncode}")
+                print(f"   Error: {result.stderr[:500]}")
+                return None
+            
+            # Parse output
+            output_data = json.loads(result.stdout)
+            
+            if not output_data.get('success'):
+                error = output_data.get('error', 'Unknown error')
+                print(f"   ⚠️  Evaluation failed: {error}")
+                return None
+            
+            return output_data.get('scores', {})
+            
+        except subprocess.TimeoutExpired:
+            print(f"   ⚠️  Subprocess timeout (300s)")
+            return None
+        except Exception as e:
+            print(f"   ⚠️  Subprocess error: {e}")
+            return None
+    
+    def _evaluate_with_retry(self, dataset: EvaluationDataset, metrics: list, 
+                            metric_name: str, max_retries: int = 2) -> Optional[Dict[str, float]]:
+        """Evaluate with retry logic and error logging.
+        
+        Args:
+            dataset: RAGAS evaluation dataset
+            metrics: List of metrics to evaluate
+            metric_name: Human-readable name for logging
+            max_retries: Maximum number of retry attempts (default: 2 = 1 initial + 1 retry)
+        
+        Returns:
+            Dict of metric scores, or None if all attempts fail
+        """
+        last_error = None
+        
+        for attempt in range(max_retries):
+            try:
+                if attempt > 0:
+                    wait_time = 2 ** attempt  # Exponential backoff: 2s, 4s, 8s...
+                    print(f"   ⏳ Retry {attempt}/{max_retries-1} after {wait_time}s...")
+                    time.sleep(wait_time)
+                
+                results = evaluate(
+                    dataset,
+                    metrics=metrics,
+                    llm=self.llm,
+                    embeddings=self.embeddings,
+                )
+                return self._extract_scores(results)
+                
+            except Exception as e:
+                last_error = e
+                error_type = type(e).__name__
+                error_msg = str(e)[:200]  # Truncate long errors
+                print(f"   ⚠️  {metric_name} attempt {attempt+1} failed: {error_type}: {error_msg}")
+                
+                # Don't retry on certain fatal errors
+                if "API key" in error_msg or "authentication" in error_msg.lower():
+                    print(f"   ❌ Fatal error, not retrying")
+                    break
+        
+        # All retries exhausted
+        print(f"   ❌ {metric_name} failed after {max_retries} attempts")
+        print(f"   📋 Last error: {type(last_error).__name__}: {str(last_error)[:300]}")
+        
+        # Store full traceback for debugging
+        full_trace = ''.join(traceback.format_exception(type(last_error), last_error, last_error.__traceback__))
+        print(f"   📋 Full traceback:\n{full_trace[:500]}...")  # Print first 500 chars
+        
+        return None
     
     def evaluate_case(self, case_id: str, diag_file: str, ground_truth: str) -> Dict[str, float]:
         """Evaluate a single case with RAGAS metrics."""
@@ -30,32 +142,76 @@ class RAGASEvaluator:
             # Load and prepare data
             ragas_data = self._prepare_ragas_data(diag_file, ground_truth)
             
-            # Build RAGAS sample
-            sample = self._build_sample(ragas_data)
-            dataset = EvaluationDataset(samples=[sample])
+            # Build two samples: one with full answer (for faithfulness), one with concise (for relevancy)
+            sample_full = self._build_sample(ragas_data, use_concise=False)
+            sample_concise = self._build_sample(ragas_data, use_concise=True)
             
-            # Run evaluation
-            results = evaluate(
-                dataset,
-                metrics=[context_precision, context_recall, faithfulness, answer_relevancy],
-                llm=self.llm,
-                embeddings=self.embeddings,
+            scores = {}
+            error_details = []
+            
+            # Evaluate context metrics + faithfulness using subprocess (more reliable)
+            print(f"   Evaluating context metrics + faithfulness in subprocess...")
+            sample_full_dict = {
+                'user_input': sample_full.user_input,
+                'retrieved_contexts': sample_full.retrieved_contexts,
+                'response': sample_full.response,
+                'reference': sample_full.reference
+            }
+            results_full = self._evaluate_in_subprocess(
+                samples=[sample_full_dict],
+                metrics=['context_precision', 'context_recall', 'faithfulness']
             )
             
-            # Extract scores
-            scores = self._extract_scores(results)
+            if results_full:
+                scores.update(results_full)
+                print(f"   ✓ Context metrics complete")
+            else:
+                scores.update({
+                    "context_precision": float('nan'),
+                    "context_recall": float('nan'),
+                    "faithfulness": float('nan'),
+                })
+                error_details.append("Context metrics evaluation failed in subprocess")
+            
+            # Evaluate answer_relevancy with concise answer using subprocess
+            print(f"   Evaluating answer relevancy with concise answer in subprocess...")
+            sample_concise_dict = {
+                'user_input': sample_concise.user_input,
+                'retrieved_contexts': sample_concise.retrieved_contexts,
+                'response': sample_concise.response,
+                'reference': sample_concise.reference
+            }
+            results_concise = self._evaluate_in_subprocess(
+                samples=[sample_concise_dict],
+                metrics=['answer_relevancy']
+            )
+            
+            if results_concise:
+                scores["answer_relevancy"] = results_concise.get("answer_relevancy", float('nan'))
+                print(f"   ✓ Answer relevancy complete")
+            else:
+                scores["answer_relevancy"] = float('nan')
+                error_details.append("Answer relevancy evaluation failed in subprocess")
             
             print(f"✅ Evaluation complete for {case_id}")
             print(f"   Scores: {scores}")
+            
+            # Add error details to scores if any metrics failed
+            if error_details:
+                scores["evaluation_errors"] = "; ".join(error_details)
+            
             return scores
             
         except Exception as e:
             print(f"❌ Error evaluating {case_id}: {e}")
+            import traceback
+            print(f"   Full traceback:")
+            traceback.print_exc()
             return {
-                "context_precision": None,
-                "context_recall": None,
-                "faithfulness": None,
-                "answer_relevancy": None,
+                "context_precision": float('nan'),
+                "context_recall": float('nan'),
+                "faithfulness": float('nan'),
+                "answer_relevancy": float('nan'),
                 "error": str(e)
             }
     
@@ -74,9 +230,59 @@ class RAGASEvaluator:
         return {
             "question": prompt,
             "retrieved_contexts": retrieved_contexts,
-            "answer": self._flatten_answer(ai_response),
+            "answer_full": self._flatten_answer(ai_response),
+            "answer_concise": self._extract_concise_answer(ai_response),
+            "ai_response": ai_response,
             "ground_truth": ground_truth
         }
+    
+    def _extract_concise_answer(self, ai_response) -> str:
+        """Extract concise answer for relevancy scoring.
+        
+        Priority:
+        1. Use explicit 'concise_answer' field if present
+        2. Extract top diagnosis + first evidence from differential_diagnosis
+        3. Fallback to first diagnosis only
+        """
+        if isinstance(ai_response, str):
+            return ai_response[:200]  # Truncate string responses
+        
+        if not isinstance(ai_response, dict):
+            return str(ai_response)[:200]
+        
+        # Priority 1: Use explicit concise_answer field
+        if "concise_answer" in ai_response:
+            return str(ai_response["concise_answer"])
+        
+        # Priority 2: Extract from differential_diagnosis
+        if "differential_diagnosis" in ai_response:
+            diff_diagnosis = ai_response.get("differential_diagnosis", [])
+            if diff_diagnosis and isinstance(diff_diagnosis, list) and len(diff_diagnosis) > 0:
+                top = diff_diagnosis[0]
+                if isinstance(top, dict):
+                    disease = top.get("disease", "Unknown")
+                    likelihood = top.get("likelihood", "")
+                    reasoning = top.get("reasoning", "")
+                    
+                    # Extract first sentence or first 150 chars of reasoning
+                    reasoning_short = reasoning.split('.')[0] if reasoning else ""
+                    if len(reasoning_short) > 150:
+                        reasoning_short = reasoning_short[:150] + "..."
+                    
+                    return f"Diagnosis: {disease} (Likelihood: {likelihood}). {reasoning_short}"
+        
+        # Priority 3: Extract from most_likely_diagnoses (alternative format)
+        if "most_likely_diagnoses" in ai_response:
+            diagnoses = ai_response.get("most_likely_diagnoses", [])
+            if diagnoses and isinstance(diagnoses, list) and len(diagnoses) > 0:
+                top = diagnoses[0]
+                if isinstance(top, dict):
+                    diagnosis = top.get("diagnosis", "Unknown")
+                    rationale = top.get("rationale", "")
+                    return f"Diagnosis: {diagnosis}. {rationale}"
+        
+        # Fallback: Return truncated full flatten
+        return self._flatten_answer(ai_response)[:200]
     
     def _flatten_answer(self, ai_response) -> str:
         """Flatten AI response to string format for RAGAS.
@@ -194,8 +400,15 @@ class RAGASEvaluator:
         
         return "\n".join(parts) if parts else str(ai_response)
     
-    def _build_sample(self, ragas_data: Dict[str, Any]) -> SingleTurnSample:
-        """Build RAGAS sample from prepared data."""
+    def _build_sample(self, ragas_data: Dict[str, Any], use_concise: bool = False) -> SingleTurnSample:
+        """Build RAGAS sample from prepared data.
+        
+        Args:
+            ragas_data: Prepared RAGAS data
+            use_concise: If True, use concise answer; otherwise use full answer
+        """
+        answer_text = ragas_data["answer_concise"] if use_concise else ragas_data["answer_full"]
+        
         return SingleTurnSample(
             user_input=ragas_data["question"],
             retrieved_contexts=[
@@ -206,7 +419,7 @@ class RAGASEvaluator:
                 f"Summary: {c.get('Summary_Box_First_Line', '')}"
                 for c in ragas_data["retrieved_contexts"]
             ],
-            response=ragas_data["answer"],
+            response=answer_text,
             reference=ragas_data["ground_truth"],
         )
     

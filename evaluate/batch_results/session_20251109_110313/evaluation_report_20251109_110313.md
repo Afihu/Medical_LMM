@@ -1,6 +1,6 @@
 # Medical_LMM Batch Evaluation Report
 
-**Generated:** 2025-11-09 00:01:08
+**Generated:** 2025-11-09 11:04:37
 
 ## Summary
 
@@ -14,8 +14,8 @@
 |--------|-------|
 | Context Precision | 0.5000 |
 | Context Recall | 1.0000 |
-| Faithfulness | 0.3667 |
-| Answer Relevancy | 0.6175 |
+| Faithfulness | 0.9500 |
+| Answer Relevancy | 0.8434 |
 
 ## Individual Case Results
 
@@ -24,7 +24,7 @@
 **Scores:**
 - Context Precision: 0.5000
 - Context Recall: 1.0000
-- Faithfulness: 0.3667
-- Answer Relevancy: 0.6175
+- Faithfulness: 0.9500
+- Answer Relevancy: 0.8434
 
 ---

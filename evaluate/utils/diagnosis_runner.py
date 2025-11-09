@@ -78,10 +78,11 @@ class DiagnosisRunner:
             text_data = case_data.get('text', {})
             title = text_data.get('Title', 'Unknown')
             summary = text_data.get('Summary_Box_First_Line', '')
+            score = case_data.get('similarity_score', 0.0)
             
             print(f"   - Case {case_id}: {title}")
-            if summary:
-                print(f"     Diagnosis: {summary}")
+            print(f"     Diagnosis: {summary}")
+            print(f"     Similarity: {score:.4f}")
         print()
     
     def _generate_prompt(self, prompt: str, session_id: str, retrieved_cases: Dict) -> str:
