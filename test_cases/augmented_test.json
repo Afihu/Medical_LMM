@@ -534,7 +534,7 @@
     "diagnosis": "Bartonellosis - Oroya Fever"
   },
   {
-    "id":"case-108",
+    "id": "case-108",
     "prompt": "A 10-year-old boy from an endemic region in the Andes presents with multiple, large, reddish-purple, nodular skin lesions (verruga peruana). His mother reports he had a severe febrile illness with anemia several months ago. This is the chronic eruptive phase of Bartonellosis.",
     "diagnosis": "Bartonellosis - Oroya Fever"
   },
@@ -547,5 +547,105 @@
     "id": "case-110",
     "prompt": "A 4-year-old child in a daycare center presents with a 1-week history of intermittent, non-bloody diarrhea, abdominal cramps, and poor appetite. Several other children in the center have similar symptoms. A stool ova and parasite exam reveals *Giardia* cysts.",
     "diagnosis": "Giardiasis"
+  },
+  {
+    "id": "case-111",
+    "prompt": "A 4-year-old child from Nigeria is brought in with a 3-day history of high, cyclical fevers, convulsions, and prostration. The child is unrousable and has severe anemia. A blood smear confirms heavy parasitemia with ring-form trophozoites.",
+    "diagnosis": "Malaria (Plasmodium falciparum)"
+  },
+  {
+    "id": "case-112",
+    "prompt": "A 22-year-old backpacker returns from Nepal with a 2-week history of escalating 'stepladder' fever, severe headache, and malaise. He has a relative bradycardia (slow heart rate despite fever) and 'rose spots' on his abdomen. Blood cultures grow *Salmonella typhi*.",
+    "diagnosis": "Typhoid fever"
+  },
+  {
+    "id": "case-113",
+    "prompt": "A 50-year-old woman presents to a clinic in Haiti after a hurricane. She has had profuse, painless, watery diarrhea and vomiting for 12 hours. She is now in hypovolemic shock, with sunken eyes, poor skin turgor, and \"washerwoman's hands.\"",
+    "diagnosis": "Cholera"
+  },
+  {
+    "id": "case-114",
+    "prompt": "A 30-year-old sewer worker in Brazil presents with an abrupt onset of high fever, severe headache, and muscle aches, particularly in his calves. His conjunctiva are hemorrhagic (conjunctival suffusion), and his lab work shows acute renal failure and elevated liver enzymes (Weil's disease).",
+    "diagnosis": "Leptospirosis"
+  },
+  {
+    "id": "case-115",
+    "prompt": "A 55-year-old man from the Caribbean presents with debilitating, chronic polyarthralgia in his hands, wrists, and ankles that has persisted for 6 months, making it difficult to work. He recalls an acute febrile illness with a rash and severe joint pain 6 months prior.",
+    "diagnosis": "Chikungunya virus infection"
+  },
+  {
+    "id": "case-116",
+    "prompt": "A 25-year-old soldier participating in a field exercise in rural Korea presents with fever, chills, and a severe headache. He notes a painful, blackened scab (eschar) in his armpit, surrounded by a maculopapular rash.",
+    "diagnosis": "Scrub typhus"
+  },
+  {
+    "id": "case-117",
+    "prompt": "A 40-year-old woman from India presents with multiple, painless, hypopigmented skin patches on her back and arms. She has a loss of sensation (touch, temperature) in these patches. The ulnar nerve is palpably thickened and tender. A skin biopsy confirms tuberculoid leprosy.",
+    "diagnosis": "erythema nodosum leprosum"
+  },
+  {
+    "id": "case-118",
+    "prompt": "A 20-year-old man, a lifelong resident of a village near Lake Malawi, presents with a 2-month history of painless terminal hematuria (blood at the end of urination) and urinary frequency. He frequently swims in the lake. A urine microscopy test reveals the presence of *S. haematobium* eggs with a terminal spine.",
+    "diagnosis": "Schistosomiasis"
+  },
+  {
+    "id": "case-119",
+    "prompt": "A 31-year-old woman with known HIV, not on ART, presents with her first-ever seizure. Her CD4 count is 180. A brain MRI shows a single, ring-enhancing lesion. A brain biopsy confirms primary CNS lymphoma, an AIDS-defining illness.",
+    "diagnosis": "HIV (Pulmonary Complications)"
+  },
+  {
+    "id": "case-120",
+    "prompt": "A 65-year-old man, a veteran of the Vietnam War, is being treated with high-dose corticosteroids for rheumatoid arthritis. He develops severe, diffuse abdominal pain, nausea, and vomiting, progressing to septic shock. A stool exam reveals a massive number of *Strongyloides* larvae, confirming hyperinfection syndrome.",
+    "diagnosis": "Pulmonary Strongyloidiasis"
+  },
+  {
+    "id": "case-121",
+    "prompt": "A 48-year-old diabetic rice farmer from Thailand presents with a 2-week history of fever, non-productive cough, and multiple subcutaneous abscesses on his trunk. A chest X-ray shows diffuse nodular infiltrates. A culture from a skin abscess grows *Burkholderia pseudomallei*.",
+    "diagnosis": "Melioidosis"
+  },
+  {
+    "id": "case-122",
+    "prompt": "A 52-year-old woman who works in a sheep processing plant presents with an abrupt onset of high fever, drenching sweats, severe headache, and a non-productive cough. Her chest X-ray shows atypical pneumonia. Serology for *Coxiella burnetii* phase II IgM is highly positive.",
+    "diagnosis": "Q Fever"
+  },
+  {
+    "id": "case-123",
+    "prompt": "A 60-year-old man with a history of COPD, living in the Ohio River Valley, presents with chronic cough, weight loss, and fatigue. A chest X-ray reveals a cavitary lesion in the upper lobe, mimicking TB. A sputum culture grows *Histoplasma capsulatum*.",
+    "diagnosis": "Histoplasmosis"
+  },
+  {
+    "id": "case-124",
+    "prompt": "A 28-year-old man from Sri Lanka presents with chronic, nocturnal cough and wheezing that does not respond to standard asthma treatment (albuterol, corticosteroids). He has marked peripheral eosinophilia (5000 cells/mm3) and very high serum IgE. A diagnosis of TPE is made, likely secondary to a filarial infection.",
+    "diagnosis": "Tropical Pulmonary Eosinophilia (TPE)"
+  },
+  {
+    "id": "case-125",
+    "prompt": "A 35-year-old man who attended a traditional funeral in Guinea presents with abrupt high fever, severe headache, and joint pain. This progressed to bloody diarrhea, vomiting, and a maculopapular rash. He is now showing signs of shock and bleeding from the gums. He has a known epidemiological link to a confirmed outbreak.",
+    "diagnosis": "Ebola virus disease"
+  },
+  {
+    "id": "case-126",
+    "prompt": "A 40-year-old man from Saudi Arabia presents with chronic, severe low back pain radiating to his leg. An MRI of his spine reveals inflammation and destruction of the L4-L5 vertebrae (spondylitis). He has a low-grade fever and fatigue. He works as a butcher. Blood cultures eventually grow *Brucella*.",
+    "diagnosis": "Brucellosis"
+  },
+  {
+    "id": "case-127",
+    "prompt": "A 55-year-old male farmer from Brazil presents with painful, ulcerative lesions on his gums and palate, making it difficult to eat. He also has a chronic cough and significant cervical lymphadenopathy. A biopsy of an oral lesion shows the characteristic 'mariner's wheel' budding yeast.",
+    "diagnosis": "Paracoccidioidomycosis"
+  },
+  {
+    "id": "case-128",
+    "prompt": "A 50-year-old woman from rural Peru presents with a 2-month history of worsening headaches, nausea, and vomiting. An MRI of the brain reveals hydrocephalus caused by a large, racemose (grape-like) cluster of cysts in the basal cisterns, obstructing CSF flow. This is a severe extraparenchymal form.",
+    "diagnosis": "Neurocysticercosis"
+  },
+  {
+    "id": "case-129",
+    "prompt": "A 35-year-old woman from Morocco presents with a 1-month history of cough, chest pain, and mild hemoptysis. A chest X-ray reveals a large, perfectly round, 'cannonball' lesion in her right lung. A CT scan confirms a unilocular hydatid cyst with a 'water-lily sign' (detached membrane).",
+    "diagnosis": "Hydatid Disease (Echinococcosis)"
+  },
+  {
+    "id": "case-130",
+    "prompt": "A 30-year-old nurse working in Sierra Leone presents with a gradual onset of fever, profound weakness, and sore throat. Over the next few days, she develops facial edema, vomiting, and retrosternal chest pain. She reports caring for a patient with a similar febrile illness who later died. Lab tests show proteinuria and elevated AST.",
+    "diagnosis": "Lassa Fever"
   }
 ]
