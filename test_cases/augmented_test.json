@@ -142,7 +142,7 @@
   {
     "id": "case-029",
     "prompt": "A 22-year-old traveler returning from Southeast Asia presents with a 4-day history of high fever, petechial rash, and severe joint pain ('breakbone fever'). He is now experiencing bleeding from his gums and has a positive tourniquet test. Lab work shows thrombocytopenia and hemoconcentration, indicative of Dengue Hemorrhagic Fever.",
-    "diagnosis": "Dengue Fever (DHF)"
+    "diagnosis": "Dengue Fever"
   },
   {
     "id": "case-030",
@@ -167,7 +167,7 @@
   {
     "id": "case-034",
     "prompt": "A 48-year-old man with AIDS (CD4 count 40) presents with a 1-week history of worsening headache, fever, and confusion. A lumbar puncture shows high opening pressure and a positive CSF cryptococcal antigen test.",
-    "diagnosis": "Cryptococcal Meningitis"
+    "diagnosis": "Cryptococcal meningitis"
   },
   {
     "id": "case-035",
@@ -869,5 +869,45 @@
     "id": "case-174",
     "prompt": "A 60-year-old homeless man with poor hygiene is found to have a large, necrotic ulcer on his lower leg. The wound is foul-smelling, and upon irrigation, numerous small, wiggling maggots are seen emerging from the necrotic tissue. This is diagnosed as wound myiasis.",
     "diagnosis": "Myiasis"
+  },
+  {
+    "id": "case-175",
+    "prompt": "A 35-year-old healthcare worker in the Democratic Republic of Congo presents with a sudden onset of high fever, severe headache, and muscle pain. After 3 days, she develops severe watery diarrhea, vomiting, and a maculopapular rash. She is now noted to be bleeding from her gums and injection sites.",
+    "diagnosis": "Filoviral Diseases"
+  },
+  {
+    "id": "case-176",
+    "prompt": "A 42-year-old miner from Uganda is brought to a clinic with a 5-day history of abrupt high fever, intense weakness, and myalgia. He is now experiencing profuse, non-bloody diarrhea, abdominal pain, and confusion. Examination reveals conjunctival injection and unexplained hemorrhaging from the nose.",
+    "diagnosis": "Filoviral Diseases"
+  },
+  {
+    "id": "case-177",
+    "prompt": "A 28-year-old man presents with fever, severe fatigue, and joint pain after returning from Guinea. This rapidly progresses to severe abdominal pain, bloody diarrhea, and shock. His family reports he attended a funeral of a relative who died from a 'mysterious illness' last week.",
+    "diagnosis": "Filoviral Diseases"
+  },
+  {
+    "id": "case-178",
+    "prompt": "A 50-year-old woman is admitted with a 4-day history of high fever, headache, and severe weakness. She is now in multi-organ failure with profuse vomiting and diarrhea, and is bleeding from IV sites. Lab tests show thrombocytopenia and elevated liver enzymes. A diagnosis of Marburg virus disease is suspected.",
+    "diagnosis": "Filoviral Diseases"
+  },
+  {
+    "id": "case-179",
+    "prompt": "A 55-year-old diabetic farmer from Thailand presents with a 3-week history of fever, cough, and chest pain. A chest X-ray reveals multiple nodular opacities with cavitation, resembling tuberculosis. Sputum culture grows a bacterium identified as *Burkholderia pseudomallei*.",
+    "diagnosis": "Melioidosis"
+  },
+  {
+    "id": "case-180",
+    "prompt": "A 40-year-old man with chronic kidney disease presents with high fever, confusion, and multiple skin abscesses after wading through floodwaters in Vietnam. Blood cultures are positive for a gram-negative rod, which is confirmed as *Burkholderia pseudomallei*, consistent with septicemic melioidosis.",
+    "diagnosis": "Melioidosis"
+  },
+  {
+    "id": "case-181",
+    "prompt": "A 25-year-old woman presents to a clinic in a refugee camp with profuse, painless, watery diarrhea that she describes as 'like water with white flecks.' She has had over 20 stools in 24 hours, is vomiting, and has severe muscle cramps. She has sunken eyes and poor skin turgor.",
+    "diagnosis": "Cholera"
+  },
+  {
+    "id": "case-182",
+    "prompt": "A 5-year-old boy is brought in with a 1-day history of incessant, non-bloody, watery diarrhea and vomiting. He is lethargic, has a weak pulse, and his skin 'tents' when pinched. His village sources water from a river where a recent cholera outbreak was reported. A rapid test confirms *Vibrio cholerae* O1.",
+    "diagnosis": "Cholera"
   }
 ]
