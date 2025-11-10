@@ -1,0 +1,3 @@
+case_id,diagnosis,status,context_precision,context_recall,faithfulness,answer_relevancy,timestamp,error
+case-001,Malaria,completed,0.9999999999,1.0,0.44,0.8737378080859038,2025-11-10T15:46:43.427592,
+case-002,Dengue,completed,0.0,0.0,0.375,0.7585274857278904,2025-11-10T15:49:04.171960,

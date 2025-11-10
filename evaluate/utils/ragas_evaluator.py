@@ -61,20 +61,50 @@ class RAGASEvaluator:
                 timeout=300  # 5 minute timeout
             )
             
+            # Always print stderr if it contains anything meaningful
+            if result.stderr and len(result.stderr.strip()) > 0:
+                # Check for quota errors first
+                if 'ResourceExhausted: 429' in result.stderr or 'exceeded your current quota' in result.stderr:
+                    print(f"   🚨 API QUOTA EXCEEDED!")
+                    print(f"   Your Google Gemini API free tier quota is exhausted.")
+                    print(f"   Solutions:")
+                    print(f"      1. Wait for quota reset (usually midnight Pacific Time)")
+                    print(f"      2. Upgrade to paid tier at https://ai.google.dev/")
+                    print(f"      3. Use a different API key")
+                    return None
+                
+                # Filter out gRPC noise
+                stderr_lines = [line for line in result.stderr.split('\n') 
+                               if line.strip() and 'ALTS creds ignored' not in line 
+                               and 'alts_credentials.cc' not in line]
+                if stderr_lines:
+                    print(f"   ⚠️  Subprocess stderr:")
+                    for line in stderr_lines[:10]:  # Limit to first 10 lines
+                        print(f"      {line}")
+            
             if result.returncode != 0:
                 print(f"   ⚠️  Subprocess failed with code {result.returncode}")
-                print(f"   Error: {result.stderr[:500]}")
                 return None
             
             # Parse output
-            output_data = json.loads(result.stdout)
+            try:
+                output_data = json.loads(result.stdout)
+            except json.JSONDecodeError as e:
+                print(f"   ⚠️  Failed to parse subprocess output: {e}")
+                print(f"   Stdout: {result.stdout[:500]}")
+                return None
             
             if not output_data.get('success'):
                 error = output_data.get('error', 'Unknown error')
                 print(f"   ⚠️  Evaluation failed: {error}")
                 return None
             
-            return output_data.get('scores', {})
+            scores = output_data.get('scores', {})
+            # Debug: Check if scores are actually None/empty
+            if not scores or all(v is None for v in scores.values()):
+                print(f"   ⚠️  Warning: Subprocess returned empty or null scores")
+                print(f"   Raw output: {output_data}")
+            return scores
             
         except subprocess.TimeoutExpired:
             print(f"   ⚠️  Subprocess timeout (300s)")
@@ -162,14 +192,15 @@ class RAGASEvaluator:
                 metrics=['context_precision', 'context_recall', 'faithfulness']
             )
             
-            if results_full:
+            if results_full and any(v is not None for v in results_full.values()):
                 scores.update(results_full)
-                print(f"   ✓ Context metrics complete")
+                print(f"   ✓ Context metrics complete: {results_full}")
             else:
+                print(f"   ❌ Context metrics returned None or empty: {results_full}")
                 scores.update({
-                    "context_precision": float('nan'),
-                    "context_recall": float('nan'),
-                    "faithfulness": float('nan'),
+                    "context_precision": None,
+                    "context_recall": None,
+                    "faithfulness": None,
                 })
                 error_details.append("Context metrics evaluation failed in subprocess")
             
@@ -186,11 +217,12 @@ class RAGASEvaluator:
                 metrics=['answer_relevancy']
             )
             
-            if results_concise:
-                scores["answer_relevancy"] = results_concise.get("answer_relevancy", float('nan'))
-                print(f"   ✓ Answer relevancy complete")
+            if results_concise and results_concise.get("answer_relevancy") is not None:
+                scores["answer_relevancy"] = results_concise.get("answer_relevancy")
+                print(f"   ✓ Answer relevancy complete: {results_concise}")
             else:
-                scores["answer_relevancy"] = float('nan')
+                print(f"   ❌ Answer relevancy returned None or empty: {results_concise}")
+                scores["answer_relevancy"] = None
                 error_details.append("Answer relevancy evaluation failed in subprocess")
             
             print(f"✅ Evaluation complete for {case_id}")

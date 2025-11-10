@@ -1,5 +1,0 @@
-case_id,diagnosis,status,context_precision,context_recall,faithfulness,answer_relevancy,timestamp,error
-case-001,Malaria,completed,0.9999999999,1.0,0.8666666666666667,0.8775546470592301,2025-11-09T11:25:25.781256,
-case-002,Dengue,completed,,0.0,,,2025-11-09T11:26:51.968513,
-case-003,Typhoid Fever,completed,,,,0.7655327035682321,2025-11-09T11:33:43.418875,
-case-004,Cholera,completed,,1.0,,,2025-11-09T11:37:42.415167,

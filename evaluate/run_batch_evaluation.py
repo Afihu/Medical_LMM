@@ -94,8 +94,11 @@ class BatchEvaluator:
             ReportGenerator.save_json(all_results, results_file)
             ReportGenerator.save_csv(all_results, csv_file)
             
-            # Small delay to avoid rate limiting
-            time.sleep(2)
+            # Longer delay to avoid API quota exhaustion (especially for free tier)
+            # Free tier has very limited requests per minute
+            if idx < len(test_cases):  # Don't delay after last case
+                print(f"   ⏳ Waiting 30 seconds before next case to respect API limits...")
+                time.sleep(30)
         
         # Generate final report
         ReportGenerator.generate_markdown(all_results, report_file)

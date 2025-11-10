@@ -31,7 +31,7 @@ def run_evaluation(input_data):
         
         # Initialize LLM and embeddings
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash-exp",
+            model="gemini-2.5-flash",
             google_api_key=api_key,
             temperature=0
         )
