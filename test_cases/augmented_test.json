@@ -466,7 +466,8 @@
   },
   {
     "id": "case-094",
-    "prompt": "A 60-year-old farmer from Brazil presents with a large, verrucous, plaque-like lesion on his hand and forearm. It has been present for 8 years. He reports a "
+    "prompt": "A 60-year-old farmer from Brazil presents with a large, verrucous, plaque-like lesion on his hand and forearm. It has been present for 8 years. He reports frequently working barefoot. What is the most likely diagnosis?",
+    "diagnosis": "Chromoblastomycosis"
   },
   {
     "id": "case-095",
