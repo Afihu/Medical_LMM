@@ -1,913 +1,932 @@
 [
   {
     "id": "case-001",
-    "prompt": "A 28-year-old woman from rural Ghana presents with high fever, chills, headache, and sweating after several days of mosquito exposure near stagnant water. She looks pale and slightly jaundiced. What is the most likely diagnosis?",
-    "diagnosis": "Malaria (Plasmodium falciparum)"
+    "prompt": "A 45-year-old man from a rural village in Bolivia presents with a 10-year history of progressive difficulty swallowing (dysphagia) and frequent regurgitation. He also reports chronic constipation. A physical exam is unremarkable, but a barium swallow study reveals a significantly enlarged esophagus (megaesophagus) with poor peristalsis. He has no history of heart disease.",
+    "diagnosis": "Chagas Disease"
   },
   {
     "id": "case-002",
-    "prompt": "A 19-year-old man from Manila develops high fever, severe headache behind the eyes, joint pain, nausea, and a maculopapular rash on day 3. He reports multiple mosquito bites last week. What is the most likely diagnosis?",
-    "diagnosis": "Dengue fever"
+    "prompt": "A 52-year-old woman, who emigrated from Central America 20 years ago, is seen for syncope. An ECG reveals a right bundle branch block and ventricular arrhythmias. An echocardiogram shows dilated cardiomyopathy with apical aneurysm. She recalls having a prolonged febrile illness with swelling around one eye (Romaña's sign) as a child but has been asymptomatic since.",
+    "diagnosis": "Chagas Disease"
   },
   {
     "id": "case-003",
-    "prompt": "A 34-year-old woman from rural India presents with a 6-day history of high fever, abdominal pain, headache, and alternating constipation and diarrhea. She has a faint rash on her trunk. What is the most likely diagnosis?",
-    "diagnosis": "Typhoid fever"
+    "prompt": "A 38-year-old male farmer from Mexico presents with a 2-month history of severe, progressive headaches, nausea, and vomiting. A neurological exam reveals papilledema. A brain MRI shows multiple grape-like cystic lesions filling the basilar cisterns and Sylvian fissure, causing communicating hydrocephalus. CSF analysis shows lymphocytic pleocytosis and eosinophils.",
+    "diagnosis": "Subarachnoid Neurocysticercosis"
   },
   {
     "id": "case-004",
-    "prompt": "A 7-year-old boy living in a refugee camp in Bangladesh suddenly develops profuse watery diarrhea that looks like rice water, vomiting, and signs of dehydration after flooding in the area. What is the most likely diagnosis?",
-    "diagnosis": "Cholera"
+    "prompt": "A 29-year-old woman from Peru is admitted to the emergency department after a first-time generalized tonic-clonic seizure. She also complains of chronic headaches. A contrast-enhanced brain CT scan reveals multiple cysts in the subarachnoid space, some with internal scolices, as well as enhancing lesions and calcifications in the brain parenchyma. She has a history of raising pigs.",
+    "diagnosis": "Subarachnoid Neurocysticercosis"
   },
   {
     "id": "case-005",
-    "prompt": "A 42-year-old rice farmer in the Philippines reports fever, chills, muscle pain, headache, and yellowing of the eyes. He frequently works barefoot in flooded fields. What is the most likely diagnosis?",
-    "diagnosis": "Leptospirosis"
+    "prompt": "A 24-year-old tourist returns from a 2-week trip to Thailand. He presents with an abrupt onset of high fever (40°C), severe frontal headache, and intense pain behind his eyes (retro-orbital pain). He also complains of debilitating joint and muscle pain, referring to it as 'breakbone fever.' A petechial rash is noted on his lower limbs.",
+    "diagnosis": "Dengue"
   },
   {
     "id": "case-006",
-    "prompt": "A 29-year-old woman from Hanoi has a persistent productive cough for over three weeks, fever, night sweats, and mild weight loss. She reports a household contact with similar symptoms. What is the most likely diagnosis?",
-    "diagnosis": "Pulmonary tuberculosis"
+    "prompt": "A 19-year-old man from Puerto Rico presents with a 5-day history of high fever. The fever has just subsided, but he now reports persistent vomiting, severe abdominal pain, and bleeding from his gums. A physical exam shows hepatomegaly, and labs reveal marked thrombocytopenia and an increased hematocrit level.",
+    "diagnosis": "Dengue"
   },
   {
     "id": "case-007",
-    "prompt": "A 36-year-old HIV-positive man in Rwanda presents with fever, headache, confusion, and neck stiffness that developed over a few days. What is the most likely diagnosis?",
-    "diagnosis": "Cryptococcal meningitis"
+    "prompt": "A 30-year-old man, recently diagnosed with HIV and a CD4 count of 150, presents with a high fever and a rapidly spreading, painful rash. The rash began as red-purple macules on his trunk and face, which have now coalesced into large, flaccid blisters. He is positive for Nikolsky's sign (slight rubbing of the skin results in exfoliation). He started a new trimethoprim-sulfamethoxazole (Bactrim) prescription for PCP prophylaxis one week ago.",
+    "diagnosis": "Stevens–Johnson Syndrome and Toxic Epidermal"
   },
   {
     "id": "case-008",
-    "prompt": "A 25-year-old woman from rural Brazil presents with intermittent fever, fatigue, and an enlarged spleen. She has been working outdoors and frequently bitten by sandflies. What is the most likely diagnosis?",
-    "diagnosis": "Visceral leishmaniasis (kala-azar)"
+    "prompt": "A 22-year-old woman is admitted with a 3-day history of high fever, severe malaise, and a confluent, erythematous rash covering over 35% of her body surface area. Large sheets of epidermis are sloughing off, leaving exposed, weeping dermis. She also has severe ulcerative stomatitis and conjunctivitis. Her medical history shows she started taking allopurinol for gout two weeks prior.",
+    "diagnosis": "Stevens–Johnson Syndrome and Toxic Epidermal"
   },
   {
     "id": "case-009",
-    "prompt": "A 48-year-old woman from Brazil develops sudden high fever, severe joint pains in wrists and ankles, and a rash after mosquito bites. What is the most likely diagnosis?",
-    "diagnosis": "Chikungunya virus infection"
+    "prompt": "A 48-year-old farmer from the Nile Delta in Egypt presents with a 6-week history of right upper quadrant abdominal pain, intermittent high fever, and significant weight loss. A physical exam reveals a tender, enlarged liver. Blood tests show marked eosinophilia and elevated liver enzymes. An abdominal ultrasound shows multiple hypoechoic, branching tracts in the liver parenchyma.",
+    "diagnosis": "Fascioliasis"
   },
   {
     "id": "case-010",
-    "prompt": "A 30-year-old man from rural Morocco presents with a painless ulcer on his forearm that slowly enlarged over several weeks. He often works outdoors where sandflies are common. What is the most likely diagnosis?",
-    "diagnosis": "Cutaneous leishmaniasis"
+    "prompt": "A 35-year-old woman from rural Peru presents with fever, night sweats, and persistent abdominal pain. She has a history of eating wild watercress salads. Laboratory findings include severe anemia and profound peripheral eosinophilia. A CT scan of her abdomen reveals nodular lesions in the liver, and a subsequent endoscopic ultrasound (EUS) visualizes a flat, leaf-like worm in the biliary duct.",
+    "diagnosis": "Fascioliasis"
   },
   {
     "id": "case-011",
-    "prompt": "A 45-year-old man from rural Mexico has fever, right upper abdominal pain, and weight loss two months after an episode of bloody diarrhea. Examination shows tender hepatomegaly. What is the most likely diagnosis?",
-    "diagnosis": "Amebic liver abscess"
-  },
-  {
-    "id": "case-012",
-    "prompt": "A 32-year-old woman working on a tea plantation in Northeast Thailand presents with fever, severe headache, body aches, and a dark scab (eschar) on her leg surrounded by a rash. What is the most likely diagnosis?",
-    "diagnosis": "Scrub typhus"
-  },
-  {
-    "id": "case-013",
-    "prompt": "A 25-year-old man who lives in Addis Ababa, Ethiopia attends your clinic complaining of a progressive skin eruption of the body and limbs for 1 year. The rash is not itchy or painful.  He has had no previous skin problems and no contact with a similarly affected person. His appearance gradually changed over 12 months. There is a papular and nodular eruption on the extensor aspects of the forearms, arms, thighs and trunk. Furthermore, there is a diffuse infiltration of the skin of the face and nodules on the pinnae, with madarosis (loss of eyebrows and eyelashes). There is no loss of sensation within the skin lesions and no sensory or motor loss in the hands or feet. What is the most likely diagnosis?",
-    "diagnosis": "erythema nodosum leprosum"
-  },
-  {
-    "id": "case-014",
-    "prompt": "A 46-year-old male Swiss traveller spent a 2-week holiday in the border region of Argentine and Brazil. Two weeks after his return, he developed flu-like symptoms and exertional dyspnoea. Ten days after the onset of symptoms, the patient presented at his general practitioner with fever and a pronounced frontal headache.",
-    "diagnosis": "Schistosomiasis"
-  },
-  {
-    "id": "case-015",
-    "prompt": "A 34-year-old man from a high HIV-prevalence area in sub-Saharan Africa presents with a history of recurrent pneumonia. His chest X-ray reveals hilar lymphadenopathy, pleural effusions, and middle/lower lung infiltrates with minimal cavitation. A bronchoscopy confirms the presence of ulcerative mucosa and endobronchial polyps.",
-    "diagnosis": "Tuberculosis (TB)"
-  },
-  {
-    "id": "case-016",
-    "prompt": "A 28-year-old woman with a known but untreated HIV infection presents with new symptoms of bronchopulmonary disease. Clinical investigation reveals she has developed tuberculosis, which is the most frequent complication. Fungal infections are considered rare in this context, but common bacterial infections like Streptococcus are also present.",
-    "diagnosis": "HIV (Pulmonary Complications)"
-  },
-  {
-    "id": "case-017",
-    "prompt": "A 45-year-old man, who traveled to India 18 months ago, presents with a nonproductive cough and severe right shoulder pain. He reports coughing up a dark, \"anchovy paste-like\" sputum. A chest X-ray shows a significant elevation of the right hemidiaphragm, and a subsequent aspirate of the pleural fluid reveals a \"chocolate sauce\" appearance. A liver abscess is also identified.",
-    "diagnosis": "Amebiasis (Pleuropulmonary)"
-  },
-  {
-    "id": "case-018",
-    "prompt": "A 60-year-old man, who left an endemic area in Southeast Asia 25 years ago, presents with severe bronchospasm, extensive pneumonia, and cough. His symptoms have rapidly progressed to ARDS. Serial chest X-rays show ill-defined, patchy consolidations that appear to be migrating. A pleural effusion is also present. Larvae are subsequently isolated from his respiratory samples.",
-    "diagnosis": "Pulmonary Strongyloidiasis"
-  },
-  {
-    "id": "case-019",
-    "prompt": "A 55-year-old man, who served in the military in Vietnam 30 years ago, is now receiving immunosuppressive therapy for an unrelated condition. He presents with a long history of cough, low-grade fever, weight loss, and hemoptysis. His chest X-ray closely resembles pulmonary tuberculosis, showing an upper lobe infiltrate that shows cavitation. The diagnosis is confirmed by isolating B. pseudomallei from his sputum.",
-    "diagnosis": "Melioidosis"
-  },
-  {
-    "id": "case-020",
-    "prompt": "A 48-year-old veterinarian who recently assisted in birthing cattle presents with an acute illness. The patient presents with pneumonia, fever, headache, cough, and myalgia. Radiography shows multiple round opacities and lower lobe-based infiltrates. Diagnosis is made by serologic assays showing a rise in serum antibodies in acute and convalescent specimens.",
-    "diagnosis": "Q Fever"
-  },
-  {
-    "id": "case-021",
-    "prompt": "A 24-year-old man presents with an acute febrile illness after a kayaking trip in a tropical region, where he was exposed to contaminated water after a heavy rainstorm. He presents with fever, myalgias, and conjunctival suffusion. His condition is severe, presenting with high fever, intense jaundice, and bleeding, progressing to massive hemoptysis and respiratory failure.",
-    "diagnosis": "Leptospirosis"
-  },
-  {
-    "id": "case-022",
-    "prompt": "A 40-year-old man who works cleaning building ledges covered in bird droppings in Southern California presents with a prolonged cough, fever, and signs of pneumonia. A bronchoscopy with bronchoalveolar lavage is performed for diagnostic evaluation. Serologic testing confirms the diagnosis. A pleural effusion is present, which is a lymphocyte-predominant exudate.",
-    "diagnosis": "Cryptococcosis"
-  },
-  {
-    "id": "case-023",
-    "prompt": "A 33-year-old woman presents with a \"flu-like illness\" after exploring a cave known to house bats in the Midwestern United States. She reports an abrupt onset of fever, chills, substernal chest discomfort, a harsh, nonproductive cough, and headache. Radiography shows a single area of pneumonitis with enlarged ipsilateral hilar and mediastinal lymph nodes. Serologic tests (complement fixation) are positive.",
-    "diagnosis": "Histoplasmosis"
-  },
-  {
-    "id": "case-024",
-    "prompt": "A 30-year-old man from the Indian subcontinent presents with a persistent cough, dyspnea, and nocturnal wheezing, as well as fever and weight loss. Lab work shows a marked peripheral blood eosinophilia (>3000 cells/mm3) and striking elevations of total IgE. Radiography reveals diffuse reticulo-nodular infiltrates. Lung function tests show a restrictive ventilation defect with superimposed airways obstruction.",
-    "diagnosis": "Tropical Pulmonary Eosinophilia (TPE)"
-  },
-  {
-    "id": "case-025",
-    "prompt": "A 28-year-old healthcare worker presents with sudden onset of high fever, severe headache, myalgia, and profound weakness after returning from an aid mission in the Democratic Republic of Congo. Over the next few days, she develops vomiting, diarrhea, conjunctival injection, and diffuse bleeding from venipuncture sites. Laboratory findings reveal thrombocytopenia and elevated liver enzymes. RT-PCR testing confirms infection with a filovirus.",
-    "diagnosis": "Ebola virus disease"
-  },
-  {
-    "id": "case-026",
-    "prompt": "A 60-year-old male goat farmer from rural Mexico presents with a two-month history of intermittent 'undulating' fever, drenching night sweats, and severe migratory joint pain, especially in the hips and knees (arthralgia). He also reports weight loss and profound fatigue. He regularly consumes unpasteurized goat cheese. Blood cultures and serum agglutination tests confirm *Brucella melitensis*.",
-    "diagnosis": "Brucellosis"
-  },
-  {
-    "id": "case-027",
-    "prompt": "A 42-year-old man from Syria, now living in a refugee camp, presents with a 4-month history of a persistent, large, non-healing ulcer on his arm. The ulcer has a raised border and a crusted center. He reports being bitten by sandflies. A skin biopsy reveals Leishman-Donovan bodies.",
+    "prompt": "A 27-year-old soldier returns from a deployment in Afghanistan. He presents with two non-healing skin lesions on his forearm that have been present for 3 months. The lesions are large, circular, painless ulcers with a raised, indurated border and a central crust. A skin biopsy from the border of the lesion reveals amastigotes within macrophages.",
     "diagnosis": "Cutaneous Leishmaniasis"
   },
   {
-    "id": "case-028",
-    "prompt": "A 40-year-old man from rural India presents with a 3-week history of high, intermittent fever (spiking twice daily), massive splenomegaly, and pancytopenia (anemia, leukopenia, thrombocytopenia). He is cachectic. A bone marrow aspirate reveals macrophages filled with amastigotes (LD bodies).",
-    "diagnosis": "Visceral Leishmaniasis (Kala-azar)"
+    "id": "case-012",
+    "prompt": "A 19-year-old man, an ecotourist who recently traveled through the Amazon rainforest in Brazil, seeks treatment for multiple skin sores. He has over 10 ulcerative lesions on his arms and face. The ulcers are 'punched-out' in appearance, with a 'volcano-like' raised edge. He recalls numerous sandfly bites during his trip. A smear from the ulcer edge confirms the diagnosis.",
+    "diagnosis": "Cutaneous Leishmaniasis"
   },
   {
-    "id": "case-029",
-    "prompt": "A 22-year-old traveler returning from Southeast Asia presents with a 4-day history of high fever, petechial rash, and severe joint pain ('breakbone fever'). He is now experiencing bleeding from his gums and has a positive tourniquet test. Lab work shows thrombocytopenia and hemoconcentration, indicative of Dengue Hemorrhagic Fever.",
-    "diagnosis": "Dengue Fever"
-  },
-  {
-    "id": "case-030",
-    "prompt": "A 50-year-old man from Brazil presents with chronic cough and hemoptysis. A chest X-ray shows multiple lung nodules. He was initially treated for tuberculosis with no improvement. A sputum culture eventually grows a fungus identified as *Paracoccidioides brasiliensis*.",
-    "diagnosis": "Paracoccidioidomycosis"
-  },
-  {
-    "id": "case-031",
-    "prompt": "A 35-year-old man from rural Mexico presents with a new-onset seizure. He has a history of intermittent headaches. A brain MRI reveals multiple calcified lesions (parenchymal) and one active cystic lesion with a 'scolex' visible, consistent with *Taenia solium* infection.",
-    "diagnosis": "Neurocysticercosis"
-  },
-  {
-    "id": "case-032",
-    "prompt": "A 40-year-old man, a sheep farmer in Australia, presents with right upper quadrant pain. An abdominal CT scan shows a large, multicystic (hydatid) lesion in his liver. He has a history of close contact with dogs that are fed raw sheep offal.",
-    "diagnosis": "Hydatid Disease (Echinococcosis)"
-  },
-  {
-    "id": "case-033",
-    "prompt": "A 29-year-old woman from rural West Africa presents with fever, headache, and vomiting. She is in her third trimester of pregnancy and has had no prenatal care. She has a high fever, proteinuria, and is jaundiced. She reports contact with rodents in her home. Lab tests are positive for Lassa virus RNA.",
-    "diagnosis": "Lassa Fever"
-  },
-  {
-    "id": "case-034",
-    "prompt": "A 48-year-old man with AIDS (CD4 count 40) presents with a 1-week history of worsening headache, fever, and confusion. A lumbar puncture shows high opening pressure and a positive CSF cryptococcal antigen test.",
-    "diagnosis": "Cryptococcal meningitis"
-  },
-  {
-    "id": "case-035",
-    "prompt": "A 22-year-old woman presents with a high fever, painful mouth sores, and a diffuse, blistering rash. The rash started on her trunk and spread, and she has severe conjunctivitis and genital ulcers. She reports taking sulfamethoxazole for a UTI one week prior. The skin is beginning to slough off (<10% body surface area).",
-    "diagnosis": "Stevens-Johnson Syndrome"
-  },
-  {
-    "id": "case-036",
-    "prompt": "A 30-year-old man with epilepsy, treated with carbamazepine, develops a fever and a widespread, coalescing erythematous rash. He has severe mucositis of the oral and genital mucosa. A skin biopsy confirms full-thickness epidermal necrosis. The diagnosis is made based on the clinical picture and recent medication change.",
-    "diagnosis": "Stevens-Johnson Syndrome"
-  },
-  {
-    "id": "case-037",
-    "prompt": "A 10-month-old infant from a low-income family, fed primarily on polished white rice gruel, is brought in for lethargy, vomiting, and difficulty breathing. The infant has a weak, rapid pulse, cardiomegaly, and signs of congestive heart failure. A diagnosis of acute cardiac (shoshin) beriberi is made.",
-    "diagnosis": "Infantile Beriberi"
-  },
-  {
-    "id": "case-038",
-    "prompt": "A 7-month-old infant, exclusively breastfed by a mother with a history of alcoholism and poor diet, presents with a weak, 'aphonic' cry, ptosis (drooping eyelids), and loss of deep tendon reflexes. The infant is listless and shows signs of peripheral neuropathy.",
-    "diagnosis": "Infantile Beriberi"
-  },
-  {
-    "id": "case-039",
-    "prompt": "A 40-year-old farmer from rural China presents with a 5-day history of high fever, headache, and profound myalgia. He developed a petechial rash on his trunk and face. His lab work shows severe thrombocytopenia (platelets 30,000) and leukopenia. He reports a recent tick bite while working in the fields.",
-    "diagnosis": "Severe Fever with Thrombocytopenia"
-  },
-  {
-    "id": "case-040",
-    "prompt": "A 55-year-old woman from South Korea, who enjoys hiking, presents with fever, gastrointestinal symptoms (nausea, diarrhea), and bleeding from her gums. Her platelet count is critically low. She is diagnosed with SFTS virus, and her family reports multiple tick attachments last week.",
-    "diagnosis": "Severe Fever with Thrombocytopenia"
-  },
-  {
-    "id": "case-041",
-    "prompt": "A 38-year-old HIV-positive man from Vietnam (CD4 count 50) presents with fever, weight loss, and dozens of umbilicated papular skin lesions on his face and trunk. A skin biopsy and culture confirm infection with the dimorphic fungus *Talaromyces marneffei*.",
-    "diagnosis": "Talaromycosis (Penicilliosis)"
-  },
-  {
-    "id": "case-042",
-    "prompt": "A 45-year-old man from Thailand, also with advanced AIDS, presents with a chronic cough, fever, and hepatosplenomegaly. Blood cultures are drawn and eventually grow a red-pigmented mold, confirming disseminated Talaromycosis. He reports exposure to bamboo rats.",
-    "diagnosis": "Talaromycosis (Penicilliosis)"
-  },
-  {
-    "id": "case-043",
-    "prompt": "A 25-year-old man in the Southwestern US presents with an abrupt onset of fever, myalgia, and headache, followed by a non-productive cough and rapidly progressing respiratory failure. His chest X-ray shows bilateral, diffuse interstitial infiltrates. He reports cleaning out a barn infested with deer mice one week prior.",
-    "diagnosis": "Hantavirus Cardiopulmonary Syndrome"
-  },
-  {
-    "id": "case-044",
-    "prompt": "A 30-year-old woman, a park ranger, presents with a 3-day prodrome of fever and muscle aches, now in acute respiratory distress and shock. She is hypoxic and requires mechanical ventilation. Her husband mentions they recently cleared a rodent-infested cabin. Hantavirus is confirmed by serology.",
-    "diagnosis": "Hantavirus Cardiopulmonary Syndrome"
-  },
-  {
-    "id": "case-045",
-    "prompt": "A 9-year-old boy from equatorial Africa presents with a rapidly growing, painless mass on his right jaw, causing facial distortion. His mother states it doubled in size in just 3 weeks. A biopsy shows a 'starry sky' pattern, and EBV DNA is detected in the tumor.",
-    "diagnosis": "Burkitt's Lymphoma"
-  },
-  {
-    "id": "case-046",
-    "prompt": "A 7-year-old girl from a malaria-endemic region in Papua New Guinea presents with abdominal swelling and pain. An ultrasound reveals a large mass involving her ovaries and ascites. A biopsy confirms a high-grade lymphoma with a c-MYC translocation, consistent with endemic Burkitt's.",
-    "diagnosis": "Burkitt's Lymphoma"
-  },
-  {
-    "id": "case-047",
-    "prompt": "A 40-year-old man with advanced HIV (CD4 count 30) presents with a 2-week history of progressive right-sided weakness, cognitive decline, and difficulty speaking. A brain MRI shows multiple, non-enhancing white matter lesions in the subcortical regions without mass effect. CSF PCR is positive for JC virus.",
-    "diagnosis": "Progressive Multifocal Leukoencephalopathy"
-  },
-  {
-    "id": "case-048",
-    "prompt": "A 52-year-old woman with chronic lymphocytic leukemia (CLL) presents with new-onset visual disturbances (hemianopsia) and confusion. A brain MRI reveals characteristic non-enhancing lesions in the parieto-occipital white matter. A subsequent CSF analysis confirms JC virus, diagnosing PML.",
-    "diagnosis": "Progressive Multifocal Leukoencephalopathy"
-  },
-  {
-    "id": "case-049",
-    "prompt": "A 28-year-old woman in Brazil presents with an acute febrile illness, headache, myalgia, and a maculopapular rash. She has no joint pain. Serological testing is negative for Dengue and Chikungunya but positive for Zika virus, another arboviral infection.",
-    "diagnosis": "Acute Arboviral Infection (Zika)"
-  },
-  {
-    "id": "case-050",
-    "prompt": "A 50-year-old man in Colorado presents with fever, confusion, and muscle weakness, progressing to acute flaccid paralysis. He reports many mosquito bites. CSF analysis shows pleocytosis, and serology is positive for West Nile Virus.",
-    "diagnosis": "Acute Arboviral Infection (West Nile)"
-  },
-  {
-    "id": "case-051",
-    "prompt": "A 19-year-old college student living in a dormitory presents with a sudden high fever, severe headache, nuchal rigidity (stiff neck), and photophobia. A petechial rash is noted on his trunk and lower extremities. A lumbar puncture shows cloudy CSF with high neutrophils, low glucose, and gram-negative diplococci (*N. meningitidis*).",
-    "diagnosis": "Acute Bacterial Meningitis"
-  },
-  {
-    "id": "case-052",
-    "prompt": "A 65-year-old man with diabetes presents with fever, ear pain, and a headache. He develops facial nerve palsy. Examination shows inflammation in the ear canal. A CSF analysis confirms a bacterial infection, likely an extension from otitis media. Gram-positive diplococci (*S. pneumoniae*) are seen.",
-    "diagnosis": "Acute Bacterial Meningitis"
-  },
-  {
-    "id": "case-053",
-    "prompt": "A 25-year-old tourist returns from a beach vacation in Jamaica. He presents with an intensely itchy, serpiginous (snake-like), raised, red track on his foot. He recalls walking barefoot on the beach where dogs were present. The lesion is advancing several millimeters per day.",
-    "diagnosis": "Hookworm-Related Cutaneous Larva"
-  },
-  {
-    "id": "case-054",
-    "prompt": "A 34-year-old plumber presents with multiple, intensely pruritic, erythematous papules on his knees and buttocks. He reports working in a crawlspace that was contaminated with animal feces. The diagnosis of cutaneous larva migrans is made based on the history and serpiginous tracks.",
-    "diagnosis": "Hookworm-Related Cutaneous Larva"
-  },
-  {
-    "id": "case-055",
-    "prompt": "A 27-year-old man in Nigeria presents with fever, malaise, and a diffuse maculopapular rash that has progressed to deep-seated, umbilicated vesicular and pustular lesions. The lesions are synchronous (all in the same stage) and are concentrated on the face and extremities, including the palms and soles. He reports contact with an ill family member.",
-    "diagnosis": "Human Monkeypox"
-  },
-  {
-    "id": "case-056",
-    "prompt": "A 30-year-old man presents with a painful, localized rash in his genital and perianal area. The rash consists of several pustules. He reports fever, myalgia, and painful lymphadenopathy. He has a history of multiple recent sexual partners. A swab PCR test confirms Monkeypox virus.",
-    "diagnosis": "Human Monkeypox"
-  },
-  {
-    "id": "case-057",
-    "prompt": "A 10-year-old boy from a rural Brazilian village presents with multiple painful, itchy nodules on his feet, particularly between the toes and under the nails. His mother reports he often plays barefoot in sandy soil. Examination reveals several embedded sand fleas (chigoes) with surrounding inflammation and black central dots.",
-    "diagnosis": "Tungiasis"
-  },
-  {
-    "id": "case-058",
-    "prompt": "A 40-year-old female farmer from Uganda presents with crusted, ulcerated lesions on her feet and hands. The lesions are superinfected with bacteria. She is unable to work due to pain. Examination reveals multiple Tunga penetrans fleas embedded in the periungual skin.",
-    "diagnosis": "Tungiasis"
-  },
-  {
-    "id": "case-059",
-    "prompt": "A 45-year-old man from a rural village in India presents with acute neurological symptoms, including agitation, hydrophobia (fear of water), and hypersalivation. His family reports he was bitten by a stray dog approximately 4 weeks ago but did not seek post-exposure prophylaxis. He is disoriented and aggressive.",
-    "diagnosis": "Rabies"
-  },
-  {
-    "id": "case-060",
-    "prompt": "A 22-year-old American tourist, who explored caves in Texas, presents with tingling and pain at the site of a small, unnoticed bat bite on his neck. Over the next few days, he develops a progressive ascending paralysis, fever, and confusion, ultimately leading to coma. Rabies is confirmed post-mortem.",
-    "diagnosis": "Rabies"
-  },
-  {
-    "id": "case-061",
-    "prompt": "A 9-month-old infant in Malawi with a recent bout of malaria presents with high fever and multiple seizures. A blood culture is drawn and grows *Salmonella Typhimurium*. The child is anemic and has splenomegaly. This is diagnosed as a severe, invasive non-typhoidal salmonella infection.",
-    "diagnosis": "Invasive Non-Typhoidal Salmonellae (iNTS)"
-  },
-  {
-    "id": "case-062",
-    "prompt": "A 30-year-old HIV-positive man in Kenya presents with a 2-week history of fever and cough. He is not on ART. His chest X-ray shows lobar pneumonia. A blood culture is positive for *Salmonella Enteritidis*, confirming bacteremia from a non-typhoidal strain, a common opportunistic infection in this population.",
-    "diagnosis": "Invasive Non-Typhoidal Salmonellae (iNTS)"
-  },
-  {
-    "id": "case-063",
-    "prompt": "A 30-year-old farmer presents with painful muscle spasms and lockjaw (trismus). He reports sustaining a deep puncture wound from a rusty farming tool about 10 days prior. He is now experiencing opisthotonos (arching of the back) and a 'risus sardonicus' facial expression. He has no clear history of vaccination.",
-    "diagnosis": "Tetanus"
-  },
-  {
-    "id": "case-064",
-    "prompt": "A 60-year-old woman, an avid gardener, presents with stiffness in her jaw and neck. She reports a minor cut from a rose thorn two weeks ago, which she cleaned at home. She now has difficulty swallowing and painful, generalized muscle spasms triggered by loud noises.",
-    "diagnosis": "Tetanus"
-  },
-  {
-    "id": "case-065",
-    "prompt": "A 30-year-old immigrant from Vietnam presents with a 3-week history of severe headache, low-grade fever, and vomiting. He has a known history of pulmonary TB, treated 5 years ago. A lumbar puncture shows CSF with very high protein, low glucose, and a lymphocytic pleocytosis. CSF PCR for *M. tuberculosis* is positive.",
-    "diagnosis": "Tuberculous Meningitis"
-  },
-  {
-    "id": "case-066",
-    "prompt": "A 5-year-old unvaccinated child from South Africa presents with fever, listlessness, and neck stiffness. A CT scan of the brain shows basilar enhancement and hydrocephalus. A lumbar puncture is performed, and CSF analysis reveals lymphocytosis, high protein, and very low glucose. A diagnosis of TB meningitis is made.",
-    "diagnosis": "Tuberculous Meningitis"
-  },
-  {
-    "id": "case-067",
-    "prompt": "A 50-year-old woman from the Fore tribe in Papua New Guinea is brought in by her family due to progressive ataxia, whole-body tremors (kuru means 'to shiver'), and emotional lability (pathological laughter). She has difficulty walking. Her family confirms her participation in ritualistic funeral feasts (involving cannibalism) decades ago.",
-    "diagnosis": "Kuru"
-  },
-  {
-    "id": "case-068",
-    "prompt": "A 45-year-old man from the same community, who also participated in mortuary feasts as a child, presents with insidious onset of dysarthria (slurred speech) and severe limb incoordination. He has prominent tremors and is now bed-bound. A clinical diagnosis of Kuru is made based on the unique history and progressive cerebellar syndrome.",
-    "diagnosis": "Kuru"
-  },
-  {
-    "id": "case-069",
-    "prompt": "A 42-year-old cattle rancher from rural Angola presents with intermittent high fevers, severe headache, and joint pain. He reports being bitten by tsetse flies. He has developed prominent, non-tender lymphadenopathy in the posterior cervical chain (Winterbottom's sign). He is now showing signs of confusion and daytime somnolence.",
-    "diagnosis": "Human African Trypanosomiasis"
-  },
-  {
-    "id": "case-070",
-    "prompt": "A 35-year-old tourist returning from a safari in Tanzania presents with a 2-week history of high fever, malaise, and a painful chancre at the site of an insect bite. His illness is progressing rapidly with signs of multi-organ failure and confusion. Blood smear confirms *Trypanosoma brucei rhodesiense*.",
-    "diagnosis": "Human African Trypanosomiasis"
-  },
-  {
-    "id": "case-071",
-    "prompt": "A 30-year-old African-American woman with sickle cell disease (SCD) presents with a chronic, non-healing, painful ulcer over her medial malleolus. The ulcer has been present for 6 months despite regular wound care and compression therapy. The surrounding skin is hyperpigmented and atrophic.",
-    "diagnosis": "Leg Ulcers in Sickle Cell Disease"
-  },
-  {
-    "id": "case-072",
-    "prompt": "A 28-year-old man with a known history of homozygous SS sickle cell disease presents with a new, painful, 'punched-out' ulcer on his lower leg after minor trauma. The ulcer base is necrotic, and the wound is failing to heal. He has a history of multiple vaso-occlusive crises.",
-    "diagnosis": "Leg Ulcers in Sickle Cell Disease"
-  },
-  {
-    "id": "case-073",
-    "prompt": "A 45-year-old man with advanced HIV (CD4 count of 45) presents with a 3-week history of a non-productive cough, progressive dyspnea on exertion, and low-grade fever. His oxygen saturation is 88% on room air. A chest X-ray shows diffuse, bilateral, 'ground-glass' interstitial infiltrates.",
-    "diagnosis": "Pneumocystis Pneumonia (PCP)"
-  },
-  {
-    "id": "case-074",
-    "prompt": "A 50-year-old woman, receiving high-dose prednisone for systemic lupus, presents with an abrupt onset of fever, cough, and respiratory distress. Her chest X-ray is initially normal, but her LDH is highly elevated, and she is hypoxic. A bronchoalveolar lavage (BAL) specimen stained with silver stain reveals characteristic *P. jirovecii* cysts.",
-    "diagnosis": "Pneumocystis Pneumonia (PCP)"
-  },
-  {
-    "id": "case-075",
-    "prompt": "A 45-year-old man with AIDS (CD4 count 30) presents with progressive bilateral leg weakness, urinary retention, and sensory loss below the navel. An MRI of the spine reveals an epidural mass compressing the spinal cord at the T8 level. A biopsy of the mass confirms a diffuse large B-cell lymphoma (Primary CNS lymphoma of the spine).",
-    "diagnosis": "Spinal Lymphoma"
-  },
-  {
-    "id": "case-076",
-    "prompt": "A 60-year-old woman presents with severe back pain and paresthesia in her legs. She has no history of trauma. An MRI shows a vertebral compression fracture and an associated soft-tissue mass in the epidural space. Biopsy confirms a non-Hodgkin lymphoma.",
-    "diagnosis": "Spinal Lymphoma"
-  },
-  {
-    "id": "case-077",
-    "prompt": "A 40-year-old man from Haiti presents with severe, chronic lymphedema of his left leg and scrotum, resulting in elephantiasis. He reports recurrent episodes of fever, chills, and painful inflammation in the affected areas (adenolymphangitis). A nighttime blood smear reveals the presence of *Wuchereria bancrofti* microfilariae.",
-    "diagnosis": "Lymphatic Filariasis"
-  },
-  {
-    "id": "case-078",
-    "prompt": "A 35-year-old woman from Papua New Guinea presents with a large, swollen, and tender mass in her right groin (lymphadenopathy). She also has a chronic cough and eosinophilia. A fine-needle aspirate of the lymph node is positive for microfilariae.",
-    "diagnosis": "Lymphatic Filariasis"
-  },
-  {
-    "id": "case-079",
-    "prompt": "A 38-year-old HIV-positive man (CD4 count 80) is started on antiretroviral therapy (ART). Three weeks later, he presents with high fever, worsening cough, and new, enlarging mediastinal lymph nodes on chest X-ray. He was previously diagnosed with pulmonary TB. This 'unmasking' of TB is diagnosed as IRIS.",
-    "diagnosis": "Immune Reconstitution Inflammatory Syndrome"
-  },
-  {
-    "id": "case-080",
-    "prompt": "A 42-year-old woman with a low CD4 count (60) starts ART. One month later, she develops a severe headache and photophobia. A lumbar puncture confirms cryptococcal meningitis, which was likely subclinical before therapy was initiated. This is a classic 'unmasking' IRIS presentation.",
-    "diagnosis": "Immune Reconstitution Inflammatory Syndrome"
-  },
-  {
-    "id": "case-081",
-    "prompt": "A 50-year-old immigrant from Southeast Asia is incidentally found to have massive splenomegaly on a routine physical exam. He has no symptoms but reports having 'many fevers' treated as malaria in his youth. Blood work shows very high anti-malarial antibody titers and polyclonal IgM, consistent with tropical splenomegaly syndrome.",
-    "diagnosis": "Hyperreactive Malarial Splenomegaly"
-  },
-  {
-    "id": "case-082",
-    "prompt": "A 45-year-old woman, a lifelong resident of a malaria-endemic area in Nigeria, presents with a 1-year history of a 'dragging' sensation in her left abdomen. On exam, she has a palpable spleen extending to the umbilicus. She is anemic but has no active fever. Lab tests show high IgM and *P. falciparum* antibodies.",
-    "diagnosis": "Hyperreactive Malarial Splenomegaly"
-  },
-  {
-    "id": "case-083",
-    "prompt": "A 65-year-old man from Thailand with a long-standing history of liver fluke infection (*Opisthorchis viverrini*) presents with progressive right upper quadrant pain, weight loss, and jaundice. An abdominal CT scan reveals a large, infiltrative mass at the hepatic hilum, consistent with a Klatskin tumor.",
-    "diagnosis": "Cholangiocarcinoma"
-  },
-  {
-    "id": "case-084",
-    "prompt": "A 70-year-old man from rural China, with a history of eating raw freshwater fish, presents with painless jaundice and pruritus. An ERCP shows a stricture of the common bile duct, and a biopsy of the mass confirms adenocarcinoma. This is a known complication of *Clonorchis sinensis* infection.",
-    "diagnosis": "Cholangiocarcinoma"
-  },
-  {
-    "id": "case-085",
-    "prompt": "A 5-year-old child from Uganda is brought to the hospital with a 3-day history of high fever, convulsions, and prostration. The child is unrousable (coma), has a stiff neck, and is severely anemic. A rapid diagnostic test and blood smear confirm heavy parasitemia with *P. falciparum*.",
-    "diagnosis": "Cerebral Malaria and Malarial Retinopathy"
-  },
-  {
-    "id": "case-086",
-    "prompt": "A 6-year-old child in Malawi being treated for severe malarial anemia is noted to have abnormal eye movements. An ophthalmic exam shows bilateral retinal hemorrhages, papilledema, and whitening of the retina, a poor prognostic sign in severe malaria.",
-    "diagnosis": "Cerebral Malaria and Malarial Retinopathy"
-  },
-  {
-    "id": "case-087",
-    "prompt": "A 34-year-old man living in rural West Africa presents with a large, painless, ulcerative lesion on his forearm. The ulcer has undermined edges and a necrotic base. A swab and PCR from the lesion confirm *Mycobacterium ulcerans* infection. He lives near a slow-moving river.",
-    "diagnosis": "Mycobacterium ulcerans Disease (Buruli ulcer)"
-  },
-  {
-    "id": "case-088",
-    "prompt": "A 12-year-old girl in Australia (Queensland) presents with a persistent, non-healing ulcer on her ankle. It started as a painless nodule and slowly broke down. The clinical presentation in an endemic area is highly suggestive of Buruli ulcer, which is later confirmed by culture.",
-    "diagnosis": "Mycobacterium ulcerans Disease (Buruli ulcer)"
-  },
-  {
-    "id": "case-089",
-    "prompt": "A 4-year-old child in a low-resource setting is given an injection of a liquid labeled 'antimalarial' for a fever. The fever persists. The medication, obtained from an unregulated local vendor, is later tested and found to contain no active pharmaceutical ingredient, only water and dye. The child's condition worsens due to lack of treatment.",
-    "diagnosis": "Poor Quality Medicines"
-  },
-  {
-    "id": "case-090",
-    "prompt": "A 50-year-old man in Southeast Asia purchases antibiotics for a cough. After 5 days, his pneumonia is worse. The antibiotic blister pack is examined and found to be a falsified copy of a well-known brand, with incorrect printing and a chalk-like tablet. Lab analysis shows it contains only 10% of the stated dose.",
-    "diagnosis": "Poor Quality Medicines"
-  },
-  {
-    "id": "case-091",
-    "prompt": "A 3-year-old child from a rural sub-Saharan African community is brought to a nutritional clinic. The child has significant bilateral pitting edema (anasarca), a distended abdomen (ascites), and dermatosis with flaky, paint-like peeling skin. The child's hair is sparse, brittle, and reddish. The mother reports weaning the child onto a low-protein, high-carbohydrate gruel (cassava).",
-    "diagnosis": "Kwashiorkor"
-  },
-  {
-    "id": "case-092",
-    "prompt": "A 2-year-old child is admitted for lethargy and failure to thrive. The child is apathetic, irritable, and has pitting edema in the legs and feet. The child's liver is enlarged. The diet is found to be severely deficient in protein, though calorie intake is marginally adequate. A diagnosis of edematous malnutrition is made.",
-    "diagnosis": "Kwashiorkor"
-  },
-  {
-    "id": "case-093",
-    "prompt": "A 50-year-old agricultural worker from Madagascar presents with warty, cauliflower-like nodules on his left foot that have been slowly growing for over 10 years. He frequently works barefoot. A skin scraping examined with potassium hydroxide (KOH) reveals sclerotic bodies, often described as 'copper pennies'.",
-    "diagnosis": "Chromoblastomycosis"
-  },
-  {
-    "id": "case-094",
-    "prompt": "A 60-year-old farmer from Brazil presents with a large, verrucous, plaque-like lesion on his hand and forearm. It has been present for 8 years. He reports frequently working barefoot. What is the most likely diagnosis?",
-    "diagnosis": "Chromoblastomycosis"
-  },
-  {
-    "id": "case-095",
-    "prompt": "A 40-year-old woman with a history of lupus (SLE), treated with corticosteroids, presents with rapidly progressing weakness in her legs, which has now ascended to her arms. She reports a 'band-like' sensory loss around her torso and has urinary incontinence. MRI of the spine shows a longitudinally extensive T2 hyperintense lesion spanning 4 vertebral segments.",
-    "diagnosis": "Acute Transverse Myelitis"
-  },
-  {
-    "id": "case-096",
-    "prompt": "A 25-year-old man develops bilateral leg weakness, back pain, and numbness 2 weeks after a febrile illness (likely viral). His symptoms progressed over 48 hours to complete paralysis below the waist. An MRI of his thoracic spine reveals a gadolinium-enhancing lesion consistent with post-infectious transverse myelitis.",
-    "diagnosis": "Acute Transverse Myelitis"
-  },
-  {
-    "id": "case-097",
-    "prompt": "A 55-year-old farmer from rural Ethiopia, who works outdoors without eye protection, presents with a 3-month history of a growing, painless, whitish mass on the surface of his right eye. The lesion is fleshy, vascularized, and appears to be invading the cornea. He is HIV-positive. A biopsy confirms Ocular Surface Squamous Neoplasia (OSSN).",
-    "diagnosis": "Ocular Surface Squamous Neoplasia"
-  },
-  {
-    "id": "case-98",
-    "prompt": "A 40-year-old woman from Uganda presents with a 'growth' in her left eye, causing irritation and blurred vision. She has a history of high sun exposure. An ophthalmic exam shows a large, gelatinous, papilliform mass on the conjunctiva near the limbus. A biopsy confirms squamous neoplasia.",
-    "diagnosis": "Ocular Surface Squamous Neoplasia"
-  },
-  {
-    "id": "case-099",
-    "prompt": "A 29-year-old woman from India, previously treated for pulmonary TB, presents with blurred vision, eye pain, and floaters in her right eye. An ophthalmic exam reveals granulomatous anterior uveitis with 'mutton-fat' keratic precipitates and iris nodules (Busacca nodules). A QuantiFERON-TB Gold test is positive.",
-    "diagnosis": "Tuberculous Uveitis"
-  },
-  {
-    "id": "case-100",
-    "prompt": "A 50-year-old man with a history of latent TB presents with decreased vision in his left eye. A fundoscopic exam shows a large, solitary choroidal granuloma (tuberculoma) in the posterior pole, with associated serous retinal detachment. A chest X-ray is clear.",
-    "diagnosis": "Tuberculous Uveitis"
-  },
-  {
-    "id": "case-101",
-    "prompt": "A 28-year-old pregnant woman (G2P1) at 28 weeks gestation presents for her first prenatal visit. Her routine screening VDRL/RPR test is positive (1:32 titer), and a confirmatory TP-PA test is also positive. She has no symptoms and was unaware of the infection. She has a penicillin allergy, complicating treatment.",
-    "diagnosis": "Syphilis in Pregnancy"
-  },
-  {
-    "id": "case-102",
-    "prompt": "A 22-year-old pregnant woman (G1) presents in labor. She had no prenatal care. She has a diffuse maculopapular rash on her trunk, palms, and soles. A rapid RPR test is reactive. There is high concern for congenital syphilis in the newborn.",
-    "diagnosis": "Syphilis in Pregnancy"
-  },
-  {
-    "id": "case-103",
-    "prompt": "A 6-month-old infant presents with fever, irritability, and a bulging fontanelle. The child has a stiff neck and a positive Kernig's sign. CSF analysis shows high neutrophils, high protein, and low glucose. A gram stain of the CSF reveals gram-positive diplococci. The mother is unvaccinated.",
-    "diagnosis": "Streptococcus pneumoniae Meningitis"
-  },
-  {
-    "id": "case-104",
-    "prompt": "A 70-year-old man with chronic obstructive pulmonary disease (COPD) presents with fever, confusion, and severe headache. He has nuchal rigidity. A lumbar puncture confirms bacterial meningitis, and the CSF culture later grows *Streptococcus pneumoniae*.",
-    "diagnosis": "Streptococcus pneumoniae Meningitis"
-  },
-  {
-    "id": "case-105",
-    "prompt": "A 32-year-old man from rural Peru, who works in the mountains, presents with high fever, severe anemia (hemolytic), and jaundice. He reports recent insect bites. A peripheral blood smear reveals numerous intraerythrocytic coccobacilli (*Bartonella bacilliformis*), confirming the acute phase of Carrión's disease.",
-    "diagnosis": "Bartonellosis - Oroya Fever"
-  },
-  {
-    "id": "case-106",
-    "prompt": "A 10-year-old boy from an endemic region in the Andes presents with multiple, large, reddish-purple, nodular skin lesions (verruga peruana). His mother reports he had a severe febrile illness with anemia several months ago. This is the chronic eruptive phase of Bartonellosis.",
-    "diagnosis": "Bartonellosis - Oroya Fever"
-  },
-  {
-    "id": "case-107",
-    "prompt": "A 25-year-old man returns from a backpacking trip where he drank unfiltered stream water. He presents with a 2-week history of foul-smelling, fatty, watery diarrhea (steatorrhea), significant abdominal bloating, and flatulence. He has no fever. A stool antigen test is positive for *Giardia lamblia*.",
-    "diagnosis": "Giardiasis"
-  },
-  {
-    "id": "case-108",
-    "prompt": "A 4-year-old child in a daycare center presents with a 1-week history of intermittent, non-bloody diarrhea, abdominal cramps, and poor appetite. Several other children in the center have similar symptoms. A stool ova and parasite exam reveals *Giardia* cysts.",
-    "diagnosis": "Giardiasis"
-  },
-  {
-    "id": "case-109",
-    "prompt": "A 4-year-old child from Nigeria is brought in with a 3-day history of high, cyclical fevers, convulsions, and prostration. The child is unrousable and has severe anemia. A blood smear confirms heavy parasitemia with ring-form trophozoites.",
-    "diagnosis": "Malaria (Plasmodium falciparum)"
-  },
-  {
-    "id": "case-110",
-    "prompt": "A 22-year-old backpacker returns from Nepal with a 2-week history of escalating 'stepladder' fever, severe headache, and malaise. He has a relative bradycardia (slow heart rate despite fever) and 'rose spots' on his abdomen. Blood cultures grow *Salmonella typhi*.",
-    "diagnosis": "Typhoid fever"
-  },
-  {
-    "id": "case-111",
-    "prompt": "A 50-year-old woman presents to a clinic in Haiti after a hurricane. She has had profuse, painless, watery diarrhea and vomiting for 12 hours. She is now in hypovolemic shock, with sunken eyes, poor skin turgor, and \"washerwoman's hands.\"",
+    "id": "case-013",
+    "prompt": "A 5-year-old child living in a densely populated, poverty-stricken area develops the sudden onset of profuse, painless, watery diarrhea. The stool is described as 'rice-water' in appearance. The child is severely dehydrated, with sunken eyes and poor skin turgor. There is no blood in the stool, and vomiting is present.",
     "diagnosis": "Cholera"
   },
   {
-    "id": "case-112",
-    "prompt": "A 55-year-old man from the Caribbean presents with debilitating, chronic polyarthralgia in his hands, wrists, and ankles that has persisted for 6 months, making it difficult to work. He recalls an acute febrile illness with a rash and severe joint pain 6 months prior.",
-    "diagnosis": "Chikungunya virus infection"
+    "id": "case-014",
+    "prompt": "A 40-year-old male presents to a field hospital in Yemen during a major outbreak. He reports passing copious amounts of odorless, gray-white stool. He is in hypovolemic shock, with barely palpable radial pulses. Rapid diagnostic testing confirms the presence of *Vibrio cholerae* O1.",
+    "diagnosis": "Cholera"
   },
   {
-    "id": "case-113",
-    "prompt": "A 25-year-old soldier participating in a field exercise in rural Korea presents with fever, chills, and a severe headache. He notes a painful, blackened scab (eschar) in his armpit, surrounded by a maculopapular rash.",
-    "diagnosis": "Scrub typhus"
+    "id": "case-015",
+    "prompt": "A 55-year-old man from an endemic area for *Strongyloides stercoralis* infection, who is also known to be HTLV-1 positive, is admitted with worsening abdominal pain, distension, and diarrhea. He has pulmonary infiltrates and is unresponsive to standard therapy. Lab work shows high-grade peripheral eosinophilia and stool examination reveals an unusually large number of filariform larvae.",
+    "diagnosis": "HTLV-1-Associated Strongyloides stercoralis Hyperinfection Syndrome"
   },
   {
-    "id": "case-114",
-    "prompt": "A 40-year-old woman from India presents with multiple, painless, hypopigmented skin patches on her back and arms. She has a loss of sensation (touch, temperature) in these patches. The ulnar nerve is palpably thickened and tender. A skin biopsy confirms tuberculoid leprosy.",
-    "diagnosis": "erythema nodosum leprosum"
+    "id": "case-016",
+    "prompt": "A patient with newly diagnosed HTLV-1 associated myelopathy (HAM/TSP) is started on high-dose corticosteroids. Shortly after, he develops a life-threatening illness characterized by Gram-negative sepsis and multi-organ failure. Stool cultures and sputum reveal disseminated *Strongyloides stercoralis* larvae, indicating a massive autoinfection cycle exacerbated by immunosuppression.",
+    "diagnosis": "HTLV-1-Associated Strongyloides stercoralis Hyperinfection Syndrome"
   },
   {
-    "id": "case-115",
-    "prompt": "A 20-year-old man, a lifelong resident of a village near Lake Malawi, presents with a 2-month history of painless terminal hematuria (blood at the end of urination) and urinary frequency. He frequently swims in the lake. A urine microscopy test reveals the presence of *S. haematobium* eggs with a terminal spine.",
-    "diagnosis": "Schistosomiasis"
+    "id": "case-017",
+    "prompt": "A 28-year-old traveler returning from Mozambique presents with recurrent high fevers, chills, drenching sweats, and cyclical rigors every 48 hours. She is pale, and her spleen is palpable. A peripheral blood smear shows ring forms and gametocytes, confirming a diagnosis.",
+    "diagnosis": "Malaria"
   },
   {
-    "id": "case-116",
-    "prompt": "A 31-year-old woman with known HIV, not on ART, presents with her first-ever seizure. Her CD4 count is 180. A brain MRI shows a single, ring-enhancing lesion. A brain biopsy confirms primary CNS lymphoma, an AIDS-defining illness.",
-    "diagnosis": "HIV (Pulmonary Complications)"
+    "id": "case-018",
+    "prompt": "A 5-year-old child in Nigeria is brought to the clinic with severe lethargy, inability to feed, and generalized convulsions. Labs show severe normocytic anemia and hypoglycemia. A blood slide reveals a high parasitemia count of *Plasmodium falciparum*.",
+    "diagnosis": "Malaria"
   },
   {
-    "id": "case-117",
-    "prompt": "A 65-year-old man, a veteran of the Vietnam War, is being treated with high-dose corticosteroids for rheumatoid arthritis. He develops severe, diffuse abdominal pain, nausea, and vomiting, progressing to septic shock. A stool exam reveals a massive number of *Strongyloides* larvae, confirming hyperinfection syndrome.",
-    "diagnosis": "Pulmonary Strongyloidiasis"
+    "id": "case-019",
+    "prompt": "A 50-year-old hiker returns from a trip to the Kruger National Park in South Africa. He presents with a low-grade fever, severe headache, and regional lymphadenopathy. Examination of his neck reveals a painless, dark, scab-like ulcer (eschar) at the site of a presumed tick bite a week prior. A skin biopsy is consistent with a rickettsial infection.",
+    "diagnosis": "African Tick-Bite Fever"
   },
   {
-    "id": "case-118",
-    "prompt": "A 48-year-old diabetic rice farmer from Thailand presents with a 2-week history of fever, non-productive cough, and multiple subcutaneous abscesses on his trunk. A chest X-ray shows diffuse nodular infiltrates. A culture from a skin abscess grows *Burkholderia pseudomallei*.",
-    "diagnosis": "Melioidosis"
+    "id": "case-020",
+    "prompt": "A 35-year-old woman in Kenya reports an abrupt onset of fever, myalgia, and a maculopapular rash that includes her palms and soles. She has a history of walking through tall grass on her farm. Multiple tender lymph nodes are found in the groin area, and two eschars are noted on her legs.",
+    "diagnosis": "African Tick-Bite Fever"
   },
   {
-    "id": "case-119",
-    "prompt": "A 52-year-old woman who works in a sheep processing plant presents with an abrupt onset of high fever, drenching sweats, severe headache, and a non-productive cough. Her chest X-ray shows atypical pneumonia. Serology for *Coxiella burnetii* phase II IgM is highly positive.",
-    "diagnosis": "Q Fever"
+    "id": "case-021",
+    "prompt": "A 32-year-old male with poorly controlled HIV (CD4 count 50 cells/mm³) presents with multiple painless, violaceous, non-blanching macules, plaques, and nodules primarily on his legs and feet. He also has lesions on his palate. A biopsy of a skin lesion shows spindle cells and vascular channels with associated hemorrhage.",
+    "diagnosis": "Kaposi’s Sarcoma"
   },
   {
-    "id": "case-120",
-    "prompt": "A 60-year-old man with a history of COPD, living in the Ohio River Valley, presents with chronic cough, weight loss, and fatigue. A chest X-ray reveals a cavitary lesion in the upper lobe, mimicking TB. A sputum culture grows *Histoplasma capsulatum*.",
-    "diagnosis": "Histoplasmosis"
+    "id": "case-022",
+    "prompt": "An elderly man from the Mediterranean presents with slow-growing, reddish-purple plaques on his lower legs that have been present for years. He is HIV-negative. Histopathology confirms the diagnosis of a locally aggressive, vascular tumor linked to Human Herpesvirus 8 (HHV-8).",
+    "diagnosis": "Kaposi’s Sarcoma"
   },
   {
-    "id": "case-121",
-    "prompt": "A 28-year-old man from Sri Lanka presents with chronic, nocturnal cough and wheezing that does not respond to standard asthma treatment (albuterol, corticosteroids). He has marked peripheral eosinophilia (5000 cells/mm3) and very high serum IgE. A diagnosis of TPE is made, likely secondary to a filarial infection.",
-    "diagnosis": "Tropical Pulmonary Eosinophilia (TPE)"
+    "id": "case-023",
+    "prompt": "A 4-month-old infant in Southeast Asia is exclusively breastfed by a mother whose diet is severely restricted to polished rice. The baby presents with restlessness, hoarse crying, and is suddenly refusing feeds. The most concerning signs are cardiovascular: tachycardia, dyspnea, and peripheral edema, consistent with a high-output heart failure.",
+    "diagnosis": "Infantile Beriberi"
   },
   {
-    "id": "case-122",
-    "prompt": "A 35-year-old man who attended a traditional funeral in Guinea presents with abrupt high fever, severe headache, and joint pain. This progressed to bloody diarrhea, vomiting, and a maculopapular rash. He is now showing signs of shock and bleeding from the gums. He has a known epidemiological link to a confirmed outbreak.",
-    "diagnosis": "Ebola virus disease"
+    "id": "case-024",
+    "prompt": "A young child in a rural village in Asia develops acute shortness of breath and cyanosis. Physical examination reveals an enlarged heart and signs of congestive heart failure. The mother's diet is found to be deficient in thiamine, which is quickly corrected, leading to rapid clinical improvement in the child.",
+    "diagnosis": "Infantile Beriberi"
   },
   {
-    "id": "case-123",
-    "prompt": "A 40-year-old man from Saudi Arabia presents with chronic, severe low back pain radiating to his leg. An MRI of his spine reveals inflammation and destruction of the L4-L5 vertebrae (spondylitis). He has a low-grade fever and fatigue. He works as a butcher. Blood cultures eventually grow *Brucella*.",
-    "diagnosis": "Brucellosis"
+    "id": "case-025",
+    "prompt": "A 30-year-old male working in the Amazon Basin is admitted with an acute onset of high fever, severe headache, and polyarthralgia affecting his knees and ankles. The joint pain is debilitating. He also has a maculopapular rash on his trunk. He reports a mosquito bite 5 days prior.",
+    "diagnosis": "Mayaro-Fever"
   },
   {
-    "id": "case-124",
-    "prompt": "A 55-year-old male farmer from Brazil presents with painful, ulcerative lesions on his gums and palate, making it difficult to eat. He also has a chronic cough and significant cervical lymphadenopathy. A biopsy of an oral lesion shows the characteristic 'mariner's wheel' budding yeast.",
-    "diagnosis": "Paracoccidioidomycosis"
+    "id": "case-026",
+    "prompt": "A research scientist returns from an ecological field trip in the tropical rainforest of Peru. She presents with persistent fever, chills, and debilitating arthralgia that lasts for several weeks. Her symptoms are clinically similar to Dengue, but serology confirms an alphavirus infection.",
+    "diagnosis": "Mayaro-Fever"
   },
   {
-    "id": "case-125",
-    "prompt": "A 50-year-old woman from rural Peru presents with a 2-month history of worsening headaches, nausea, and vomiting. An MRI of the brain reveals hydrocephalus caused by a large, racemose (grape-like) cluster of cysts in the basal cisterns, obstructing CSF flow. This is a severe extraparenchymal form.",
-    "diagnosis": "Neurocysticercosis"
-  },
-  {
-    "id": "case-126",
-    "prompt": "A 35-year-old woman from Morocco presents with a 1-month history of cough, chest pain, and mild hemoptysis. A chest X-ray reveals a large, perfectly round, 'cannonball' lesion in her right lung. A CT scan confirms a unilocular hydatid cyst with a 'water-lily sign' (detached membrane).",
-    "diagnosis": "Hydatid Disease (Echinococcosis)"
-  },
-  {
-    "id": "case-127",
-    "prompt": "A 30-year-old nurse working in Sierra Leone presents with a gradual onset of fever, profound weakness, and sore throat. Over the next few days, she develops facial edema, vomiting, and retrosternal chest pain. She reports caring for a patient with a similar febrile illness who later died. Lab tests show proteinuria and elevated AST.",
+    "id": "case-027",
+    "prompt": "A 45-year-old healthcare worker in Nigeria is airlifted to a specialized unit with a severe febrile illness. She presents with fever, prostration, multi-system involvement, including pharyngitis, retrosternal chest pain, and a hemorrhagic tendency with petechiae and mucosal bleeding. A history of contact with rodents is noted.",
     "diagnosis": "Lassa Fever"
   },
   {
+    "id": "case-028",
+    "prompt": "A patient from Sierra Leone is admitted with a 10-day history of gradually worsening fever, sore throat, and severe malaise. Examination reveals pharyngeal exudates. Despite initial improvement, the patient's condition deteriorates with facial swelling, and he develops deafness, a complication of this endemic viral hemorrhagic fever.",
+    "diagnosis": "Lassa Fever"
+  },
+  {
+    "id": "case-029",
+    "prompt": "A 40-year-old woman, a resident of West Africa, presents with recurrent subconjunctival hemorrhage and Calabar swellings—fugitive subcutaneous swellings, typically over the joints. She also reports seeing a worm moving across the surface of her eye. Microfilariae are found on a blood smear.",
+    "diagnosis": "Loiasis"
+  },
+  {
+    "id": "case-030",
+    "prompt": "A patient from Cameroon is diagnosed with a chronic filarial infection. Her main complaint is transient, localized angioedema (Calabar swellings) on her limbs and face, often associated with pruritus and eosinophilia. She recalls frequent bites from the mango fly in her village.",
+    "diagnosis": "Loiasis"
+  },
+  {
+    "id": "case-031",
+    "prompt": "A 25-year-old forestry worker in Malaysia presents with a high, unremitting fever, chills, and headache. Laboratory results show severe thrombocytopenia, mild jaundice, and a rapidly increasing parasitemia. A blood film reveals large, prominent rings and appliqué forms that resemble *P. falciparum*, but also characteristic 'band' or 'basket' forms.",
+    "diagnosis": "Knowlesi Malaria"
+  },
+  {
+    "id": "case-032",
+    "prompt": "A 42-year-old man in Borneo is admitted with signs of severe malaria, including acute respiratory distress and shock. The fever is quotidian (daily). Microscopic examination of the blood smear shows *Plasmodium* parasites with a high rate of multiply-infected red cells, later identified by PCR as a fifth *Plasmodium* species.",
+    "diagnosis": "Knowlesi Malaria"
+  },
+  {
+    "id": "case-033",
+    "prompt": "A 58-year-old woman from rural China is hospitalized during the summer with a high fever, severe headache, and myalgia. She develops a rapidly declining platelet count, leukopenia, and elevated liver enzymes. There is no travel history, but she recalls removing a tick from her skin 10 days prior.",
+    "diagnosis": "Severe Fever With Thrombocytopenia"
+  },
+  {
+    "id": "case-034",
+    "prompt": "A 65-year-old farmer in South Korea is admitted with a hemorrhagic syndrome including petechiae, ecchymoses, and gingival bleeding, following a non-specific febrile illness. Laboratory investigation shows profound thrombocytopenia and multi-organ dysfunction. Serology confirms an infection with the Huaiyangshan Banyangvirus (formerly SFTSV).",
+    "diagnosis": "Severe Fever With Thrombocytopenia"
+  },
+  {
+    "id": "case-035",
+    "prompt": "A 48-year-old AIDS patient in Thailand, with a CD4 count of 35 cells/mm³, presents with prolonged fever, weight loss, generalized lymphadenopathy, and skin lesions resembling molluscum contagiosum. A bone marrow aspirate shows numerous yeast-like cells with a characteristic central septum.",
+    "diagnosis": "Talaromycosis (Penicilliosis)"
+  },
+  {
+    "id": "case-036",
+    "prompt": "A 35-year-old HIV-positive woman from Vietnam presents with pulmonary infiltrates, hepatosplenomegaly, and fungemia. The patient is treated for suspected histoplasmosis but shows no improvement. Cultures later grow a reddish pigment-producing fungus that forms yeast cells in the body, confirming a localized mycosis endemic to Southeast Asia.",
+    "diagnosis": "Talaromycosis (Penicilliosis)"
+  },
+  {
+    "id": "case-037",
+    "prompt": "A 25-year-old man in the Southwestern United States, who recently cleaned out an old shed, develops a sudden onset of fever, myalgia, and non-cardiogenic pulmonary edema leading to severe respiratory failure. Chest X-ray shows rapidly progressive bilateral interstitial infiltrates. He requires intubation and vasopressors.",
+    "diagnosis": "Hantavirus Cardiopulmonary Syndrome (HCPS)"
+  },
+  {
+    "id": "case-038",
+    "prompt": "A young, healthy man in Chile, exposed to aerosolized droppings of the long-tailed rodent (*Oligoryzomys longicaudatus*), presents with a prodrome of fever and headache, followed by a hypotensive phase. His illness quickly progresses to cardiopulmonary shock with a high mortality rate.",
+    "diagnosis": "Hantavirus Cardiopulmonary Syndrome (HCPS)"
+  },
+  {
+    "id": "case-039",
+    "prompt": "A 40-year-old woman with a known history of HIV and poor medication adherence presents to the emergency room with a generalized tonic-clonic seizure. Her viral load is high, and her CD4 count is low. A CT scan of the brain is normal. She has missed her anti-retroviral therapy (ART) doses, raising suspicion of medication non-compliance being the primary driver of her seizure risk in the absence of an opportunistic infection.",
+    "diagnosis": "Seizure Management in HIV"
+  },
+  {
+    "id": "case-040",
+    "prompt": "An HIV-positive patient is admitted with a new-onset focal seizure. Initial workup, including imaging and CSF analysis, rules out major opportunistic infections (like Toxoplasmosis, Cryptococcus). The patient is on anti-epileptic drugs (AEDs) but reports that his seizures have become more frequent. The treatment is complicated by drug-drug interactions between his AEDs and his ART, requiring therapeutic drug monitoring and dose adjustment.",
+    "diagnosis": "Seizure Management in HIV"
+  },
+  {
+    "id": "case-041",
+    "prompt": "A severely malnourished 3-year-old child in a sub-Saharan African village presents with rapidly progressive gangrene of the face. The process began as a small gingival ulcer but has quickly spread to destroy the soft tissues and underlying bone of the cheek, leaving a large, foul-smelling defect. The child is severely underweight and has a history of recent measles.",
+    "diagnosis": "Noma"
+  },
+  {
+    "id": "case-042",
+    "prompt": "A 5-year-old boy, diagnosed with protein-energy malnutrition, develops an acute necrotizing infection of the mouth. The condition, also known as cancrum oris, is characterized by a black eschar on the face that quickly progresses to a full-thickness defect. The child's immune system is severely compromised, allowing opportunistic bacteria to cause this destructive process.",
+    "diagnosis": "Noma"
+  },
+  {
+    "id": "case-043",
+    "prompt": "A 10-year-old boy in rural Africa presents with a rapidly growing, painless mass arising from his jaw. The mass is large and appears 'starry sky' on histopathology, due to macrophages clearing apoptotic cells. Laboratory tests confirm an Epstein-Barr Virus (EBV) association, and the tumor shows a characteristic chromosomal translocation.",
+    "diagnosis": "Burkitt’s Lymphoma"
+  },
+  {
+    "id": "case-044",
+    "prompt": "A 6-year-old child with HIV in Sub-Saharan Africa develops a rapidly progressive abdominal tumor that involves the intestines and kidneys. The mass is found to be a highly aggressive B-cell non-Hodgkin lymphoma, which is one of the most common pediatric cancers in the region.",
+    "diagnosis": "Burkitt’s Lymphoma"
+  },
+  {
+    "id": "case-045",
+    "prompt": "A 3-year-old child in an unimmunized community develops a febrile illness followed by a maculopapular rash that starts behind the ears and spreads to the face, trunk, and extremities. The rash is confluent on the face. Examination of the oral mucosa reveals tiny white spots on a red background (Koplik spots) prior to the rash onset.",
+    "diagnosis": "Measles"
+  },
+  {
+    "id": "case-046",
+    "prompt": "A 20-year-old man is admitted with a complicated case of a highly contagious viral illness. He presents with high fever, cough, coryza, and conjunctivitis (the '3 Cs'). He later develops pneumonia and diarrhea. He has no record of vaccination against the disease.",
+    "diagnosis": "Measles"
+  },
+  {
+    "id": "case-047",
+    "prompt": "A 45-year-old man from Brazil presents with multiple hypopigmented, anesthetic skin patches on his back and arms. A peripheral nerve in his elbow is palpably thickened, and he reports 'pins and needles' sensations. A skin smear is negative for acid-fast bacilli, suggesting the tuberculoid form of the disease.",
+    "diagnosis": "Leprosy"
+  },
+  {
+    "id": "case-048",
+    "prompt": "A patient from a region of India reports a chronic, slowly progressing illness with extensive, diffuse skin infiltration, nodular lesions (leproma) on the face and earlobes, and loss of eyebrows (madarosis). His nasal mucosa is severely affected. A skin biopsy reveals a high bacterial load.",
+    "diagnosis": "Leprosy"
+  },
+  {
+    "id": "case-049",
+    "prompt": "A 48-year-old HIV-positive patient, with a severely low CD4 count (<100 cells/mm³), presents with subacute onset of confusion, cognitive decline, and right-sided hemiparesis. An MRI shows multiple asymmetric, non-enhancing white matter lesions predominantly in the subcortical and periventricular areas, with no mass effect.",
+    "diagnosis": "Progressive Multifocal Leukoencephalopathy"
+  },
+  {
+    "id": "case-050",
+    "prompt": "An immunosuppressed patient on chronic chemotherapy for lymphoma develops progressive visual loss and ataxia. The symptoms are due to demyelination in the brain, caused by the reactivation of the John Cunningham (JC) virus, which targets oligodendrocytes.",
+    "diagnosis": "Progressive Multifocal Leukoencephalopathy"
+  },
+  {
+    "id": "case-051",
+    "prompt": "A 35-year-old man from the Caribbean presents with a sudden onset of high fever, severe frontal headache, and myalgia, 4 days after multiple mosquito bites. He has a non-specific rash. Initial lab tests show leukopenia and mild thrombocytopenia. Serology is pending to differentiate the cause from other common endemic diseases like Dengue and Chikungunya.",
+    "diagnosis": "Acute Arboviral Infection"
+  },
+  {
+    "id": "case-052",
+    "prompt": "A patient in Central America develops an acute, non-fatal viral illness transmitted by mosquitoes. The symptoms include fever, rash, and joint pain, which are generally self-limiting. Diagnostic testing is performed to confirm the specific viral agent (e.g., Zika, Chikungunya, or another emerging virus) for surveillance purposes.",
+    "diagnosis": "Acute Arboviral Infection"
+  },
+  {
+    "id": "case-053",
+    "prompt": "A 12-year-old boy in a rural area develops increasing muscle stiffness and spasms 7 days after stepping on a rusty nail. He presents with trismus (lockjaw) and characteristic painful spasms, including risus sardonicus (a fixed, grinning expression) and opisthotonos (arching of the back). He is unimmunized.",
+    "diagnosis": "Tetanus"
+  },
+  {
+    "id": "case-054",
+    "prompt": "A 60-year-old gardener with a chronic leg ulcer is admitted with fever, sweating, and generalized muscle rigidity. Loud noises or a slight touch trigger severe, generalized spasms. The symptoms are due to a potent neurotoxin produced by an anaerobic bacterium.",
+    "diagnosis": "Tetanus"
+  },
+  {
+    "id": "case-055",
+    "prompt": "A 25-year-old college student presents to the emergency room with a rapid onset of high fever, severe headache, confusion, and a stiff neck (nuchal rigidity). A petechial rash is noted on his trunk and limbs. Cerebrospinal fluid analysis shows a high white blood cell count predominantly composed of neutrophils, low glucose, and high protein.",
+    "diagnosis": "Acute Bacterial Meningitis"
+  },
+  {
+    "id": "case-056",
+    "prompt": "A 3-year-old child is brought in with fever, lethargy, and persistent vomiting. Physical examination reveals positive Brudzinski's and Kernig's signs. Blood cultures are drawn immediately, and treatment for presumptive *Streptococcus pneumoniae* or *Neisseria meningitidis* infection is initiated.",
+    "diagnosis": "Acute Bacterial Meningitis"
+  },
+  {
+    "id": "case-057",
+    "prompt": "A 10-year-old boy, who often plays barefoot in the soil, complains of an intensely itchy rash on his feet. The rash consists of serpiginous, erythematous, raised tracks that advance a few millimeters daily, primarily on the sole and dorsum of his feet. He has no systemic symptoms.",
+    "diagnosis": "Hookworm-Related Cutaneous Larva Migrans"
+  },
+  {
+    "id": "case-058",
+    "prompt": "A construction worker who recently walked on contaminated ground develops an itchy, migratory rash on his thigh. The linear eruption is highly pruritic and caused by the burrowing of a nematode larva, usually *Ancylostoma braziliense*, that is unable to penetrate the deeper layers of human skin.",
+    "diagnosis": "Hookworm-Related Cutaneous Larva Migrans"
+  },
+  {
+    "id": "case-059",
+    "prompt": "A 40-year-old gardener in Latin America sustains a small puncture wound on his hand from a rosebush thorn. Weeks later, a small, non-healing ulcer forms at the site. Subsequently, a chain of painless, subcutaneous nodules develops along the lymphatic channels proximally up his arm (lymphocutaneous spread).",
+    "diagnosis": "Sporotrichosis"
+  },
+  {
+    "id": "case-060",
+    "prompt": "A laboratory worker accidentally inoculates herself with a dimorphic fungus. She develops a primary lesion on her finger that ulcerates. The disease is characterized by chronic skin lesions and can disseminate in immunocompromised individuals, but in this case, it follows a classic ascending nodular pattern.",
+    "diagnosis": "Sporotrichosis"
+  },
+  {
+    "id": "case-061",
+    "prompt": "A 28-year-old man presents with a painful, deep, non-indurated ulcer on his penis that bleeds easily when scraped. The ulcer has undermined edges and a grayish base. He has tender, unilateral, suppurative inguinal lymphadenopathy (a 'bubo') that may rupture spontaneously.",
+    "diagnosis": "Chancroid"
+  },
+  {
+    "id": "case-062",
+    "prompt": "A 35-year-old woman from a developing country seeks treatment for a genital ulcer. Unlike syphilis, the lesion is soft and extremely painful. Gram-stain of the exudate shows small, Gram-negative rods, often described as a 'school of fish' or 'railroad track' arrangement.",
+    "diagnosis": "Chancroid"
+  },
+  {
+    "id": "case-063",
+    "prompt": "A 30-year-old man from Hawaii presents with a severe headache, stiff neck, and nausea, but no fever. His symptoms began a few days after he consumed raw freshwater snails on a dare. CSF analysis reveals a pleocytosis with a high proportion of eosinophils (over 10%).",
+    "diagnosis": "Eosinophilic Meningitis"
+  },
+  {
+    "id": "case-064",
+    "prompt": "A traveler to Southeast Asia develops signs of meningoencephalitis after eating unwashed raw vegetables. The condition is caused by the accidental ingestion of the larvae of *Angiostrongylus cantonensis*. The main diagnostic feature is the finding of eosinophils in the CSF.",
+    "diagnosis": "Eosinophilic Meningitis"
+  },
+  {
+    "id": "case-065",
+    "prompt": "A 55-year-old patient with persistent cough, night sweats, and unexplained weight loss for 3 months presents with hemoptysis. A chest X-ray shows apical consolidation and cavitation. Sputum smear is positive for acid-fast bacilli.",
+    "diagnosis": "Tuberculosis"
+  },
+  {
+    "id": "case-066",
+    "prompt": "A 25-year-old woman, who recently emigrated from a high-incidence country, presents with fatigue, low-grade fever, and a painless swelling in her neck. Biopsy of the enlarged lymph node shows caseating granulomas, confirming extrapulmonary infection.",
+    "diagnosis": "Tuberculosis"
+  },
+  {
+    "id": "case-067",
+    "prompt": "A 22-year-old man in West Africa, who had contact with a sick animal (a rope squirrel), develops a febrile illness followed by a vesiculopustular rash. The rash starts on his face and spreads to his palms and soles. He has prominent, painful lymphadenopathy prior to the rash onset.",
+    "diagnosis": "Human Monkeypox"
+  },
+  {
+    "id": "case-068",
+    "prompt": "A 35-year-old patient presents with a flu-like illness and a generalized rash consisting of deep-seated, firm lesions that progress through macular, papular, vesicular, pustular, and crusting stages, all at the same stage of development in any given area. Laboratory confirmation identifies an Orthopoxvirus.",
+    "diagnosis": "Human Monkeypox"
+  },
+  {
+    "id": "case-069",
+    "prompt": "A 40-year-old man from Southeast Asia presents with chronic cough, hemoptysis, and recurrent pleuritic chest pain. Chest imaging reveals ring-enhancing cystic lesions and infiltrates in the lung parenchyma, mimicking tuberculosis. He has a history of consuming raw freshwater crabs.",
+    "diagnosis": "Paragonimiasis"
+  },
+  {
+    "id": "case-070",
+    "prompt": "A patient is diagnosed with a chronic parasitic infection involving the lungs, caused by a lung fluke. The main clinical feature is coughing up rusty-brown sputum containing the characteristic eggs of *Paragonimus westermani*.",
+    "diagnosis": "Paragonimiasis"
+  },
+  {
+    "id": "case-071",
+    "prompt": "A 32-year-old woman with a history of swimming in a contaminated lake in Africa develops acute transverse myelitis. She presents with bilateral leg weakness, paresthesias, and urinary retention. MRI of the spine shows enhancement and edema in the conus medullaris. Her CSF has an elevated eosinophil count.",
+    "diagnosis": "Neuroschistosomiasis"
+  },
+  {
+    "id": "case-072",
+    "prompt": "A patient with long-standing intestinal schistosomiasis develops progressive motor deficits and sensory disturbances in his lower limbs. The symptoms are caused by a granulomatous mass of schistosome eggs lodged in the spinal cord, leading to a myeloradicular syndrome.",
+    "diagnosis": "Neuroschistosomiasis"
+  },
+  {
+    "id": "case-073",
+    "prompt": "A 40-year-old farmer in India is bitten on the ankle by an unseen animal. Within 30 minutes, he develops localized swelling, severe pain, and bleeding from the bite site. He soon complains of abdominal pain and begins bleeding from his gums. His coagulation profile is severely deranged (prolonged INR, low fibrinogen), consistent with hematotoxic envenomation.",
+    "diagnosis": "Snake Bite"
+  },
+  {
+    "id": "case-074",
+    "prompt": "A 25-year-old man is brought to a rural clinic in Sub-Saharan Africa with progressive descending paralysis. He first noticed drooping eyelids (ptosis) and difficulty swallowing, which has now progressed to respiratory distress. He has minimal local swelling at the bite site on his hand, which occurred 6 hours prior. This pattern is characteristic of neurotoxic envenomation.",
+    "diagnosis": "Snake Bite"
+  },
+  {
+    "id": "case-075",
+    "prompt": "A 22-year-old traveler returns from a 3-week trip to South Asia. He presents with a high fever that has been rising in a step-ladder pattern for 10 days. He has a dull headache, abdominal distension, and constipation. A faint, rose-colored maculopapular rash (rose spots) is noted on his lower chest and abdomen. Blood cultures are positive for *Salmonella typhi*.",
+    "diagnosis": "Typhoid Fever"
+  },
+  {
+    "id": "case-076",
+    "prompt": "A 19-year-old woman from a region with poor sanitation presents with a prolonged febrile illness and malaise. She exhibits relative bradycardia (a slow heart rate despite a high fever) and hepatosplenomegaly. In the third week of her illness, she develops intestinal perforation, a severe complication of the disease.",
+    "diagnosis": "Typhoid Fever"
+  },
+  {
+    "id": "case-077",
+    "prompt": "A 6-year-old child in a remote, arid region of Ethiopia presents with chronic, recurrent eye infections. Examination of the upper eyelid reveals conjunctival scarring (Arlt's line) and follicular inflammation. The eyelashes are turned inward, scraping the cornea with every blink (trichiasis).",
+    "diagnosis": "Trachoma"
+  },
+  {
+    "id": "case-078",
+    "prompt": "A 45-year-old woman from an endemic area presents with severe visual impairment and corneal opacity. Her history is consistent with decades of repeated *Chlamydia trachomatis* eye infections, leading to progressive scarring of the conjunctiva, in-turned eyelashes, and eventual blindness.",
+    "diagnosis": "Trachoma"
+  },
+  {
+    "id": "case-079",
+    "prompt": "A 55-year-old man, an avid spelunker (cave explorer) from the Ohio River Valley, presents with a 2-month history of low-grade fever, weight loss, and cough. A chest X-ray shows diffuse nodular infiltrates and hilar adenopathy. A biopsy of a mouth ulcer reveals yeast forms within macrophages.",
+    "diagnosis": "Histoplasmosis"
+  },
+  {
+    "id": "case-080",
+    "prompt": "A 42-year-old HIV-positive patient with a CD4 count of 40 cells/mm³ is admitted with a severe febrile illness, pancytopenia, and hepatosplenomegaly. A bone marrow aspirate is performed, and staining reveals numerous intracellular yeast cells, confirming a disseminated fungal infection.",
+    "diagnosis": "Histoplasmosis"
+  },
+  {
+    "id": "case-081",
+    "prompt": "A 28-year-old tourist develops an abrupt onset of high fever, chills, headache, and diffuse urticaria (hives) three weeks after swimming in Lake Malawi, Africa. Laboratory tests show marked peripheral eosinophilia and elevated liver enzymes. Serology for *Schistosoma* is positive.",
+    "diagnosis": "Acute Schistosomiasis (Katayama Syndrome)"
+  },
+  {
+    "id": "case-082",
+    "prompt": "A group of travelers returning from a freshwater excursion in an endemic area of Brazil present with similar symptoms: fever, myalgia, non-productive cough, and diarrhea. The most striking lab finding is a significant eosinophilia in all patients, consistent with an acute hypersensitivity reaction to migrating schistosomulae.",
+    "diagnosis": "Acute Schistosomiasis (Katayama Syndrome)"
+  },
+  {
+    "id": "case-083",
+    "prompt": "A 9-year-old boy from a rural village in Madagascar, who does not wear shoes, presents with multiple painful, itchy lesions on his feet. The lesions are pearly-white papules with a central black dot, concentrated around the toenails and interdigital spaces. The central dot is the posterior end of an embedded sand flea.",
+    "diagnosis": "Tungiasis"
+  },
+  {
+    "id": "case-084",
+    "prompt": "A 30-year-old woman in a resource-poor community complains of severe discomfort and difficulty walking. Examination of her periungual areas reveals over 20 embedded *Tunga penetrans* fleas, causing significant inflammation, ulceration, and a secondary bacterial infection. This severe infestation is causing chronic pain.",
+    "diagnosis": "Tungiasis"
+  },
+  {
+    "id": "case-085",
+    "prompt": "A 45-year-old man in India is brought to the hospital with acute neurological symptoms, including agitation, anxiety, and hydrophobia (fear of water). He exhibits painful pharyngeal spasms when attempting to drink. His family reports he was bitten by a stray dog 6 weeks ago but did not seek post-exposure prophylaxis.",
+    "diagnosis": "Rabies"
+  },
+  {
+    "id": "case-086",
+    "prompt": "A 10-year-old child in Southeast Asia develops progressive flaccid paralysis after being scratched by a bat. The paralysis began in the scratched limb and is now ascending. The patient is conscious but lethargic, and CSF analysis is consistent with viral encephalitis. The patient dies from respiratory failure.",
+    "diagnosis": "Rabies"
+  },
+  {
+    "id": "case-087",
+    "prompt": "A 34-year-old man from the Bihar state of India presents with a 2-month history of intermittent high fever, massive spleen enlargement (splenomegaly), and progressive weight loss (cachexia). Blood tests reveal pancytopenia (anemia, leukopenia, thrombocytopenia) and hypergammaglobulinemia.",
+    "diagnosis": "Visceral Leishmaniasis (Kala-Azar)"
+  },
+  {
+    "id": "case-088",
+    "prompt": "A 5-year-old child in Sudan is admitted with severe wasting, a grossly distended abdomen due to hepatosplenomegaly, and a persistent fever. The child is pale and has a low white blood cell count. A bone marrow aspirate confirms the diagnosis by showing Leishman-Donovan bodies (amastigotes) within macrophages.",
+    "diagnosis": "Visceral Leishmaniasis (Kala-Azar)"
+  },
+  {
+    "id": "case-089",
+    "prompt": "A 25-year-old man from a drought-stricken region of Ethiopia presents with an irreversible spastic paralysis of his lower limbs (spastic paraparesis). His diet for the past several months has consisted almost exclusively of the grass pea (*Lathyrus sativus*) during a famine. He has no sensory loss.",
+    "diagnosis": "Neurolathyrism"
+  },
+  {
+    "id": "case-090",
+    "prompt": "A community in rural India is observed to have a high incidence of non-progressive, spastic paralysis primarily affecting young men. The condition is linked to the overconsumption of a specific legume (grass pea) known to contain the neurotoxin ODAP, especially during periods of food scarcity.",
+    "diagnosis": "Neurolathyrism"
+  },
+  {
+    "id": "case-091",
+    "prompt": "A 2-year-old child in Malawi, known to be HIV-positive, is admitted with high fever, respiratory distress, and signs of sepsis. Blood cultures grow *Salmonella enterica* serovar Typhimurium. This is his second episode of bacteremia with this organism in 6 months.",
+    "diagnosis": "Invasive Non-Typhoidal Salmonellae (iNTS) Infection"
+  },
+  {
+    "id": "case-092",
+    "prompt": "A 1-year-old child in Sub-Saharan Africa, who recently recovered from malaria, presents with a 4-day history of high fever and lethargy. There is no diarrhea. Blood cultures are positive for a non-typhoidal *Salmonella* species, confirming a bacteremic illness that is a common cause of sepsis in this region.",
+    "diagnosis": "Invasive Non-Typhoidal Salmonellae (iNTS) Infection"
+  },
+  {
+    "id": "case-093",
+    "prompt": "A 50-year-old farmer who handles livestock presents with a painless, itchy papule on his forearm. The papule develops into a fluid-filled vesicle, which then ruptures to form a black, necrotic, depressed eschar surrounded by significant edema. He is afebrile and otherwise well.",
+    "diagnosis": "Anthrax"
+  },
+  {
+    "id": "case-094",
+    "prompt": "A 45-year-old wool sorter develops sudden onset of high fever, severe respiratory distress, and cyanosis. A chest X-ray reveals a widened mediastinum and pleural effusions. He rapidly progresses to septic shock and hemorrhagic meningitis. This inhalational form of the disease is highly fatal.",
+    "diagnosis": "Anthrax"
+  },
+  {
+    "id": "case-095",
+    "prompt": "A 30-year-old HIV-positive patient with a CD4 count of 120 presents with a 3-week history of subacute, worsening headache, low-grade fever, and night sweats. He is now confused and has a stiff neck. CSF analysis shows very high protein, low glucose, and a lymphocytic pleocytosis.",
+    "diagnosis": "Tuberculous Meningitis"
+  },
+  {
+    "id": "case-096",
+    "prompt": "A 4-year-old child from a high-incidence country is admitted with lethargy and focal seizures. A cranial CT scan shows basilar meningeal enhancement and hydrocephalus. A chest X-ray reveals a miliary pattern, suggesting disseminated disease. CSF PCR confirms *Mycobacterium tuberculosis*.",
+    "diagnosis": "Tuberculous Meningitis"
+  },
+  {
+    "id": "case-097",
+    "prompt": "A 35-year-old immigrant from Honduras presents with a 6-month history of recurrent seizures. He also complains of chronic headaches. A brain MRI reveals multiple parenchymal cystic lesions, some with a 'dot-in-cyst' appearance (scolex) and others that are calcified. He has a history of eating undercooked pork.",
+    "diagnosis": "Neurocysticercosis"
+  },
+  {
+    "id": "case-098",
+    "prompt": "A 28-year-old woman from rural Mexico is admitted to the emergency room with a first-time generalized tonic-clonic seizure. A non-contrast head CT scan shows several small, calcified 'rice-grain' lesions in the brain parenchyma, consistent with the inactive, chronic form of the disease.",
+    "diagnosis": "Neurocysticercosis"
+  },
+  {
+    "id": "case-099",
+    "prompt": "A 38-year-old patient with untreated AIDS (CD4 count 25 cells/mm³) presents with a severe, unrelenting headache that has lasted for two weeks. He is now confused and has a stiff neck. A lumbar puncture reveals an extremely high opening pressure. CSF India ink stain shows encapsulated yeast forms.",
+    "diagnosis": "Cryptococcal Meningitis"
+  },
+  {
+    "id": "case-100",
+    "prompt": "A 45-year-old woman, 1 year post-kidney transplant and on chronic immunosuppressants, develops a progressive headache and blurred vision. An MRI shows multiple small, enhancing lesions (cryptococcomas). CSF antigen testing is positive for *Cryptococcus neoformans*.",
+    "diagnosis": "Cryptococcal Meningitis"
+  },
+  {
+    "id": "case-101",
+    "prompt": "A 10-year-old child in a rural, war-affected region of the Democratic Republic of Congo presents with a sudden, symmetrical, and permanent spastic paralysis of both legs. The onset occurred after several weeks of consuming a diet composed almost exclusively of insufficiently processed bitter cassava, which is high in cyanogens.",
+    "diagnosis": "Konzo"
+  },
+  {
+    "id": "case-102",
+    "prompt": "A family in a remote village in Mozambique reports that several children developed an abrupt 'tying' of their legs after a prolonged drought, forcing them to rely on a diet of bitter cassava root. The children have exaggerated reflexes and difficulty walking (spastic paraparesis), but no sensory deficits.",
+    "diagnosis": "Konzo"
+  },
+  {
+    "id": "case-103",
+    "prompt": "A 40-year-old man from a village near a river in the Democratic Republic of Congo develops an intermittent fever, severe headaches, and generalized lymphadenopathy. He has a history of an inflammatory skin lesion (chancre) at the bite site of a tsetse fly. Weeks later, he develops daytime somnolence and nocturnal insomnia, indicating central nervous system involvement.",
+    "diagnosis": "Human African Trypanosomiasis (HAT)"
+  },
+  {
+    "id": "case-104",
+    "prompt": "A patient is diagnosed with the East African form of sleeping sickness. His illness is rapidly progressive, characterized by early onset of meningoencephalitis, wasting, and severe mental deterioration. Microscopic examination of a lymph node aspirate shows motile trypanosomes.",
+    "diagnosis": "Human African Trypanosomiasis (HAT)"
+  },
+  {
+    "id": "case-105",
+    "prompt": "A 15-year-old adolescent with a known history of sickle cell anemia presents with a chronic, painful ulcer on his medial malleolus (ankle bone). The ulcer is deep, non-healing, and has indurated borders. The primary cause of the poor wound healing is localized ischemia and microvascular occlusion.",
+    "diagnosis": "Leg Ulcers in Sickle Cell Disease"
+  },
+  {
+    "id": "case-106",
+    "prompt": "A young adult with sickle cell disease develops a recurrent ulcer on his leg. The ulcer is unresponsive to standard wound care and requires frequent debridement. The patient is often anemic and requires transfusions, as the ulcer causes significant blood and protein loss.",
+    "diagnosis": "Leg Ulcers in Sickle Cell Disease"
+  },
+  {
+    "id": "case-107",
+    "prompt": "A 35-year-old man, a traveler who hiked through dense forest in rural Thailand, presents with an acute febrile illness, severe headache, and myalgia. Examination reveals a distinct, black, crusted eschar at an unsuspected site (e.g., in the axilla or groin). Serology confirms a rickettsial infection transmitted by chigger mites.",
+    "diagnosis": "Scrub Typhus"
+  },
+  {
+    "id": "case-108",
+    "prompt": "A soldier on deployment in the Asia-Pacific region develops a high fever, generalized lymphadenopathy, and a truncal rash. Laboratory findings include leukopenia and abnormal liver function tests. The presence of a localized, painless eschar helps differentiate this disease from epidemic typhus.",
+    "diagnosis": "Scrub Typhus"
+  },
+  {
+    "id": "case-109",
+    "prompt": "A 40-year-old man with untreated HIV (CD4 count 50 cells/mm³) presents with a subacute onset of progressive shortness of breath, a non-productive cough, and fever. Chest X-ray shows diffuse, bilateral, ground-glass opacities, classic for interstitial pneumonia. Sputum is negative for typical bacteria.",
+    "diagnosis": "Pneumocystis Pneumonia (PCP)"
+  },
+  {
+    "id": "case-110",
+    "prompt": "A cancer patient receiving high-dose corticosteroids develops fever and hypoxia. A bronchoalveolar lavage (BAL) is performed, and staining with methenamine silver reveals characteristic cup-shaped or crushed ping-pong ball cysts of a common opportunistic fungal-like organism.",
+    "diagnosis": "Pneumocystis Pneumonia (PCP)"
+  },
+  {
+    "id": "case-111",
+    "prompt": "A 50-year-old man presents with chronic back pain that is worse at night, low-grade fever, and weight loss. Physical examination reveals a gibbus deformity (sharp angular kyphosis) in his thoracic spine. Imaging shows destruction of two adjacent vertebral bodies and the intervening disc space, with a large paravertebral abscess.",
+    "diagnosis": "Spinal Tuberculosis (Pott’s Disease)"
+  },
+  {
+    "id": "case-112",
+    "prompt": "A patient is diagnosed with an infection of the spine caused by *Mycobacterium tuberculosis*. The disease leads to bony collapse and can cause neurological deficits, including paraplegia (Pott's paraplegia), due to compression of the spinal cord by the abscess or vertebral fragments.",
+    "diagnosis": "Spinal Tuberculosis (Pott’s Disease)"
+  },
+  {
+    "id": "case-113",
+    "prompt": "A 60-year-old man from coastal India presents with massive, chronic swelling of his left leg and scrotum. The skin of the affected areas is thickened and hyperkeratotic, resembling elephant skin (elephantiasis). A nocturnal blood smear reveals microfilariae of *Wuchereria bancrofti*.",
+    "diagnosis": "Lymphatic Filariasis"
+  },
+  {
+    "id": "case-114",
+    "prompt": "A patient with a history of recurrent fevers and painful inflammation of the lymph nodes and lymphatic vessels (adenolymphangitis) in his groin develops chyluria (milky-white urine) due to rupture of lymphatic vessels into the urinary tract. The symptoms are caused by thread-like nematodes.",
+    "diagnosis": "Lymphatic Filariasis"
+  },
+  {
+    "id": "case-115",
+    "prompt": "A 30-year-old HIV-positive patient, 3 months after starting highly active antiretroviral therapy (HAART), develops worsening symptoms of a previously subclinical infection. He presents with new, painful, inflammatory lymph nodes in his neck and worsening pulmonary infiltrates, despite his CD4 count improving and viral load dropping. This paradoxical reaction is due to a recovery of the immune system.",
+    "diagnosis": "Immune Reconstitution Inflammatory Syndrome"
+  },
+  {
+    "id": "case-116",
+    "prompt": "An AIDS patient successfully initiated on ART develops a rapid exacerbation of Cryptococcal meningitis symptoms, including new signs of raised intracranial pressure and hydrocephalus. This clinical worsening is attributed to the mounting immune response to the residual infection, which requires careful management of inflammation.",
+    "diagnosis": "Immune Reconstitution Inflammatory Syndrome"
+  },
+  {
+    "id": "case-117",
+    "prompt": "A 45-year-old man from Thailand, who regularly eats raw freshwater fish, presents with a painful, migratory, subcutaneous nodule on his trunk. The nodule moves several centimeters over a 24-hour period. Blood work reveals marked peripheral eosinophilia. Surgical removal confirms the presence of a nematode worm.",
+    "diagnosis": "Gnathostomiasis"
+  },
+  {
+    "id": "case-118",
+    "prompt": "A patient presents with a history of recurrent episodes of localized swelling, redness, and pain in various parts of his body, including the eye. The condition is due to the larval migration of *Gnathostoma spinigerum*. The migratory swellings (larva migrans profundus) are often accompanied by fever and malaise.",
+    "diagnosis": "Gnathostomiasis"
+  },
+  {
+    "id": "case-119",
+    "prompt": "A sheep herder from a rural area presents with chronic right upper quadrant pain. Imaging reveals a large, unilocular cyst in the liver with daughter cysts inside, consistent with a hydatid cyst. Serology is positive for *Echinococcus granulosus* antigens.",
+    "diagnosis": "Cystic Echinococcosis"
+  },
+  {
+    "id": "case-120",
+    "prompt": "A 60-year-old man from a livestock-raising community is found to have a large, slow-growing pulmonary cyst on a routine chest X-ray. The cyst is encapsulated and is at high risk of rupture, which could cause a severe allergic reaction (anaphylaxis) due to the release of cyst fluid.",
+    "diagnosis": "Cystic Echinococcosis"
+  },
+  {
+    "id": "case-121",
+    "prompt": "A 35-year-old man from Egypt presents with a 6-month history of painless terminal hematuria (blood at the end of urination). Cystoscopy reveals small, inflamed patches and 'sandy patches' on the bladder wall. Urine filtration shows eggs of *Schistosoma haematobium* with terminal spines.",
+    "diagnosis": "Genitourinary Schistosomiasis"
+  },
+  {
+    "id": "case-122",
+    "prompt": "A woman who grew up in the Nile River Valley is diagnosed with a chronic urinary infection. She has calcification of the bladder wall (a 'pipestem' appearance on imaging) and is at high risk for bladder cancer (squamous cell carcinoma) due to chronic inflammation caused by parasitic eggs.",
+    "diagnosis": "Genitourinary Schistosomiasis"
+  },
+  {
+    "id": "case-123",
+    "prompt": "A tourist returning from Costa Rica presents with a persistent, painful, inflamed lesion on his scalp that has been growing for a week. He reports feeling intermittent stinging sensations. Examination reveals a boil-like furuncle with a central punctum, from which clear fluid is draining. Closer inspection reveals the posterior end of a larva (maggot) breathing through the opening.",
+    "diagnosis": "Myiasis"
+  },
+  {
+    "id": "case-124",
+    "prompt": "A patient with neglected hygiene is admitted with an infestation of his chronic, infected wound. Numerous larvae are feeding on the necrotic tissue within the wound. This is an infestation by fly larvae, which can be cutaneous, wound-based, or affect internal cavities.",
+    "diagnosis": "Myiasis"
+  },
+  {
+    "id": "case-125",
+    "prompt": "A 45-year-old man, a long-term resident of a malaria-endemic region, presents with massive, non-tender splenomegaly (spleen extending below the umbilicus) and chronic, intermittent fever. Laboratory tests show high IgM levels, particularly anti-malarial antibodies, and a high peripheral lymphocyte count. The condition is a hypersensitivity reaction to chronic *Plasmodium* infection.",
+    "diagnosis": "Hyperreactive Malarial Splenomegaly (HMS)"
+  },
+  {
+    "id": "case-126",
+    "prompt": "A patient from a malarious region is diagnosed with tropical splenomegaly syndrome. The chronic illness is characterized by recurrent abdominal pain due to the massive spleen, anemia, and an exaggerated immunological response to malaria, often requiring long-term anti-malarial prophylaxis.",
+    "diagnosis": "Hyperreactive Malarial Splenomegaly (HMS)"
+  },
+  {
+    "id": "case-127",
+    "prompt": "A 15-year-old girl in the South Pacific presents with a non-venereal treponemal infection. She has a primary, non-ulcerative papilloma (mother yaw) on her lower leg. She later develops multiple secondary papules and moist patches in the skin folds, which are highly infectious.",
+    "diagnosis": "Yaws"
+  },
+  {
     "id": "case-128",
-    "prompt": "A 45-year-old man from an endemic country presents for a routine health screening. He has a mild, chronic cough and has lost 5 kg over 3 months. A chest X-ray is ordered and reveals a cavitary lesion in the right upper lobe with surrounding infiltrate. A sputum AFB smear is positive.",
-    "diagnosis": "Pulmonary tuberculosis"
+    "prompt": "A child in a remote, humid region develops a chronic, disfiguring bone infection (gummata and periostitis) of the shins that progresses years after the initial skin lesions. The disease is caused by *Treponema pallidum* subspecies *pertenue* and is spread by skin-to-skin contact.",
+    "diagnosis": "Yaws"
   },
   {
     "id": "case-129",
-    "prompt": "A 38-year-old male traveler returns from India. He presents with a 10-day history of high fever, chills, and severe pain in the right upper quadrant. An ultrasound of the abdomen shows a large, solitary, hypoechoic lesion in the right lobe of the liver. Aspiration of the lesion yields a thick, reddish-brown fluid described as 'anchovy paste'.",
-    "diagnosis": "Amebic liver abscess"
+    "prompt": "A 65-year-old man from Northeast Thailand, with a history of consuming raw or undercooked *Cyprinoid* fish, presents with jaundice, pruritus, and right upper quadrant pain. Imaging reveals dilation of the intrahepatic bile ducts and a mass lesion in the ductal system. Biopsy confirms an adenocarcinoma of the bile duct.",
+    "diagnosis": "Cholangiocarcinoma"
   },
   {
     "id": "case-130",
-    "prompt": "A 28-year-old woman from South Africa presents with painless, matted lymph node swelling in her neck (cervical lymphadenopathy) that has been growing for 4 months. She also has a low-grade fever and night sweats. A fine-needle aspiration of the node shows caseating granulomas, consistent with scrofula.",
-    "diagnosis": "Tuberculosis (TB)"
+    "prompt": "A patient with chronic liver fluke infection (*Opisthorchis viverrini*) is diagnosed with a malignant tumor of the biliary tree. The chronic inflammation and irritation caused by the parasite are considered the primary risk factor for this aggressive cancer in endemic regions.",
+    "diagnosis": "Cholangiocarcinoma"
   },
   {
     "id": "case-131",
-    "prompt": "A 50-year-old man from rural Mexico presents with acute respiratory distress, fever, and a cough producing large amounts of brown, purulent sputum. He has a history of a recent febrile illness with right upper quadrant pain that was untreated. A chest CT confirms a hepatobronchial fistula and a communicating liver abscess.",
-    "diagnosis": "Amebiasis (Pleuropulmonary)"
+    "prompt": "A 50-year-old man from West Africa presents with intense, chronic itching (pruritus) and skin thickening (lichenification) on his hips and legs, often called 'leopard skin' due to depigmentation. He also complains of visual impairment, including microfilariae visible in the cornea upon slit-lamp examination.",
+    "diagnosis": "Onchocerciasis"
   },
   {
     "id": "case-132",
-    "prompt": "A 55-year-old woman with sarcoidosis, on long-term corticosteroid therapy, presents with a 3-week history of low-grade fever, cough, and chest pain. A chest CT reveals multiple, well-defined pulmonary nodules. A lung biopsy and subsequent fungal culture grow *Cryptococcus neoformans*.",
-    "diagnosis": "Cryptococcosis"
+    "prompt": "A patient living near fast-flowing rivers in Central America develops subcutaneous nodules (onchocercomas) that contain adult worms. The chronic disease, transmitted by the blackfly, causes severe dermatitis and is a leading cause of preventable blindness in endemic regions ('river blindness').",
+    "diagnosis": "Onchocerciasis"
   },
   {
     "id": "case-133",
-    "prompt": "A 31-year-old pregnant woman in her first trimester, living in Puerto Rico, presents with a 3-day history of a low-grade fever, pruritic maculopapular rash, and bilateral non-purulent conjunctivitis. She also reports mild arthralgia. Serum and urine are sent for virus RT-PCR due to the high risk of congenital malformations.",
-    "diagnosis": "Acute Arboviral Infection (Zika)"
+    "prompt": "A 7-year-old child in rural Uganda, with a high *P. falciparum* parasitemia, is admitted in a coma. He presents with generalized seizures and fever, but no signs of meningeal irritation. Fundoscopic examination reveals white-centered hemorrhages and retinal whitening, a pathognomonic sign of a severe malarial complication.",
+    "diagnosis": "Cerebral Malaria and Malarial Retinopathy"
   },
   {
     "id": "case-134",
-    "prompt": "A 60-year-old avid gardener from Texas presents in late summer with a 4-day history of abrupt-onset fever, severe headache, body aches, and fatigue. He also developed a transient maculopapular rash on his trunk. He reports numerous mosquito bites. His symptoms are self-limited. Serology confirms a recent infection.",
-    "diagnosis": "Acute Arboviral Infection (West Nile)"
+    "prompt": "A patient with severe *P. falciparum* infection develops altered mental status, delirium, and eventually becomes unrousable. Despite anti-malarial treatment, the patient remains comatose, exhibiting decorticate posturing. The severe neurological manifestation is often associated with obstructed cerebral microcirculation.",
+    "diagnosis": "Cerebral Malaria and Malarial Retinopathy"
   },
-
   {
     "id": "case-135",
-    "prompt": "A 50-year-old man from rural Bolivia presents with a 5-year history of progressive difficulty swallowing (dysphagia) and episodic regurgitation of undigested food. A barium swallow reveals a massively dilated esophagus (megaesophagus) with a 'bird's beak' appearance at the GE junction. He also has mild heart failure. Serology is positive for *Trypanosoma cruzi*.",
-    "diagnosis": "Chagas Disease"
+    "prompt": "A 70-year-old, frail, bedridden patient with dementia is found to have extensive, hyperkeratotic, crusted lesions on her hands, feet, and trunk. The lesions resemble psoriasis or a scaly dermatitis, but a skin scraping reveals thousands of mites and eggs, indicating a massive infestation that is highly contagious.",
+    "diagnosis": "Crusted Scabies"
   },
   {
     "id": "case-136",
-    "prompt": "A 45-year-old woman from Brazil is admitted for new-onset congestive heart failure. An EKG shows right bundle branch block and ventricular arrhythmias. An echocardiogram reveals a dilated cardiomyopathy. She reports a history of living in a mud-and-thatch house as a child. Serology confirms chronic Chagas.",
-    "diagnosis": "Chagas Disease"
+    "prompt": "An immunosuppressed patient, recently on long-term corticosteroids, develops a severe form of mite infestation. The patient has hundreds of thousands of mites, leading to thick, non-pruritic, hyperkeratotic crusts. Due to the high mite burden, healthcare workers must take strict contact precautions.",
+    "diagnosis": "Crusted Scabies"
   },
   {
     "id": "case-137",
-    "prompt": "A 55-year-old Japanese immigrant with a history of intravenous drug use is put on corticosteroids for severe asthma. He rapidly develops septic shock, abdominal distension, and respiratory failure. Stool and sputum analysis reveal a massive number of *Strongyloides stercoralis* larvae. Blood work is positive for HTLV-1 antibodies.",
-    "diagnosis": "HTLV-1-Associated Strongyloides"
+    "prompt": "A 15-year-old boy in a waterlogged area of West Africa presents with a large, painless, non-healing ulcer on his lower leg. The ulcer has undermined edges and a necrotic base. He initially noticed a painless subcutaneous nodule which later broke down. The absence of pain is a key characteristic of this destructive soft tissue infection.",
+    "diagnosis": "Mycobacterium ulcerans Disease (Buruli Ulcer)"
   },
   {
     "id": "case-138",
-    "prompt": "A 48-year-old man from the Caribbean presents with chronic watery diarrhea, weight loss, and a diffuse, pruritic rash. A stool O&P is positive for *Strongyloides* larvae. Due to the high parasite load, he is tested and found to be positive for the HTLV-1 virus.",
-    "diagnosis": "HTLV-1-Associated Strongyloides"
+    "prompt": "A child in a rural community develops a large, firm, indurated plaque on the arm that is slowly expanding. The lesion, caused by a bacterium producing the mycolactone toxin, destroys skin and subcutaneous tissue. The diagnosis is confirmed by PCR from a swab of the lesion.",
+    "diagnosis": "Mycobacterium ulcerans Disease (Buruli Ulcer)"
   },
   {
     "id": "case-139",
-    "prompt": "A 30-year-old tourist returns from a 2-week safari in South Africa. He presents with a 3-day history of high fever, headache, myalgia, and a single, painless, blackened scab (eschar) on his ankle with surrounding erythema. He recalls being bitten by ticks.",
-    "diagnosis": "African Tick-Bite Fever"
+    "prompt": "A 50-year-old male agricultural worker from rural Brazil, a heavy alcohol user, presents with a chronic, progressive, ulcerative lesion on his face and an associated cough. Chest X-ray shows pulmonary infiltrates, and histopathology of the skin lesion reveals a granulomatous reaction with characteristic multiple-budding yeast cells (Mickey Mouse ears).",
+    "diagnosis": "Paracoccidioidomycosis"
   },
   {
     "id": "case-140",
-    "prompt": "A 42-year-old woman presents with fever, chills, and a severe headache after a trip to rural Zimbabwe. Examination reveals multiple tender lymph nodes (lymphadenopathy) and a characteristic 1 cm black-centered ulcer (an 'inoculation eschar') on her scalp.",
-    "diagnosis": "African Tick-Bite Fever"
+    "prompt": "A patient from a region endemic for a dimorphic fungus develops chronic mucocutaneous lesions, particularly involving the oral and nasal mucosa, which are often described as 'mulberry-like.' The disease can disseminate, affecting the lungs and adrenal glands, especially in immunocompromised patients.",
+    "diagnosis": "Paracoccidioidomycosis"
   },
   {
     "id": "case-141",
-    "prompt": "A 25-year-old aid worker in a refugee camp presents with an abrupt onset of high fever, severe headache, and chills. Five days later, a maculopapular rash appears on his trunk and spreads, sparing his face, palms, and soles. The camp has a known body lice infestation. A diagnosis of louse-borne typhus is made.",
-    "diagnosis": "Epidemic Typhus"
+    "prompt": "A patient with bacterial sepsis fails to respond to multiple courses of antibiotics. The drugs used were later identified to be highly subpotent, lacking the effective concentration of the active pharmaceutical ingredient due to illegal manufacturing practices.",
+    "diagnosis": "Poor-Quality Medicines"
   },
   {
     "id": "case-142",
-    "prompt": "During a humanitarian crisis, a 33-year-old woman develops a sustained high fever, profound weakness, and confusion. She has a petechial rash covering her body. She is living in overcrowded conditions with poor sanitation and louse infestation. Her condition is deteriorating rapidly with signs of stupor.",
-    "diagnosis": "Epidemic Typhus"
+    "prompt": "A clinic observes a sudden increase in treatment failures for a common tropical disease. Investigation reveals that the blister-packed drugs being used were counterfeit, containing chalk or non-therapeutic ingredients, leading to disease progression and increased morbidity in the population.",
+    "diagnosis": "Poor-Quality Medicines"
   },
   {
     "id": "case-143",
-    "prompt": "A 55-year-old woman, 3 weeks after starting allopurinol for gout, develops a high fever, painful skin, and severe mucosal erosions in her mouth and eyes. Within 48 hours, she has widespread blistering and sloughing of her skin, covering more than 30% of her body surface area. A positive Nikolsky's sign is present.",
-    "diagnosis": "Toxic Epidermal Necrolysis (TEN)"
+    "prompt": "A 45-year-old woman in South Korea, with a history of consuming raw snakes, presents with a focal seizure and headache. Brain MRI shows a solitary, migratory mass lesion in the white matter, often associated with a linear enhancement. Surgical excision reveals a plerocercoid larva.",
+    "diagnosis": "Cerebral Sparganosis"
   },
   {
     "id": "case-144",
-    "prompt": "A 30-year-old man with a new diagnosis of HIV (not yet on ART) is treated with sulfamethoxazole for PCP prophylaxis. Ten days later, he develops fever, conjunctivitis, and a rapidly coalescing erythematous rash. The epidermis is detaching in large sheets, and he is admitted to a burn unit for management of TEN.",
-    "diagnosis": "Toxic Epidermal Necrolysis (TEN)"
+    "prompt": "A patient presents with symptoms of an intracranial space-occupying lesion, including hydrocephalus and cerebral hemorrhage. The condition is due to the presence of a parasitic larval stage that is highly mobile, leaving behind a 'tunnel sign' or 'wandering track' on neuroimaging as it migrates through the brain parenchyma.",
+    "diagnosis": "Cerebral Sparganosis"
   },
   {
     "id": "case-145",
-    "prompt": "A 38-year-old man with AIDS (CD4 count 75) presents with multiple, painless, purplish, non-blanching nodules on his legs, arms, and hard palate. A skin biopsy confirms a spindle-cell tumor with HHV-8 staining.",
-    "diagnosis": "Kaposi's Sarcoma"
+    "prompt": "A 2-year-old child in a famine-stricken area presents with severe edema, particularly of the abdomen and extremities, despite having preserved fat stores. The child has apathy, skin depigmentation, and flag sign hair changes. The condition is caused by a chronic deficiency of protein, with a relatively preserved caloric intake.",
+    "diagnosis": "Kwashiorkor"
   },
   {
     "id": "case-146",
-    "prompt": "A 45-year-old HIV-positive man presents with shortness of breath and hemoptysis. A chest X-ray shows bilateral nodular opacities and pleural effusions. A bronchoscopy reveals characteristic cherry-red, raised lesions in the airway. This is confirmed as pulmonary Kaposi's Sarcoma.",
-    "diagnosis": "Kaposi's Sarcoma"
+    "prompt": "A toddler is diagnosed with a form of protein-energy malnutrition characterized by a pot belly, hepatomegaly, and immune deficiency. The child is irritable and has muscle wasting that is masked by extensive edema.",
+    "diagnosis": "Kwashiorkor"
   },
   {
     "id": "case-147",
-    "prompt": "A 9-month-old infant in a drought-stricken region is brought to a clinic. The child is severely underweight, with profound muscle wasting, loss of subcutaneous fat, an old man appearance. The child is apathetic but alert. There is no edema.",
-    "diagnosis": "Marasmus"
+    "prompt": "A 60-year-old retired farmer presents with a chronic, verrucous, slow-growing plaque on his foot. The lesion is warty and resembles a cauliflower head, with multiple small, black dots (sclerotic bodies) visible within the surface crust. The infection is a result of traumatic inoculation by soil fungi.",
+    "diagnosis": "Chromoblastomycosis"
   },
   {
     "id": "case-148",
-    "prompt": "A 12-month-old child presents with severe growth failure (weight-for-height < -3 SD). The child's ribs are prominent ('skin and bones'), and there is significant wasting of the gluteal and thigh muscles. The mother's milk supply failed early, and the child was fed thin, diluted gruel. Unlike Kwashiorkor, there is no edema or ascites.",
-    "diagnosis": "Marasmus"
+    "prompt": "A patient in a tropical climate develops a chronic fungal skin infection, predominantly on his lower leg. The lesions are nodular and spread slowly, following the lymphatic drainage. Microscopic examination of a biopsy confirms the presence of Medlar bodies (copper pennies), confirming a dematiaceous fungus infection.",
+    "diagnosis": "Chromoblastomycosis"
   },
   {
     "id": "case-149",
-    "prompt": "A 40-year-old man in Malaysia, working in forestry, presents with daily high-grade fevers (quotidian fever), chills, and jaundice. His platelet count is 25,000. A blood smear shows high parasitemia (>2%) with 'band-form' and 'rosette' trophozoites. PCR confirms *Plasmodium knowlesi*.",
-    "diagnosis": "Knowlesi Malaria"
+    "prompt": "A 30-year-old rice farmer presents with fever, chills, severe myalgia, headache, and conjunctival suffusion (red eyes without discharge). His urine output is low, and blood tests show signs of renal failure. The infection is suspected due to his occupational exposure to water contaminated by rodent urine.",
+    "diagnosis": "Leptospirosis"
   },
   {
     "id": "case-150",
-    "prompt": "A 28-year-old tourist returns from Malaysian Borneo. He develops a sudden high fever, rigors, and headache, with fever spikes every 24 hours. His condition rapidly progresses to include renal failure and severe thrombocytopenia. A blood smear is suspicious, and a specific PCR test confirms *P. knowlesi* infection.",
-    "diagnosis": "Knowlesi Malaria"
+    "prompt": "A patient develops Weil's disease, the severe form of a bacterial zoonosis, characterized by jaundice (icterus), hemorrhagic manifestations (bleeding), and acute kidney injury. The patient reports a flu-like prodrome before the onset of organ failure.",
+    "diagnosis": "Leptospirosis"
   },
   {
     "id": "case-151",
-    "prompt": "A 4-year-old unvaccinated child presents with a 3-day history of high fever (40°C), cough, coryza (runny nose), and non-purulent conjunctivitis. The mother notes small, white spots ('Koplik spots') inside his mouth. Today, a red, maculopapular rash has appeared on his face and is spreading downwards.",
-    "diagnosis": "Measles"
+    "prompt": "A 50-year-old fisherman in the Philippines presents with chronic, severe, watery diarrhea, abdominal pain, and significant weight loss. Lab results reveal protein-losing enteropathy and malabsorption. Stool examination shows characteristic peanut-shaped eggs with striated plugs (*Capillaria philippinensis*).",
+    "diagnosis": "Intestinal Capillariasis"
   },
   {
     "id": "case-152",
-    "prompt": "An 18-month-old child from a community with low vaccine uptake is brought in with a high fever and a diffuse, blotchy red rash that started behind the ears. The child is irritable, has red, watery eyes, and a hacking cough. A diagnosis of rubeola is made clinically.",
-    "diagnosis": "Measles"
+    "prompt": "A patient with a history of consuming raw freshwater fish develops a progressive malabsorption syndrome leading to muscle wasting, edema, and cardiac failure due to electrolyte imbalances. Biopsy of the jejunum shows villous atrophy and inflammation caused by a nematode.",
+    "diagnosis": "Intestinal Capillariasis"
   },
   {
     "id": "case-153",
-    "prompt": "A 68-year-old diabetic woman is brought to the ER from a nursing home with a fever of 39.5°C, a heart rate of 130 bpm, a respiratory rate of 28, and a blood pressure of 85/50 mmHg. She is confused and her urine is cloudy. A lactate level is 4.5 mmol/L. She is diagnosed with septic shock from a UTI.",
-    "diagnosis": "Sepsis"
+    "prompt": "A 35-year-old woman presents with the rapid onset of back pain, followed by weakness, sensory loss, and bladder dysfunction (urinary retention), all below the level of her mid-thoracic spine. An MRI shows swelling and inflammation spanning several segments of the spinal cord. Workup rules out compressive lesions.",
+    "diagnosis": "Acute Transverse Myelitis"
   },
   {
     "id": "case-154",
-    "prompt": "A 45-year-old man presents with a 2-day history of worsening abdominal pain, fever, and vomiting. On examination, he has rebound tenderness. His heart rate is 120, BP is 90/60, and he is breathing 26 times/min. He is diagnosed with sepsis secondary to a perforated appendix.",
-    "diagnosis": "Sepsis"
+    "prompt": "A patient develops a debilitating condition characterized by motor weakness and sensory deficits arising from sudden, focal inflammation across the spinal cord. The condition is sometimes triggered by a viral infection and leads to demyelination and neurological deficits at and below the level of the lesion.",
+    "diagnosis": "Acute Transverse Myelitis"
   },
   {
     "id": "case-155",
-    "prompt": "A 34-year-old man with a known history of HIV (CD4 count 60) is brought in by his partner after experiencing a 5-minute generalized tonic-clonic seizure. He has had no prior seizure history. A brain MRI with contrast reveals multiple ring-enhancing lesions, and he is started on empiric therapy for toxoplasmosis.",
-    "diagnosis": "Seizure management in HIV"
+    "prompt": "A 25-year-old traveler to South America presents with a sudden onset of high fever, severe myalgia, and headache. After a brief remission, the fever returns, and he develops jaundice, black vomit (hematemesis), and hemorrhagic signs. He is unvaccinated and requires intensive care for liver and kidney failure.",
+    "diagnosis": "Yellow Fever"
   },
   {
     "id": "case-156",
-    "prompt": "A 42-year-old woman with untreated AIDS (CD4 count 35) presents with a new-onset partial seizure affecting her right arm. She also reports progressive weakness on her right side. A brain MRI shows a single, large, periventricular white matter lesion that does not enhance with contrast and has no mass effect, suggestive of PML.",
-    "diagnosis": "Seizure management in HIV"
+    "prompt": "A patient in an urban area of West Africa is admitted with a severe mosquito-borne illness. The hallmark of the severe, toxic form is a triad of fever, jaundice, and hemorrhagic diathesis. Vaccination is the most effective public health measure against this disease.",
+    "diagnosis": "Yellow Fever"
   },
   {
     "id": "case-157",
-    "prompt": "A 30-year-old female gardener presents with a small, painless nodule on her index finger, which appeared 2 weeks after a rose thorn prick. Over the next month, several new, similar nodules have appeared in a line, tracking up her forearm along the lymphatic drainage path.",
-    "diagnosis": "Sporotrichosis"
+    "prompt": "A 60-year-old farmer in sub-Saharan Africa presents with a slow-growing, fleshy, reddish mass on the surface of his conjunctiva. The mass is irregular, involves the limbus (junction of cornea and sclera), and is highly vascular. Biopsy confirms an early-stage malignancy of the eye surface.",
+    "diagnosis": "Ocular Surface Squamous Neoplasia"
   },
   {
     "id": "case-158",
-    "prompt": "A 50-year-old man who works with hay bales presents with a non-healing ulcer on his hand. Over the past few weeks, a series of subcutaneous nodules and ulcerations have developed in a linear fashion up his arm. A biopsy and culture confirm *Sporothrix schenckii*.",
-    "diagnosis": "Sporotrichosis"
+    "prompt": "An elderly male with a history of chronic sun exposure and possible HIV infection develops a lesion on his eye that resembles a pterygium but is thicker, more nodular, and extends onto the cornea. The condition is a spectrum of epithelial dysplasia and invasive squamous cell carcinoma of the eye's surface.",
+    "diagnosis": "Ocular Surface Squamous Neoplasia"
   },
   {
     "id": "case-159",
-    "prompt": "A 24-year-old tourist in Thailand presents with a severe, sudden-onset headache, neck stiffness, and paresthesia in his limbs. He reports eating raw freshwater prawns at a local market 10 days ago. A lumbar puncture shows CSF with a high white cell count, with 30% eosinophils. This is a classic presentation for *Angiostrongylus cantonensis*.",
-    "diagnosis": "Eosinophilic Meningitis"
+    "prompt": "A 30-year-old male with newly diagnosed HIV and a CD4 count of 80 cells/mm³ presents with constitutional symptoms, including fever and weight loss. A chest X-ray shows diffuse interstitial infiltrates and lymphadenopathy, but no typical cavitation. Diagnosis requires bronchoalveolar lavage or biopsy to confirm disseminated *M. tuberculosis* infection.",
+    "diagnosis": "Tuberculosis in HIV-Infected Patients"
   },
   {
     "id": "case-160",
-    "prompt": "A 30-year-old man from the Philippines develops a severe headache and vomiting after consuming *Achatina fulica* (giant African snails) on a dare. His CSF analysis reveals pleocytosis with 45% eosinophils, confirming parasitic meningitis.",
-    "diagnosis": "Eosinophilic Meningitis"
+    "prompt": "An HIV-positive patient is diagnosed with extrapulmonary *M. tuberculosis* involving the lymph nodes (scrofula) and pericardium. The presentation is often atypical and severe, occurring at much lower CD4 counts, necessitating special diagnostic considerations and a longer, more complex drug regimen.",
+    "diagnosis": "Tuberculosis in HIV-Infected Patients"
   },
   {
     "id": "case-161",
-    "prompt": "A 45-year-old man from Laos presents with a chronic cough and recurrent hemoptysis. He describes his sputum as 'rusty' or 'coffee-ground'. He has a history of eating raw, marinated freshwater crabs. A chest X-ray shows nodular infiltrates, and stool microscopy reveals large, operculated eggs.",
-    "diagnosis": "Paragonimiasis"
+    "prompt": "A 24-year-old pregnant woman is diagnosed with secondary syphilis during her second trimester. She has a diffuse maculopapular rash involving her palms and soles, and enlarged lymph nodes. Treatment is immediately initiated to prevent transmission of *Treponema pallidum* across the placenta to the fetus.",
+    "diagnosis": "Syphilis in Pregnancy"
   },
   {
     "id": "case-162",
-    "prompt": "A 38-year-old woman from rural China, with a history of consuming 'drunken crayfish', presents with a 6-month history of cough, fever, and brownish sputum. She was treated for tuberculosis with no improvement. A sputum sample reveals the presence of lung fluke (Paragonimus) eggs.",
-    "diagnosis": "Paragonimiasis"
+    "prompt": "A newborn is delivered with signs of congenital infection, including hepatosplenomegaly, hemolytic anemia, and a 'snuffles' rhinitis. The mother was not screened or treated for a chronic venereal disease during her pregnancy, leading to the severe multisystem infection in the infant.",
+    "diagnosis": "Syphilis in Pregnancy"
   },
   {
     "id": "case-163",
-    "prompt": "A 25-year-old farmer in India is bitten on the foot by an unknown snake. He presents to the clinic 2 hours later with two visible fang marks, significant local swelling, and bleeding from his gums. His blood fails to clot in a 20-minute whole-blood clotting test, indicating hemotoxicity.",
-    "diagnosis": "Snake Bite"
+    "prompt": "A 55-year-old pig farmer in Vietnam presents with high fever, headache, vomiting, and a stiff neck. He reports handling raw pork meat without gloves recently. Lumbar puncture reveals purulent CSF, and culture confirms *Streptococcus suis*, a common cause of meningitis and deafness in this occupational group.",
+    "diagnosis": "Streptococcus suis meningitis"
   },
   {
     "id": "case-164",
-    "prompt": "A 30-year-old woman in South Africa is bitten on her arm by a snake. Within 30 minutes, she develops progressive ptosis (drooping eyelids), blurred vision, and difficulty breathing. She has minimal local swelling. The presentation is consistent with a neurotoxic envenomation (e.g., mamba or cape cobra).",
-    "diagnosis": "Snake Bite"
+    "prompt": "A patient in Southeast Asia is admitted with acute bacterial meningitis and septic shock. He develops bilateral sensorineural hearing loss as a common long-term sequela. The infection is zoonotic, transmitted through direct contact with infected swine or consumption of undercooked pork.",
+    "diagnosis": "Streptococcus suis meningitis"
   },
   {
     "id": "case-165",
-    "prompt": "A 6-year-old child from a rural village in Ethiopia presents with red, watery eyes and light sensitivity. Examination reveals follicular inflammation on the inner surface of the upper eyelid (tarsal conjunctiva). The WHO clinical grade is 'Trachomatous Inflammation—Follicular (TF)'.",
-    "diagnosis": "Trachoma"
+    "prompt": "A 40-year-old man, a recent traveler to Mexico, presents with a 2-week history of fever, severe right upper quadrant abdominal pain, and night sweats. He denies diarrhea but reports dark urine. An abdominal ultrasound reveals a large, single, hypoechoic liver lesion in the right lobe, consistent with an abscess.",
+    "diagnosis": "Amoebic Liver Abscess"
   },
   {
     "id": "case-166",
-    "prompt": "A 45-year-old woman from Sudan presents with a complaint of her eyelashes turning inwards and rubbing against her eyeball (trichiasis). She has significant corneal clouding and visual impairment. Her upper eyelid shows evidence of severe scarring (Trachomatous Scarring—TS), a result of recurrent childhood infections.",
-    "diagnosis": "Trachoma"
+    "prompt": "A patient is admitted with a tender, enlarged liver and leukocytosis. Serology for *Entamoeba histolytica* is positive. The characteristic 'anchovy paste' pus is aspirated from the abscess, and treatment with a nitroimidazole is initiated.",
+    "diagnosis": "Amoebic Liver Abscess"
   },
   {
     "id": "case-167",
-    "prompt": "A 50-year-old cattle farmer presents with a 1-week-old skin lesion on his forearm. It began as a small, itchy papule and has progressed to a 3 cm, painless, black, necrotic ulcer (eschar) with significant surrounding edema and swelling. He reports handling animal hides recently.",
-    "diagnosis": "Anthrax"
+    "prompt": "A 20-year-old woman from the high Andes mountains of Peru presents with a high, relentless fever, severe headache, and profound anemia. Her blood smear shows pleomorphic, small, Gram-negative bacilli inside the red blood cells. This is the acute, systemic phase of the disease.",
+    "diagnosis": "Bartonellosis – Oroya Fever and Verruga Peruana"
   },
   {
     "id": "case-168",
-    "prompt": "A 44-year-old postal worker presents with fever, non-productive cough, and chest pain, which rapidly progresses over 24 hours to severe respiratory distress and shock. A chest X-ray shows a dramatically widened mediastinum and bilateral pleural effusions, consistent with inhalational anthrax.",
-    "diagnosis": "Anthrax"
+    "prompt": "A patient who recovered from a severe febrile illness months ago now presents with multiple small, painless, reddish-purple, angiomatous nodules (verrugas) on her skin, primarily on her face and limbs. This is the chronic, eruptive phase of the infection, often diagnosed by a skin biopsy showing vascular proliferation.",
+    "diagnosis": "Bartonellosis – Oroya Fever and Verruga Peruana"
   },
   {
     "id": "case-169",
-    "prompt": "A 40-year-old man, an expatriate who lived in Gabon for 10 years, presents with a 2-day history of a painful, non-pitting, migratory swelling on his wrist (a 'Calabar swelling'). He also reports a sensation of something moving in his eye. A blood smear is positive for *Loa loa* microfilariae.",
-    "diagnosis": "Loa Loa"
+    "prompt": "A 4-year-old child in a daycare center is diagnosed with a common intestinal parasitic infection. She presents with foul-smelling, greasy diarrhea, abdominal cramps, and bloating. Stool microscopy reveals characteristic pear-shaped trophozoites and oval cysts.",
+    "diagnosis": "Giardiasis"
   },
   {
     "id": "case-170",
-    "prompt": "A 35-year-old woman from Cameroon presents to her eye doctor complaining of a 'worm' in her eye. The physician is able to visualize and surgically remove a 5 cm long adult *Loa loa* worm from beneath her conjunctiva. She also gives a history of intermittent 'fugitive swellings' on her limbs.",
-    "diagnosis": "Loa Loa"
+    "prompt": "A 30-year-old traveler returning from Nepal presents with chronic diarrhea and symptoms of malabsorption, including steatorrhea (fatty stool). The diagnosis is confirmed by a duodenal aspirate showing flagellated protozoa adhering to the intestinal brush border.",
+    "diagnosis": "Giardiasis"
   },
   {
     "id": "case-171",
-    "prompt": "A 28-year-old man in Thailand presents with a 3-week history of a painful, migratory, subcutaneous swelling on his abdomen that moves several centimeters a day. He also reports intermittent fever and high eosinophilia. He frequently eats 'ceviche' made with raw freshwater fish.",
-    "diagnosis": "Gnathostomiasis"
+    "prompt": "A 50-year-old woman in a refugee camp with a diet based heavily on maize flour presents with bilateral, symmetrical dermatitis on sun-exposed areas (hands, forearms, neck - Casal's necklace). She also exhibits diarrhea and progressive dementia (the '3 Ds'). This is a severe deficiency of Niacin (Vitamin B3).",
+    "diagnosis": "Pellagra"
   },
   {
     "id": "case-172",
-    "prompt": "A 40-year-old Japanese woman presents with a creeping, pruritic, serpiginous track on her back, as well as intermittent, localized, edematous patches that appear and disappear over several days. She has a history of eating raw snake meat. Her blood work shows 30% eosinophils.",
-    "diagnosis": "Gnathostomiasis"
+    "prompt": "A chronically malnourished patient is admitted with advanced symptoms of a vitamin deficiency. The clinical picture includes a reddish-brown, scaly dermatitis that is well-demarcated, chronic gastrointestinal disturbance, and severe neurological impairment including psychosis and eventual death if untreated.",
+    "diagnosis": "Pellagra"
   },
   {
     "id": "case-173",
-    "prompt": "A 22-year-old traveler returns from a trip to Belize. He presents with a 1 cm, painful, 'boil-like' lesion on his scalp. He reports a sensation of intermittent movement and 'stabbing pain' within the lesion. Examination reveals a central pore, from which the posterior end of a *Dermatobia hominis* (human botfly) larva is visible.",
-    "diagnosis": "Myiasis"
+    "prompt": "A 45-year-old man from Sudan with a long-standing history of repeated *S. mansoni* infection presents with non-cirrhotic portal hypertension, splenomegaly, and bleeding esophageal varices. Liver biopsy shows 'pipestem' periportal fibrosis caused by chronic egg deposition, leading to pre-sinusoidal obstruction.",
+    "diagnosis": "Hepatosplenic Schistosomiasis"
   },
   {
     "id": "case-174",
-    "prompt": "A 60-year-old homeless man with poor hygiene is found to have a large, necrotic ulcer on his lower leg. The wound is foul-smelling, and upon irrigation, numerous small, wiggling maggots are seen emerging from the necrotic tissue. This is diagnosed as wound myiasis.",
-    "diagnosis": "Myiasis"
+    "prompt": "A young adult who swam in freshwater irrigation canals as a child develops progressive liver disease. The primary pathology is granuloma formation around parasite eggs trapped in the liver's portal tract, leading to a massive, hard spleen and signs of portal hypertension.",
+    "diagnosis": "Hepatosplenic Schistosomiasis"
   },
   {
     "id": "case-175",
-    "prompt": "A 35-year-old healthcare worker in the Democratic Republic of Congo presents with a sudden onset of high fever, severe headache, and muscle pain. After 3 days, she develops severe watery diarrhea, vomiting, and a maculopapular rash. She is now noted to be bleeding from her gums and injection sites.",
+    "prompt": "A 34-year-old healthcare worker in the Democratic Republic of Congo, who recently treated a patient with an unknown severe illness, develops a sudden high fever, intense fatigue, and severe headache. Within 48 hours, she has profuse watery diarrhea, vomiting, and begins to bleed from her gums and injection sites.",
     "diagnosis": "Filoviral Diseases"
   },
   {
     "id": "case-176",
-    "prompt": "A 42-year-old miner from Uganda is brought to a clinic with a 5-day history of abrupt high fever, intense weakness, and myalgia. He is now experiencing profuse, non-bloody diarrhea, abdominal pain, and confusion. Examination reveals conjunctival injection and unexplained hemorrhaging from the nose.",
+    "prompt": "A 28-year-old man from a village in Guinea presents with fever, myalgia, and prostration. He reports attending the funeral of a relative who died of a hemorrhagic illness. He rapidly develops multi-organ failure, including kidney and liver failure, and exhibits signs of shock.",
     "diagnosis": "Filoviral Diseases"
   },
   {
     "id": "case-177",
-    "prompt": "A 28-year-old man presents with fever, severe fatigue, and joint pain after returning from Guinea. This rapidly progresses to severe abdominal pain, bloody diarrhea, and shock. His family reports he attended a funeral of a relative who died from a 'mysterious illness' last week.",
+    "prompt": "A 50-year-old tourist returns from Uganda after exploring a bat cave. He develops an abrupt onset of high fever, chills, and severe malaise. A maculopapular rash appears on his trunk, and he soon develops severe hemorrhagic manifestations. The diagnosis of Marburg virus disease is confirmed.",
     "diagnosis": "Filoviral Diseases"
   },
   {
     "id": "case-178",
-    "prompt": "A 50-year-old woman is admitted with a 4-day history of high fever, headache, and severe weakness. She is now in multi-organ failure with profuse vomiting and diarrhea, and is bleeding from IV sites. Lab tests show thrombocytopenia and elevated liver enzymes. A diagnosis of Marburg virus disease is suspected.",
+    "prompt": "A 45-year-old woman is admitted with a severe febrile illness and hemorrhagic diathesis. She is confirmed to have Ebola. Despite aggressive supportive care, she develops confusion, seizures, and progresses to a coma, consistent with the neurological complications of the disease.",
     "diagnosis": "Filoviral Diseases"
   },
   {
     "id": "case-179",
-    "prompt": "A 55-year-old diabetic farmer from Thailand presents with a 3-week history of fever, cough, and chest pain. A chest X-ray reveals multiple nodular opacities with cavitation, resembling tuberculosis. Sputum culture grows a bacterium identified as *Burkholderia pseudomallei*.",
-    "diagnosis": "Melioidosis"
+    "prompt": "A 42-year-old male farmer from Saudi Arabia presents with a 4-week history of undulating fever, drenching night sweats, and severe migratory joint pain (arthralgia). He reports feeling exhausted. His history reveals he frequently consumes raw camel milk.",
+    "diagnosis": "Brucellosis"
   },
   {
     "id": "case-180",
-    "prompt": "A 40-year-old man with chronic kidney disease presents with high fever, confusion, and multiple skin abscesses after wading through floodwaters in Vietnam. Blood cultures are positive for a gram-negative rod, which is confirmed as *Burkholderia pseudomallei*, consistent with septicemic melioidosis.",
-    "diagnosis": "Melioidosis"
+    "prompt": "A 55-year-old veterinarian presents with chronic lower back pain, low-grade fever, and weight loss over 3 months. An MRI of his spine reveals spondylodiscitis at L4-L5. Serological tests (Rose Bengal and agglutination) are highly positive for *Brucella melitensis*.",
+    "diagnosis": "Brucellosis"
   },
   {
     "id": "case-181",
-    "prompt": "A 25-year-old woman presents to a clinic in a refugee camp with profuse, painless, watery diarrhea that she describes as 'like water with white flecks.' She has had over 20 stools in 24 hours, is vomiting, and has severe muscle cramps. She has sunken eyes and poor skin turgor.",
-    "diagnosis": "Cholera"
+    "prompt": "A 30-year-old woman, who works in a goat cheese processing plant, develops a persistent fever and hepatosplenomegaly. Blood cultures are taken and incubated for an extended period, eventually growing a slow-growing, Gram-negative coccobacillus.",
+    "diagnosis": "Brucellosis"
   },
   {
     "id": "case-182",
-    "prompt": "A 5-year-old boy is brought in with a 1-day history of incessant, non-bloody, watery diarrhea and vomiting. He is lethargic, has a weak pulse, and his skin 'tents' when pinched. His village sources water from a river where a recent cholera outbreak was reported. A rapid test confirms *Vibrio cholerae* O1.",
-    "diagnosis": "Cholera"
+    "prompt": "A 60-year-old man from a Mediterranean country presents with fever, malaise, and signs of endocarditis. He has a history of a prosthetic aortic valve. Echocardiogram shows large vegetations, and *Brucella* serology is positive, indicating a severe focal complication of the infection.",
+    "diagnosis": "Brucellosis"
+  },
+  {
+    "id": "case-183",
+    "prompt": "A 50-year-old diabetic rice farmer from Northeast Thailand presents with high fever, productive cough, and chest pain. A chest X-ray shows multiple nodular opacities with cavitation, resembling tuberculosis. Sputum culture grows a bipolar-staining Gram-negative rod, *Burkholderia pseudomallei*.",
+    "diagnosis": "Melioidosis"
+  },
+  {
+    "id": "case-184",
+    "prompt": "A 45-year-old man in Northern Australia with a history of heavy alcohol use presents with acute fever, confusion, and septic shock. He has multiple disseminated skin abscesses. He recalls wading through muddy water after a recent tropical storm. Blood cultures confirm the diagnosis.",
+    "diagnosis": "Melioidosis"
+  },
+  {
+    "id": "case-185",
+    "prompt": "A 60-year-old woman presents with a chronic, non-healing ulcer on her leg and an associated suppurative lymphadenitis. The infection has been present for months and was mistaken for a staphylococcal or fungal infection. A deep tissue biopsy and culture are required to identify the organism.",
+    "diagnosis": "Melioidosis"
+  },
+  {
+    "id": "case-186",
+    "prompt": "A 38-year-old man with no known co-morbidities presents with fever, headache, and signs of a prostatic abscess. He is an avid gardener in an endemic area. The localized infection is confirmed by culture of the abscess fluid, which grows *Burkholderia pseudomallei*.",
+    "diagnosis": "Melioidosis"
   }
 ]
