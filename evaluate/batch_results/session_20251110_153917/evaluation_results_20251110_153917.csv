@@ -1,3 +1,0 @@
-case_id,diagnosis,status,context_precision,context_recall,faithfulness,answer_relevancy,timestamp,error
-case-021,Filoviral Diseases,completed,0.99999999995,1.0,0.42857142857142855,0.6760402184370738,2025-11-10T15:39:17.347856,
-case-022,Melioidosis,completed,0.49999999995,0.0,0.525,0.847256009713389,2025-11-10T15:42:06.934171,

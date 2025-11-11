@@ -1,2 +1,0 @@
-case_id,diagnosis,status,context_precision,context_recall,faithfulness,answer_relevancy,timestamp,error
-case-161,Syphilis in Pregnancy,completed,0.9999999999,1.0,0.4523809523809524,0.7376226927891151,2025-11-11T15:54:32.669662,

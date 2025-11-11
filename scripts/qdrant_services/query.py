@@ -163,7 +163,8 @@ def merge_results(text_results, image_results):
             retrieved_cases[cid] = {
                 "case_id": cid,
                 "text": res.payload,
-                "images": []
+                "images": [],
+                "similarity_score": res.score  # Add similarity score from Qdrant result
             }
 
     # --- Process image results ---
@@ -176,13 +177,17 @@ def merge_results(text_results, image_results):
         if cid in retrieved_cases:
             # Case already exists from text results
             retrieved_cases[cid]["images"].append(res.payload)
+            # Update similarity score if image has higher score
+            if res.score > retrieved_cases[cid].get("similarity_score", 0):
+                retrieved_cases[cid]["similarity_score"] = res.score
         else:
             # case_id appears only in image results
             # Use text summary from image payload or create empty dict if not available
             retrieved_cases[cid] = {
                 "case_id": cid,
                 "text": image_text_summary if image_text_summary else {},
-                "images": [res.payload]
+                "images": [res.payload],
+                "similarity_score": res.score  # Add similarity score from Qdrant result
             }
             
             if image_text_summary:
