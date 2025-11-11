@@ -168,77 +168,77 @@
 
 ## Main Runtime Pipeline
 - This pipeline is the runtime query handler that will handle querying Qdrant based on user input and generating prompts for the LLM. This is intended to be used in the Streamlit app.
-- Data generated/staged in this mode will be temporary and stored in `./temp_query_data/` and cleaned up after each session.
+- Data generated/staged in this mode will be temporary and stored in `./temp_query_data/` and cleaned up before each session.
+- The pipeline consists of 4 main modules:
 
 1. **Main Handler Module**:
-    - This module sits between the Streamlit app and the other backend modules, handling the communication and data flow.
-    - Input: User query (text or image) from Streamlit app.
-        - Text queries will be staged as JSON arrays, and image queries will be staged as .png files.
+    - This module acts as the orchestrator, sitting between the Streamlit app and the other backend modules, handling the communication, data flow and cleanup before each session.
+    - **Note**: This module is currently being embedded into the Streamlit app located at `./main_streamlit.py`. In the future, it can be refactored into its own script.
+
+    - Input: User query (text and/or image) from Streamlit app.
+        - Text queries will be staged as JSON arrays.
+        - Images uploaded will be resized and normalized in a similar fashion to `./scripts/data_extraction_module/image_extract.py` as .png files inside `./temp_query_data/`.
+        - Expected naming convention:
+            - Text Query: `user_query_text_timestamp.json`
+            - Image Query: `user_query_image_timestamp.png`
+    
     - Output: Final answer from LLM.
-        - For evaluation purposes, the final answer along with the generated prompt and retrieved cases can be logged in `./diagnosed_cases/` with timestamped filenames.
+        
+        - For evaluation purposes, the final answer and retrieved cases can be logged in `./diagnosed_cases/` with timestamped filenames.
             - Example structure:
+                - File name: `diagnosed_case_2024-10-01_15-30-00.json`
                 ```json
                 {
                     "timestamp": "2024-10-01_15-30-00",
-                    "user_query": [...],
+                    # User Input
+                    "user_query": "...",
                     "has_image": true,
-                    "retrieved_cases": [...],
-                    "diagnosis": "...",
-                    "ai-response": "...",
-                    "correct": true
+                    # Context
+                    "retrieved_cases": {
+                        "case_<case_id>": # This is extracted from the retrieved cases' payload
+                        {
+                            "title": "...",
+                            "history": "...",
+                            "clinical_findings": "...",
+                            "discussion": "...",
+                            "summary_box_first_line": "...",
+                        },
+                        ...
+                    },
+                    # Response
+                    "ai-response": {
+                        "analysis": "...",
+                        "differential_diagnosis": [...]
+                    }
                 }
                 ```
 
 2. **Embedding Query Module**:
-   - This module can be reused from the Embedding Generation Module.
+   - This module is the same as Embedding Generation Module.
    - Input: The staged user query (text or/and image).
         - Each data type will be processed to generate temporary embeddings with their respective embedding generators. 
-   - Output: Temporary embeddings for querying against Qdrant.
+        - The location of staged embeddings is `./temp_query_data/embeddings/`.
+        - Naming convention:
+            - Text Query Embedding: `user_query_text_embedding_timestamp.npy`
+            - Image Query Embedding: `user_query_image_embedding_timestamp.npy`
+   - Output: Temporary embeddings saved for querying against Qdrant.
 
 3. **Qdrant Query Module**:
+    - Top-k values for retrieval will be specified in `./scripts/config/query_config.py`. 
+        - `text_top_k` and `image_top_k` can be set independently.
+
     - Input: Temporary embeddings from the Embedding Query Module.
+        - Query Logic:
+            - Perform similarity search in Qdrant collections (`medical_case_texts` and/or `medical_case_images`) based on what embeddings are available from embedding module.
+            - After retrieving top-k similar cases from each collection:
+                - If both modalities are present, merge results based on `case_id` in payload to avoid duplicates.
+                - If only one modality is present, use results from that modality directly.
+
     - Output: Retrieved top-k relevant cases from Qdrant.
-    - Query Logic:
-        ```python
-        # Query both collections
-        text_results = qdrant_client.search(
-            collection_name="medical_case_texts",
-            query_vector=text_embedding,
-            limit=top_k
-        )
-        
-        image_results = qdrant_client.search(
-            collection_name="medical_case_images",
-            query_vector=image_embedding,
-            limit=top_k
-        )
-        
-        # Extract case_ids from results
-        text_case_ids = {r.payload["case_id"] for r in text_results}
-        image_case_ids = {r.payload["case_id"] for r in image_results}
-        
-        # Find common cases (if searching both modalities)
-        common_case_ids = text_case_ids & image_case_ids
-        
-        # Group results by case_id for unified retrieval
-        retrieved_cases = {}
-        for result in text_results:
-            case_id = result.payload["case_id"]
-            if case_id not in retrieved_cases:
-                retrieved_cases[case_id] = {
-                    "case_id": case_id,
-                    "text": result.payload,
-                    "images": []
-                }
-        
-        for result in image_results:
-            case_id = result.payload["case_id"]
-            if case_id in retrieved_cases:
-                retrieved_cases[case_id]["images"].append(result.payload)
-        ```
+
 4. **Prompt Generation Module**:
-    - Input: Retrieved cases from Qdrant, user original query and system prompt for LLM.
-    - Output: Final prompt for LLM and sent to the Gemini API.
     - This module will format the retrieved cases and user query into a structured prompt for the LLM.
     - After this, the answer handed back to the Main Handler Module for final output to the user.
+    - Input: Retrieved top-k cases from Qdrant, user original query and system prompt for LLM.
+    - Output: Final prompt for LLM and sent to the Gemini API.
 
