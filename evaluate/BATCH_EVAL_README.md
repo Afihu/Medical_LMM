@@ -1,57 +1,45 @@
-# Batch Evaluation Scripts
+# Batch Evaluation
 
-Automated RAGAS evaluation for Medical_LMM test cases.
+Automated RAGAS evaluation for 186 Medical_LMM test cases.
 
 ## Quick Start
 
 ```bash
-# Test with 3 cases (recommended first run)
+# Test with 3 cases first
 python evaluate/quick_eval.py --limit 3
 
-# Evaluate all 22 test cases (~45-90 minutes)
+# Run full evaluation (~3-4 hours)
 python evaluate/quick_eval.py
 
-# Test specific case (e.g., case-022, which is index 21)
-python evaluate/quick_eval.py --limit 1 --skip 21
-
-# Skip diagnosis step, use existing diagnosis files
-python evaluate/quick_eval.py --skip-diagnosis
+# Test specific case (e.g., case-162)
+python evaluate/quick_eval.py --limit 1 --skip 161
 ```
 
-## What It Does
+## Pipeline
 
-Automates the entire pipeline:
-1. Runs diagnosis on each test case (Qdrant + Gemini)
-2. Matches with ground truth from `test_cases/cases.json`
-3. Evaluates with RAGAS metrics (context precision/recall, faithfulness, answer relevancy)
-4. Generates reports in 3 formats: JSON, CSV, Markdown
+1. Generate diagnosis for each test case (Qdrant retrieval + Gemini)
+2. Evaluate with 5 RAGAS metrics:
+   - **Context Precision** - Relevance of retrieved cases
+   - **Context Recall** - Completeness of retrieved context
+   - **Faithfulness** - Answer grounded in retrieved context
+   - **Answer Relevancy** - Answer relevance to query
+   - **Answer Correctness** - Diagnosis accuracy vs ground truth
+3. Generate reports: JSON + CSV + Markdown
 
-## Output Files
+## Output
 
-Results saved in `evaluate/batch_results/`:
-- **CSV** - Easy analysis in Excel/Google Sheets (9 columns: case_id, diagnosis, status, 4 metrics, timestamp, error)
-- **JSON** - Full metadata with scores and contexts
-- **Markdown** - Human-readable summary report
+Results in `evaluate/batch_results/session_YYYYMMDD_HHMMSS/`:
+- `evaluation_results.csv` - Tabular data for analysis
+- `evaluation_results.json` - Full evaluation metadata
+- `evaluation_report.md` - Human-readable report
 
-## Command Options
+## Options
 
-- `--limit N` - Evaluate only first N cases (useful for testing)
-- `--skip N` - Skip first N cases (useful for testing specific cases)
-- `--skip-diagnosis` - Skip diagnosis generation, use existing files from `diagnosed_cases/`
-
-**Examples:**
 ```bash
-# Test first 5 cases
-python evaluate/quick_eval.py --limit 5
-
-# Test case-010 only (skip first 9, limit to 1)
-python evaluate/quick_eval.py --skip 9 --limit 1
-
-# Re-evaluate using existing diagnosis files
-python evaluate/quick_eval.py --skip-diagnosis
+--limit N           # Evaluate first N cases only
+--skip N            # Skip first N cases
+--skip-diagnosis    # Use existing diagnosis files (if available)
 ```
-
-
 
 ## Requirements
 
@@ -59,11 +47,5 @@ python evaluate/quick_eval.py --skip-diagnosis
 pip install ragas langchain-google-genai langchain-huggingface qdrant-client sentence-transformers
 ```
 
-Ensure `.env` contains: `GEMINI_API_KEY=your_api_key_here`
-
-## Troubleshooting
-
-**Missing API Key**: Add `GEMINI_API_KEY` to `.env` file  
-**Rate Limiting**: Use `--limit` to run smaller batches  
-**Module Errors**: Install all requirements above
+Set `GEMINI_API_KEY` in `.env` file.
 
