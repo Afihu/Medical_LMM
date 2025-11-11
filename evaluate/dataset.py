@@ -58,7 +58,7 @@ def flatten_answer(ai_response):
     return "\n".join(output_parts)
 
 BASE_DIR = Path(__file__).parent.parent
-CASES_PATH = BASE_DIR / "test_cases" / "cases.json"
+CASES_PATH = BASE_DIR / "test_cases" / "augmented_test.json"
 DIAGNOSED_CASES_DIR = BASE_DIR / "diagnosed_cases"
 
 with open(CASES_PATH, 'r', encoding='utf-8') as f:
@@ -95,7 +95,7 @@ for file in diagnosis_files:
         print(f"\nSkipped: {file.name}")
         print("Diagnosis prompt first N normalized words:")
         print(repr(key))
-        print("\nAvailable normalized keys in cases.json:")
+        print("\nAvailable normalized keys in augmented_test.json:")
         for k in prompt_to_gt.keys():
             print(repr(k))
         skipped_files.append(file.name)

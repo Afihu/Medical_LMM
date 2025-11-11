@@ -1,0 +1,17 @@
+[
+  {
+    "case_id": "case-161",
+    "diagnosis": "Syphilis in Pregnancy",
+    "prompt": "A 24-year-old pregnant woman is diagnosed with secondary syphilis during her second trimester. She h...",
+    "timestamp": "2025-11-11T16:03:27.666815",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-11_16-03-54.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.3076923076923077,
+      "answer_relevancy": 0.7318956425210678,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "case_id": "case-186",
+    "diagnosis": "Melioidosis",
+    "prompt": "A 38-year-old man with no known co-morbidities presents with fever, headache, and signs of a prostat...",
+    "timestamp": "2025-11-11T15:29:45.431902",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-11_15-30-27.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 1.0,
+      "faithfulness": 0.3870967741935484,
+      "answer_relevancy": 0.7299681566311301
+    },
+    "status": "completed"
+  }
+]

@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 from typing import Dict, Any, Optional, List
 from ragas import EvaluationDataset, SingleTurnSample, evaluate
-from ragas.metrics import context_precision, context_recall, faithfulness, answer_relevancy
+from ragas.metrics import context_precision, context_recall, faithfulness, answer_relevancy, answer_correctness
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import HuggingFaceEmbeddings
 
@@ -172,9 +172,13 @@ class RAGASEvaluator:
             # Load and prepare data
             ragas_data = self._prepare_ragas_data(diag_file, ground_truth)
             
-            # Build two samples: one with full answer (for faithfulness), one with concise (for relevancy)
+            # Build three samples: 
+            # 1. Full answer (for context metrics + faithfulness)
+            # 2. Concise answer (for answer relevancy)
+            # 3. Diagnosis only (for answer correctness)
             sample_full = self._build_sample(ragas_data, use_concise=False)
             sample_concise = self._build_sample(ragas_data, use_concise=True)
+            sample_diagnosis = self._build_sample(ragas_data, use_diagnosis_only=True)
             
             scores = {}
             error_details = []
@@ -225,6 +229,27 @@ class RAGASEvaluator:
                 scores["answer_relevancy"] = None
                 error_details.append("Answer relevancy evaluation failed in subprocess")
             
+            # Evaluate answer_correctness with diagnosis-only answer using subprocess
+            print(f"   Evaluating answer correctness with diagnosis-only answer in subprocess...")
+            sample_diagnosis_dict = {
+                'user_input': sample_diagnosis.user_input,
+                'retrieved_contexts': sample_diagnosis.retrieved_contexts,
+                'response': sample_diagnosis.response,
+                'reference': sample_diagnosis.reference
+            }
+            results_correctness = self._evaluate_in_subprocess(
+                samples=[sample_diagnosis_dict],
+                metrics=['answer_correctness']
+            )
+            
+            if results_correctness and results_correctness.get("answer_correctness") is not None:
+                scores["answer_correctness"] = results_correctness.get("answer_correctness")
+                print(f"   ✓ Answer correctness complete: {results_correctness}")
+            else:
+                print(f"   ❌ Answer correctness returned None or empty: {results_correctness}")
+                scores["answer_correctness"] = None
+                error_details.append("Answer correctness evaluation failed in subprocess")
+            
             print(f"✅ Evaluation complete for {case_id}")
             print(f"   Scores: {scores}")
             
@@ -244,6 +269,7 @@ class RAGASEvaluator:
                 "context_recall": float('nan'),
                 "faithfulness": float('nan'),
                 "answer_relevancy": float('nan'),
+                "answer_correctness": float('nan'),
                 "error": str(e)
             }
     
@@ -264,6 +290,7 @@ class RAGASEvaluator:
             "retrieved_contexts": retrieved_contexts,
             "answer_full": self._flatten_answer(ai_response),
             "answer_concise": self._extract_concise_answer(ai_response),
+            "answer_diagnosis_only": self._extract_diagnosis_only(ai_response),
             "ai_response": ai_response,
             "ground_truth": ground_truth
         }
@@ -315,6 +342,52 @@ class RAGASEvaluator:
         
         # Fallback: Return truncated full flatten
         return self._flatten_answer(ai_response)[:200]
+    
+    def _extract_diagnosis_only(self, ai_response) -> str:
+        """Extract ONLY the diagnosis name for answer correctness comparison.
+        
+        Extracts just the disease name from concise_answer before (likelihood) or other metadata.
+        Example: "Syphilis in Pregnancy (high likelihood) - ..." -> "Syphilis in Pregnancy"
+        """
+        if isinstance(ai_response, str):
+            # If plain string, try to extract before first parenthesis
+            if '(' in ai_response:
+                return ai_response.split('(')[0].strip()
+            return ai_response.strip()
+        
+        if not isinstance(ai_response, dict):
+            return str(ai_response)
+        
+        # Priority 1: Extract from explicit 'concise_answer' field
+        if "concise_answer" in ai_response:
+            concise = str(ai_response["concise_answer"])
+            # Extract text before (likelihood) or first hyphen
+            if '(' in concise:
+                diagnosis = concise.split('(')[0].strip()
+            elif ' - ' in concise:
+                diagnosis = concise.split(' - ')[0].strip()
+            else:
+                diagnosis = concise.strip()
+            return diagnosis
+        
+        # Priority 2: Extract from differential_diagnosis
+        if "differential_diagnosis" in ai_response:
+            diff_diagnosis = ai_response.get("differential_diagnosis", [])
+            if diff_diagnosis and isinstance(diff_diagnosis, list) and len(diff_diagnosis) > 0:
+                top = diff_diagnosis[0]
+                if isinstance(top, dict):
+                    return top.get("disease", "Unknown")
+        
+        # Priority 3: Extract from most_likely_diagnoses (alternative format)
+        if "most_likely_diagnoses" in ai_response:
+            diagnoses = ai_response.get("most_likely_diagnoses", [])
+            if diagnoses and isinstance(diagnoses, list) and len(diagnoses) > 0:
+                top = diagnoses[0]
+                if isinstance(top, dict):
+                    return top.get("diagnosis", "Unknown")
+        
+        # Fallback: return "Unknown"
+        return "Unknown"
     
     def _flatten_answer(self, ai_response) -> str:
         """Flatten AI response to string format for RAGAS.
@@ -432,14 +505,20 @@ class RAGASEvaluator:
         
         return "\n".join(parts) if parts else str(ai_response)
     
-    def _build_sample(self, ragas_data: Dict[str, Any], use_concise: bool = False) -> SingleTurnSample:
+    def _build_sample(self, ragas_data: Dict[str, Any], use_concise: bool = False, use_diagnosis_only: bool = False) -> SingleTurnSample:
         """Build RAGAS sample from prepared data.
         
         Args:
             ragas_data: Prepared RAGAS data
             use_concise: If True, use concise answer; otherwise use full answer
+            use_diagnosis_only: If True, use only diagnosis name (for answer correctness)
         """
-        answer_text = ragas_data["answer_concise"] if use_concise else ragas_data["answer_full"]
+        if use_diagnosis_only:
+            answer_text = ragas_data["answer_diagnosis_only"]
+        elif use_concise:
+            answer_text = ragas_data["answer_concise"]
+        else:
+            answer_text = ragas_data["answer_full"]
         
         return SingleTurnSample(
             user_input=ragas_data["question"],

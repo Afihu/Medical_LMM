@@ -42,7 +42,7 @@ class BatchEvaluator:
         
         self.skip_diagnosis = skip_diagnosis
         self.base_dir = PROJECT_ROOT
-        self.test_cases_path = self.base_dir / "test_cases" / "cases.json"
+        self.test_cases_path = self.base_dir / "test_cases" / "augmented_test.json"
         self.diagnosed_cases_dir = self.base_dir / "diagnosed_cases"
         self.results_dir = self.base_dir / "evaluate" / "batch_results"
         
@@ -50,8 +50,14 @@ class BatchEvaluator:
         self.results_dir.mkdir(exist_ok=True)
         
         # Load test cases
-        with open(self.test_cases_path, 'r', encoding='utf-8') as f:
-            self.test_cases = json.load(f)
+        try:
+            with open(self.test_cases_path, 'r', encoding='utf-8') as f:
+                self.test_cases = json.load(f)
+            print(f"✅ Loaded {len(self.test_cases)} test cases from {self.test_cases_path.name}")
+        except json.JSONDecodeError as e:
+            raise ValueError(f"❌ Failed to parse {self.test_cases_path}: {e}")
+        except Exception as e:
+            raise ValueError(f"❌ Failed to load test cases from {self.test_cases_path}: {e}")
         
         # Initialize components
         self.diagnosis_runner = DiagnosisRunner(
@@ -59,7 +65,7 @@ class BatchEvaluator:
         )
         self.evaluator = RAGASEvaluator(self.api_key)
         
-        print(f"✅ Loaded {len(self.test_cases)} test cases")
+        print(f"✅ Initialized diagnosis runner and evaluator")
     
     def run_batch_evaluation(self, limit: Optional[int] = None, skip: int = 0):
         """Run complete batch evaluation pipeline.

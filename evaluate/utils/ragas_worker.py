@@ -17,7 +17,7 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 from ragas import evaluate, EvaluationDataset, SingleTurnSample
-from ragas.metrics import context_precision, context_recall, faithfulness, answer_relevancy
+from ragas.metrics import context_precision, context_recall, faithfulness, answer_relevancy, answer_correctness
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 
 
@@ -57,7 +57,8 @@ def run_evaluation(input_data):
             'context_precision': context_precision,
             'context_recall': context_recall,
             'faithfulness': faithfulness,
-            'answer_relevancy': answer_relevancy
+            'answer_relevancy': answer_relevancy,
+            'answer_correctness': answer_correctness
         }
         metric_objs = [metric_map[m] for m in metrics if m in metric_map]
         
