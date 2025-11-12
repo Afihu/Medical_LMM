@@ -9,10 +9,16 @@ Temporary data is staged in /temp_query_data/<session_id>/ for each session.
 import os
 from datetime import datetime
 import streamlit as st
-import google.generativeai as genai
 from dotenv import load_dotenv
 import numpy as np
 import json
+import re
+import base64
+
+# LLM Services (New wrapper)
+from scripts.llm_services import get_llm_provider
+from scripts.llm_services.content_adapter import ContentAdapter, to_provider_format, add_medical_context
+from scripts.llm_services.factory import setup_provider_from_env, validate_provider_config
 
 # Custom modules
 from scripts.qdrant_services.query import run_query, normalize_cases_for_output
@@ -28,19 +34,35 @@ DIAGNOSED_CASES_FOLDER = os.path.join(PROJECT_ROOT, "diagnosed_cases")
 UPLOADED_IMAGES_FOLDER = os.path.join(PROJECT_ROOT, "uploaded_images")
 TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
 
-# --- Configuration ---
-MODEL_NAME = "models/gemini-2.5-flash"
+# --- Global LLM Provider ---
+llm_provider = None
 
 # --- Setup ---
 def setup():
-    """Configure Gemini API and ensure directories exist."""
+    """Configure LLM provider and ensure directories exist."""
+    global llm_provider
+    
     load_dotenv()
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        st.error("Missing GEMINI_API_KEY in .env file.")
+    
+    # Check which provider is configured
+    provider_type = os.getenv("LLM_PROVIDER", "gemini").lower()
+    
+    # Validate provider configuration
+    is_valid, error_msg = validate_provider_config(provider_type)
+    if not is_valid:
+        st.error(f"LLM Provider configuration error: {error_msg}")
+        st.info("Please check your .env file and ensure the required environment variables are set.")
         st.stop()
-
-    genai.configure(api_key=api_key)
+    
+    # Setup LLM provider
+    try:
+        llm_provider = setup_provider_from_env()
+        st.success(f"✅ {llm_provider.get_provider_name().title()} provider initialized successfully")
+    except Exception as e:
+        st.error(f"Failed to initialize LLM provider: {e}")
+        st.stop()
+    
+    # Create necessary directories
     os.makedirs(DIAGNOSED_CASES_FOLDER, exist_ok=True)
     os.makedirs(UPLOADED_IMAGES_FOLDER, exist_ok=True)
     os.makedirs(TEMP_QUERY_DATA, exist_ok=True)
@@ -48,61 +70,37 @@ def setup():
 
 def parse_json_output(text):
     """
-    Robustly parse JSON from Gemini output.
-    Handles cases where JSON is wrapped in Markdown code fences or has formatting issues.
-    
-    Args:
-        text: Raw text output from Gemini
-        
-    Returns:
-        dict: Parsed JSON or dict with raw_output if parsing fails
+    Legacy function - now handled by LLM providers.
+    This function is kept for backwards compatibility but delegates to the active provider.
     """
-    try:
-        # Direct parse attempt
-        return json.loads(text)
-    except json.JSONDecodeError:
-        pass
-    
-    # Try removing Markdown code fences
-    try:
-        # Check for ```json ... ``` or ``` ... ```
-        if "```json" in text:
-            start = text.find("```json") + 7
-            end = text.find("```", start)
-            if end != -1:
-                json_str = text[start:end].strip()
-                return json.loads(json_str)
-        elif "```" in text:
-            start = text.find("```") + 3
-            end = text.find("```", start)
-            if end != -1:
-                json_str = text[start:end].strip()
-                return json.loads(json_str)
-    except (json.JSONDecodeError, ValueError):
-        pass
-    
-    # Try cleaning up common formatting issues
-    try:
-        # Remove extra whitespace and line breaks that might break JSON
-        cleaned = text.strip()
-        # Try to find JSON object start and end
-        start_idx = cleaned.find('{')
-        end_idx = cleaned.rfind('}')
-        if start_idx != -1 and end_idx != -1:
-            json_str = cleaned[start_idx:end_idx+1]
-            return json.loads(json_str)
-    except (json.JSONDecodeError, ValueError):
-        pass
-    
-    # If all parsing attempts fail, return dict with raw output
-    return {
-        "raw_output": text,
-        "error": "Could not parse JSON - trying to extract from raw output",
-        "timestamp": datetime.now().strftime("%Y-%m-%d_%H-%M-%S"),
-        "analysis": "Failed to parse AI response",
-        "differential_diagnosis": {},
-        "confidence_level": "unknown"
-    }
+    global llm_provider
+    if llm_provider:
+        return llm_provider.parse_response(text)
+    else:
+        # Fallback to basic JSON parsing
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            return {
+                "raw_output": text,
+                "error": "Could not parse JSON - no LLM provider available",
+                "timestamp": datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            }
+
+def extract_json(text):
+    """
+    Legacy function - now handled by LLM providers.
+    This function is kept for backwards compatibility.
+    """
+    global llm_provider
+    if llm_provider and hasattr(llm_provider, 'extract_json'):
+        return llm_provider.extract_json(text)
+    else:
+        # Fallback to basic extraction
+        match = re.search(r'```(?:json)?\s*([\s\S]+?)\s*```', text)
+        if match:
+            return match.group(1).strip()
+        return text.strip()
 
 # --- Main Loop ---
 def main():
@@ -161,7 +159,11 @@ def main():
             st.stop()
 
         session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-        model = genai.GenerativeModel(MODEL_NAME)
+        
+        # Ensure LLM provider is initialized
+        if not llm_provider:
+            st.error("LLM provider not initialized. Please refresh the page.")
+            st.stop()
 
         # --- Clean temporary directories before each session ---
         # This ensures no residual data from previous sessions (as per plan)
@@ -174,6 +176,13 @@ def main():
         image_paths = []
         query_image_paths = []
         if uploaded_files:
+            # Clean all relevant temp folders before new query
+            print("\nClearing temporary directories for a new query...\n")
+            clean_folder(os.path.join(PROJECT_ROOT, "uploaded_images"))
+            clean_folder(os.path.join(PROJECT_ROOT, "decoded_images"))
+            clean_folder(os.path.join(PROJECT_ROOT, "cases_image"))
+            clean_folder(os.path.join(PROJECT_ROOT, "cases_text"))
+            print("\nClearing done! Begin saving uplaoded images...\n")
             for f in uploaded_files:
                 display_path, query_path = save_uploaded_image(f, session_id=session_id)
                 image_paths.append(display_path)
@@ -249,56 +258,52 @@ def main():
             st.error(f"Qdrant query failed: {e}")
             retrieved_cases, saved_dir = {}, None
 
-        # --- Step 2: Prompt Generation + Gemini ---
+        # --- Step 2: Prompt Generation + LLM Generation ---
         with st.spinner("Building prompt and generating analysis..."):
             final_prompt, decoded_images_path = generate_prompt(prompt, session_id=session_id)
 
-            # Build multimodal content
-            content_parts = [{"text": final_prompt}]
+            # Build content for LLM provider
+            # Combine reference images and user images
+            all_image_paths = decoded_images_path + image_paths
             
-            # Add reference images from retrieved cases
-            for img_path in decoded_images_path:
-                try:
-                    with open(img_path, "rb") as f:
-                        data = f.read()
-                    content_parts.append({
-                        "inline_data": {"mime_type": "image/png", "data": data}
-                    })
-                except Exception as e:
-                    st.warning(f"Could not attach reference image {img_path}: {e}")
+            # Add medical context to the content
+            content_dict = {
+                "text": final_prompt,
+                "images": all_image_paths if all_image_paths else None
+            }
             
-            # Add user-uploaded images to Gemini
-            for img_path in image_paths:
-                try:
-                    with open(img_path, "rb") as f:
-                        data = f.read()
-                    # Determine MIME type based on file extension
-                    ext = os.path.splitext(img_path)[1].lower()
-                    mime_type = "image/jpeg" if ext in [".jpg", ".jpeg"] else "image/png"
-                    
-                    content_parts.append({
-                        "inline_data": {"mime_type": mime_type, "data": data}
-                    })
-                    st.info(f"✓ Attached user image to Gemini: {os.path.basename(img_path)}")
-                except Exception as e:
-                    st.warning(f"Could not attach user image {os.path.basename(img_path)} to Gemini: {e}")
+            # Add medical system prompt
+            content_with_medical_context = add_medical_context(content_dict)
+            
+            # Convert to provider-specific format
+            provider_name = llm_provider.get_provider_name()
+            content_for_provider = to_provider_format(
+                content_with_medical_context, 
+                provider_name
+            )
+            
+            # Log attached images
+            if decoded_images_path:
+                st.info(f"✓ Attached {len(decoded_images_path)} reference images from retrieved cases")
+            if image_paths:
+                for img_path in image_paths:
+                    st.info(f"✓ Attached user image: {os.path.basename(img_path)}")
 
-            # Generate with Gemini
+            # Generate with LLM provider
             try:
-                response = model.generate_content(content_parts)
-                ai_text = response.text.strip()
-
-                # Use robust JSON parser that handles Markdown-wrapped JSON
-                ai_output = parse_json_output(ai_text)
+                st.info(f"Generating response using {provider_name.title()} provider...")
+                ai_text = llm_provider.generate_content(content_for_provider)
                 
-                # Check if parsing was successful
-                if "error" not in ai_output or ai_output["error"].startswith("Could not parse"):
-                    st.success("Gemini output parsed successfully.")
+                # Parse response using provider's parser
+                ai_output = llm_provider.parse_response(ai_text)
+                
+                if "error" not in ai_output:
+                    st.success(f"{provider_name.title()} output parsed as valid JSON.")
                 else:
-                    st.warning(f"Gemini output parsing: {ai_output['error']}")
+                    st.warning(f"{provider_name.title()} output was not valid JSON. Saving raw text instead.")
 
             except Exception as e:
-                st.error(f"Error calling Gemini: {e}")
+                st.error(f"Error calling {provider_name.title()} provider: {e}")
                 ai_output = {
                     "raw_output": f"Error during model generation: {e}",
                     "error": str(e),
@@ -310,10 +315,10 @@ def main():
                 ai_text = str(ai_output)
 
 
-        # --- Debug: Show full Gemini prompt content ---
+        # --- Debug: Show full LLM prompt content ---
         st.caption(f"Prompt built from retrieved cases in: {saved_dir}")
-        with st.expander("🔍 View Full Gemini Prompt (Debug Mode)"):
-            st.text_area("Final Gemini Prompt:", final_prompt, height=400)
+        with st.expander(f"🔍 View Full {llm_provider.get_provider_name().title()} Prompt (Debug Mode)"):
+            st.text_area(f"Final {llm_provider.get_provider_name().title()} Prompt:", final_prompt, height=400)
 
         # --- Step 3: Display AI response ---
         st.session_state["messages"].append({"role": "assistant", "content": ai_text})

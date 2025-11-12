@@ -179,8 +179,8 @@
         - Text queries will be staged as JSON arrays.
         - Images uploaded will be resized and normalized in a similar fashion to `./scripts/data_extraction_module/image_extract.py` as .png files inside `./temp_query_data/`.
         - Expected naming convention:
-            - Text Query: `user_query_text_timestamp.json`
-            - Image Query: `user_query_image_timestamp.png`
+            - Text Query: `user_query_text_<timestamp>.json`
+            - Image Query: `user_query_image_<timestamp>.png`
     
     - Output: Final answer from LLM.
         

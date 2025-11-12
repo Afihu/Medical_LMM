@@ -91,6 +91,9 @@ def main():
         except Exception as e:
             print(f"Error during Gemini generation: {e}")
 
+def main():
+    print("Obi Wan kimono")
+    test_embed_output.test_embedder()
 
 # --- Entry Point ---
 if __name__ == "__main__":
