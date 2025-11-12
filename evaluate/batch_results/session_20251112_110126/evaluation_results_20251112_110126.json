@@ -1,0 +1,47 @@
+[
+  {
+    "case_id": "case-001",
+    "diagnosis": "Chagas Disease",
+    "prompt": "A 45-year-old man from a rural village in Bolivia presents with a 10-year history of progressive dif...",
+    "timestamp": "2025-11-12T11:01:26.129343",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_11-01-51.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 0.625,
+      "answer_relevancy": 0.7858402951984718,
+      "answer_correctness": 0.14055219380425285
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-002",
+    "diagnosis": "Chagas Disease",
+    "prompt": "A 52-year-old woman, who emigrated from Central America 20 years ago, is seen for syncope. An ECG re...",
+    "timestamp": "2025-11-12T11:04:46.085640",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_11-05-08.json",
+    "scores": {
+      "context_precision": 0.3333333333,
+      "context_recall": 1.0,
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.8291399812025565,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-003",
+    "diagnosis": "Subarachnoid Neurocysticercosis",
+    "prompt": "A 38-year-old male farmer from Mexico presents with a 2-month history of severe, progressive headach...",
+    "timestamp": "2025-11-12T11:08:10.665967",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_11-08-30.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.4482758620689655,
+      "answer_relevancy": 0.7886965912614251,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  }
+]

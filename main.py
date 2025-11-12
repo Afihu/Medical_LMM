@@ -21,6 +21,7 @@ import google.generativeai as genai
 # Custom modules
 from scripts.query import run_query_text
 from scripts.main_runtime.prompt_generate import generate_prompt
+from scripts.config.model_config import DIAGNOSIS_MODEL
 
 # --- Path configuration ---
 # Get the project root (where main.py is located)
@@ -28,8 +29,8 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 CASES_FOLDER = os.path.join(PROJECT_ROOT, "cases")
 RESPONSES_FOLDER = os.path.join(PROJECT_ROOT, "responses")
 
-# --- Configuration ---
-MODEL_NAME = "models/gemini-2.5-pro"
+# --- Configuration (from centralized config) ---
+MODEL_NAME = f"models/{DIAGNOSIS_MODEL}"
 
 # --- Setup ---
 def setup():

@@ -23,6 +23,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from dotenv import load_dotenv
 
 # Import local utilities
+from scripts.config.model_config import DIAGNOSIS_MODEL
 from evaluate.utils.diagnosis_runner import DiagnosisRunner
 from evaluate.utils.ragas_evaluator import RAGASEvaluator
 from evaluate.utils.report_generator import ReportGenerator
@@ -35,7 +36,7 @@ class BatchEvaluator:
         """Initialize batch evaluator."""
         load_dotenv()
         self.api_key = os.getenv("GEMINI_API_KEY")
-        self.model_name = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+        self.model_name = DIAGNOSIS_MODEL  # From centralized config
         
         if not self.api_key:
             raise ValueError("❌ Missing GEMINI_API_KEY in .env")

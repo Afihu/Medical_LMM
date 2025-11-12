@@ -13,6 +13,10 @@ from ragas.metrics import context_precision, context_recall, faithfulness, answe
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import HuggingFaceEmbeddings
 
+# Import centralized model config
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from scripts.config.model_config import RAGAS_EVALUATION_MODEL
+
 # Suppress gRPC async cleanup warnings
 warnings.filterwarnings('ignore', category=RuntimeWarning, module='threading')
 warnings.filterwarnings('ignore', message='.*InterceptedCall.*')
@@ -24,9 +28,11 @@ class RAGASEvaluator:
     def __init__(self, api_key: str):
         """Initialize RAGAS evaluator."""
         self.api_key = api_key
+        # NOTE: This LLM is not actually used - ragas_worker.py runs evaluation in subprocess
+        # Kept for backward compatibility
         self.llm = ChatGoogleGenerativeAI(
             google_api_key=api_key,
-            model="gemini-2.5-flash-lite",
+            model=RAGAS_EVALUATION_MODEL,  # From centralized config
             temperature=0,
             max_output_tokens=5130,
         )

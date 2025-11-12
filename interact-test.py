@@ -2,6 +2,7 @@
 
 import google.generativeai as genai
 import os
+from scripts.config.model_config import DIAGNOSIS_MODEL
 
 # --- PASTE YOUR API KEY HERE ---
 # You can also set it as an environment variable named "GEMINI_API_KEY"
@@ -14,8 +15,8 @@ except Exception as e:
     print(f"Error configuring the API. Please check your API key. Details: {e}")
     exit()
 
-# Select the model you want to use
-model = genai.GenerativeModel('gemini-2.5-pro') # A fast and efficient model
+# Select the model you want to use (from centralized config)
+model = genai.GenerativeModel(f'models/{DIAGNOSIS_MODEL}')
 
 # --- Main Program Loop ---
 def main():

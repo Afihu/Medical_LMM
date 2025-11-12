@@ -4,11 +4,19 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from dotenv import load_dotenv
 import os, json
+import sys
+from pathlib import Path
+
+# Add project root to path
+PROJECT_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from scripts.config.model_config import RAGAS_EVALUATION_MODEL
 
 # --- Load env ---
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
-model_name = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
+model_name = RAGAS_EVALUATION_MODEL  # From centralized config
 
 if not api_key:
     raise ValueError("❌ Missing GEMINI_API_KEY in .env")

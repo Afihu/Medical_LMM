@@ -20,6 +20,7 @@ from scripts.main_runtime.prompt_generate import generate_prompt
 from scripts.main_runtime.streamlit_ui_helper import load_conversation, save_conversation, save_uploaded_image
 from scripts.main_runtime.clean_folder import clean_folder
 from scripts.embedding_generation_module.orchestrators import QueryOrchestrator
+from scripts.config.model_config import DIAGNOSIS_MODEL
 
 # --- Path configuration ---
 # Get the project root (where main.py is located)
@@ -28,8 +29,8 @@ DIAGNOSED_CASES_FOLDER = os.path.join(PROJECT_ROOT, "diagnosed_cases")
 UPLOADED_IMAGES_FOLDER = os.path.join(PROJECT_ROOT, "uploaded_images")
 TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
 
-# --- Configuration ---
-MODEL_NAME = "models/gemini-2.5-flash"
+# --- Configuration (from centralized config) ---
+MODEL_NAME = f"models/{DIAGNOSIS_MODEL}"
 
 # --- Setup ---
 def setup():

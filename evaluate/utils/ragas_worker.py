@@ -34,6 +34,7 @@ sys.path.insert(0, str(project_root))
 from ragas import evaluate, EvaluationDataset, SingleTurnSample
 from ragas.metrics import context_precision, context_recall, faithfulness, answer_relevancy, answer_correctness
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from scripts.config.model_config import RAGAS_EVALUATION_MODEL, RAGAS_EMBEDDINGS_MODEL
 
 # Suppress absl logging after imports
 try:
@@ -58,14 +59,14 @@ def run_evaluation(input_data):
         samples = input_data['samples']
         metrics = input_data['metrics']
         
-        # Initialize LLM and embeddings
+        # Initialize LLM and embeddings (from centralized config)
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash",
+            model=RAGAS_EVALUATION_MODEL,  # From centralized config
             google_api_key=api_key,
             temperature=0
         )
         embeddings = GoogleGenerativeAIEmbeddings(
-            model="models/text-embedding-004",
+            model=RAGAS_EMBEDDINGS_MODEL,  # From centralized config
             google_api_key=api_key
         )
         
