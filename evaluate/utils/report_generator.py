@@ -35,7 +35,7 @@ class ReportGenerator:
         
         fieldnames = [
             'case_id', 'diagnosis', 'status',
-            'context_precision', 'context_recall', 'faithfulness', 'answer_relevancy',
+            'context_precision', 'context_recall', 'faithfulness', 'answer_relevancy', 'answer_correctness',
             'timestamp', 'error'
         ]
         
@@ -53,6 +53,7 @@ class ReportGenerator:
                     'context_recall': scores.get('context_recall', ''),
                     'faithfulness': scores.get('faithfulness', ''),
                     'answer_relevancy': scores.get('answer_relevancy', ''),
+                    'answer_correctness': scores.get('answer_correctness', ''),
                     'timestamp': result.get('timestamp', ''),
                     'error': result.get('error', '')
                 })
@@ -66,7 +67,7 @@ class ReportGenerator:
         # Calculate averages (excluding NaN values)
         avg_scores = {}
         if completed:
-            for metric in ["context_precision", "context_recall", "faithfulness", "answer_relevancy"]:
+            for metric in ["context_precision", "context_recall", "faithfulness", "answer_relevancy", "answer_correctness"]:
                 scores = [r["scores"][metric] for r in completed 
                          if r["scores"].get(metric) is not None 
                          and not (isinstance(r["scores"].get(metric), float) and math.isnan(r["scores"].get(metric)))]
@@ -86,7 +87,8 @@ class ReportGenerator:
             f"| Context Precision | {ReportGenerator._format_score(avg_scores.get('context_precision'))} |",
             f"| Context Recall | {ReportGenerator._format_score(avg_scores.get('context_recall'))} |",
             f"| Faithfulness | {ReportGenerator._format_score(avg_scores.get('faithfulness'))} |",
-            f"| Answer Relevancy | {ReportGenerator._format_score(avg_scores.get('answer_relevancy'))} |\n",
+            f"| Answer Relevancy | {ReportGenerator._format_score(avg_scores.get('answer_relevancy'))} |",
+            f"| Answer Correctness | {ReportGenerator._format_score(avg_scores.get('answer_correctness'))} |\n",
             "## Individual Case Results\n"
         ]
         
@@ -101,7 +103,8 @@ class ReportGenerator:
                 f"- Context Precision: {ReportGenerator._format_score(scores.get('context_precision'))}",
                 f"- Context Recall: {ReportGenerator._format_score(scores.get('context_recall'))}",
                 f"- Faithfulness: {ReportGenerator._format_score(scores.get('faithfulness'))}",
-                f"- Answer Relevancy: {ReportGenerator._format_score(scores.get('answer_relevancy'))}\n"
+                f"- Answer Relevancy: {ReportGenerator._format_score(scores.get('answer_relevancy'))}",
+                f"- Answer Correctness: {ReportGenerator._format_score(scores.get('answer_correctness'))}\n"
             ])
             
             # Add evaluation errors if any

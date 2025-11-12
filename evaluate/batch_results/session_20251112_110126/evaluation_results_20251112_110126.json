@@ -43,5 +43,35 @@
       "answer_correctness": 1.0
     },
     "status": "completed"
+  },
+  {
+    "case_id": "case-004",
+    "diagnosis": "Subarachnoid Neurocysticercosis",
+    "prompt": "A 29-year-old woman from Peru is admitted to the emergency department after a first-time generalized...",
+    "timestamp": "2025-11-12T11:11:24.877963",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_11-11-43.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.3793103448275862,
+      "answer_relevancy": 0.8936786263205998,
+      "answer_correctness": 0.7420359633561444
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-005",
+    "diagnosis": "Dengue",
+    "prompt": "A 24-year-old tourist returns from a 2-week trip to Thailand. He presents with an abrupt onset of hi...",
+    "timestamp": "2025-11-12T11:14:30.827601",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_11-14-46.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 0.08695652173913043,
+      "answer_relevancy": 0.808700792291793,
+      "answer_correctness": 0.22339974068404758
+    },
+    "status": "completed"
   }
 ]
