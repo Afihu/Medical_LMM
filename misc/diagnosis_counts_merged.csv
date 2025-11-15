@@ -1,0 +1,91 @@
+Diagnosis,Count,Cases,Common
+Melioidosis,2,"['15', '32']",
+Filoviral Diseases,2,"['1', '53']",
+Brucellosis,2,"['76', '81']",
+Neurocysticercosis,1,['38'],neurocysticercosis
+Yellow Fever,1,['93'],fever
+Loiasis,1,['28'],
+Tuberculosis in HIV-Infected Patients,1,['33'],tuberculosis
+Measles,1,['31'],
+Cerebral Malaria and Malarial Retinopathy,1,['4'],malarial
+Kaposi’s Sarcoma,1,['59'],
+Hantavirus Cardiopulmonary Syndrome (HCPS),1,['90'],
+Sporotrichosis,1,['34'],
+Knowlesi Malaria,1,['92'],malaria
+Paragonimiasis,1,['71'],
+Progressive Multifocal Leukoencephalopathy,1,['51'],
+Acute Transverse Myelitis,1,['48'],acute
+Chagas Disease,1,['89'],
+Severe Fever With Thrombocytopenia,1,['88'],fever
+Crusted Scabies,1,['10'],
+Spinal Tuberculosis (Pott’s Disease),1,['11'],tuberculosis
+Genitourinary Schistosomiasis,1,['7'],schistosomiasis
+African Tick-Bite Fever,1,['54'],fever
+Giardiasis,1,['49'],
+Poor-Quality Medicines,1,['39'],
+Subarachnoid Neurocysticercosis,1,['82'],neurocysticercosis
+Pellagra,1,['37'],
+Cutaneous Leishmaniasis,1,['2'],leishmaniasis
+Noma,1,['5'],
+Acute Arboviral Infection,1,['77'],acute
+Scrub Typhus,1,['70'],
+Infantile Beriberi,1,['45'],
+Rabies,1,['91'],
+Cystic Echinococcosis,1,['50'],
+Myiasis,1,['8'],
+Hepatosplenic Schistosomiasis,1,['57'],schistosomiasis
+Streptococcus suis meningitis,1,['85'],meningitis
+Trachoma,1,['30'],
+Cholangiocarcinoma,1,['80'],
+Gnathostomiasis,1,['6'],
+Amoebic Liver Abscess,1,['46'],
+Konzo,1,['24'],
+Syphilis in Pregnancy,1,['56'],
+Typhoid Fever,1,['13'],fever
+Malaria,1,['22'],malaria
+Talaromycosis (Penicilliosis),1,['17'],
+Ocular Surface Squamous Neoplasia,1,['43'],
+Lassa Fever,1,['74'],fever
+Neurolathyrism,1,['69'],
+Yaws,1,['86'],
+Leg Ulcers in Sickle Cell Disease,1,['62'],
+Tetanus,1,['40'],
+Burkitt’s Lymphoma,1,['60'],
+Mycobacterium ulcerans Disease (Buruli Ulcer),1,['41'],
+Tungiasis,1,['65'],
+Eosinophilic Meningitis,1,['64'],meningitis
+Cerebral Sparganosis,1,['84'],cerebral
+Mayaro-Fever,1,['87'],fever
+Tuberculous Meningitis,1,['3'],meningitis
+Stevens–Johnson Syndrome and Toxic Epidermal,1,['68'],
+Dengue,1,['9'],
+Hookworm-Related Cutaneous Larva Migrans,1,['42'],cutaneous
+Paracoccidioidomycosis,1,['55'],
+Snake Bite,1,['26'],
+Acute Schistosomiasis (Katayama Syndrome),1,['20'],acute
+Cryptococcal Meningitis,1,['35'],meningitis
+Immune Reconstitution Inflammatory Syndrome,1,['47'],
+Kwashiorkor,1,['72'],
+Fascioliasis,1,['67'],
+Invasive Non-Typhoidal Salmonellae (iNTS) Infection,1,['29'],
+Chancroid,1,['12'],
+Onchocerciasis,1,['19'],
+Leptospirosis,1,['27'],
+Anthrax,1,['21'],
+Pneumocystis Pneumonia (PCP),1,['23'],
+Neuroschistosomiasis,1,['63'],
+Cholera,1,['14'],
+Hyperreactive Malarial Splenomegaly (HMS),1,['73'],malarial
+Human African Trypanosomiasis (HAT),1,['78'],
+Acute Bacterial Meningitis,1,['16'],meningitis
+Seizure Management in HIV,1,['75'],
+Chromoblastomycosis,1,['25'],
+Intestinal Capillariasis,1,['58'],
+Human Monkeypox,1,['94'],
+Leprosy,1,['83'],
+Bartonellosis – Oroya Fever and Verruga Peruana,1,['52'],fever
+Tuberculosis,1,['66'],tuberculosis
+Lymphatic Filariasis,1,['36'],
+HTLV-1-Associated Strongyloides stercoralis Hyperinfection Syndrome,1,['79'],
+Visceral Leishmaniasis (Kala-Azar),1,['44'],leishmaniasis
+Histoplasmosis,1,['61'],

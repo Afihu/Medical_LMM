@@ -9,6 +9,7 @@ dependencies = [
     "google-generativeai>=0.8.5",
     "hf-xet>=1.1.10",
     "huggingface-hub>=0.35.3",
+    "ipykernel>=7.1.0",
     "keras>=3.12.0",
     "langchain>=0.3.27",
     "langchain-community>=0.3.31",
