@@ -1,7 +1,7 @@
 # Choice of LLM provider: 
 # "gemini" for Google Gemini API
 # "lmstudio" for LM Studio - locally hosted models
-LLM_PROVIDER="lmstudio" # or "lmstudio"
+LLM_PROVIDER="gemini" # or "lmstudio"
 
 # If you choose Gemini, input model name of choice. The full list can be found in the `model.txt`.
 GEMINI_MODEL_NAME="models/gemini-2.5-flash" 
