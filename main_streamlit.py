@@ -249,7 +249,7 @@ def main():
                 "role": "assistant",
                 "content": "Hello! How can I assist you today?"
         }]
-        
+
         uploaded_files = st.file_uploader(
             "➕",
             type=["jpg", "jpeg", "png"],
@@ -398,10 +398,10 @@ def main():
                 
                 # Log attached images
                 if decoded_images_path:
-                    st.info(f"✓ Attached {len(decoded_images_path)} reference images from retrieved cases")
+                    st.info(f"Attached {len(decoded_images_path)} reference images from retrieved cases")
                 if image_paths:
                     for img_path in image_paths:
-                        st.info(f"✓ Attached user image: {os.path.basename(img_path)}")
+                        st.info(f"Attached user image: {os.path.basename(img_path)}")
 
                 # Generate with LLM provider
                 try:
@@ -431,7 +431,7 @@ def main():
 
             # --- Debug: Show full LLM prompt content ---
             st.caption(f"Prompt built from retrieved cases in: {saved_dir}")
-            with st.expander(f"🔍 View Full {llm_provider.get_provider_name().title()} Prompt (Debug Mode)"):
+            with st.expander(f"View Full {llm_provider.get_provider_name().title()} Prompt (Debug Mode)"):
                 st.text_area(f"Final {llm_provider.get_provider_name().title()} Prompt:", final_prompt, height=400)
 
             # --- Step 3: Display AI response ---
@@ -461,12 +461,12 @@ def main():
             try:
                 with open(output_path, "w", encoding="utf-8") as f:
                     json.dump(diagnostic_record, f, indent=4, ensure_ascii=False)
-                st.sidebar.success(f"🩺 Diagnosis saved: {filename}")
+                st.sidebar.success(f"Diagnosis saved: {filename}")
             except Exception as e:
                 st.sidebar.error(f"Error saving diagnostic record: {e}")
 
     else:   # for the "New Chat" condition
-        st.info("📄 Viewing a previously saved diagnosed case. Input is disabled.")
+        st.info("Viewing a previously saved diagnosed case. Input is disabled.")
 
 # --- Run app ---
 if __name__ == "__main__":
