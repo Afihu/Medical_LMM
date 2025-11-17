@@ -1,0 +1,332 @@
+[
+  {
+    "case_id": "case-001",
+    "diagnosis": "Chagas Disease",
+    "prompt": "A 45-year-old man from a rural village in Bolivia presents with a 10-year history of progressive dif...",
+    "timestamp": "2025-11-12T12:33:29.589601",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_12-34-01.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 0.4418604651162791,
+      "answer_relevancy": 0.6080106118958308,
+      "answer_correctness": 0.1961054955945144
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-002",
+    "diagnosis": "Chagas Disease",
+    "prompt": "A 52-year-old woman, who emigrated from Central America 20 years ago, is seen for syncope. An ECG re...",
+    "timestamp": "2025-11-12T12:37:05.507221",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_12-37-34.json",
+    "scores": {
+      "context_precision": 0.3333333333,
+      "context_recall": 1.0,
+      "faithfulness": 0.42592592592592593,
+      "answer_relevancy": 0.6534629971408861,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-003",
+    "diagnosis": "Subarachnoid Neurocysticercosis",
+    "prompt": "A 38-year-old male farmer from Mexico presents with a 2-month history of severe, progressive headach...",
+    "timestamp": "2025-11-12T12:40:51.835193",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_12-41-11.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.5714285714285714,
+      "answer_relevancy": 0.7651258339292456,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-004",
+    "diagnosis": "Subarachnoid Neurocysticercosis",
+    "prompt": "A 29-year-old woman from Peru is admitted to the emergency department after a first-time generalized...",
+    "timestamp": "2025-11-12T12:43:48.283391",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_12-44-14.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.36363636363636365,
+      "answer_relevancy": 0.8776063657786635,
+      "answer_correctness": 0.7420359633561444
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-005",
+    "diagnosis": "Dengue",
+    "prompt": "A 24-year-old tourist returns from a 2-week trip to Thailand. He presents with an abrupt onset of hi...",
+    "timestamp": "2025-11-12T12:47:50.146129",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_12-48-05.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 0.358974358974359,
+      "answer_relevancy": 0.8794620612957171,
+      "answer_correctness": 0.19218304400317898
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-006",
+    "diagnosis": "Dengue",
+    "prompt": "A 19-year-old man from Puerto Rico presents with a 5-day history of high fever. The fever has just s...",
+    "timestamp": "2025-11-12T12:51:29.998958",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_12-51-56.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 0.4444444444444444,
+      "answer_relevancy": 0.6582133361634389,
+      "answer_correctness": 0.20998982634408725
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-007",
+    "diagnosis": "Stevens–Johnson Syndrome and Toxic Epidermal",
+    "prompt": "A 30-year-old man, recently diagnosed with HIV and a CD4 count of 150, presents with a high fever an...",
+    "timestamp": "2025-11-12T12:55:08.569051",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_12-55-31.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.32142857142857145,
+      "answer_relevancy": 0.6831066401840458,
+      "answer_correctness": 0.7286941884760554
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-008",
+    "diagnosis": "Stevens–Johnson Syndrome and Toxic Epidermal",
+    "prompt": "A 22-year-old woman is admitted with a 3-day history of high fever, severe malaise, and a confluent,...",
+    "timestamp": "2025-11-12T12:58:20.627885",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_12-58-48.json",
+    "scores": {
+      "context_precision": 0.3333333333,
+      "context_recall": 1.0,
+      "faithfulness": 0.5675675675675675,
+      "answer_relevancy": 0.7058036001666584,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-009",
+    "diagnosis": "Fascioliasis",
+    "prompt": "A 48-year-old farmer from the Nile Delta in Egypt presents with a 6-week history of right upper quad...",
+    "timestamp": "2025-11-12T13:01:45.924973",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_13-02-00.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.42,
+      "answer_relevancy": 0.7167847304994707,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-010",
+    "diagnosis": "Fascioliasis",
+    "prompt": "A 35-year-old woman from rural Peru presents with fever, night sweats, and persistent abdominal pain...",
+    "timestamp": "2025-11-12T13:05:00.288940",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_13-05-23.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.4827586206896552,
+      "answer_relevancy": 0.6897539842720493,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-011",
+    "diagnosis": "Cutaneous Leishmaniasis",
+    "prompt": "A 27-year-old soldier returns from a deployment in Afghanistan. He presents with two non-healing ski...",
+    "timestamp": "2025-11-12T13:08:06.639986",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_13-08-32.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.6335596372768123,
+      "answer_correctness": 0.21468620747119535
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-012",
+    "diagnosis": "Cutaneous Leishmaniasis",
+    "prompt": "A 19-year-old man, an ecotourist who recently traveled through the Amazon rainforest in Brazil, seek...",
+    "timestamp": "2025-11-12T13:40:45.737304",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_13-41-24.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 0.0,
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.8117622159519481,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-013",
+    "diagnosis": "Cholera",
+    "prompt": "A 5-year-old child living in a densely populated, poverty-stricken area develops the sudden onset of...",
+    "timestamp": "2025-11-12T13:44:48.094199",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_13-45-10.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.40540540540540543,
+      "answer_relevancy": 0.6624426739475805,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-014",
+    "diagnosis": "Cholera",
+    "prompt": "A 40-year-old male presents to a field hospital in Yemen during a major outbreak. He reports passing...",
+    "timestamp": "2025-11-12T13:48:17.480052",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_13-48-34.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.5306122448979592,
+      "answer_relevancy": 0.9021427279208097,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-015",
+    "diagnosis": "HTLV-1-Associated Strongyloides stercoralis Hyperinfection Syndrome",
+    "prompt": "A 55-year-old man from an endemic area for *Strongyloides stercoralis* infection, who is also known ...",
+    "timestamp": "2025-11-12T13:51:29.459300",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_13-51-54.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.5277777777777778,
+      "answer_relevancy": 0.7554278758298927,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-016",
+    "diagnosis": "HTLV-1-Associated Strongyloides stercoralis Hyperinfection Syndrome",
+    "prompt": "A patient with newly diagnosed HTLV-1 associated myelopathy (HAM/TSP) is started on high-dose cortic...",
+    "timestamp": "2025-11-12T13:55:27.751338",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_13-55-46.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.07142857142857142,
+      "answer_relevancy": 0.8070265354631818,
+      "answer_correctness": 0.7416853847602429
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-017",
+    "diagnosis": "Malaria",
+    "prompt": "A 28-year-old traveler returning from Mozambique presents with recurrent high fevers, chills, drench...",
+    "timestamp": "2025-11-12T13:58:42.753505",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_13-59-21.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 1.0,
+      "faithfulness": 0.3170731707317073,
+      "answer_relevancy": 0.8010511435280052,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-018",
+    "diagnosis": "Malaria",
+    "prompt": "A 5-year-old child in Nigeria is brought to the clinic with severe lethargy, inability to feed, and ...",
+    "timestamp": "2025-11-12T14:02:05.957587",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_14-02-25.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 1.0,
+      "faithfulness": 0.4444444444444444,
+      "answer_relevancy": 0.893928374131738,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-019",
+    "diagnosis": "African Tick-Bite Fever",
+    "prompt": "A 50-year-old hiker returns from a trip to the Kruger National Park in South Africa. He presents wit...",
+    "timestamp": "2025-11-12T14:05:27.386546",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_14-05-49.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.7073056265917333,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-020",
+    "diagnosis": "African Tick-Bite Fever",
+    "prompt": "A 35-year-old woman in Kenya reports an abrupt onset of fever, myalgia, and a maculopapular rash tha...",
+    "timestamp": "2025-11-12T14:09:11.820789",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_14-09-31.json",
+    "scores": {
+      "context_precision": 0.49999999995,
+      "context_recall": 1.0,
+      "faithfulness": 0.15,
+      "answer_relevancy": 0.7798252262720817,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-021",
+    "diagnosis": "Kaposi’s Sarcoma",
+    "prompt": "A 32-year-old male with poorly controlled HIV (CD4 count 50 cells/mm³) presents with multiple painle...",
+    "timestamp": "2025-11-12T14:12:10.504675",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_14-12-33.json",
+    "scores": {
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "faithfulness": 0.40816326530612246,
+      "answer_relevancy": 0.814937102082209,
+      "answer_correctness": 1.0
+    },
+    "status": "completed"
+  },
+  {
+    "case_id": "case-022",
+    "diagnosis": "Kaposi’s Sarcoma",
+    "prompt": "An elderly man from the Mediterranean presents with slow-growing, reddish-purple plaques on his lowe...",
+    "timestamp": "2025-11-12T14:15:31.338436",
+    "diagnosis_file": "D:\\VGU\\Y4\\Project\\Codespace\\Medical_LMM\\diagnosed_cases\\diagnosis_2025-11-12_14-16-00.json",
+    "scores": {
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 0.46153846153846156,
+      "answer_relevancy": 0.6265417311688117,
+      "answer_correctness": 0.2070771927999775
+    },
+    "status": "completed"
+  }
+]
