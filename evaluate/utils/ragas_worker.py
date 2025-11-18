@@ -34,6 +34,8 @@ sys.path.insert(0, str(project_root))
 from ragas import evaluate, EvaluationDataset, SingleTurnSample
 from ragas.metrics import context_precision, context_recall, faithfulness, answer_relevancy, answer_correctness
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain_huggingface import HuggingFaceEmbeddings
 from scripts.config.model_config import RAGAS_EVALUATION_MODEL, RAGAS_EMBEDDINGS_MODEL
 
 # Suppress absl logging after imports
@@ -55,20 +57,58 @@ def run_evaluation(input_data):
     """Run RAGAS evaluation in isolated subprocess."""
     try:
         # Parse input
-        api_key = input_data['api_key']
+        api_key = input_data.get('api_key')
         samples = input_data['samples']
         metrics = input_data['metrics']
         
-        # Initialize LLM and embeddings (from centralized config)
-        llm = ChatGoogleGenerativeAI(
-            model=RAGAS_EVALUATION_MODEL,  # From centralized config
-            google_api_key=api_key,
-            temperature=0
-        )
-        embeddings = GoogleGenerativeAIEmbeddings(
-            model=RAGAS_EMBEDDINGS_MODEL,  # From centralized config
-            google_api_key=api_key
-        )
+        # Get provider configuration (defaults to Gemini for backward compatibility)
+        ragas_llm_provider = input_data.get('ragas_llm_provider', 'gemini').lower()
+        ragas_embeddings_provider = input_data.get('ragas_embeddings_provider', 'google').lower()
+        ragas_embeddings_model = input_data.get('ragas_embeddings_model', 'abhinand/MedEmbed-base-v0.1')
+        
+        # Local LLM configuration (for lmstudio/local providers)
+        local_llm_url = input_data.get('local_llm_url', 'http://localhost:1234')
+        lmstudio_model = input_data.get('lmstudio_model', 'medgemma-4b-it')
+        lmstudio_temperature = input_data.get('lmstudio_temperature', 0.0)
+        lmstudio_max_tokens = input_data.get('lmstudio_max_tokens', 32768)
+        
+        # Initialize LLM based on provider
+        if ragas_llm_provider == 'gemini':
+            if not api_key:
+                raise ValueError("RAGAS_LLM_PROVIDER is 'gemini' but api_key not provided")
+            llm = ChatGoogleGenerativeAI(
+                model=RAGAS_EVALUATION_MODEL,
+                google_api_key=api_key,
+                temperature=0
+            )
+        elif ragas_llm_provider in ['local', 'lmstudio']:
+            # Use ChatOpenAI with custom base_url for OpenAI-compatible local servers
+            # Works with LM Studio, vLLM, Ollama, etc.
+            llm = ChatOpenAI(
+                base_url=f"{local_llm_url}/v1",  # OpenAI-compatible endpoint
+                api_key="dummy-key",  # Local servers often don't check API keys
+                model=lmstudio_model,
+                temperature=lmstudio_temperature,
+                max_tokens=lmstudio_max_tokens,
+            )
+        else:
+            raise ValueError(f"Unsupported RAGAS_LLM_PROVIDER: {ragas_llm_provider}")
+        
+        # Initialize embeddings based on provider
+        if ragas_embeddings_provider == 'google':
+            if not api_key:
+                raise ValueError("RAGAS_EMBEDDINGS_PROVIDER is 'google' but api_key not provided")
+            embeddings = GoogleGenerativeAIEmbeddings(
+                model=RAGAS_EMBEDDINGS_MODEL,
+                google_api_key=api_key
+            )
+        elif ragas_embeddings_provider in ['huggingface', 'sentence-transformers']:
+            # Use HuggingFace embeddings (supports sentence-transformers models)
+            embeddings = HuggingFaceEmbeddings(
+                model_name=ragas_embeddings_model
+            )
+        else:
+            raise ValueError(f"Unsupported RAGAS_EMBEDDINGS_PROVIDER: {ragas_embeddings_provider}")
         
         # Build dataset
         eval_samples = []

@@ -1,10 +1,15 @@
 """
 Automated Batch Evaluation Script for Medical_LMM
 --------------------------------------------------
-Automates diagnosis and RAGAS evaluation pipeline.
+Automates diagnosis and RAGAS evaluation pipeline with provider-agnostic LLM support.
 
 Usage:
     python evaluate/run_batch_evaluation.py [--limit N] [--skip-diagnosis]
+
+Configuration:
+    Set LLM_PROVIDER environment variable or in evaluate/config.py:
+    - "gemini": Google Gemini API (requires GEMINI_API_KEY)
+    - "lmstudio": Local LM Studio or compatible server (requires LOCAL_LLM_URL)
 """
 
 import os
@@ -22,24 +27,45 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from dotenv import load_dotenv
 
+# Import configuration and LLM factory
+from evaluate.config import get_config, print_config
+from scripts.llm_services.factory import setup_provider_from_env
+
 # Import local utilities
-from scripts.config.model_config import DIAGNOSIS_MODEL
 from evaluate.utils.diagnosis_runner import DiagnosisRunner
 from evaluate.utils.ragas_evaluator import RAGASEvaluator
 from evaluate.utils.report_generator import ReportGenerator
 
 
 class BatchEvaluator:
-    """Main batch evaluation orchestrator."""
+    """Main batch evaluation orchestrator with provider-agnostic LLM support."""
     
     def __init__(self, skip_diagnosis: bool = False):
-        """Initialize batch evaluator."""
-        load_dotenv()
-        self.api_key = os.getenv("GEMINI_API_KEY")
-        self.model_name = DIAGNOSIS_MODEL  # From centralized config
+        """Initialize batch evaluator.
         
-        if not self.api_key:
-            raise ValueError("❌ Missing GEMINI_API_KEY in .env")
+        Loads configuration from evaluate/config.py and environment variables.
+        Initializes LLM provider based on configuration.
+        """
+        load_dotenv()
+        
+        # Load and display configuration
+        print("\n" + "=" * 60)
+        print("📋 Loading Evaluation Configuration...")
+        print("=" * 60)
+        
+        try:
+            config = get_config()
+            print_config()
+        except ValueError as e:
+            raise ValueError(f"❌ Configuration error: {e}")
+        
+        # Setup LLM provider from factory
+        try:
+            self.llm_provider = setup_provider_from_env()
+            provider_name = self.llm_provider.get_provider_name()
+            print(f"✅ LLM Provider initialized: {provider_name.upper()}")
+        except Exception as e:
+            raise ValueError(f"❌ Failed to initialize LLM provider: {e}")
         
         self.skip_diagnosis = skip_diagnosis
         self.base_dir = PROJECT_ROOT
@@ -60,13 +86,11 @@ class BatchEvaluator:
         except Exception as e:
             raise ValueError(f"❌ Failed to load test cases from {self.test_cases_path}: {e}")
         
-        # Initialize components
-        self.diagnosis_runner = DiagnosisRunner(
-            self.api_key, self.model_name, self.diagnosed_cases_dir
-        )
-        self.evaluator = RAGASEvaluator(self.api_key)
+        # Initialize components with LLM provider
+        self.diagnosis_runner = DiagnosisRunner(self.llm_provider, self.diagnosed_cases_dir)
+        self.evaluator = RAGASEvaluator(self.llm_provider)
         
-        print(f"✅ Initialized diagnosis runner and evaluator")
+        print(f"✅ Initialized diagnosis runner and evaluator\n")
     
     def run_batch_evaluation(self, limit: Optional[int] = None, skip: int = 0):
         """Run complete batch evaluation pipeline.

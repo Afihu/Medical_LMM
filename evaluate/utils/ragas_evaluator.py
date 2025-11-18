@@ -1,13 +1,14 @@
 """RAGAS evaluation utilities."""
 
 import json
+import os
 import time
 import warnings
 import traceback
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional, List, Union
 from ragas import EvaluationDataset, SingleTurnSample, evaluate
 from ragas.metrics import context_precision, context_recall, faithfulness, answer_relevancy, answer_correctness
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -16,6 +17,18 @@ from langchain_huggingface import HuggingFaceEmbeddings
 # Import centralized model config
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from scripts.config.model_config import RAGAS_EVALUATION_MODEL
+from scripts.llm_services.base import LLMProvider
+
+# Import evaluation config for RAGAS settings
+from evaluate.config import (
+    RAGAS_LLM_PROVIDER,
+    RAGAS_EMBEDDINGS_PROVIDER,
+    RAGAS_EMBEDDINGS_MODEL,
+    LOCAL_LLM_URL,
+    LMSTUDIO_MODEL,
+    LMSTUDIO_TEMPERATURE,
+    LMSTUDIO_MAX_TOKENS,
+)
 
 # Suppress gRPC async cleanup warnings
 warnings.filterwarnings('ignore', category=RuntimeWarning, module='threading')
@@ -23,20 +36,61 @@ warnings.filterwarnings('ignore', message='.*InterceptedCall.*')
 
 
 class RAGASEvaluator:
-    """Handles RAGAS evaluation of diagnosis results."""
+    """Handles RAGAS evaluation of diagnosis results.
     
-    def __init__(self, api_key: str):
-        """Initialize RAGAS evaluator."""
-        self.api_key = api_key
+    Now supports both Gemini and local LLMs (LM Studio, vLLM, Ollama) for evaluation metrics.
+    """
+    
+    def __init__(self, llm_provider: Union[LLMProvider, str]):
+        """Initialize RAGAS evaluator.
+        
+        Args:
+            llm_provider: LLMProvider instance or API key string (for backward compatibility)
+        """
+        # Handle backward compatibility: accept both LLMProvider and API key string
+        if isinstance(llm_provider, str):
+            # Old API: passed API key directly
+            self.api_key = llm_provider
+            self.llm_provider = None
+            print("⚠️  RAGASEvaluator initialized with API key (legacy mode)")
+        else:
+            # New API: passed LLMProvider instance
+            self.llm_provider = llm_provider
+            # Extract API key for RAGAS if using Gemini
+            if RAGAS_LLM_PROVIDER == "gemini":
+                self.api_key = os.getenv("GEMINI_API_KEY")
+                if not self.api_key:
+                    raise ValueError("❌ RAGAS_LLM_PROVIDER is 'gemini' but GEMINI_API_KEY is not set in .env")
+            else:
+                self.api_key = None  # Not needed for local LLMs
+            
+            provider_name = llm_provider.get_provider_name()
+            print(f"✅ RAGASEvaluator initialized with {provider_name} provider")
+            print(f"   RAGAS LLM: {RAGAS_LLM_PROVIDER.upper()}")
+            print(f"   RAGAS Embeddings: {RAGAS_EMBEDDINGS_PROVIDER.upper()}")
+        
         # NOTE: This LLM is not actually used - ragas_worker.py runs evaluation in subprocess
         # Kept for backward compatibility
-        self.llm = ChatGoogleGenerativeAI(
-            google_api_key=api_key,
-            model=RAGAS_EVALUATION_MODEL,  # From centralized config
-            temperature=0,
-            max_output_tokens=5130,
-        )
-        self.embeddings = HuggingFaceEmbeddings(model_name="abhinand/MedEmbed-base-v0.1")
+        if RAGAS_LLM_PROVIDER == "gemini" and self.api_key:
+            self.llm = ChatGoogleGenerativeAI(
+                google_api_key=self.api_key,
+                model=RAGAS_EVALUATION_MODEL,  # From centralized config
+                temperature=0,
+                max_output_tokens=5130,
+            )
+        else:
+            self.llm = None  # Will be initialized in subprocess
+        
+        # Initialize embeddings
+        if RAGAS_EMBEDDINGS_PROVIDER == "google" and self.api_key:
+            from langchain_google_genai import GoogleGenerativeAIEmbeddings
+            self.embeddings = GoogleGenerativeAIEmbeddings(
+                model=RAGAS_EMBEDDINGS_MODEL,
+                google_api_key=self.api_key
+            )
+        else:
+            self.embeddings = HuggingFaceEmbeddings(model_name=RAGAS_EMBEDDINGS_MODEL)
+        
         self.worker_path = Path(__file__).parent / "ragas_worker.py"
     
     def _evaluate_in_subprocess(self, samples: List[Dict], metrics: List[str]) -> Optional[Dict[str, float]]:
@@ -50,11 +104,20 @@ class RAGASEvaluator:
             Dict of metric scores, or None if subprocess fails
         """
         try:
-            # Prepare input data
+            # Prepare input data with RAGAS configuration
             input_data = {
                 'api_key': self.api_key,
                 'samples': samples,
-                'metrics': metrics
+                'metrics': metrics,
+                # Pass RAGAS configuration to worker subprocess
+                'ragas_llm_provider': RAGAS_LLM_PROVIDER,
+                'ragas_embeddings_provider': RAGAS_EMBEDDINGS_PROVIDER,
+                'ragas_embeddings_model': RAGAS_EMBEDDINGS_MODEL,
+                # Local LLM configuration (for lmstudio/local providers)
+                'local_llm_url': LOCAL_LLM_URL,
+                'lmstudio_model': LMSTUDIO_MODEL,
+                'lmstudio_temperature': LMSTUDIO_TEMPERATURE,
+                'lmstudio_max_tokens': LMSTUDIO_MAX_TOKENS,
             }
             input_json = json.dumps(input_data)
             
@@ -77,6 +140,7 @@ class RAGASEvaluator:
                     print(f"      1. Wait for quota reset (usually midnight Pacific Time)")
                     print(f"      2. Upgrade to paid tier at https://ai.google.dev/")
                     print(f"      3. Use a different API key")
+                    print(f"      4. Switch to local LLM: Set RAGAS_LLM_PROVIDER=local in .env")
                     return None
                 
                 # Filter out gRPC noise

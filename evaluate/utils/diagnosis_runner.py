@@ -5,22 +5,25 @@ import re
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, Optional
-import google.generativeai as genai
 
+from scripts.llm_services.base import LLMProvider
 from scripts.qdrant_services.query import run_query
 from scripts.main_runtime.prompt_generate import generate_prompt
 from scripts.embedding_generation_module.orchestrators import QueryOrchestrator
 
 
 class DiagnosisRunner:
-    """Handles running diagnosis on test cases."""
+    """Handles running diagnosis on test cases with pluggable LLM providers."""
     
-    def __init__(self, api_key: str, model_name: str, output_dir: Path):
-        """Initialize diagnosis runner."""
-        self.api_key = api_key
-        self.model_name = model_name
+    def __init__(self, llm_provider: LLMProvider, output_dir: Path):
+        """Initialize diagnosis runner.
+        
+        Args:
+            llm_provider: LLMProvider instance (GeminiProvider, LMStudioProvider, etc.)
+            output_dir: Directory to save diagnosis results
+        """
+        self.llm_provider = llm_provider
         self.output_dir = output_dir
-        genai.configure(api_key=api_key)
     
     def run(self, case_id: str, prompt: str) -> Optional[str]:
         """Run diagnosis on a single test case.
@@ -42,7 +45,7 @@ class DiagnosisRunner:
             
             # Generate diagnosis using prompt.txt
             final_prompt, _ = generate_prompt(prompt, session_id=session_id)
-            ai_output = self._call_gemini(final_prompt)
+            ai_output = self._call_llm(final_prompt)
             
             # Save result
             output_path = self._save_diagnosis(case_id, prompt, retrieved_cases, 
@@ -157,45 +160,47 @@ Instructions:
         
         return "\n".join(formatted)
     
-    def _call_gemini(self, prompt: str) -> Dict:
-        """Call Gemini API for diagnosis.
+    def _call_llm(self, prompt: str) -> Dict:
+        """Call LLM provider for diagnosis.
+        
+        Supports any LLM provider (Gemini, LM Studio, etc.)
         
         Returns parsed JSON response.
         """
-        model = genai.GenerativeModel(self.model_name)
-        response = model.generate_content([{"text": prompt}])
-        ai_text = response.text.strip()
+        # Build content for provider
+        content = [{"text": prompt}]
         
-        # Print Gemini response
-        print(f"\n🤖 Gemini Response:")
+        # Get provider name for logging
+        provider_name = self.llm_provider.get_provider_name()
+        print(f"\n🤖 {provider_name.title()} Response:")
         print("=" * 80)
-        print(ai_text)
-        print("=" * 80)
-        print()
         
-        # Extract JSON from code blocks if present
-        match = re.search(r'```(?:json)?\s*([\s\S]+?)\s*```', ai_text)
-        if match:
-            ai_text = match.group(1).strip()
-        
-        # Parse JSON
         try:
-            parsed = json.loads(ai_text)
-            print(f"✅ Successfully parsed JSON response")
-            return parsed
-        except json.JSONDecodeError as e:
-            print(f"⚠️  JSON parsing failed: {e}")
-            print(f"    Attempting to extract JSON from text...")
-            # Try to find JSON object in text
-            json_match = re.search(r'\{[\s\S]*\}', ai_text)
-            if json_match:
-                try:
-                    parsed = json.loads(json_match.group(0))
-                    print(f"✅ Successfully extracted and parsed JSON")
-                    return parsed
-                except:
-                    pass
-            return {"raw_output": ai_text, "error": "Invalid JSON format"}
+            # Generate content using provider
+            ai_text = self.llm_provider.generate_content(content)
+            print(ai_text)
+            print("=" * 80)
+            print()
+            
+            # Parse response using provider
+            ai_output = self.llm_provider.parse_response(ai_text)
+            
+            if "error" not in ai_output:
+                print(f"✅ Successfully parsed JSON response")
+            else:
+                print(f"⚠️  Response parsing: {ai_output.get('error', 'Unknown error')}")
+            
+            return ai_output
+            
+        except Exception as e:
+            print(f"❌ Error calling {provider_name.title()} provider: {e}")
+            print("=" * 80)
+            print()
+            return {
+                "raw_output": str(e),
+                "error": f"Provider error: {str(e)}",
+                "provider": provider_name
+            }
     
     def _save_diagnosis(self, case_id: str, prompt: str, retrieved_cases: Dict,
                        final_prompt: str, ai_output: Dict) -> Path:

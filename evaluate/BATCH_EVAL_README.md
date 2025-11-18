@@ -1,19 +1,37 @@
 # Batch Evaluation
 
-Automated RAGAS evaluation for 186 Medical_LMM test cases.
+Automated RAGAS evaluation for Medical_LMM test cases with support for **Gemini** or **local LLMs** (LM Studio, vLLM, Ollama).
+
+---
 
 ## Quick Start
 
+### Using Gemini (Cloud)
+
 ```bash
-# Test with 3 cases first
-python evaluate/quick_eval.py --limit 3
+# Set in .env
+LLM_PROVIDER=gemini
+GEMINI_API_KEY=your_api_key_here
 
-# Run full evaluation (~3-4 hours)
-python evaluate/quick_eval.py
-
-# Test specific case (e.g., case-162)
-python evaluate/quick_eval.py --limit 1 --skip 161
+# Run evaluation
+python evaluate/run_batch_evaluation.py --limit 5
 ```
+
+### Using Local LLM (LM Studio)
+
+```bash
+# Set in .env
+LLM_PROVIDER=lmstudio
+LOCAL_LLM_URL=http://localhost:1234
+LMSTUDIO_MODEL=medgemma-4b-it
+
+# Run evaluation
+python evaluate/run_batch_evaluation.py --limit 5
+```
+
+📖 **Full Guide**: See [`LOCAL_LLM_EVALUATION_GUIDE.md`](./LOCAL_LLM_EVALUATION_GUIDE.md) for detailed setup instructions.
+
+---
 
 ## Pipeline
 
