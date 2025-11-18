@@ -179,8 +179,8 @@
         - Text queries will be staged as JSON arrays.
         - Images uploaded will be resized and normalized in a similar fashion to `./scripts/data_extraction_module/image_extract.py` as .png files inside `./temp_query_data/`.
         - Expected naming convention:
-            - Text Query: `user_query_text_timestamp.json`
-            - Image Query: `user_query_image_timestamp.png`
+            - Text Query: `user_query_text_<timestamp>.json`
+            - Image Query: `user_query_image_<timestamp>.png`
     
     - Output: Final answer from LLM.
         
@@ -242,3 +242,18 @@
     - Input: Retrieved top-k cases from Qdrant, user original query and system prompt for LLM.
     - Output: Final prompt for LLM and sent to the Gemini API.
 
+## LLM Wrapper Module
+- Rationale: As we will be using both local hosted models and external APIs for LLM services, a unified wrapper will be created to handle interactions with different LLM providers.
+- Location: `./scripts/llm_services/*`
+- This module will contain different classes for each LLM provider (e.g. gemini_provider.py, lmstudio_provider.py) that implement a common interface for sending prompts and receiving responses.
+- To further facilitate this change, a factory pattern will be implemented in `llm_factory.py` to instantiate the appropriate LLM provider based on configuration settings.
+    - Gemini API will follow the current implementation (as in `main_streamlit.py`)
+    - For local models, `LM Studio` uses OpenAI-like API structure, so the wrapper will adapt accordingly.
+
+- Input: Final prompt from the Prompt Generation Module.
+- Output: LLM response sent back to the Main Handler Module.
+
+**Plan for LLM Wrapper Module Transition:**
+- Decouple the current Gemini API calls in `main_streamlit.py` into a separate class in `./scripts/llm_services/gemini_provider.py`.
+- Implement the factory pattern in `llm_factory.py` to allow easy switching between Gemini and LM Studio.
+- Implement `lmstudio_provider.py` to handle local model interactions (as specified in `LM_STUDIO_IMPLEMENTATION_SUMMARY.md` and `LLM_WRAPPER_ANALYSIS.md`)
