@@ -167,7 +167,8 @@ def main():
         try:
             clean_json = full_text.replace('```json', '').replace('```', '').strip()
             parsed = json.loads(clean_json)
-            clean_name = parsed.get('concise_answer', '').split('(')[0].split('-')[0].strip()
+            # Split by " - " (space-hyphen-space) to preserve names like "Tick-Bite"
+            clean_name = parsed.get('concise_answer', '').split('(')[0].split(' - ')[0].strip()
             concise = parsed.get('concise_answer', '')
             reasoning_text = "\n".join([f"- {item.get('disease')}: {item.get('reasoning')}" for item in parsed.get('differential_diagnosis', [])])
             narrative = f"Answer: {concise}\nReasoning:\n{reasoning_text}"
