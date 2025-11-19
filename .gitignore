@@ -197,3 +197,5 @@ sandbox/
 source_materials/
 secret.txt
 out.txt
+
+evaluate/batch_results

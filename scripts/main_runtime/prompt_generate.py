@@ -19,8 +19,17 @@ from PIL import Image
 # PROMPT_FILE = os.path.join(PROJECT_ROOT, "/main_runtime/prompt.txt")
 # TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-PROMPT_FILE = os.path.join(PROJECT_ROOT, "scripts", "main_runtime", "prompt.txt")
+PROMPT_DIR = os.path.join(PROJECT_ROOT, "scripts", "main_runtime")
+PROMPT_FILE = os.path.join(PROMPT_DIR, "prompt.txt")  # Default for main pipeline
 TEMP_QUERY_DATA = os.path.join(PROJECT_ROOT, "temp_query_data")
+
+# Evaluation-specific prompt files
+PROMPT_FILES = {
+    None: os.path.join(PROMPT_DIR, "prompt.txt"),           # Default (main pipeline)
+    "internal": os.path.join(PROMPT_DIR, "prompt_internal.txt"),
+    "rag": os.path.join(PROMPT_DIR, "prompt_rag.txt"),
+    "hybrid": os.path.join(PROMPT_DIR, "prompt_hybrid.txt"),
+}
 
 
 # -------------------------------------------------------------------
@@ -108,28 +117,40 @@ def decode_case_images(cases, session_id):
                     print(f"[WARN] Could not decode image for case {cid}: {e}")
     return decoded_paths
 
-def generate_prompt(user_input, session_id="default_session"):
+def generate_prompt(user_input, session_id="default_session", eval_mode=None):
     """
-    Generate the final structured prompt for Gemini.
+    Generate the final structured prompt for LLM.
+    
     Args:
         user_input (str): User's text query
         session_id (str): The ID of the current query session
+        eval_mode (str, optional): Evaluation mode ("internal", "rag", "hybrid", or None for default)
+                                   - None: Uses prompt.txt (default, main pipeline)
+                                   - "internal": Uses prompt_internal.txt (no context needed)
+                                   - "rag": Uses prompt_rag.txt (context only)
+                                   - "hybrid": Uses prompt_hybrid.txt (context + internal knowledge)
 
     Returns:
         tuple[str, list[str]]: (final_prompt_text, decoded_image_paths)
     """
-    if not os.path.exists(PROMPT_FILE):
-        raise FileNotFoundError(f"Missing {PROMPT_FILE}")
+    # Select prompt template based on eval_mode
+    prompt_file = PROMPT_FILES.get(eval_mode, PROMPT_FILE)
+    
+    if not os.path.exists(prompt_file):
+        raise FileNotFoundError(f"Missing {prompt_file}")
 
-    with open(PROMPT_FILE, "r", encoding="utf-8") as f:
+    with open(prompt_file, "r", encoding="utf-8") as f:
         base_prompt = f.read()
 
-    # Load retrieved cases from current session
-    retrieved_dir = os.path.join(TEMP_QUERY_DATA, session_id, "retrieved_cases")
-    cases = load_retrieved_cases(retrieved_dir)
-
-    # Combine into Markdown section
-    cases_section = format_cases_markdown(cases)
+    # Load retrieved cases from current session (only for modes that use context)
+    cases_section = ""
+    if eval_mode != "internal":
+        retrieved_dir = os.path.join(TEMP_QUERY_DATA, session_id, "retrieved_cases")
+        cases = load_retrieved_cases(retrieved_dir)
+        cases_section = format_cases_markdown(cases)
+    else:
+        # For internal mode, provide empty cases section (won't be in template, but safe)
+        cases_section = ""
 
     # Replace placeholders
     final_prompt = (
@@ -138,8 +159,13 @@ def generate_prompt(user_input, session_id="default_session"):
         .replace("{cases_section}", cases_section)
     )
 
-    # Decode and collect image paths for Gemini
-    decoded_images_path = decode_case_images(cases, session_id)     # Will be inside 
+    # Decode and collect image paths (only for modes that use images)
+    decoded_images_path = []
+    if eval_mode != "internal":
+        retrieved_dir = os.path.join(TEMP_QUERY_DATA, session_id, "retrieved_cases")
+        cases = load_retrieved_cases(retrieved_dir)
+        decoded_images_path = decode_case_images(cases, session_id)
+    
     return final_prompt, decoded_images_path
 
 # --- Test run (optional) ---

@@ -9,28 +9,30 @@ Automated RAGAS evaluation for Medical_LMM test cases with support for **Gemini*
 ### Using Gemini (Cloud)
 
 ```bash
-# Set in .env
+# Set in scripts\config\llm_config.py
 LLM_PROVIDER=gemini
+# Set in .env file
 GEMINI_API_KEY=your_api_key_here
 
 # Run evaluation
 python evaluate/run_batch_evaluation.py --limit 5
+# If you use uv
+uv run python evaluate/run_batch_evaluation.py --limit 5
 ```
 
 ### Using Local LLM (LM Studio)
 
 ```bash
-# Set in .env
+# Set in scripts\config\llm_config.py
 LLM_PROVIDER=lmstudio
 LOCAL_LLM_URL=http://localhost:1234
 LMSTUDIO_MODEL=medgemma-4b-it
 
 # Run evaluation
 python evaluate/run_batch_evaluation.py --limit 5
+# If you use uv
+uv run python evaluate/run_batch_evaluation.py --limit 5
 ```
-
-📖 **Full Guide**: See [`LOCAL_LLM_EVALUATION_GUIDE.md`](./LOCAL_LLM_EVALUATION_GUIDE.md) for detailed setup instructions.
-
 ---
 
 ## Pipeline
@@ -59,11 +61,27 @@ Results in `evaluate/batch_results/session_YYYYMMDD_HHMMSS/`:
 --skip-diagnosis    # Use existing diagnosis files (if available)
 ```
 
+### In evaluate/eval_config.py
+- You can change:
+   - Evaluation mode (internal, rag, hybrid), this also affects which prompt is used for evaluation.
+   - Context type (text, text+image)
+   - RAGAS LLM provider and embedding model
+
+- The other settings:
+   - Diagnosis generation LLM in `scripts\config\llm_config.py`
+   - Qdrant query settings in `scripts\config\query_config.py`
+   - You can modify the specific prompts in `scripts\main_runtime`, including:
+      - `prompt_internal.txt`
+      - `prompt_rag.txt`
+      - `prompt_hybrid.txt`
+
 ## Requirements
 
 ```bash
 pip install ragas langchain-google-genai langchain-huggingface qdrant-client sentence-transformers
+# Or with uv
+uv sync
 ```
 
-Set `GEMINI_API_KEY` in `.env` file.
+- Set `GEMINI_API_KEY` in `.env` file.
 

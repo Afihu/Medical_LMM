@@ -199,7 +199,12 @@ class BatchEvaluator:
     def _get_diagnosis_file(self, case: Dict[str, Any]) -> Optional[str]:
         """Get diagnosis file (run new or use existing)."""
         if not self.skip_diagnosis:
-            return self.diagnosis_runner.run(case['id'], case['prompt'])
+            # Pass diagnosis to enable image discovery for text+images mode
+            return self.diagnosis_runner.run(
+                case['id'], 
+                case['prompt'],
+                diagnosis=case.get('diagnosis')  # Ground truth diagnosis for image lookup
+            )
         
         # Find most recent diagnosis file
         diag_files = sorted(

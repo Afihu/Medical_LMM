@@ -10,7 +10,7 @@ from scripts.llm_services.base import LLMProvider
 from scripts.qdrant_services.query import run_query
 from scripts.main_runtime.prompt_generate import generate_prompt
 from scripts.embedding_generation_module.orchestrators import QueryOrchestrator
-from evaluate.eval_config import EVAL_MODE
+from evaluate.eval_config import EVAL_MODE, CONTEXT_TYPE
 
 
 class DiagnosisRunner:
@@ -26,9 +26,14 @@ class DiagnosisRunner:
         self.llm_provider = llm_provider
         self.output_dir = output_dir
     
-    def run(self, case_id: str, prompt: str) -> Optional[str]:
+    def run(self, case_id: str, prompt: str, diagnosis: Optional[str] = None) -> Optional[str]:
         """Run diagnosis on a single test case.
         
+        Args:
+            case_id: Test case identifier
+            prompt: Patient query/symptoms text
+            diagnosis: Ground truth diagnosis (used to find corresponding images)
+            
         Returns:
             Path to saved diagnosis file, or None if failed
         """
@@ -41,16 +46,33 @@ class DiagnosisRunner:
             retrieved_cases = {}
             
             if EVAL_MODE != "internal":
+                # Query text collection
                 text_vector = self._embed_query(prompt, session_id)
-                retrieved_cases = self._query_qdrant(text_vector, session_id)
+                text_cases = self._query_qdrant(text_vector, session_id)
+                retrieved_cases.update(text_cases)
+                
+                # Query image collection if text+images mode
+                if CONTEXT_TYPE == "text+images":
+                    if diagnosis:
+                        image_path = self._find_case_image(diagnosis)
+                        if image_path:
+                            print(f"   📸 Found image for {diagnosis}: {Path(image_path).name}")
+                            image_vector = self._embed_query_image(image_path, session_id)
+                            image_cases = self._query_qdrant_images(image_vector, session_id)
+                            retrieved_cases.update(image_cases)
+                        else:
+                            print(f"   ℹ️  No images found for {diagnosis}, using text-only mode")
+                    else:
+                        print(f"   ⚠️  CONTEXT_TYPE is 'text+images' but no diagnosis provided, skipping image query")
                 
                 # Print retrieved cases once here
                 self._print_retrieved_cases(retrieved_cases)
             else:
-                print("[INFO] Internal mode: Skipping Qdrant retrieval.")
+                print("[INFO] Internal mode: Skipping Qdrant retrieval (RAG disabled).")
             
-            # Generate diagnosis using prompt.txt
-            final_prompt, _ = generate_prompt(prompt, session_id=session_id)
+            # Generate diagnosis using appropriate prompt template
+            # eval_mode=None uses default prompt.txt, eval_mode="internal"/"rag"/"hybrid" use specific templates
+            final_prompt, _ = generate_prompt(prompt, session_id=session_id, eval_mode=EVAL_MODE)
             ai_output = self._call_llm(final_prompt)
             
             # Save result
@@ -64,16 +86,66 @@ class DiagnosisRunner:
             print(f"❌ Error running diagnosis for {case_id}: {e}")
             return None
     
+    def _find_case_image(self, diagnosis: str) -> Optional[str]:
+        """Find first image for a diagnosis from test_cases/imgs/{diagnosis}/.
+        
+        Args:
+            diagnosis: Diagnosis name (e.g., "Malaria", "Tuberculosis")
+            
+        Returns:
+            Absolute path to first image file, or None if folder doesn't exist or is empty
+        """
+        # Get project root (2 levels up from this file)
+        project_root = Path(__file__).parent.parent.parent
+        imgs_dir = project_root / "test_cases" / "imgs" / diagnosis
+        
+        if not imgs_dir.exists():
+            return None
+        
+        # Get first image file (jpg, png, jpeg)
+        for ext in ['*.jpg', '*.jpeg', '*.png', '*.JPG', '*.JPEG', '*.PNG']:
+            image_files = list(imgs_dir.glob(ext))
+            if image_files:
+                return str(image_files[0].absolute())
+        
+        return None
+    
     def _embed_query(self, prompt: str, session_id: str):
         """Generate text embedding."""
         with QueryOrchestrator(session_id=session_id) as orchestrator:
             return orchestrator.embed_text_query(prompt)
     
+    def _embed_query_image(self, image_path: str, session_id: str):
+        """Generate image embedding from image file.
+        
+        Args:
+            image_path: Absolute path to image file
+            session_id: Session identifier
+            
+        Returns:
+            Image embedding vector
+        """
+        with QueryOrchestrator(session_id=session_id) as orchestrator:
+            return orchestrator.embed_image_query(image_path)
+    
     def _query_qdrant(self, text_vector, session_id: str) -> Dict:
-        """Query Qdrant for similar cases."""
+        """Query Qdrant text collection for similar cases."""
         retrieved_cases, _ = run_query(
             text_vector=text_vector.tolist() if text_vector is not None else None,
             image_vector=None,
+            top_k=3,
+            session_id=session_id
+        )
+        return retrieved_cases if isinstance(retrieved_cases, dict) else {}
+    
+    def _query_qdrant_images(self, image_vector, session_id: str) -> Dict:
+        """Query Qdrant image collection for similar cases.
+        
+        This reuses the image query functionality from the main pipeline.
+        """
+        retrieved_cases, _ = run_query(
+            text_vector=None,
+            image_vector=image_vector.tolist() if image_vector is not None else None,
             top_k=3,
             session_id=session_id
         )

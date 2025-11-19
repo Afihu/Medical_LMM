@@ -31,7 +31,7 @@ from scripts.config.query_config import QUERY_CONFIG, QDRANT_COLLECTIONS
 # - "rag": LLM uses only retrieved context, no internal knowledge (RAG-only)
 # - "hybrid": LLM uses both internal knowledge + retrieved context (default)
 # =============================================================================
-EVAL_MODE = "internal"
+EVAL_MODE = "rag"
 
 # =============================================================================
 # CONTEXT TYPES
@@ -39,7 +39,7 @@ EVAL_MODE = "internal"
 # - "text": Use only text context (default)
 # - "text+images": Use both text and images if available
 # =============================================================================
-CONTEXT_TYPE = "text"
+CONTEXT_TYPE = "text+images"
     
 # =============================================================================
 # LLM PROVIDER CONFIGURATION
@@ -90,6 +90,20 @@ RAGAS_EMBEDDINGS_MODEL = "NeuML/pubmedbert-base-embeddings"  # Medical-specific 
 
 # RAGAS Evaluation Model (Judge)
 RAGAS_EVALUATION_MODEL = "gemini-2.5-flash"
+
+# =============================================================================
+# GEMINI API RATE LIMITING
+# =============================================================================
+# Gemini API free tier limit: 10 requests per minute = 1 request every 6 seconds
+# 
+# Rate Limiting Strategy (Two-Tier Approach):
+# 1. RAGAS RunConfig: max_workers=1 ensures sequential LLM execution (no parallel calls)
+# 2. Custom Delay: RateLimitedChatGoogleGenerativeAI adds delay between requests
+# 
+# This delay is applied in RateLimitedChatGoogleGenerativeAI._agenerate()
+# Combined with RunConfig(max_workers=1), this ensures proper rate limiting
+# Note: Each case evaluation typically makes 12-20 API calls across 3 subprocess runs
+RAGAS_API_REQUEST_DELAY = 8  # seconds between consecutive API calls to Gemini
 
 # =============================================================================
 # QDRANT CONFIGURATION
@@ -163,6 +177,7 @@ def get_config():
         "ragas_embeddings_provider": RAGAS_EMBEDDINGS_PROVIDER,
         "ragas_embeddings_model": RAGAS_EMBEDDINGS_MODEL,
         "ragas_evaluation_model": RAGAS_EVALUATION_MODEL,
+        "ragas_api_request_delay": RAGAS_API_REQUEST_DELAY,
         "qdrant_text_top_k": QDRANT_TEXT_TOP_K,
         "qdrant_image_top_k": QDRANT_IMAGE_TOP_K,
         "qdrant_collection_text": QDRANT_COLLECTION_TEXT,
@@ -192,6 +207,7 @@ def print_config():
     print(f"  RAGAS Embeddings:        {config['ragas_embeddings_provider'].upper()}")
     if config['ragas_embeddings_provider'] != 'google':
         print(f"  Embeddings Model:        {config['ragas_embeddings_model']}")
+    print(f"  API Request Delay:       {config['ragas_api_request_delay']}s (Gemini rate limiting)")
     print(f"  Qdrant Text Collection:  {config['qdrant_collection_text']}")
     print(f"  Qdrant Image Collection: {config['qdrant_collection_image']}")
     print(f"  Qdrant Text Top-K:       {config['qdrant_text_top_k']}")

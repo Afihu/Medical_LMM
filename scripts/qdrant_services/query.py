@@ -71,16 +71,14 @@ def query_collection(client, vector, collection_name, top_k=5, vector_name=None)
         except Exception as e:
             print(f"[WARN] Could not retrieve collection info: {e}")
         
-        # Format query_vector: if vector_name is specified, pass as tuple (vector_name, vector)
+        # Use 'using' parameter to specify named vector (not tuple!)
         if vector_name is not None:
-            query_vector = (vector_name, vector)
             print(f"[DEBUG] Using named vector: '{vector_name}'")
-        else:
-            query_vector = vector
         
         results = client.query_points(
             collection_name=collection_name,
-            query=query_vector,
+            query=vector,
+            using=vector_name,  # Correct API: use 'using' parameter for named vectors
             limit=top_k,
             with_payload=True
         )
@@ -109,12 +107,13 @@ def query_collection(client, vector, collection_name, top_k=5, vector_name=None)
     
     except (AssertionError, TypeError, ValueError) as e:
         # If named vector fails, try without it
-        if vector_name is not None and ("Unknown arguments" in str(e) or "vector_name" in str(e)):
+        if vector_name is not None and ("Unknown arguments" in str(e) or "vector_name" in str(e) or "using" in str(e)):
             print(f"[WARN] Named vector query failed, retrying with default vector...")
             try:
                 results = client.query_points(
                     collection_name=collection_name,
                     query=vector,
+                    using=None,  # Explicitly use default vector
                     limit=top_k,
                     with_payload=True
                 )

@@ -23,6 +23,7 @@ from evaluate.eval_config import (
     RAGAS_LLM_PROVIDER,
     RAGAS_EMBEDDINGS_PROVIDER,
     RAGAS_EMBEDDINGS_MODEL,
+    RAGAS_API_REQUEST_DELAY,
     LOCAL_LLM_URL,
     LMSTUDIO_MODEL,
     LMSTUDIO_TEMPERATURE,
@@ -112,6 +113,8 @@ class RAGASEvaluator:
                 'ragas_llm_provider': RAGAS_LLM_PROVIDER,
                 'ragas_embeddings_provider': RAGAS_EMBEDDINGS_PROVIDER,
                 'ragas_embeddings_model': RAGAS_EMBEDDINGS_MODEL,
+                # Rate limiting configuration
+                'api_request_delay': RAGAS_API_REQUEST_DELAY,
                 # Local LLM configuration (for lmstudio/local providers)
                 'local_llm_url': LOCAL_LLM_URL,
                 'lmstudio_model': LMSTUDIO_MODEL,
