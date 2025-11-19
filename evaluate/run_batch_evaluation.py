@@ -28,7 +28,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from dotenv import load_dotenv
 
 # Import configuration and LLM factory
-from evaluate.config import get_config, print_config
+from evaluate.eval_config import get_config, print_config
 from scripts.llm_services.factory import get_llm_provider
 
 # Import local utilities

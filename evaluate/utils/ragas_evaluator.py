@@ -15,11 +15,11 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import HuggingFaceEmbeddings
 
 # Import centralized model config
-from evaluate.config import RAGAS_EVALUATION_MODEL
+from evaluate.eval_config import RAGAS_EVALUATION_MODEL
 from scripts.llm_services.base import LLMProvider
 
 # Import evaluation config for RAGAS settings
-from evaluate.config import (
+from evaluate.eval_config import (
     RAGAS_LLM_PROVIDER,
     RAGAS_EMBEDDINGS_PROVIDER,
     RAGAS_EMBEDDINGS_MODEL,
