@@ -76,31 +76,51 @@
   },
   {
     "id": "case-016",
-    "prompt": "A 38-year-old man from an endemic area in Asia presents with a chronic cough and dyspnea. He reports coughing up a \"rusty, or chocolate-colored sputum.\" His dietary history includes eating raw freshwater crabs. A chest X-ray reveals multiple, patchy, ill-defined shadows and small cystic areas described as \"bubbles.\" A sputum analysis confirms the diagnosis by identifying characteristic eggs.",
-    "diagnosis": "Paragonimiasis"
+    "prompt": "A 28-year-old woman with a known but untreated HIV infection presents with new symptoms of bronchopulmonary disease. Clinical investigation reveals she has developed tuberculosis, which is the most frequent complication. Fungal infections are considered rare in this context, but common bacterial infections like Streptococcus are also present.",
+    "diagnosis": "HIV (Pulmonary Complications)"
   },
   {
     "id": "case-017",
+    "prompt": "A 45-year-old man, who traveled to India 18 months ago, presents with a nonproductive cough and severe right shoulder pain. He reports coughing up a dark, \"anchovy paste-like\" sputum. A chest X-ray shows a significant elevation of the right hemidiaphragm, and a subsequent aspirate of the pleural fluid reveals a \"chocolate sauce\" appearance. A liver abscess is also identified.",
+    "diagnosis": "Amebiasis (Pleuropulmonary)"
+  },
+  {
+    "id": "case-018",
+    "prompt": "A 60-year-old man, who left an endemic area in Southeast Asia 25 years ago, presents with severe bronchospasm, extensive pneumonia, and cough. His symptoms have rapidly progressed to ARDS. Serial chest X-rays show ill-defined, patchy consolidations that appear to be migrating. A pleural effusion is also present. Larvae are subsequently isolated from his respiratory samples.",
+    "diagnosis": "Pulmonary Strongyloidiasis"
+  },
+  {
+    "id": "case-019",
     "prompt": "A 55-year-old man, who served in the military in Vietnam 30 years ago, is now receiving immunosuppressive therapy for an unrelated condition. He presents with a long history of cough, low-grade fever, weight loss, and hemoptysis. His chest X-ray closely resembles pulmonary tuberculosis, showing an upper lobe infiltrate that shows cavitation. The diagnosis is confirmed by isolating B. pseudomallei from his sputum.",
     "diagnosis": "Melioidosis"
   },
   {
-    "id": "case-018",
-    "prompt": "A 50-year-old slaughterhouse worker from the Mediterranean region presents to the clinic. He complains of fever, chills, aches and pains, and weakness, along with a mild cough. His chest radiograph is normal, though in rare cases, findings can include miliary infiltration or pleural effusion. Diagnosis is based on his occupational history, clinical features, and positive serological tests.",
-    "diagnosis": "Brucellosis"
+    "id": "case-020",
+    "prompt": "A 48-year-old veterinarian who recently assisted in birthing cattle presents with an acute illness. The patient presents with pneumonia, fever, headache, cough, and myalgia. Radiography shows multiple round opacities and lower lobe-based infiltrates. Diagnosis is made by serologic assays showing a rise in serum antibodies in acute and convalescent specimens.",
+    "diagnosis": "Q Fever"
   },
   {
-    "id": "case-019",
+    "id": "case-021",
     "prompt": "A 24-year-old man presents with an acute febrile illness after a kayaking trip in a tropical region, where he was exposed to contaminated water after a heavy rainstorm. He presents with fever, myalgias, and conjunctival suffusion. His condition is severe, presenting with high fever, intense jaundice, and bleeding, progressing to massive hemoptysis and respiratory failure.",
     "diagnosis": "Leptospirosis"
   },
   {
-    "id": "case-020",
+    "id": "case-022",
+    "prompt": "A 40-year-old man who works cleaning building ledges covered in bird droppings in Southern California presents with a prolonged cough, fever, and signs of pneumonia. A bronchoscopy with bronchoalveolar lavage is performed for diagnostic evaluation. Serologic testing confirms the diagnosis. A pleural effusion is present, which is a lymphocyte-predominant exudate.",
+    "diagnosis": "Cryptococcosis"
+  },
+  {
+    "id": "case-023",
     "prompt": "A 33-year-old woman presents with a \"flu-like illness\" after exploring a cave known to house bats in the Midwestern United States. She reports an abrupt onset of fever, chills, substernal chest discomfort, a harsh, nonproductive cough, and headache. Radiography shows a single area of pneumonitis with enlarged ipsilateral hilar and mediastinal lymph nodes. Serologic tests (complement fixation) are positive.",
     "diagnosis": "Histoplasmosis"
   },
   {
-    "id": "case-021",
+    "id": "case-024",
+    "prompt": "A 30-year-old man from the Indian subcontinent presents with a persistent cough, dyspnea, and nocturnal wheezing, as well as fever and weight loss. Lab work shows a marked peripheral blood eosinophilia (>3000 cells/mm3) and striking elevations of total IgE. Radiography reveals diffuse reticulo-nodular infiltrates. Lung function tests show a restrictive ventilation defect with superimposed airways obstruction.",
+    "diagnosis": "Tropical Pulmonary Eosinophilia (TPE)"
+  },
+  {
+    "id": "case-025",
     "prompt": "A 28-year-old healthcare worker presents with sudden onset of high fever, severe headache, myalgia, and profound weakness after returning from an aid mission in the Democratic Republic of Congo. Over the next few days, she develops vomiting, diarrhea, conjunctival injection, and diffuse bleeding from venipuncture sites. Laboratory findings reveal thrombocytopenia and elevated liver enzymes. RT-PCR testing confirms infection with a filovirus.",
     "diagnosis": "Filoviral Diseases"
   },
