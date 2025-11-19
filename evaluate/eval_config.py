@@ -31,7 +31,7 @@ from scripts.config.query_config import QUERY_CONFIG, QDRANT_COLLECTIONS
 # - "rag": LLM uses only retrieved context, no internal knowledge (RAG-only)
 # - "hybrid": LLM uses both internal knowledge + retrieved context (default)
 # =============================================================================
-EVAL_MODE = "hybrid"
+EVAL_MODE = "internal"
 
 # =============================================================================
 # CONTEXT TYPES

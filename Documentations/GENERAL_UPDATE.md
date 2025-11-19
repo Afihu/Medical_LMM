@@ -1,3 +1,13 @@
+# Update 19.11.2025
+Added evaluation modes for evaluation pipeline. There are 3 different modes:
+- "internal": LLM uses only internal knowledge, no RAG retrieval
+- "rag": LLM uses only retrieved context, no internal knowledge (RAG-only)
+- "hybrid": LLM uses both internal knowledge + retrieved context (default)
+
+For running the evaluation:
+- **text only**: run quick_eval.py, read the readme in the batch eval branch for more options
+- **text and image**: run UI like usual, input text and image there and then once you confirm diagnosed cases are present in the file directory, then run quick_eval but add in the argument to skip diagnosing (once again, refer to the [Batch Evaluation](/evaluate/BATCH_EVAL_README.md)) 
+
 # Update 4.11.2025
 The refactoring for the backend is done. App can now work normally (with Streamlit too!).
 
@@ -28,7 +38,9 @@ vectors_config={
     "image_vec": VectorParams(size=512, distance=Distance.COSINE)
 }
 ```
-Each point in that collection can contain both, one, or even neither vector. But upserting a point replaces its vector block entirely. This means:
+Each point in that collection can contain both, one, or even neither vector. But upserting a point replaces its vector block entirely. 
+
+This means:
 - Upsert either { "text_vec": [...] } or { "image_vec": [...] } for the first time is fine
 - If later someone upserts { "image_vec": [...] } without including text_vec, Qdrant will remove the old text_vec, because the new upsert overwrote the entire vector dictionary for that point.
 

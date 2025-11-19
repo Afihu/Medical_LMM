@@ -10,6 +10,7 @@ from scripts.llm_services.base import LLMProvider
 from scripts.qdrant_services.query import run_query
 from scripts.main_runtime.prompt_generate import generate_prompt
 from scripts.embedding_generation_module.orchestrators import QueryOrchestrator
+from evaluate.eval_config import EVAL_MODE
 
 
 class DiagnosisRunner:
@@ -36,12 +37,17 @@ class DiagnosisRunner:
         try:
             session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
             
-            # Generate embedding and query Qdrant
-            text_vector = self._embed_query(prompt, session_id)
-            retrieved_cases = self._query_qdrant(text_vector, session_id)
+            # Generate embedding and query Qdrant (only if not in "internal" mode)
+            retrieved_cases = {}
             
-            # Print retrieved cases once here
-            self._print_retrieved_cases(retrieved_cases)
+            if EVAL_MODE != "internal":
+                text_vector = self._embed_query(prompt, session_id)
+                retrieved_cases = self._query_qdrant(text_vector, session_id)
+                
+                # Print retrieved cases once here
+                self._print_retrieved_cases(retrieved_cases)
+            else:
+                print("[INFO] Internal mode: Skipping Qdrant retrieval.")
             
             # Generate diagnosis using prompt.txt
             final_prompt, _ = generate_prompt(prompt, session_id=session_id)
@@ -93,7 +99,14 @@ class DiagnosisRunner:
         # Format retrieved cases with similarity scores
         cases_text = self._format_cases_for_prompt(retrieved_cases)
         
+        # Add instruction for RAG-only mode
+        rag_instruction = ""
+        if EVAL_MODE == "rag":
+            rag_instruction = "Do not use your internal knowledge. Give diagnosis based on the retrieved cases only."
+
         simplified_prompt = f"""You are a medical diagnostician AI specializing in tropical and infectious diseases.
+
+{rag_instruction}
 
 Patient Query: {prompt}
 
