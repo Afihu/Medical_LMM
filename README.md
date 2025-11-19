@@ -1,5 +1,4 @@
-# NO RAG - Medical AI Evaluation System (Local Setup)
-
+# NO RAG - Medical AI Evaluation System
 ## Prerequisites
 
 - Python 3.11 (Highly recommended to avoid known gRPC crashes on Windows with Python 3.13).
