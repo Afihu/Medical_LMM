@@ -78,12 +78,15 @@ def query_collection(client, vector, collection_name, top_k=5, vector_name=None)
         else:
             query_vector = vector
         
-        results = client.search(
+        results = client.query_points(
             collection_name=collection_name,
-            query_vector=query_vector,
+            query=query_vector,
             limit=top_k,
             with_payload=True
         )
+        
+        # query_points() returns a QueryResponse with a .points attribute
+        results = results.points if hasattr(results, 'points') else results
         
         if len(results) == 0:
             print(f"[WARN] Query returned 0 results from '{collection_name}'.")
@@ -109,12 +112,16 @@ def query_collection(client, vector, collection_name, top_k=5, vector_name=None)
         if vector_name is not None and ("Unknown arguments" in str(e) or "vector_name" in str(e)):
             print(f"[WARN] Named vector query failed, retrying with default vector...")
             try:
-                results = client.search(
+                results = client.query_points(
                     collection_name=collection_name,
-                    query_vector=vector,
+                    query=vector,
                     limit=top_k,
                     with_payload=True
                 )
+                
+                # query_points() returns a QueryResponse with a .points attribute
+                results = results.points if hasattr(results, 'points') else results
+                
                 if len(results) == 0:
                     print(f"[WARN] Query returned 0 results from '{collection_name}' (fallback to default vector).")
                     print(f"[HINT] This might indicate:")

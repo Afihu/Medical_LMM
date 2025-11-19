@@ -29,7 +29,7 @@ from dotenv import load_dotenv
 
 # Import configuration and LLM factory
 from evaluate.config import get_config, print_config
-from scripts.llm_services.factory import setup_provider_from_env
+from scripts.llm_services.factory import get_llm_provider
 
 # Import local utilities
 from evaluate.utils.diagnosis_runner import DiagnosisRunner
@@ -61,7 +61,27 @@ class BatchEvaluator:
         
         # Setup LLM provider from factory
         try:
-            self.llm_provider = setup_provider_from_env()
+            # Initialize provider based on evaluate/config.py settings
+            # This overrides the default behavior which uses scripts/config/llm_config.py
+            provider_type = config['llm_provider']
+            self.llm_provider = get_llm_provider(provider_type)
+            
+            # Configure provider with specific settings
+            if provider_type == "gemini":
+                api_key = os.getenv("GEMINI_API_KEY")
+                self.llm_provider.setup(
+                    api_key=api_key,
+                    model_name=config['gemini_model']
+                )
+            elif provider_type == "lmstudio":
+                self.llm_provider.setup(
+                    url=config['local_llm_url'],
+                    model_name=config['lmstudio_model'],
+                    temperature=config['lmstudio_temperature'],
+                    max_tokens=config['lmstudio_max_tokens'],
+                    top_p=config['lmstudio_top_p']
+                )
+                
             provider_name = self.llm_provider.get_provider_name()
             print(f"✅ LLM Provider initialized: {provider_name.upper()}")
         except Exception as e:

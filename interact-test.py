@@ -2,7 +2,7 @@
 
 import google.generativeai as genai
 import os
-from scripts.config.model_config import DIAGNOSIS_MODEL
+from scripts.config.llm_config import DIAGNOSIS_MODEL
 
 # --- PASTE YOUR API KEY HERE ---
 # You can also set it as an environment variable named "GEMINI_API_KEY"

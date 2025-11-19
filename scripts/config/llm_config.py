@@ -1,10 +1,13 @@
 # Choice of LLM provider: 
 # "gemini" for Google Gemini API
 # "lmstudio" for LM Studio - locally hosted models
-LLM_PROVIDER="gemini" # or "lmstudio"
+LLM_PROVIDER="lmstudio"
 
 # If you choose Gemini, input model name of choice. The full list can be found in the `model.txt`.
 GEMINI_MODEL_NAME="models/gemini-2.5-flash" 
+# Alias for backward compatibility with code using DIAGNOSIS_MODEL
+DIAGNOSIS_MODEL = "gemini-2.5-flash"
+
 # Your API key for Gemini should already be in your .env file as:
 # GEMINI_API_KEY="your_gemini_api_key_here"
 

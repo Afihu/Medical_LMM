@@ -21,7 +21,7 @@ import google.generativeai as genai
 # Custom modules
 from scripts.query import run_query_text
 from scripts.main_runtime.prompt_generate import generate_prompt
-from scripts.config.model_config import DIAGNOSIS_MODEL
+from scripts.config.llm_config import DIAGNOSIS_MODEL
 
 # --- Path configuration ---
 # Get the project root (where main.py is located)

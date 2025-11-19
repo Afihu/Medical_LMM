@@ -1,0 +1,2 @@
+case_id,diagnosis,status,context_precision,context_recall,faithfulness,answer_relevancy,answer_correctness,timestamp,error
+case-001,Chagas Disease,completed,0.0,0.0,0.0,0.35049348058299357,0.03479249495339405,2025-11-19T11:50:16.136499,

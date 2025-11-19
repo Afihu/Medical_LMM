@@ -15,8 +15,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import HuggingFaceEmbeddings
 
 # Import centralized model config
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from scripts.config.model_config import RAGAS_EVALUATION_MODEL
+from evaluate.config import RAGAS_EVALUATION_MODEL
 from scripts.llm_services.base import LLMProvider
 
 # Import evaluation config for RAGAS settings

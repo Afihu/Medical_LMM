@@ -28,7 +28,6 @@ def check_collections(qdrant_url=None, qdrant_api_key=None):
     # Load environment variables
     load_dotenv()
     
-    # Use v2 credentials by default (newer API)
     qdrant_url = qdrant_url or os.getenv("QDRANT_URL")
     qdrant_api_key = qdrant_api_key or os.getenv("QDRANT_API_KEY")
     

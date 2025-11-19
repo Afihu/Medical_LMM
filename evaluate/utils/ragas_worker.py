@@ -36,7 +36,7 @@ from ragas.metrics import context_precision, context_recall, faithfulness, answe
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_huggingface import HuggingFaceEmbeddings
-from scripts.config.model_config import RAGAS_EVALUATION_MODEL, RAGAS_EMBEDDINGS_MODEL
+from evaluate.config import RAGAS_EVALUATION_MODEL, RAGAS_EMBEDDINGS_MODEL
 
 # Suppress absl logging after imports
 try:

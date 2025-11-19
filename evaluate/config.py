@@ -13,8 +13,16 @@ Usage:
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+from scripts.config.llm_config import (
+    LLM_PROVIDER as DEFAULT_LLM_PROVIDER,
+    GEMINI_MODEL_NAME as DEFAULT_GEMINI_MODEL,
+    LMSTUDIO_URL as DEFAULT_LOCAL_LLM_URL,
+    LMSTUDIO_MODEL as DEFAULT_LMSTUDIO_MODEL,
+    LMSTUDIO_TEMPERATURE as DEFAULT_LMSTUDIO_TEMPERATURE,
+    LMSTUDIO_MAX_TOKENS as DEFAULT_LMSTUDIO_MAX_TOKENS,
+    LMSTUDIO_TOP_P as DEFAULT_LMSTUDIO_TOP_P
+)
+from scripts.config.query_config import QUERY_CONFIG, QDRANT_COLLECTIONS
 
 # =============================================================================
 # EVALUATION MODES
@@ -23,7 +31,7 @@ load_dotenv()
 # - "rag": LLM uses only retrieved context, no internal knowledge (RAG-only)
 # - "hybrid": LLM uses both internal knowledge + retrieved context (default)
 # =============================================================================
-EVAL_MODE = os.getenv("EVAL_MODE", "hybrid").lower()
+EVAL_MODE = "hybrid"
 
 # =============================================================================
 # CONTEXT TYPES
@@ -31,8 +39,8 @@ EVAL_MODE = os.getenv("EVAL_MODE", "hybrid").lower()
 # - "text": Use only text context (default)
 # - "text+images": Use both text and images if available
 # =============================================================================
-CONTEXT_TYPE = os.getenv("CONTEXT_TYPE", "text").lower()
-
+CONTEXT_TYPE = "text"
+    
 # =============================================================================
 # LLM PROVIDER CONFIGURATION
 # =============================================================================
@@ -40,25 +48,28 @@ CONTEXT_TYPE = os.getenv("CONTEXT_TYPE", "text").lower()
 # - "gemini": Google Gemini (requires GEMINI_API_KEY)
 # - "lmstudio": Local LM Studio or compatible server (requires LOCAL_LLM_URL)
 # Defaults to "gemini" if not specified
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
+LLM_PROVIDER = DEFAULT_LLM_PROVIDER.lower()
+
+# Gemini Configuration
+GEMINI_MODEL = DEFAULT_GEMINI_MODEL
 
 # For local LLM provider, specify the endpoint URL
-LOCAL_LLM_URL = os.getenv("LOCAL_LLM_URL", "http://localhost:1234")
+LOCAL_LLM_URL = DEFAULT_LOCAL_LLM_URL
 
 # =============================================================================
 # LM STUDIO GENERATION PARAMETERS
 # =============================================================================
 # Model name to use in LM Studio (e.g., "medgemma-4b-it")
-LMSTUDIO_MODEL = os.getenv("LMSTUDIO_MODEL", "medgemma-4b-it")
+LMSTUDIO_MODEL = DEFAULT_LMSTUDIO_MODEL
 
 # Temperature controls response creativity (0.2 = deterministic, 0.9 = creative)
-LMSTUDIO_TEMPERATURE = float(os.getenv("LMSTUDIO_TEMPERATURE", "0.7"))
+LMSTUDIO_TEMPERATURE = float(DEFAULT_LMSTUDIO_TEMPERATURE)
 
 # Maximum tokens for generation (32K context window default)
-LMSTUDIO_MAX_TOKENS = int(os.getenv("LMSTUDIO_MAX_TOKENS", "32768"))
+LMSTUDIO_MAX_TOKENS = int(DEFAULT_LMSTUDIO_MAX_TOKENS)
 
 # Top-p controls token probability sampling (0.95 balances diversity & coherence)
-LMSTUDIO_TOP_P = float(os.getenv("LMSTUDIO_TOP_P", "0.95"))
+LMSTUDIO_TOP_P = float(DEFAULT_LMSTUDIO_TOP_P)
 
 # =============================================================================
 # RAGAS EVALUATION CONFIGURATION
@@ -66,26 +77,30 @@ LMSTUDIO_TOP_P = float(os.getenv("LMSTUDIO_TOP_P", "0.95"))
 # Which LLM to use for RAGAS metrics evaluation
 # - "gemini": Google Gemini (via langchain_google_genai)
 # - "local": Use local LLM server (via LangChain HuggingFace adapter)
-RAGAS_LLM_PROVIDER = os.getenv("RAGAS_LLM_PROVIDER", "gemini").lower()
+RAGAS_LLM_PROVIDER = "gemini"
 
 # Which embeddings model to use for RAGAS answer_relevancy metric
 # - "google": Google's embedding model (via GoogleGenerativeAIEmbeddings)
 # - "huggingface": HuggingFace embeddings (via HuggingFaceEmbeddings)
 # - "sentence-transformers": SentenceTransformers embeddings
-RAGAS_EMBEDDINGS_PROVIDER = os.getenv("RAGAS_EMBEDDINGS_PROVIDER", "google").lower()
+RAGAS_EMBEDDINGS_PROVIDER = "huggingface"
 
 # Specific HuggingFace or SentenceTransformers model name (if using HF embeddings)
-RAGAS_EMBEDDINGS_MODEL = os.getenv(
-    "RAGAS_EMBEDDINGS_MODEL",
-    "abhinand/MedEmbed-base-v0.1"  # Medical-specific embedding model
-)
+RAGAS_EMBEDDINGS_MODEL = "NeuML/pubmedbert-base-embeddings"  # Medical-specific embedding model
+
+# RAGAS Evaluation Model (Judge)
+RAGAS_EVALUATION_MODEL = "gemini-2.5-flash"
 
 # =============================================================================
 # QDRANT CONFIGURATION
 # =============================================================================
-# Retrieved context top_k
-QDRANT_TEXT_TOP_K = int(os.getenv("QDRANT_TEXT_TOP_K", "3"))
-QDRANT_IMAGE_TOP_K = int(os.getenv("QDRANT_IMAGE_TOP_K", "3"))
+# Retrieved context top_k (from query_config.py)
+QDRANT_TEXT_TOP_K = QUERY_CONFIG["text_top_k"]
+QDRANT_IMAGE_TOP_K = QUERY_CONFIG["image_top_k"]
+
+# Qdrant collection names
+QDRANT_COLLECTION_TEXT = QDRANT_COLLECTIONS["text"]
+QDRANT_COLLECTION_IMAGE = QDRANT_COLLECTIONS["image"]
 
 # =============================================================================
 # VALIDATION & DEFAULTS
@@ -118,8 +133,8 @@ def validate_config():
     if LLM_PROVIDER == "gemini" and not os.getenv("GEMINI_API_KEY"):
         raise ValueError("LLM_PROVIDER is 'gemini' but GEMINI_API_KEY is not set in .env")
     
-    if LLM_PROVIDER == "lmstudio" and not os.getenv("LOCAL_LLM_URL"):
-        raise ValueError("LLM_PROVIDER is 'lmstudio' but LOCAL_LLM_URL is not set in .env")
+    if LLM_PROVIDER == "lmstudio" and not LOCAL_LLM_URL:
+        raise ValueError("LLM_PROVIDER is 'lmstudio' but LOCAL_LLM_URL is not set in scripts/config/llm_config.py")
     
     if RAGAS_LLM_PROVIDER == "gemini" and not os.getenv("GEMINI_API_KEY"):
         raise ValueError("RAGAS_LLM_PROVIDER is 'gemini' but GEMINI_API_KEY is not set in .env")
@@ -138,6 +153,7 @@ def get_config():
         "mode": EVAL_MODE,
         "context_type": CONTEXT_TYPE,
         "llm_provider": LLM_PROVIDER,
+        "gemini_model": GEMINI_MODEL,
         "local_llm_url": LOCAL_LLM_URL,
         "lmstudio_model": LMSTUDIO_MODEL,
         "lmstudio_temperature": LMSTUDIO_TEMPERATURE,
@@ -146,8 +162,11 @@ def get_config():
         "ragas_llm_provider": RAGAS_LLM_PROVIDER,
         "ragas_embeddings_provider": RAGAS_EMBEDDINGS_PROVIDER,
         "ragas_embeddings_model": RAGAS_EMBEDDINGS_MODEL,
+        "ragas_evaluation_model": RAGAS_EVALUATION_MODEL,
         "qdrant_text_top_k": QDRANT_TEXT_TOP_K,
         "qdrant_image_top_k": QDRANT_IMAGE_TOP_K,
+        "qdrant_collection_text": QDRANT_COLLECTION_TEXT,
+        "qdrant_collection_image": QDRANT_COLLECTION_IMAGE,
     }
 
 
@@ -160,6 +179,8 @@ def print_config():
     print(f"  Mode:                    {config['mode'].upper()}")
     print(f"  Context Type:            {config['context_type'].upper()}")
     print(f"  LLM Provider:            {config['llm_provider'].upper()}")
+    if config['llm_provider'] == 'gemini':
+        print(f"  Gemini Model:            {config['gemini_model']}")
     if config['llm_provider'] == 'lmstudio':
         print(f"  Local LLM URL:           {config['local_llm_url']}")
         print(f"  LM Studio Model:         {config['lmstudio_model']}")
@@ -167,9 +188,12 @@ def print_config():
         print(f"  Max Tokens:              {config['lmstudio_max_tokens']}")
         print(f"  Top-P:                   {config['lmstudio_top_p']}")
     print(f"  RAGAS LLM:               {config['ragas_llm_provider'].upper()}")
+    print(f"  RAGAS Eval Model:        {config['ragas_evaluation_model']}")
     print(f"  RAGAS Embeddings:        {config['ragas_embeddings_provider'].upper()}")
     if config['ragas_embeddings_provider'] != 'google':
         print(f"  Embeddings Model:        {config['ragas_embeddings_model']}")
+    print(f"  Qdrant Text Collection:  {config['qdrant_collection_text']}")
+    print(f"  Qdrant Image Collection: {config['qdrant_collection_image']}")
     print(f"  Qdrant Text Top-K:       {config['qdrant_text_top_k']}")
     print(f"  Qdrant Image Top-K:      {config['qdrant_image_top_k']}")
     print("=" * 60 + "\n")
