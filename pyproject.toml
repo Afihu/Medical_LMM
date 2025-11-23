@@ -5,10 +5,39 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "dotenv>=0.9.9",
     "google-generativeai>=0.8.5",
+    "hf-xet>=1.1.10",
+    "huggingface-hub>=0.35.3",
+    "keras>=3.12.0",
+    "langchain>=0.3.27",
+    "langchain-community>=0.3.31",
+    "langchain-google-genai>=2.0.10",
+    "numpy>=2.3.3",
     "open-clip-torch>=3.2.0",
     "pillow>=11.3.0",
+    "pymupdf>=1.26.5",
     "python-dotenv>=1.1.1",
     "qdrant-client>=1.15.1",
-    "torch>=2.8.0",
+    "ragas>=0.3.8",
+    "sentence-transformers>=3.0.0",
+    "sentencepiece>=0.2.1",
+    "streamlit>=1.50.0",
+    "tensorflow>=2.20.0",
+    "tf-keras>=2.20.1",
+    # Use torch with CUDA 12.6 for Windows
+    "torch==2.8.0+cu126; sys_platform == 'win32'",
+    # Fall back to regular torch on other platforms
+    "torch>=2.8.0; sys_platform != 'win32'",
+    "transformers>=4.57.1",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu126", marker = "sys_platform == 'win32'" }
 ]

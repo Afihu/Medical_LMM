@@ -179,3 +179,21 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Other non-essential folders
+/responses
+/cases
+.env
+
+/.serena
+/staged_embeddings
+/extracted_data
+/source_materials
+/temp_data
+/temp_query_data
+/uploaded_images
+/diagnosed_cases
+sandbox/
+source_materials/
+secret.txt
+out.txt
