@@ -38,8 +38,8 @@ class QdrantUploadService:
     """Service for uploading embeddings to Qdrant Cloud."""
     
     # Collection names (standardized)
-    COLLECTION_TEXT = "medical_case_texts"
-    COLLECTION_IMAGE = "medical_case_images"
+    COLLECTION_TEXT = "medical_case_texts_demo"
+    COLLECTION_IMAGE = "medical_case_images_demo"
     
     def __init__(self, qdrant_url=None, qdrant_api_key=None):
         """
