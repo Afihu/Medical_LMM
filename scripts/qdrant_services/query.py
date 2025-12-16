@@ -71,20 +71,25 @@ def query_collection(client, vector, collection_name, top_k=5, vector_name=None)
         except Exception as e:
             print(f"[WARN] Could not retrieve collection info: {e}")
         
+        # [DEPRICATED]
         # Format query_vector: if vector_name is specified, pass as tuple (vector_name, vector)
-        if vector_name is not None:
-            query_vector = (vector_name, vector)
-            print(f"[DEBUG] Using named vector: '{vector_name}'")
-        else:
-            query_vector = vector
+        # if vector_name is not None:
+        #     query_vector = (vector_name, vector)
+        #     print(f"[DEBUG] Using named vector: '{vector_name}'")
+        # else:
+        #     query_vector = vector
         
-        results = client.search(
+        results = client.query_points(
             collection_name=collection_name,
-            query_vector=query_vector,
+            query=vector,
+            using=vector_name,
             limit=top_k,
             with_payload=True
         )
         
+        # [NEW] Extract the list of points from the response
+        results = results.points
+
         if len(results) == 0:
             print(f"[WARN] Query returned 0 results from '{collection_name}'.")
             print(f"[HINT] Possible causes:")
@@ -109,12 +114,16 @@ def query_collection(client, vector, collection_name, top_k=5, vector_name=None)
         if vector_name is not None and ("Unknown arguments" in str(e) or "vector_name" in str(e)):
             print(f"[WARN] Named vector query failed, retrying with default vector...")
             try:
-                results = client.search(
+                results = client.query_points(
                     collection_name=collection_name,
-                    query_vector=vector,
+                    query=vector,
+                    using=vector_name,
                     limit=top_k,
                     with_payload=True
                 )
+
+                # [NEW] Extract the list of points from the response
+                results = results.points
                 if len(results) == 0:
                     print(f"[WARN] Query returned 0 results from '{collection_name}' (fallback to default vector).")
                     print(f"[HINT] This might indicate:")
