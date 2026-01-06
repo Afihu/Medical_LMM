@@ -71,21 +71,25 @@ def query_collection(client, vector, collection_name, top_k=5, vector_name=None)
         except Exception as e:
             print(f"[WARN] Could not retrieve collection info: {e}")
         
-        # Use 'using' parameter to specify named vector (not tuple!)
-        if vector_name is not None:
-            print(f"[DEBUG] Using named vector: '{vector_name}'")
+        # [DEPRICATED]
+        # Format query_vector: if vector_name is specified, pass as tuple (vector_name, vector)
+        # if vector_name is not None:
+        #     query_vector = (vector_name, vector)
+        #     print(f"[DEBUG] Using named vector: '{vector_name}'")
+        # else:
+        #     query_vector = vector
         
         results = client.query_points(
             collection_name=collection_name,
             query=vector,
-            using=vector_name,  # Correct API: use 'using' parameter for named vectors
+            using=vector_name,
             limit=top_k,
             with_payload=True
         )
         
-        # query_points() returns a QueryResponse with a .points attribute
-        results = results.points if hasattr(results, 'points') else results
-        
+        # [NEW] Extract the list of points from the response
+        results = results.points
+
         if len(results) == 0:
             print(f"[WARN] Query returned 0 results from '{collection_name}'.")
             print(f"[HINT] Possible causes:")
@@ -113,14 +117,13 @@ def query_collection(client, vector, collection_name, top_k=5, vector_name=None)
                 results = client.query_points(
                     collection_name=collection_name,
                     query=vector,
-                    using=None,  # Explicitly use default vector
+                    using=vector_name,
                     limit=top_k,
                     with_payload=True
                 )
-                
-                # query_points() returns a QueryResponse with a .points attribute
-                results = results.points if hasattr(results, 'points') else results
-                
+
+                # [NEW] Extract the list of points from the response
+                results = results.points
                 if len(results) == 0:
                     print(f"[WARN] Query returned 0 results from '{collection_name}' (fallback to default vector).")
                     print(f"[HINT] This might indicate:")
