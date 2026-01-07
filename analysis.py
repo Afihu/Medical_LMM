@@ -5,7 +5,7 @@ def config_init():
         task_type=TaskType.CAUSAL_LM, 
         inference_mode=False, 
         r=256,              # Rank: Critical for PiSSA (determines SVD components)
-        lora_alpha=256,     # Usually set alpha = r for PiSSA
+        lora_alpha=256,     # Set alpha = r for PiSSA
         lora_dropout=0.1,
         target_modules=["q_proj", "k_proj", "v_proj", "o_proj"], # Target attention layers
 

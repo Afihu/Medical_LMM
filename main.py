@@ -6,11 +6,23 @@ import time
 
 original_svd = torch.linalg.svd
 
-def patched_svd(A, full_matrices=True, driver=None, *args, **kwargs):
-    U, S, Vh = original_svd(A.float(), full_matrices=full_matrices, driver=driver, *args, **kwargs)
-    return U.to(torch.bfloat16), S.to(torch.bfloat16), Vh.to(torch.bfloat16)
+# "hybrid" since it incorporates both CPU and GPU for balance between memory efficiency and processing time
+def hybrid_svd(A, full_matrices=True, driver=None, *args, **kwargs):
+    if torch.cuda.is_available():
+        A_compute = A.to(device="cuda", dtype=torch.float32)
+    else:
+        A_compute = A.float()
+    
+    U, S, Vh = original_svd(A_compute.float(), full_matrices=full_matrices, driver=driver, *args, **kwargs)
 
-torch.linalg.svd = patched_svd
+    # Cast back to bfloat16 and move result back to CPU to store in the model
+    return (
+        U.to(device="cpu", dtype=torch.bfloat16), 
+        S.to(device="cpu", dtype=torch.bfloat16), 
+        Vh.to(device="cpu", dtype=torch.bfloat16)
+    )
+
+torch.linalg.svd = hybrid_svd
 
 model_name = "Qwen/Qwen3-8B"
 
@@ -24,6 +36,11 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 
 config = config_init()
+
+if torch.cuda.is_available():
+    print("CUDA")
+else:
+    print("CPU")
 
 print("Begin SVD")
 start_time = time.perf_counter()
