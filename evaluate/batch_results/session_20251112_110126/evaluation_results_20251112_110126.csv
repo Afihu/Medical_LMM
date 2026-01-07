@@ -1,6 +1,0 @@
-case_id,diagnosis,status,context_precision,context_recall,faithfulness,answer_relevancy,timestamp,error
-case-001,Chagas Disease,completed,0.0,0.0,0.625,0.7858402951984718,2025-11-12T11:01:26.129343,
-case-002,Chagas Disease,completed,0.3333333333,1.0,0.6,0.8291399812025565,2025-11-12T11:04:46.085640,
-case-003,Subarachnoid Neurocysticercosis,completed,0.9999999999,1.0,0.4482758620689655,0.7886965912614251,2025-11-12T11:08:10.665967,
-case-004,Subarachnoid Neurocysticercosis,completed,0.9999999999,1.0,0.3793103448275862,0.8936786263205998,2025-11-12T11:11:24.877963,
-case-005,Dengue,completed,0.0,0.0,0.08695652173913043,0.808700792291793,2025-11-12T11:14:30.827601,
