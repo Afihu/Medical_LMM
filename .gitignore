@@ -197,5 +197,7 @@ sandbox/
 source_materials/
 secret.txt
 out.txt
+sandbox.txt
+debug.py
 
 evaluate/batch_results

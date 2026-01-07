@@ -1,40 +1,39 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from analysis import config_init
+from peft import get_peft_model
+import torch
+import time
+
+original_svd = torch.linalg.svd
+
+def patched_svd(A, full_matrices=True, driver=None, *args, **kwargs):
+    U, S, Vh = original_svd(A.float(), full_matrices=full_matrices, driver=driver, *args, **kwargs)
+    return U.to(torch.bfloat16), S.to(torch.bfloat16), Vh.to(torch.bfloat16)
+
+torch.linalg.svd = patched_svd
 
 model_name = "Qwen/Qwen3-8B"
 
-# 1. Load Tokenizer and Model
+# Load Tokenizer and Model
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     torch_dtype="auto",
-    device_map="auto" 
+    device_map={"": "cpu"},
+    low_cpu_mem_usage=True
 )
 
+config = config_init()
 
-messages = [{"role": "user", "content": "Explain quantum entanglement like I'm five."}]
-text = tokenizer.apply_chat_template(
-    messages, 
-    tokenize=False, 
-    add_generation_prompt=True,
-    enable_thinking=True # Set to False for faster, direct answers
-)
+print("Begin SVD")
+start_time = time.perf_counter()
 
-model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
+model = get_peft_model(model, config) # Trigger SVD
+model.print_trainable_parameters() # Verify trainable parameters
 
-generated_ids = model.generate(**model_inputs, max_new_tokens=32768)
-output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist()
+end_time = time.perf_counter()
+execution_time = end_time - start_time
 
-# parsing thinking content
-try:
-    # rindex finding 151668 (</think>)
-    index = len(output_ids) - output_ids[::-1].index(151668)
-except ValueError:
-    index = 0
-
-# response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0] this is a skibidi bracket [^]
-
-content = tokenizer.decode(output_ids[index:], skip_special_tokens=True).strip("\n")
-
-print("content:", content)
+print(f"Elapsed time: {execution_time:.4f} seconds")
 
 print("Success")
