@@ -1,101 +1,40 @@
-"""
-main.py [DEPRECATED]
--------
-Main driver script for the Medical_LMM system.
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
-Flow:
-1. Receive new patient text input.
-2. Use CLIP (later) to generate embedding vector.
-3. Query Qdrant Cloud for top-5 similar cases (via scripts/query.py).
-4. Save them to /cases folder as JSON.
-5. Construct the prompt (via scripts/prompt_generate.py).
-6. Send the prompt to Gemini API for diagnostic analysis.
-7. Save Gemini response to /responses as Markdown.
-"""
+model_name = "Qwen/Qwen3-8B"
 
-import os
-from datetime import datetime
-from dotenv import load_dotenv
-import google.generativeai as genai
-
-# Custom modules
-from scripts.query import run_query_text
-from scripts.main_runtime.prompt_generate import generate_prompt
-from scripts.config.llm_config import DIAGNOSIS_MODEL
-
-# --- Path configuration ---
-# Get the project root (where main.py is located)
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-CASES_FOLDER = os.path.join(PROJECT_ROOT, "cases")
-RESPONSES_FOLDER = os.path.join(PROJECT_ROOT, "responses")
-
-# --- Configuration (from centralized config) ---
-MODEL_NAME = f"models/{DIAGNOSIS_MODEL}"
-
-# --- Setup ---
-def setup():
-    """Configure Gemini API and ensure directories exist."""
-    load_dotenv()
-    api_key = os.getenv("GEMINI_API_KEY")
-
-    if not api_key:
-        raise ValueError("Missing GEMINI_API_KEY in .env file")
-
-    genai.configure(api_key=api_key)
-
-    os.makedirs(RESPONSES_FOLDER, exist_ok=True)
-    os.makedirs(CASES_FOLDER, exist_ok=True)
-
-    print("Setup complete. Gemini and directories ready.\n")
+# 1. Load Tokenizer and Model
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    torch_dtype="auto",
+    device_map="auto" 
+)
 
 
-# --- Main Loop ---
-def main():
-    setup()
-    model = genai.GenerativeModel(MODEL_NAME)
-    print("--- Medical LMM Analysis ---")
-    print("Type 'quit' or 'exit' to end the session.\n")
+messages = [{"role": "user", "content": "Explain quantum entanglement like I'm five."}]
+text = tokenizer.apply_chat_template(
+    messages, 
+    tokenize=False, 
+    add_generation_prompt=True,
+    enable_thinking=True # Set to False for faster, direct answers
+)
 
-    while True:
-        user_input = input("Enter new patient's symptoms and history: ").strip()
-        if user_input.lower() in ["quit", "exit"]:
-            print("Exiting program. Goodbye!")
-            break
+model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
-        if not user_input:
-            print("Please enter a valid description.")
-            continue
+generated_ids = model.generate(**model_inputs, max_new_tokens=32768)
+output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist()
 
-        # Step 1: (Placeholder) Generate embedding for query
-        # Replace this with real encoder later
-        query_vector = [0.12, -0.45, 0.78, 0.66]
-        run_query_text(query_vector)
+# parsing thinking content
+try:
+    # rindex finding 151668 (</think>)
+    index = len(output_ids) - output_ids[::-1].index(151668)
+except ValueError:
+    index = 0
 
-        # Step 2: Generate the full prompt for Gemini
-        print("Building prompt from retrieved cases...")
-        final_prompt = generate_prompt(user_input)
+# response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0] this is a skibidi bracket [^]
 
-        # Step 3: Send to Gemini API
-        try:
-            print("Generating Gemini analysis... (this may take a moment)")
-            response = model.generate_content(final_prompt)
+content = tokenizer.decode(output_ids[index:], skip_special_tokens=True).strip("\n")
 
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"analysis_{timestamp}.md"
-            filepath = os.path.join(RESPONSES_FOLDER, filename)
+print("content:", content)
 
-            with open(filepath, "w", encoding="utf-8") as f:
-                f.write(response.text)
-
-            print(f"\nAnalysis complete. Report saved to: {filepath}\n")
-
-        except Exception as e:
-            print(f"Error during Gemini generation: {e}")
-
-def main():
-    print("Obi Wan kimono")
-    test_embed_output.test_embedder()
-
-# --- Entry Point ---
-if __name__ == "__main__":
-    main()
+print("Success")
