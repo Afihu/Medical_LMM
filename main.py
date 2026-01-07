@@ -4,16 +4,19 @@ from peft import get_peft_model
 import torch
 import time
 
+torch.backends.cuda.matmul.allow_tf32 = True 
+torch.backends.cudnn.allow_tf32 = True
+
 original_svd = torch.linalg.svd
 
-# "hybrid" since it incorporates both CPU and GPU for balance between memory efficiency and processing time
+# "hybrid" for CPU and GPU incorporation, balance between memory efficiency and processing time
 def hybrid_svd(A, full_matrices=True, driver=None, *args, **kwargs):
     if torch.cuda.is_available():
         A_compute = A.to(device="cuda", dtype=torch.float32)
     else:
         A_compute = A.float()
     
-    U, S, Vh = original_svd(A_compute.float(), full_matrices=full_matrices, driver=driver, *args, **kwargs)
+    U, S, Vh = original_svd(A_compute, full_matrices=full_matrices, driver=driver, *args, **kwargs)
 
     # Cast back to bfloat16 and move result back to CPU to store in the model
     return (
