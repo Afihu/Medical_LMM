@@ -200,4 +200,7 @@ out.txt
 sandbox.txt
 debug.py
 
+*.safetensors
+*.pt
+
 evaluate/batch_results

@@ -1,10 +1,8 @@
-from svd_initializer import config_init, fast_config_init
+from svd_initializer import fast_config_init
 from decomposer import decompose
 from datasets import load_dataset
 from transformers import TrainingArguments, Trainer, DataCollatorForLanguageModeling, TrainerCallback
-from safetensors.torch import load_file
 import time 
-import os
 import torch
 
 torch.backends.cuda.matmul.allow_tf32 = True 
@@ -20,24 +18,16 @@ class TimeTrackingCallback(TrainerCallback):
             elapsed = time.time() - self.start_time
             print(f"Step: {state.global_step} | Loss: {logs['loss']:.4f} | Elapsed: {elapsed:.2f}s")
 
+# Initialize and retrieve tokenizer and model
+svd_config = fast_config_init(256)
+model, tokenizer = decompose(svd_config)
 
-file_name = "pissa_init_snapshot.safetensors"
-if os.path.exists(file_name):
-    print("---- Detected existing PiSSA State ----")
-    # Initialize and retrieve tokenizer and model
-    svd_config = fast_config_init(256)
-    model, tokenizer = decompose(svd_config)
+print("--- 3. Loading Saved PiSSA State ---")
+# Overwrites the Base Model (injecting the residual) AND the Adapters (injecting principal components)
+state_dict = torch.load("pissa_init_snapshot.pt", map_location="cpu")
+model.load_state_dict(state_dict)
 
-    print("--- Loading Saved PiSSA State ---")
-    # Overwrites the Base Model (injecting the residual) AND the Adapters (injecting principal components)
-    state_dict = load_file("pissa_init_snapshot.safetensors")
-    model.load_state_dict(state_dict)
-
-    print("--- Model Loaded Successfully ---")
-else:
-    # Initialize and retrieve tokenizer and model
-    svd_config = config_init(256)
-    model, tokenizer = decompose(svd_config)
+print("--- Model Loaded Successfully ---")
 
 # --- DATA LOADING SECTION ---
 print("--- Loading Data ---")
@@ -62,7 +52,7 @@ training_args = TrainingArguments(
     output_dir="./pissa-medical-finetune",
     per_device_train_batch_size=1,     
     gradient_accumulation_steps=4,     
-    gradient_checkpointing=True, # CRITICAL: Trades speed for massive VRAM savings       
+    # gradient_checkpointing=True, # CRITICAL: Trades speed for massive VRAM savings       
     learning_rate=2e-5,                
     num_train_epochs=3,                
     save_steps=50,
@@ -85,7 +75,7 @@ trainer = Trainer(
 
 trainer.train()
 
-print("Training Complete, Saving Adapter...")
+print("Saving Adapter...")
 model.save_pretrained("./final_medical_adapter")
 print("Done!")
 

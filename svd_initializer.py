@@ -14,6 +14,18 @@ def config_init(rank):
 
     return peft_config
 
+# Only use when SVD has been run before
+def fast_config_init(rank):
+    return LoraConfig(
+        task_type=TaskType.CAUSAL_LM,
+        inference_mode=False,
+        r=rank,
+        lora_alpha=rank,
+        lora_dropout=0.1,
+        target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
+        init_lora_weights=False  # Skips SVD
+    )
+
 if __name__ == "__main__":
     config_init()
     print("Success")
