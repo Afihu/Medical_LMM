@@ -23,7 +23,6 @@ def hybrid_svd(A, full_matrices=True, driver=None, *args, **kwargs):
     )
 
 torch.linalg.svd = hybrid_svd
-# ----------------------------------
 
 # --- CONFIGURATION ---
 model_name = "Qwen/Qwen3-8B"
@@ -41,14 +40,14 @@ model = AutoModelForCausalLM.from_pretrained(
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 # 3. Apply PiSSA 
-print("Running PiSSA SVD (GPU Accelerated)...")
+print("Running PiSSA SVD...")
 start_time = time.time()
 
 peft_config = LoraConfig(
     task_type=TaskType.CAUSAL_LM,
     inference_mode=False,
-    r=128,              
-    lora_alpha=128,     
+    r=256,              
+    lora_alpha=256,     
     lora_dropout=0.1,
     target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
     init_lora_weights="pissa" 

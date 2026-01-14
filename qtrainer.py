@@ -3,14 +3,11 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments,
 from peft import PeftModel
 from datasets import load_dataset
 
-# --- CONFIGURATION ---
-# Load the LOCAL folders we created in Step 1
+
 residual_base_path = "./Qwen-PiSSA-Residual-Base"
 adapter_path = "./Qwen-PiSSA-Adapter"
 output_dir = "./qwen-qpissa-final"
 
-# 1. Load the RESIDUAL Base Model in 4-bit
-# This is "QPiSSA": The base is quantized residual, adapters are high precision.
 print("--- Loading Residual Base (4-bit) ---")
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -29,9 +26,7 @@ tokenizer = AutoTokenizer.from_pretrained(residual_base_path)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
-# 2. Attach the Pre-Calculated PiSSA Adapters
 print("--- Loading PiSSA Adapters ---")
-# We use PeftModel.from_pretrained to attach existing adapters to the base
 model = PeftModel.from_pretrained(
     model, 
     adapter_path, 
@@ -39,10 +34,8 @@ model = PeftModel.from_pretrained(
 )
 
 model.print_trainable_parameters()
-# You should see ~30-50M parameters trainable (the adapters).
-# The billions of base parameters are frozen in 4-bit.
 
-# --- 3. Data Loading ---
+# --- Load Data ---
 print("--- Loading Data ---")
 dataset = load_dataset("json", data_files="data.json", split="train")
 
@@ -58,7 +51,6 @@ def format_medical_case(sample):
 dataset = dataset.map(format_medical_case)
 tokenized_datasets = dataset.map(lambda x: tokenizer(x["text"], truncation=True, max_length=512), batched=True)
 
-# --- 4. Training ---
 print("--- Starting QPiSSA Training ---")
 training_args = TrainingArguments(
     output_dir=output_dir,
