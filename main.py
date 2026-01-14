@@ -1,94 +1,32 @@
-from svd_initializer import config_init, fast_config_init
-from decomposer import decompose
-from datasets import load_dataset
-from transformers import TrainingArguments, Trainer, DataCollatorForLanguageModeling, TrainerCallback
-from safetensors.torch import load_file
-import time 
+import subprocess
+import sys
 import os
-import torch
 
-torch.backends.cuda.matmul.allow_tf32 = True 
-torch.backends.cudnn.allow_tf32 = True
+def run_script(script_name):
+    print(f"\n{'='*20}")
+    print(f"RUNNING: {script_name}")
+    print(f"{'='*20}\n")
+    
+    # Run the script and wait for it to finish
+    result = subprocess.run([sys.executable, script_name])
+    
+    if result.returncode != 0:
+        print(f"\n[ERROR] {script_name} failed with exit code {result.returncode}.")
+        print("Aborting the rest of the pipeline to prevent corrupted training.")
+        sys.exit(result.returncode)
+    
+    print(f"\n[SUCCESS] {script_name} finished successfully.")
 
-#measuring convergence
-class TimeTrackingCallback(TrainerCallback):
-    def __init__(self):
-        self.start_time = time.time()
-
-    def on_log(self, args, state, control, logs=None, **kwargs):
-        if logs is not None and "loss" in logs:
-            elapsed = time.time() - self.start_time
-            print(f"Step: {state.global_step} | Loss: {logs['loss']:.4f} | Elapsed: {elapsed:.2f}s")
-
-
-file_name = "pissa_init_snapshot.safetensors"
-if os.path.exists(file_name):
-    print("---- Detected existing PiSSA State ----")
-    # Initialize and retrieve tokenizer and model
-    svd_config = fast_config_init(256)
-    model, tokenizer = decompose(svd_config)
-
-    print("--- Loading Saved PiSSA State ---")
-    # Overwrites the Base Model (injecting the residual) AND the Adapters (injecting principal components)
-    state_dict = load_file("pissa_init_snapshot.safetensors")
-    model.load_state_dict(state_dict)
-
-    print("--- Model Loaded Successfully ---")
-else:
-    # Initialize and retrieve tokenizer and model
-    svd_config = config_init(256)
-    model, tokenizer = decompose(svd_config)
-
-# --- DATA LOADING SECTION ---
-print("--- Loading Data ---")
-dataset = load_dataset("json", data_files="data.json", split="train")
-
-def format_medical_case(sample):
-    formatted_text = (
-        f"Analyze the clinical presentation and provide a diagnosis.\n\n"
-        f"Patient Case:\n{sample['prompt']}\n\n"
-        f"Diagnosis:\n{sample['diagnosis']}"
-        f"{tokenizer.eos_token}" 
-    )
-    return {"text": formatted_text}
-
-dataset = dataset.map(format_medical_case)
-tokenized_datasets = dataset.map(lambda x: tokenizer(x["text"], truncation=True, max_length=512), batched=True)
-
-# --- TRAINING SECTION ---
-start = time.perf_counter()
-print("--- Starting Training ---")
-training_args = TrainingArguments(
-    output_dir="./pissa-medical-finetune",
-    per_device_train_batch_size=1,     
-    gradient_accumulation_steps=4,     
-    gradient_checkpointing=True, # CRITICAL: Trades speed for massive VRAM savings       
-    learning_rate=2e-5,                
-    num_train_epochs=3,                
-    save_steps=50,
-    logging_steps=10,
-    optim="paged_adamw_8bit",          
-    bf16=True,                                              
-    dataloader_pin_memory=False,    
-
-    # DEVICE SETTINGS
-    no_cuda=False,                      # Use GPU if possible
-)
-
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=tokenized_datasets,
-    data_collator=DataCollatorForLanguageModeling(tokenizer, mlm=False),
-    callbacks=[TimeTrackingCallback()]
-)
-
-trainer.train()
-
-print("Training Complete, Saving Adapter...")
-model.save_pretrained("./final_medical_adapter")
-print("Done!")
-
-end = time.perf_counter()
-execution_time = end - start
-print(f"Elapsed Training time: {execution_time:.4f} seconds")
+if __name__ == "__main__":
+    # 1. Run the CPU-based SVD Decomposition
+    run_script("qdecompose.py")
+    
+    # 2. Check if the required residual base was actually saved
+    if not os.path.exists("./Qwen-PiSSA-Residual-Base"):
+        print("[ERROR] Residual base directory not found. Did Step 1 save correctly?")
+        sys.exit(1)
+        
+    # 3. Run the GPU-based Training
+    run_script("qtrainer.py")
+    
+    print("\n[COMPLETE] Full QPiSSA pipeline finished successfully.")
