@@ -1,6 +1,6 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer, DataCollatorForLanguageModeling, BitsAndBytesConfig
-from peft import PeftModel
+from peft import PeftModel, prepare_model_for_kbit_training
 from datasets import load_dataset
 
 
@@ -22,6 +22,9 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="auto",
     use_cache=False 
 )
+
+model = prepare_model_for_kbit_training(model)
+
 tokenizer = AutoTokenizer.from_pretrained(residual_base_path)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token

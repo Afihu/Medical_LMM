@@ -55,7 +55,8 @@ model = get_peft_model(model, peft_config)
 print(f"SVD Complete in {time.time() - start_time:.2f} seconds.")
 
 print("Saving Residual Base Model...")
-model.base_model.model.save_pretrained(save_dir_base)
+residual_model = model.unload()
+residual_model.save_pretrained(save_dir_base)
 tokenizer.save_pretrained(save_dir_base)
 
 print("Saving PiSSA Adapters...")
