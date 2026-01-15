@@ -202,5 +202,7 @@ debug.py
 
 *.safetensors
 *.pt
+/Qwen-PiSSA-Adapter
+/Qwen-PiSSA-Residual-Base
 
 evaluate/batch_results

@@ -2,12 +2,19 @@ import subprocess
 import sys
 import os
 
+BASE_DIR = "./Qwen-PiSSA-Residual-Base"
+ADAPTER_DIR = "./Qwen-PiSSA-Adapter"
+
+def decomposition_check():
+    base_exists = os.path.exists(os.path.join(BASE_DIR, "config.json"))
+    adapter_exists = os.path.exists(os.path.join(ADAPTER_DIR, "adapter_config.json"))
+    return base_exists and adapter_exists
+
 def run_script(script_name):
     print(f"\n{'='*20}")
     print(f"RUNNING: {script_name}")
     print(f"{'='*20}\n")
     
-    # Run the script and wait for it to finish
     result = subprocess.run([sys.executable, script_name])
     
     if result.returncode != 0:
@@ -18,15 +25,15 @@ def run_script(script_name):
     print(f"\n[SUCCESS] {script_name} finished successfully.")
 
 if __name__ == "__main__":
-    # 1. Run the CPU-based SVD Decomposition
-    run_script("qdecompose.py")
+    # Check if can skip SVD
+    if decomposition_check():
+        print(f"\n[INFO] Found existing PiSSA files in '{BASE_DIR}'.")
+        print("[INFO] Skipping SVD Decomposition...")
+    else:
+        print("[INFO] No existing PiSSA files found. Starting SVD...")
+        run_script("decompose_qpissa.py")
     
-    # 2. Check if the required residual base was actually saved
-    if not os.path.exists("./Qwen-PiSSA-Residual-Base"):
-        print("[ERROR] Residual base directory not found. Did Step 1 save correctly?")
-        sys.exit(1)
-        
-    # 3. Run the GPU-based Training
+    # Training
     run_script("qtrainer.py")
     
-    print("\n[COMPLETE] Full QPiSSA pipeline finished successfully.")
+    print("\n[COMPLETE] Pipeline finished successfully.")

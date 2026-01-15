@@ -24,12 +24,10 @@ def hybrid_svd(A, full_matrices=True, driver=None, *args, **kwargs):
 
 torch.linalg.svd = hybrid_svd
 
-# --- CONFIGURATION ---
 model_name = "Qwen/Qwen3-8B"
 save_dir_base = "./Qwen-PiSSA-Residual-Base"  
 save_dir_adapter = "./Qwen-PiSSA-Adapter"     
 
-# 2. Load Model on CPU
 print(f"Loading {model_name} on CPU... (System RAM)")
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
@@ -39,7 +37,6 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-# 3. Apply PiSSA 
 print("Running PiSSA SVD...")
 start_time = time.time()
 
@@ -57,7 +54,6 @@ model = get_peft_model(model, peft_config)
 
 print(f"SVD Complete in {time.time() - start_time:.2f} seconds.")
 
-# 4. Save the "Residual" Base Model
 print("Saving Residual Base Model...")
 model.base_model.model.save_pretrained(save_dir_base)
 tokenizer.save_pretrained(save_dir_base)
