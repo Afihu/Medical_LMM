@@ -2,6 +2,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer, DataCollatorForLanguageModeling, BitsAndBytesConfig
 from peft import PeftModel, prepare_model_for_kbit_training
 from datasets import load_dataset
+import matplotlib.pyplot as plt
 
 
 residual_base_path = "./Qwen-PiSSA-Residual-Base"
@@ -40,12 +41,13 @@ model.print_trainable_parameters()
 
 # --- Load Data ---
 print("--- Loading Data ---")
-dataset = load_dataset("json", data_files="data.json", split="train")
+dataset = load_dataset("json", data_files="distilled-data.json", split="train")
 
 def format_medical_case(sample):
     formatted_text = (
         f"Analyze the clinical presentation and provide a diagnosis.\n\n"
         f"Patient Case:\n{sample['prompt']}\n\n"
+        f"Rationale:\n{sample['rationale']}\n\n"
         f"Diagnosis:\n{sample['diagnosis']}"
         f"{tokenizer.eos_token}" 
     )
@@ -82,3 +84,22 @@ trainer.train()
 print("--- Saving Final Model ---")
 model.save_pretrained(output_dir)
 print("Done!")
+
+
+history = trainer.state.log_history
+
+steps = [x['step'] for x in history if 'loss' in x]
+loss = [x['loss'] for x in history if 'loss' in x]
+
+plt.figure(figsize=(10, 6))
+plt.plot(steps, loss, label='Training Loss')
+plt.title('Convergence Curve (Loss vs. Steps)')
+plt.xlabel('Steps')
+plt.ylabel('Loss')
+plt.grid(True)
+plt.legend()
+
+# Save the plot to Drive
+plt.savefig(f"{output_dir}/loss_curve.png")
+print(f"Graph saved to {output_dir}/loss_curve.png")
+plt.show()
