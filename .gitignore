@@ -197,5 +197,9 @@ sandbox/
 source_materials/
 secret.txt
 out.txt
+debug.py
+sandbox.txt
+/Qwen-PiSSA-Adapter
+/Qwen-PiSSA-Residual-Base
 
 evaluate/batch_results
