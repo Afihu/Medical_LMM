@@ -2,7 +2,7 @@ import subprocess
 import sys
 import os
 
-BASE_DIR = "./Qwen-PiSSA-Residual-Base"
+BASE_DIR = "./inference-ready-2/Qwen-PiSSA-Residual-Base"
 ADAPTER_DIR = "./Qwen-PiSSA-Adapter"
 
 def decomposition_check():

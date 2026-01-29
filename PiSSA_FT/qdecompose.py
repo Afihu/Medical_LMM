@@ -25,8 +25,8 @@ def hybrid_svd(A, full_matrices=True, driver=None, *args, **kwargs):
 torch.linalg.svd = hybrid_svd
 
 model_name = "Qwen/Qwen3-8B"
-save_dir_base = "./Qwen-PiSSA-Residual-Base"  
-save_dir_adapter = "./Qwen-PiSSA-Adapter"     
+save_dir_base = "./Qwen-QPiSSA-Test/Qwen-PiSSA-Residual-Base"  
+save_dir_adapter = "./Qwen-QPiSSA-Test/Qwen-PiSSA-Adapter"     
 
 print(f"Loading {model_name} on CPU... (System RAM)")
 model = AutoModelForCausalLM.from_pretrained(
@@ -43,9 +43,9 @@ start_time = time.time()
 peft_config = LoraConfig(
     task_type=TaskType.CAUSAL_LM,
     inference_mode=False,
-    r=256,              
-    lora_alpha=256,     
-    lora_dropout=0.1,
+    r=32,              
+    lora_alpha=32,     
+    lora_dropout=0.0,
     target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
     init_lora_weights="pissa" 
 )
@@ -54,13 +54,14 @@ model = get_peft_model(model, peft_config)
 
 print(f"SVD Complete in {time.time() - start_time:.2f} seconds.")
 
-print("Saving Residual Base Model...")
-residual_model = model.unload()
-residual_model.save_pretrained(save_dir_base)
-tokenizer.save_pretrained(save_dir_base)
-
 print("Saving PiSSA Adapters...")
 model.save_pretrained(save_dir_adapter)
+
+print("Saving Residual Base Model...")
+unwrapped_model = model.unload()
+
+unwrapped_model.save_pretrained(save_dir_base, safe_serialization=True)
+tokenizer.save_pretrained(save_dir_base)
 
 config_path = os.path.join(save_dir_adapter, "adapter_config.json")
 with open(config_path, "r") as f:

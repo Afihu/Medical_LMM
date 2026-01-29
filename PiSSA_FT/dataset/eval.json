@@ -1,0 +1,32 @@
+[
+  {
+    "id": "test-case-001",
+    "prompt": "A 28-year-old business consultant is brought to the A&E in London by his partner. He returned 5 days ago from a 2-week business trip to Lagos, Nigeria. He admits to being non-compliant with his chemoprophylaxis. His partner reports that he developed a high fever (40.1°C) and severe chills two days ago, followed by increasing agitation and confusion today. In the ambulance, he became unrousable. On examination, his Glasgow Coma Scale is 8/15 (E2, V2, M4). He is jaundiced. Fundoscopic examination reveals retinal whitening and hemorrhages. There is no neck stiffness.",
+    "diagnosis": "Cerebral Malaria",
+    "rationale": "Rationale: The patient presents with fever and a rapid decline in consciousness (coma) shortly after returning from a high-risk malaria endemic region (Nigeria), with a history of poor prophylaxis compliance. The presence of retinal hemorrhages (malarial retinopathy) is a specific sign distinguishing cerebral malaria from other causes of encephalopathy. The jaundice suggests haemolysis. The clinical picture of fever + unrousable coma + travel history strongly indicates severe falciparum malaria with cerebral involvement."
+  },
+  {
+    "id": "test-case-002",
+    "prompt": "A 45-year-old humanitarian aid worker stationed in a conflict zone in Yemen presents to the field hospital with the sudden onset of massive, painless, watery diarrhoea. He states the stool looks like 'rice water' and has a slightly fishy odour, but no faecal smell. He has vomited several times but has no fever and no abdominal cramps. He complains of severe muscle cramps in his calves. Physical examination shows signs of severe dehydration: sunken eyes, dry mucous membranes, 'washerwoman's hands' (wrinkled skin), and hypotension (85/50 mmHg).",
+    "diagnosis": "Cholera",
+    "rationale": "Rationale: The patient presents with acute, profuse, painless watery diarrhoea ('rice water stool') leading to rapid, severe dehydration and electrolyte imbalance (manifesting as muscle cramps). The setting (Yemen, conflict zone) is a high-risk environment for outbreaks. The absence of fever and abdominal pain, combined with the characteristic stool appearance and rapid progression to hypovolaemic shock, is the classic presentation of Cholera."
+  },
+  {
+    "id": "test-case-003",
+    "prompt": "A 30-year-old man presents to a clinic in Delhi, India, complaining of a fever that has been rising in a 'step-ladder' fashion over the past week, currently peaking at 39.5°C. He has a dull frontal headache, dry cough, and was initially constipated but now has loose stools. On physical examination, he appears toxic. His pulse is 80 bpm despite the high fever (relative bradycardia). Palpation of the abdomen reveals mild tenderness and hepatosplenomegaly. Faint, blanching, pink macules are observed on his upper abdomen and chest.",
+    "diagnosis": "Typhoid Fever",
+    "rationale": "Rationale: The clinical features of a step-ladder fever rising over a week, relative bradycardia (Faget's sign), and the presence of 'Rose spots' (blanching pink macules) are classical signs of enteric fever. The progression from constipation to diarrhoea and the endemic location (India) further support the diagnosis. This constellation of symptoms strongly suggests Typhoid Fever caused by Salmonella Typhi."
+  },
+  {
+    "id": "test-case-004",
+    "prompt": "A 25-year-old female backpacker returns to the US from a month-long trip to Phuket, Thailand. She presents with the abrupt onset of high fever (39.8°C), severe retro-orbital headache (pain behind the eyes), and intense generalized myalgia and arthralgia, which she describes as 'bone-breaking' pain. On the fourth day of illness, her fever subsided, but a diffuse maculopapular rash appeared on her trunk and spread to her extremities, sparing the face. A tourniquet test performed in the clinic causes petechiae to form on her forearm.",
+    "diagnosis": "Dengue",
+    "rationale": "Rationale: The patient exhibits the classic 'breakbone fever' symptoms: sudden high fever, severe retro-orbital pain, and intense muscle/joint pain. The biphasic pattern (rash appearing as fever defervesces) and positive tourniquet test (indicating capillary fragility) are highly characteristic. Given the travel history to an endemic area (Thailand), Dengue fever is the most likely diagnosis."
+  },
+  {
+    "id": "test-case-005",
+    "prompt": "A 35-year-old woman from rural Brazil presents with a skin lesion on her right thigh that she noticed 6 months ago. The lesion is a well-defined, hypopigmented plaque that is hairless and dry. She reports that she cannot feel heat, cold, or touch within the area of the lesion. Examination reveals a thickened, tender right ulnar nerve. She also has weakness in the intrinsic muscles of her right hand (claw hand deformity) and loss of the lateral third of her eyebrows.",
+    "diagnosis": "Leprosy",
+    "rationale": "Rationale: The hallmark finding here is an anaesthetic (numb) hypopigmented skin patch with loss of appendages (hair/sweat), which is pathognomonic for Leprosy. The involvement of peripheral nerves (thickened ulnar nerve) causing motor deficit (claw hand) and the loss of eyebrows (madarosis) confirms the diagnosis of Hansen's disease, likely the borderline or lepromatous spectrum given the multiple sites of involvement."
+  }
+]

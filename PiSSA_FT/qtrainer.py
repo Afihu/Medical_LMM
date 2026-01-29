@@ -5,9 +5,9 @@ from datasets import load_dataset
 import matplotlib.pyplot as plt
 
 
-residual_base_path = "./Qwen-PiSSA-Residual-Base"
+residual_base_path = "./inference-ready-2/Qwen-PiSSA-Residual-Base"
 adapter_path = "./Qwen-PiSSA-Adapter"
-output_dir = "./qwen-qpissa-final"
+output_dir = "./inference-ready-2/Qwen-QPiSSA-Adapter-Final"
 
 print("--- Loading Residual Base (4-bit) ---")
 bnb_config = BitsAndBytesConfig(
@@ -54,14 +54,14 @@ def format_medical_case(sample):
     return {"text": formatted_text}
 
 dataset = dataset.map(format_medical_case)
-tokenized_datasets = dataset.map(lambda x: tokenizer(x["text"], truncation=True, max_length=512), batched=True)
+tokenized_datasets = dataset.map(lambda x: tokenizer(x["text"], truncation=True, max_length=2048), batched=True)
 
 print("--- Starting QPiSSA Training ---")
 training_args = TrainingArguments(
     output_dir=output_dir,
     per_device_train_batch_size=1,
-    gradient_accumulation_steps=4,
-    learning_rate=2e-4,              
+    gradient_accumulation_steps=8,
+    learning_rate=2e-5,              
     num_train_epochs=3,
     logging_steps=10,
     optim="paged_adamw_32bit",       
