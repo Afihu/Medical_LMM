@@ -1,0 +1,4 @@
+This branch is created to summarize the content of images extracted from multiple sources. This is tailored particularly to medical images, so MedGemma multimodal model's APIs will be used.
+The option to use ConVIRT is eliminated due to the fact that there are multiple types of images inside the source PDFs and readily available implementations of ConVIRT (pretrained) is only tailored to X-rays. The focus has instead shifted to using quasi-generalist
+models like MedGemma to summarize what is in the images extracted. This will be used in both the user prompts and PDF images.
+This may be used in conjunction with ColPali in a type of "hybrid" approach.

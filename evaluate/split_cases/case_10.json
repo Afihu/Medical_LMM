@@ -1,0 +1,75 @@
+{
+  "question": "A 55-year-old man, who served in the military in Vietnam 30 years ago, is now receiving immunosuppressive therapy for an unrelated condition. He presents with a long history of cough, low-grade fever, weight loss, and hemoptysis. His chest X-ray closely resembles pulmonary tuberculosis, showing an upper lobe infiltrate that shows cavitation. The diagnosis is confirmed by isolating B. pseudomallei from his sputum.",
+  "retrieved_contexts": [
+    {
+      "case_id": 17,
+      "Title": "A 34-Year-Old Man from Thailand With Fever and a Papular Rash",
+      "History": "A 34-year-old man from Phuket, Thailand presents to a hospital in Germany with a 2-week history of fever. He has also noticed a papular rash affecting his whole body, particularly his face and trunk. When asked, he reports weight loss (7kg in the last 3 months). He lives in Thailand and arrived in Germany only 3 days previously to visit friends.",
+      "Clinical_Findings": "On examination, the patient is febrile with a temperature of 38.2°C (100.76°F). His conjunctivae are pale. He is very wasted, with a body mass index of 14kg/m2. The patient has a generalized non-pruritic rash, predominantly on his face and trunk, which consists of small umbilicated papules (Fig. 17.1). There is generalized lymphadenopathy with visibly swollen lymph nodes in the left supraclavicular region; his inguinal and axillary lymph nodes are also enlarged. On abdominal examination, the spleen is palpable at two fingers below the left costal margin. The liver span is 15cm in the midclavicular line.",
+      "Discussion": "A 34-year-old man from Thailand presents with a 2-week history of fever and a 3-month history of wasting. On examination, he has mild hepatosplenomegaly, generalized lymphadenopathy and a papular rash. The laboratory results reveal pancytopenia and an elevated C-reactive protein.",
+      "Summary_Box_First_Line": "Talaromycosis (Penicilliosis)"
+    },
+    {
+      "case_id": 55,
+      "Title": "A 40-Year-Old Male Farmer from Peru With Chronic Cough and Weight Loss",
+      "History": "A 40-year-old farmer from the Peruvian Amazon is referred to a hospital in the capital, Lima, with a 4-month history of chronic productive cough and chest pain. The patient reports dyspnoea on exertion and weight loss of about 20kg. He denies diarrhoea, fever or night sweats. Three and half months earlier, the patient was hospitalized at a regional hospital in the Peruvian Amazon for similar complaints. During the hospitalization, three sputum smears for acid-fast bacilli (AFB) were reported negative. No tuberculin skin test was performed. The chest radiograph was described as abnormal but no report is available and the patient does not have the film. A diagnosis of pulmonary tuberculosis (TB) was made based on clinical presentation and abnormal chest radiographic findings. The patient received first line TB therapy consisting of isoniazid, rifampicin, pyrazinamide and ethambutol. In the following months, despite adherence to treatment, he showed no clinical improvement and reported persistence of productive cough with streaking of blood in the sputum. He was then referred to Lima with a suspected",
+      "Clinical_Findings": "A 40-year-old man appears fatigued and cachectic. Temperature 37.2°C (98.96°F), blood pressure 120/75mmHg, pulse 70bpm regular, respiratory rate 15 breaths per minute. On inspection, few cervical and retroauricular lymph nodes are palpable, which are small, mobile, soft and non-tender. Lungs: crackles and rhonchi bilaterally. No hepatosplenomegaly. The rest of the physical examination is normal.",
+      "Discussion": "A male farmer from the Peruvian Amazon presents with a history of chronic cough and weight loss. After 3 months of TB treatment for a presumptive diagnosis of pulmonary tuberculosis, he shows no clinical improvement. The patient is cachectic with cervical lymphadenopathy and abnormal pulmonary auscultation. Laboratory investigations show thrombocytosis.",
+      "Summary_Box_First_Line": "Paracoccidioidomycosis"
+    },
+    {
+      "case_id": 23,
+      "Title": "A 31-Year-Old HIV-Positive Business Traveller With Cough, Shortness of Breath and Night Sweats",
+      "History": "A 31-year-old HIV-positive man presents to the Emergency Department of a London hospital. He has a 6-week",
+      "Clinical_Findings": "He is alert, short of breath at rest but able to complete full sentences. Temperature 39.2°C (102.6°F), blood pressure 120/70mmHg, pulse 100bpm, respiratory rate 26 breaths per minute, sO2 87% on air, and 97% on 15L O2. Chest is clear on auscultation. The rest of the physical examination is unremarkable.",
+      "Discussion": "An HIV-positive man who is not yet on ART presents with progressive shortness of breath, dry cough and drenching night sweats, with associated significant weight loss. He has a history of extensive work-related travel. He is febrile with type 1 respiratory failure and bilateral perihilar infiltrates seen on chest radiography. Routine laboratory tests are normal, except for a very slightly elevated CRP, his CD4-count is low.",
+      "Summary_Box_First_Line": "Pneumocystis Pneumonia (PCP)"
+    },
+    {
+      "case_id": 71,
+      "Title": "A 71-Year-Old Man from Japan With Eosinophilia and a Nodular Lesion in the Lung",
+      "History": "A 71-year-old Japanese man is referred to a local tertiary care hospital for further work-up of a nodular lesion in his right lung. He is clinically well and does not report any complaints. The lesion was first detected 2 years earlier during a routine healthcheck.Initiallyitwasoflinearshape.Thepatienthasbeen regularly followed up since then. At his most recent follow-up visititwasfoundbychestradiography(Fig.71.1A)andCTscan (Fig. 71.1B, C) that his linear lung shadow had turned into a nodular lesion of about 2cm in diameter. The patient was born in Kyushu district, southern Japan, where he is still living. He has no history of travelling overseas.",
+      "Clinical_Findings": "The vital signs were normal. The chest was clear. The remainder of the physical examination was also normal.",
+      "Discussion": "A 71-year-old Japanese man who is clinically well is worked up for a nodular lesion in his right lung. Blood tests reveal a mild eosinophilia and a slightly raised IgE. On PET scan the pulmonary lesion shows an increased FDG uptake.",
+      "Summary_Box_First_Line": "Paragonimiasis"
+    },
+    {
+      "case_id": 32,
+      "Title": "A 44-Year-Old Male Farmer from Laos With Diabetes and a Back Abscess",
+      "History": "A 44-year-old male rice farmer presents to a provincial hospital in Southern Laos in the rainy season with a 1-month",
+      "Clinical_Findings": "The patient appears septic, with a fever of 40°C (104°F), a heart rate of 136bpm, blood pressure of 140/80mmHg and a respiratory rate of 30 breath cycles per minute. He is pale and jaundiced. In the left scapular region, there is an erythematous swelling of 2.5 \u0001 4cm with pus discharging from a central wound (Fig. 32.1). There is no regional lymphadenopathy. On chest auscultation there are bilateral crepitations and reduced breath sounds at both lung bases. Heart sounds are normal. The abdomen is soft, without any palpable organomegaly.",
+      "Discussion": "A male Lao rice famer presents during the rainy season with prolonged fever, jaundice, a back abscess and chest signs. He is a known type 2 diabetic but has been non-adherent to his antidiabetic medication.",
+      "Summary_Box_First_Line": "Melioidosis"
+    },
+    {
+      "Title": "A 26-Year-Old Female Traveller Returning from Ghana With a Boil on the Leg",
+      "History": "A 26-year-old German student presents to the clinic because of a localized swelling on her left leg. She has just returned from a 6-week trip to Ghana. The swelling has developed slowly over the past 3 weeks. It is itchy, but not painful. There is no history of fever; no",
+      "Clinical_Findings": "There is localized swelling on the left leg, about 1.5cm in diameter (Fig. 8.1). The skin surrounding the swelling is slightly hyperaemic. The boil is covered by a blackish scab. There is no lymphadenopathy. The patient is afebrile while the rest of the physical examination is normal.",
+      "Discussion": "A young traveller presents with a localized swelling on her leg after backpacking in Ghana. The swelling has been growing slowly and there are no systemic signs or symptoms.",
+      "Summary_Box_First_Line": "Myiasis"
+    },
+    {
+      "Title": "A 7-Year-Old Girl from West Africa With Two Skin Ulcers and a Contracture of Her Right Wrist",
+      "History": "A 7-year-old girl is presented to a district hospital in the tropical region of a West African country. After an insect bite, she developed an itchy papule on the back of her right hand, which enlarged over a period of 3 months. A traditional healer had prescribed herbal remedies. When the lesion ulcerated a few weeks later, diclofenac and dexamethasone were administered at the local health post. When a second lesion appeared, treatment with oxacillin was initiated with no effect. The girl became increasingly unable to use her right hand. There is no history of relevant trauma or systemic symptoms.",
+      "Clinical_Findings": "A 7-year-old, anxious girl in good general condition holding her right wrist in a 45° flexion and 20° abduction position. Pulse 108bpm (normal 70–110), blood pressure 100/ 70mmHg, temperature 37.9°C (100.2°F). Two skin ulcers are present on the back of her right hand (3 \u0001 3cm) and on the medial side of her right wrist (0.5 \u0001 1cm). The larger ulcer is filled with necrotic tissue (Fig. 41.1) and surrounded by hypo- and hyperpigmentation, lichenification and desquamation. An ill-defined induration surrounds the ulcers (12 \u0001 8cm) with oedema extending from the lower arm to the fingers. A 0.5 \u0001 0.5cm nodule is noticed above the medial right elbow.",
+      "Discussion": "A 7-year-old West African girl presents with two progressive cutaneous ulcers linked by an area of altered skin. The movement in the associated joint is restricted. General symptoms are limited to a mildly elevated temperature.",
+      "Summary_Box_First_Line": "Mycobacterium ulcerans Disease (Buruli Ulcer)"
+    },
+    {
+      "Title": "A 52-Year-Old Male Safari Tourist Returning from South Africa With Fever and a Skin Lesion",
+      "History": "A 52-year-old man presents to a tropical medicine clinic in Germany with a fever for the past 2 days. He is also complaining of night sweats and a frontal headache. There are no joint pains and he has not noticed a rash. Ten days ago, he returned from a 2-week holiday trip to South Africa. He visited Cape Town and travelled the Garden Route and through KwaZulu–Natal. He went on safari in Kruger Park and several other game reserves. He did not take any antimalarial chemoprophylaxis. His past medical",
+      "Clinical_Findings": "Fair general condition. Tympanic temperature 37.5°C (99.5°F) (after taking 1g of paracetamol), pulse 80bpm, blood pressure 130/70mmHg. No jaundice; neck supple. Enlarged lymph nodes in the left groin. You notice a small sticking plaster on the leftupperthigh ofthepatient.Hetellsyouthathehasnotedaskinlesionthathe meant to show to a friend, who happens to be a surgeon, for advice.Youaskthepatienttotake offtheplaster(seeFig.54.1).",
+      "Discussion": "A 52-year-old German man presents with a short history of fever after a trip to South Africa. On examination there is a small necrotic skin lesion on his upper thigh with adjoining lymphangiitis and lymphadenitis.",
+      "Summary_Box_First_Line": "African Tick-Bite Fever"
+    },
+    {
+      "Title": "A 14-Year-Old Girl in the Solomon Islands With a Non-Healing Leg Ulcer",
+      "History": "A 14-year-old girl was seen in the Solomon Islands. She reported a painless, non-healing large ulcer of her left leg that began 1 month earlier.",
+      "Clinical_Findings": "On examination there was a large lesion (approximately 3 cm diameter) on the left lower leg covered by a layer of crust (Fig. 86.1). Lower down the leg a smaller, similar lesion was noted. There was no regional lymphadenopathy or evidence of any other skin or bone lesions.",
+      "Discussion": "A 14-year-old girl from the Solomon Islands presenting with a chronic leg ulcer.",
+      "Summary_Box_First_Line": "Yaws"
+    }
+  ],
+  "answer": "Disease: Melioidosis (Pulmonary, Reactivation); Reasoning: This is the confirmed diagnosis. The patient's history aligns perfectly with the known pathophysiology of Melioidosis: 1) Exposure in an endemic area (Vietnam). 2) A long latency period (30 years). 3) Reactivation triggered by a state of compromised immunity (immunosuppressive therapy). 4) A clinical and radiological presentation that is a classic mimic of pulmonary tuberculosis (chronic cough, fever, weight loss, and an upper lobe cavitating infiltrate). The isolation of *Burkholderia pseudomallei* from sputum provides definitive confirmation. Case 32, another case of Melioidosis from Southeast Asia, supports the geographical risk and association with host susceptibility.; Likelihood: high\nDisease: Pulmonary Tuberculosis; Reasoning: This was the primary differential diagnosis prior to culture results. The constellation of chronic constitutional symptoms (fever, weight loss), respiratory symptoms (cough, hemoptysis), and classic radiological findings (upper lobe cavitating infiltrate) is archetypal for reactivation tuberculosis. The patient's immunosuppression is a potent risk factor for TB reactivation. This diagnosis is now definitively ruled out by the isolation of *B. pseudomallei* and not *M. tuberculosis*. The similarity in presentation, as also seen in the TB-mimic of case 55, exemplifies why Melioidosis is a critical consideration in patients from endemic areas.; Likelihood: unlikely\nDisease: Atypical Mycobacterial Infection; Reasoning: Infections with non-tuberculous mycobacteria (NTM) can also cause chronic cavitary lung disease, particularly in individuals with underlying lung conditions or immunosuppression. The clinical picture can be indistinguishable from TB. However, this was ruled out by the sputum culture, which specifically identified *B. pseudomallei*.; Likelihood: unlikely\nDisease: Chronic Pulmonary Fungal Infection; Reasoning: Endemic fungi (e.g., Histoplasma, Coccidioides, or Aspergillus in a pre-existing cavity) can cause a TB-like illness, especially in an immunosuppressed host. As seen in case 55 (Paracoccidioidomycosis), the clinical presentation can be identical to TB. While possible, the patient's specific travel history to Vietnam makes Melioidosis a more prominent consideration than many endemic fungi. This was excluded by the microbiological results.; Likelihood: low",
+  "ground_truth": "Melioidosis"
+}

@@ -1,0 +1,1 @@
+Go into one of the labeled folders, open the json and copy the prompt to put into the chat window. Then attach the image if needed. cases.json is a synthesized list of dataset that was done by chatgpt with sources from various medical sites like WHO, CDC, etc. All the labeled folders are just jsons pulled from the cases.json.
