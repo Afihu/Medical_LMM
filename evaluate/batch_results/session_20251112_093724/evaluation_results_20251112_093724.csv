@@ -1,2 +1,0 @@
-case_id,diagnosis,status,context_precision,context_recall,faithfulness,answer_relevancy,timestamp,error
-case-003,Subarachnoid Neurocysticercosis,completed,0.9999999999,1.0,0.275,0.8107161088084834,2025-11-12T09:37:24.116899,

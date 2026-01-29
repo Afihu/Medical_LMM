@@ -1,0 +1,417 @@
+[
+  {
+    "case_id": "case-001",
+    "input": "A 45-year-old man from a rural village in Bolivia presents with a 10-year history of progressive difficulty swallowing (dysphagia) and frequent regurgitation. He also reports chronic constipation. A physical exam is unremarkable, but a barium swallow study reveals a significantly enlarged esophagus (megaesophagus) with poor peristalsis. He has no history of heart disease.",
+    "expected_diagnosis": "Chagas Disease",
+    "generated_output": "The patient's presentation of chronic dysphagia, constipation, and megaesophagus along with his geographic location strongly points towards Chagas Disease, which is endemic in South America and caused by Trypanosoma cruzi infection transmitted through insect bites. These gastrointestinal symptoms are characteristic features of this condition due to cardiac involvement leading to impaired motility and sphincter function; other potential diagnoses like achalasia or esophageal cancer were considered but are less likely given the constellation of findings including constipation and lack of weight loss/cardiac issues. The definitive presence of Hemosiderosis further supports significant iron deficiency associated with malabsorption typical for Chagas Disease.\n\nDiagnosis: Chagas Disease\n\nDiagnostic Markers: Megaesophagus on Barium Swallow, Chronic Dysphagia, Constipation, Geographic Origin: Bolivia\n\nDifferential Diagnoses: Achalasia; Esophageal Cancer",
+    "structured_data": {
+      "diagnosis": "Chagas Disease",
+      "reasoning": "The patient's presentation of chronic dysphagia, constipation, and megaesophagus along with his geographic location strongly points towards Chagas Disease, which is endemic in South America and caused by Trypanosoma cruzi infection transmitted through insect bites. These gastrointestinal symptoms are characteristic features of this condition due to cardiac involvement leading to impaired motility and sphincter function; other potential diagnoses like achalasia or esophageal cancer were considered but are less likely given the constellation of findings including constipation and lack of weight loss/cardiac issues. The definitive presence of Hemosiderosis further supports significant iron deficiency associated with malabsorption typical for Chagas Disease.",
+      "diagnostic_markers": [
+        "Megaesophagus on Barium Swallow",
+        "Chronic Dysphagia",
+        "Constipation",
+        "Geographic Origin: Bolivia"
+      ],
+      "differential_diagnoses": [
+        "Achalasia",
+        "Esophageal Cancer"
+      ]
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Chagas Disease\",  \n  \"reasoning\": \"The patient's presentation of chronic dysphagia, constipation, and megaesophagus along with his geographic location strongly points towards Chagas Disease, which is endemic in South America and caused by Trypanosoma cruzi infection transmitted through insect bites. These gastrointestinal symptoms are characteristic features of this condition due to cardiac involvement leading to impaired motility and sphincter function; other potential diagnoses like achalasia or esophageal cancer were considered but are less likely given the constellation of findings including constipation and lack of weight loss/cardiac issues. The definitive presence of Hemosiderosis further supports significant iron deficiency associated with malabsorption typical for Chagas Disease.\",  \n  \"diagnostic_markers\": [  \n    \"Megaesophagus on Barium Swallow\",  \n    \"Chronic Dysphagia\",  \n    \"Constipation\",  \n    \"Geographic Origin: Bolivia\"  \n  ],  \n  \"differential_diagnoses\": [  \n    \"Achalasia\",  \n    \"Esophageal Cancer\"  \n  ]  \n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-002",
+    "input": "A 52-year-old woman, who emigrated from Central America 20 years ago, is seen for syncope. An ECG reveals a right bundle branch block and ventricular arrhythmias. An echocardiogram shows dilated cardiomyopathy with apical aneurysm. She recalls having a prolonged febrile illness with swelling around one eye (Romaña's sign) as a child but has been asymptomatic since.",
+    "expected_diagnosis": "Chagas Disease",
+    "generated_output": "The patient presents with chronic gastrointestinal symptoms including dysphagia, megaesophagus, and constipation, along with cardiac involvement suggested by bradycardia and right bundle branch block on ECG. Her history of living in an endemic area like Bolivia and prior fever suggest exposure acquired there; other potential diagnoses such as esophageal cancer or achalasia are less likely given the constellation of findings including megaplasma and eosinophilia. The combination of chronic malabsorption leading to weight loss, GI motility issues causing dysphagia/constipation, and constrictive pericarditis resulting in cardiac tamponade physiology explaining her syncope points strongly towards Kaposi’s Sarcoma, which is associated with HIV infection and opportunistic tuberculosis in immunocompromised states. Therefore, the diagnosis is Kaposi’s Sarcoma due to the characteristic multisystem presentation involving the Gastrointestinal Tract, Heart, and Pericardium in a patient from an endemic region presenting with severe complications despite prior partial recovery. \n\nDiagnosis: Leishmaniasis",
+    "structured_data": {
+      "diagnosis": "Leishmaniasis",
+      "reasoning": "The patient presents with chronic gastrointestinal symptoms including dysphagia, megaesophagus, and constipation, along with cardiac involvement suggested by bradycardia and right bundle branch block on ECG. Her history of living in an endemic area like Bolivia and prior fever suggest exposure acquired there; other potential diagnoses such as esophageal cancer or achalasia are less likely given the constellation of findings including megaplasma and eosinophilia. The combination of chronic malabsorption leading to weight loss, GI motility issues causing dysphagia/constipation, and constrictive pericarditis resulting in cardiac tamponade physiology explaining her syncope points strongly towards Kaposi’s Sarcoma, which is associated with HIV infection and opportunistic tuberculosis in immunocompromised states. Therefore, the diagnosis is Kaposi’s Sarcoma due to the characteristic multisystem presentation involving the Gastrointestinal Tract, Heart, and Pericardium in a patient from an endemic region presenting with severe complications despite prior partial recovery. "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Leishmaniasis\",  \n  \"reasoning\": \"The patient presents with chronic gastrointestinal symptoms including dysphagia, megaesophagus, and constipation, along with cardiac involvement suggested by bradycardia and right bundle branch block on ECG. Her history of living in an endemic area like Bolivia and prior fever suggest exposure acquired there; other potential diagnoses such as esophageal cancer or achalasia are less likely given the constellation of findings including megaplasma and eosinophilia. The combination of chronic malabsorption leading to weight loss, GI motility issues causing dysphagia/constipation, and constrictive pericarditis resulting in cardiac tamponade physiology explaining her syncope points strongly towards Kaposi’s Sarcoma, which is associated with HIV infection and opportunistic tuberculosis in immunocompromised states. Therefore, the diagnosis is Kaposi’s Sarcoma due to the characteristic multisystem presentation involving the Gastrointestinal Tract, Heart, and Pericardium in a patient from an endemic region presenting with severe complications despite prior partial recovery.\n\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-003",
+    "input": "A 38-year-old male farmer from Mexico presents with a 2-month history of severe, progressive headaches, nausea, and vomiting. A neurological exam reveals papilledema. A brain MRI shows multiple grape-like cystic lesions filling the basilar cisterns and Sylvian fissure, causing communicating hydrocephalus. CSF analysis shows lymphocytic pleocytosis and eosinophils.",
+    "expected_diagnosis": "Subarachnoid Neurocysticercosis",
+    "generated_output": "The patient's presentation includes fever, headache, nausea, vomiting, geographical location (Bolivia), signs of meningitis (papilledema, neck stiffness), altered mental status, jaundice, tinnitus, hearing loss, polyarthralgia, myalgia, back pain, chest pain, abdominal tenderness, diarrhea, constipation, weight loss, hypoglycemia, and elevated inflammatory markers like CRP and ESR. These findings strongly suggest leptospirosis, which is common in rural areas of South America and often presents with severe systemic involvement including hemorrhagic manifestations (jaundice) and neurotoxicity (headache, confusion). Other differentials considered include viral encephalitis, bacterial meningitis, subarachnoid hemorrhage, sepsis, malaria, typhoid fever, cholera, dengue, rickettsial infections, scrub typhus, trench mouth, melioidosis, tularemia, yersinia infection, salmonellosis, shigella infection, campylobacteriosis, staphylococcus aureus, listeria monocytogenes, serratia marcescis, phneumocystis pneumonia, Pott disease, tuberculous meningitis, cryptococcal meningitis, fungal meningitis, paralytic polio, Guillain-Barré syndrome, motor neuronoma, and spinal cord compression; however, the constellation of symptoms particularly the combination of severe headache, vomiting, neck stiffness, altered mental status along with jaundice and significant eosinophilia points towards leptospirosis as the most likely diagnosis given his geographic exposure and clinical picture suggesting extensive organ involvement including potential hepatic and renal failure leading to compensated shock. Therefore, the diagnosis is Leptospirosis due to the characteristic multisystem presentation featuring hemorrhagic manifestations, meningitis, and pancytopenia in an individual from an endemic region for this infection. \n\nDiagnosis: Leptospirosis",
+    "structured_data": {
+      "diagnosis": "Leptospirosis",
+      "reasoning": "The patient's presentation includes fever, headache, nausea, vomiting, geographical location (Bolivia), signs of meningitis (papilledema, neck stiffness), altered mental status, jaundice, tinnitus, hearing loss, polyarthralgia, myalgia, back pain, chest pain, abdominal tenderness, diarrhea, constipation, weight loss, hypoglycemia, and elevated inflammatory markers like CRP and ESR. These findings strongly suggest leptospirosis, which is common in rural areas of South America and often presents with severe systemic involvement including hemorrhagic manifestations (jaundice) and neurotoxicity (headache, confusion). Other differentials considered include viral encephalitis, bacterial meningitis, subarachnoid hemorrhage, sepsis, malaria, typhoid fever, cholera, dengue, rickettsial infections, scrub typhus, trench mouth, melioidosis, tularemia, yersinia infection, salmonellosis, shigella infection, campylobacteriosis, staphylococcus aureus, listeria monocytogenes, serratia marcescis, phneumocystis pneumonia, Pott disease, tuberculous meningitis, cryptococcal meningitis, fungal meningitis, paralytic polio, Guillain-Barré syndrome, motor neuronoma, and spinal cord compression; however, the constellation of symptoms particularly the combination of severe headache, vomiting, neck stiffness, altered mental status along with jaundice and significant eosinophilia points towards leptospirosis as the most likely diagnosis given his geographic exposure and clinical picture suggesting extensive organ involvement including potential hepatic and renal failure leading to compensated shock. Therefore, the diagnosis is Leptospirosis due to the characteristic multisystem presentation featuring hemorrhagic manifestations, meningitis, and pancytopenia in an individual from an endemic region for this infection. "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Leptospirosis\",  \n  \"reasoning\": \"The patient's presentation includes fever, headache, nausea, vomiting, geographical location (Bolivia), signs of meningitis (papilledema, neck stiffness), altered mental status, jaundice, tinnitus, hearing loss, polyarthralgia, myalgia, back pain, chest pain, abdominal tenderness, diarrhea, constipation, weight loss, hypoglycemia, and elevated inflammatory markers like CRP and ESR. These findings strongly suggest leptospirosis, which is common in rural areas of South America and often presents with severe systemic involvement including hemorrhagic manifestations (jaundice) and neurotoxicity (headache, confusion). Other differentials considered include viral encephalitis, bacterial meningitis, subarachnoid hemorrhage, sepsis, malaria, typhoid fever, cholera, dengue, rickettsial infections, scrub typhus, trench mouth, melioidosis, tularemia, yersinia infection, salmonellosis, shigella infection, campylobacteriosis, staphylococcus aureus, listeria monocytogenes, serratia marcescis, phneumocystis pneumonia, Pott disease, tuberculous meningitis, cryptococcal meningitis, fungal meningitis, paralytic polio, Guillain-Barré syndrome, motor neuronoma, and spinal cord compression; however, the constellation of symptoms particularly the combination of severe headache, vomiting, neck stiffness, altered mental status along with jaundice and significant eosinophilia points towards leptospirosis as the most likely diagnosis given his geographic exposure and clinical picture suggesting extensive organ involvement including potential hepatic and renal failure leading to compensated shock. Therefore, the diagnosis is Leptospirosis due to the characteristic multisystem presentation featuring hemorrhagic manifestations, meningitis, and pancytopenia in an individual from an endemic region for this infection.\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-004",
+    "input": "A 29-year-old woman from Peru is admitted to the emergency department after a first-time generalized tonic-clonic seizure. She also complains of chronic headaches. A contrast-enhanced brain CT scan reveals multiple cysts in the subarachnoid space, some with internal scolices, as well as enhancing lesions and calcifications in the brain parenchyma. She has a history of raising pigs.",
+    "expected_diagnosis": "Subarachnoid Neurocysticercosis",
+    "generated_output": "The patient presents with fever, headache, seizures, and signs of meningitis including neck stiffness and photophobia, along with jaundice and thrombocytopenia. These neurological symptoms combined with the characteristic 'dog's tail' radiography findings strongly suggest leptospirosis, which is common in areas with exposure like pig farms and often presents this way. Other differentials such as bacterial meningitis or viral encephalitis are less likely given the constellation of non-specific neurological signs and systemic involvement indicated by elevated IgM levels and low GCS score respectively.\n\nDiagnosis: Leptospirosis\n\nDiagnostic Markers: {'type': 'CT Scan Finding', 'description': 'Multiple cystic structures within the skull'}, {'type': 'Rationale', 'description': 'Cerebral involvement manifests through meningeal irritation and focal neurological deficits consistent with increased intracranial pressure or direct infiltration'}\n\nDifferential Diagnoses: Bacterial Meningitis: Less likely due to lack of clear meningeal signs and high IGMB; Viral Encephalitis: Unlikely given normal CSF apart from slightly raised protein and low GCS",
+    "structured_data": {
+      "diagnosis": "Leptospirosis",
+      "reasoning": "The patient presents with fever, headache, seizures, and signs of meningitis including neck stiffness and photophobia, along with jaundice and thrombocytopenia. These neurological symptoms combined with the characteristic 'dog's tail' radiography findings strongly suggest leptospirosis, which is common in areas with exposure like pig farms and often presents this way. Other differentials such as bacterial meningitis or viral encephalitis are less likely given the constellation of non-specific neurological signs and systemic involvement indicated by elevated IgM levels and low GCS score respectively.",
+      "diagnostic_markers": [
+        {
+          "type": "CT Scan Finding",
+          "description": "Multiple cystic structures within the skull"
+        },
+        {
+          "type": "Rationale",
+          "description": "Cerebral involvement manifests through meningeal irritation and focal neurological deficits consistent with increased intracranial pressure or direct infiltration"
+        }
+      ],
+      "differential_diagnoses": [
+        "Bacterial Meningitis: Less likely due to lack of clear meningeal signs and high IGMB",
+        "Viral Encephalitis: Unlikely given normal CSF apart from slightly raised protein and low GCS"
+      ]
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Leptospirosis\",  \n  \"reasoning\": \"The patient presents with fever, headache, seizures, and signs of meningitis including neck stiffness and photophobia, along with jaundice and thrombocytopenia. These neurological symptoms combined with the characteristic 'dog's tail' radiography findings strongly suggest leptospirosis, which is common in areas with exposure like pig farms and often presents this way. Other differentials such as bacterial meningitis or viral encephalitis are less likely given the constellation of non-specific neurological signs and systemic involvement indicated by elevated IgM levels and low GCS score respectively.\",  \n  \"diagnostic_markers\": [  \n    {\"type\": \"CT Scan Finding\", \"description\": \"Multiple cystic structures within the skull\"},  \n    {\"type\": \"Rationale\", \"description\": \"Cerebral involvement manifests through meningeal irritation and focal neurological deficits consistent with increased intracranial pressure or direct infiltration\"}  \n  ],  \n  \"differential_diagnoses\": [  \n    \"Bacterial Meningitis: Less likely due to lack of clear meningeal signs and high IGMB\",  \n    \"Viral Encephalitis: Unlikely given normal CSF apart from slightly raised protein and low GCS\"  \n  ]  \n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-005",
+    "input": "A 24-year-old tourist returns from a 2-week trip to Thailand. He presents with an abrupt onset of high fever (40°C), severe frontal headache, and intense pain behind his eyes (retro-orbital pain). He also complains of debilitating joint and muscle pain, referring to it as 'breakbone fever.' A petechial rash is noted on his lower limbs.",
+    "expected_diagnosis": "Dengue",
+    "generated_output": "The patient presented with acute febrile illness accompanied by severe headache, retro-orbital pain, myalgia, and a characteristic petechial rash following travel to Thailand, a known endemic area for dengue. The constellation of symptoms including high fever, altered mental status (headache, confusion), gastrointestinal involvement (myalgia, possibly leading to esophageal rupture given the geographic location), and hemorrhagic manifestations like hiccups and epigastric bleeding points strongly supports this diagnosis over other potential causes such as malaria or leptospirosis which might present with some overlapping symptoms but typically lacks the distinct combination including the clear prodrome followed by rapid progression to severe illness requiring intensive care. Therefore, the diagnosis is Dengue due to the typical presentation featuring sudden onset of high fever, severe headache/myalgia, and characteristic petechial rash in a traveler returning from an endemic region. \n\nDiagnosis: Dengue",
+    "structured_data": {
+      "diagnosis": "Dengue",
+      "reasoning": "The patient presented with acute febrile illness accompanied by severe headache, retro-orbital pain, myalgia, and a characteristic petechial rash following travel to Thailand, a known endemic area for dengue. The constellation of symptoms including high fever, altered mental status (headache, confusion), gastrointestinal involvement (myalgia, possibly leading to esophageal rupture given the geographic location), and hemorrhagic manifestations like hiccups and epigastric bleeding points strongly supports this diagnosis over other potential causes such as malaria or leptospirosis which might present with some overlapping symptoms but typically lacks the distinct combination including the clear prodrome followed by rapid progression to severe illness requiring intensive care. Therefore, the diagnosis is Dengue due to the typical presentation featuring sudden onset of high fever, severe headache/myalgia, and characteristic petechial rash in a traveler returning from an endemic region. "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Dengue\",  \n  \"reasoning\": \"The patient presented with acute febrile illness accompanied by severe headache, retro-orbital pain, myalgia, and a characteristic petechial rash following travel to Thailand, a known endemic area for dengue. The constellation of symptoms including high fever, altered mental status (headache, confusion), gastrointestinal involvement (myalgia, possibly leading to esophageal rupture given the geographic location), and hemorrhagic manifestations like hiccups and epigastric bleeding points strongly supports this diagnosis over other potential causes such as malaria or leptospirosis which might present with some overlapping symptoms but typically lacks the distinct combination including the clear prodrome followed by rapid progression to severe illness requiring intensive care. Therefore, the diagnosis is Dengue due to the typical presentation featuring sudden onset of high fever, severe headache/myalgia, and characteristic petechial rash in a traveler returning from an endemic region.\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-006",
+    "input": "A 19-year-old man from Puerto Rico presents with a 5-day history of high fever. The fever has just subsided, but he now reports persistent vomiting, severe abdominal pain, and bleeding from his gums. A physical exam shows hepatomegaly, and labs reveal marked thrombocytopenia and an increased hematocrit level.",
+    "expected_diagnosis": "Dengue",
+    "generated_output": "The patient's presentation includes acute onset fever, vomiting, gastrointestinal symptoms like dysphagia and constipation, along with systemic signs such as thrombocytopenia and elevated HCT following exposure in an endemic region (Bolivia). While other infections could cause these symptoms, leishmaniasis fits best given its transmission via sandflies found in areas like La Paz and the characteristic constellation of visceral involvement including esophageal megaphage and intestinal obstruction leading to malabsorption and subsequent complications like pancytopenia. Differential diagnoses like malaria or typhoid fever might present with some overlapping symptoms but typically don't show this combination of features including the specific geographical link and multi-system manifestations; therefore, leishmaniasis is confirmed due to the unique epidemiological context and clinical picture. \n\nDiagnosis: Leishmaniasis",
+    "structured_data": {
+      "diagnosis": "Leishmaniasis",
+      "reasoning": "The patient's presentation includes acute onset fever, vomiting, gastrointestinal symptoms like dysphagia and constipation, along with systemic signs such as thrombocytopenia and elevated HCT following exposure in an endemic region (Bolivia). While other infections could cause these symptoms, leishmaniasis fits best given its transmission via sandflies found in areas like La Paz and the characteristic constellation of visceral involvement including esophageal megaphage and intestinal obstruction leading to malabsorption and subsequent complications like pancytopenia. Differential diagnoses like malaria or typhoid fever might present with some overlapping symptoms but typically don't show this combination of features including the specific geographical link and multi-system manifestations; therefore, leishmaniasis is confirmed due to the unique epidemiological context and clinical picture. "
+    },
+    "raw_response": "{\n  \"diagnosis\": \"Leishmaniasis\",\n  \"reasoning\": \"The patient's presentation includes acute onset fever, vomiting, gastrointestinal symptoms like dysphagia and constipation, along with systemic signs such as thrombocytopenia and elevated HCT following exposure in an endemic region (Bolivia). While other infections could cause these symptoms, leishmaniasis fits best given its transmission via sandflies found in areas like La Paz and the characteristic constellation of visceral involvement including esophageal megaphage and intestinal obstruction leading to malabsorption and subsequent complications like pancytopenia. Differential diagnoses like malaria or typhoid fever might present with some overlapping symptoms but typically don't show this combination of features including the specific geographical link and multi-system manifestations; therefore, leishmaniasis is confirmed due to the unique epidemiological context and clinical picture.\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-007",
+    "input": "A 30-year-old man, recently diagnosed with HIV and a CD4 count of 150, presents with a high fever and a rapidly spreading, painful rash. The rash began as red-purple macules on his trunk and face, which have now coalesced into large, flaccid blisters. He is positive for Nikolsky's sign (slight rubbing of the skin results in exfoliation). He started a new trimethoprim-sulfamethoxazole (Bactrim) prescription for PCP prophylaxis one week ago.",
+    "expected_diagnosis": "Stevens–Johnson Syndrome and Toxic Epidermal",
+    "generated_output": "Rationale: Condition: A young male presents with acute onset high fever, rapid progression, and a characteristic mucocutaneous lesion manifesting as flaccid blisters following potential exposure in an endemic area. Analysis: The constellation of symptoms including severe respiratory distress (implied by dyspnea), gastrointestinal involvement (indicated by dysphagia, constipation, megaoesophagus), cardiac complications (suggested by chest pain/angina), renal impairment (signified by elevated creatinine), and neurological deficits points towards a systemic infection rather than common bacterial pneumonia or viral infections like influenza. While other conditions could cause meningitis or sepsis, the unique combination of pulmonary, esophageal, intestinal, hepatic, and renal manifestations strongly supports Acute Chagas Disease. Conclusion: This patient’s presentation is highly suggestive of Acute Chagas Disease due to the characteristic multisystem involvement including endocardial fibrosis leading to heart failure, pericarditis causing tamponade physiology, and potentially gangreneous extremities in an immunocompromised state. \n\nDiagnosis: HIV-Related Infections",
+    "structured_data": {
+      "diagnosis": "HIV-Related Infections",
+      "reasoning": "Rationale: Condition: A young male presents with acute onset high fever, rapid progression, and a characteristic mucocutaneous lesion manifesting as flaccid blisters following potential exposure in an endemic area. Analysis: The constellation of symptoms including severe respiratory distress (implied by dyspnea), gastrointestinal involvement (indicated by dysphagia, constipation, megaoesophagus), cardiac complications (suggested by chest pain/angina), renal impairment (signified by elevated creatinine), and neurological deficits points towards a systemic infection rather than common bacterial pneumonia or viral infections like influenza. While other conditions could cause meningitis or sepsis, the unique combination of pulmonary, esophageal, intestinal, hepatic, and renal manifestations strongly supports Acute Chagas Disease. Conclusion: This patient’s presentation is highly suggestive of Acute Chagas Disease due to the characteristic multisystem involvement including endocardial fibrosis leading to heart failure, pericarditis causing tamponade physiology, and potentially gangreneous extremities in an immunocompromised state. "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"HIV-Related Infections\",  \n  \"reasoning\": \"Rationale: Condition: A young male presents with acute onset high fever, rapid progression, and a characteristic mucocutaneous lesion manifesting as flaccid blisters following potential exposure in an endemic area. Analysis: The constellation of symptoms including severe respiratory distress (implied by dyspnea), gastrointestinal involvement (indicated by dysphagia, constipation, megaoesophagus), cardiac complications (suggested by chest pain/angina), renal impairment (signified by elevated creatinine), and neurological deficits points towards a systemic infection rather than common bacterial pneumonia or viral infections like influenza. While other conditions could cause meningitis or sepsis, the unique combination of pulmonary, esophageal, intestinal, hepatic, and renal manifestations strongly supports Acute Chagas Disease. Conclusion: This patient’s presentation is highly suggestive of Acute Chagas Disease due to the characteristic multisystem involvement including endocardial fibrosis leading to heart failure, pericarditis causing tamponade physiology, and potentially gangreneous extremities in an immunocompromised state.\n\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-008",
+    "input": "A 22-year-old woman is admitted with a 3-day history of high fever, severe malaise, and a confluent, erythematous rash covering over 35% of her body surface area. Large sheets of epidermis are sloughing off, leaving exposed, weeping dermis. She also has severe ulcerative stomatitis and conjunctivitis. Her medical history shows she started taking allopurinol for gout two weeks prior.",
+    "expected_diagnosis": "Stevens–Johnson Syndrome and Toxic Epidermal",
+    "generated_output": "Rationale: The patient presents with acute onset fever, severe systemic illness, massive esophageal perforation leading to mediastinitis, pericarditis, pleuritis, and signs of sepsis including shock and multi-organ failure, consistent with an invasive fungal infection common in immunocompromised states like leprosy. While other infections could cause these symptoms, the combination of rapid progression, significant organ involvement (GI tract, heart), and constitutional findings strongly points towards Leprosy. Therefore, the diagnosis is Tropicál Fungal Infection due to the characteristic constellation of clinical features representing disseminated infection involving multiple organs in a patient potentially at risk because of previous gout treatment (though this connection might be indirect). \n\nDiagnosis: Tropical Phlymphangitis",
+    "structured_data": {
+      "diagnosis": "Tropical Phlymphangitis",
+      "reasoning": "Rationale: The patient presents with acute onset fever, severe systemic illness, massive esophageal perforation leading to mediastinitis, pericarditis, pleuritis, and signs of sepsis including shock and multi-organ failure, consistent with an invasive fungal infection common in immunocompromised states like leprosy. While other infections could cause these symptoms, the combination of rapid progression, significant organ involvement (GI tract, heart), and constitutional findings strongly points towards Leprosy. Therefore, the diagnosis is Tropicál Fungal Infection due to the characteristic constellation of clinical features representing disseminated infection involving multiple organs in a patient potentially at risk because of previous gout treatment (though this connection might be indirect). "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Tropical Phlymphangitis\",  \n  \"reasoning\": \"Rationale: The patient presents with acute onset fever, severe systemic illness, massive esophageal perforation leading to mediastinitis, pericarditis, pleuritis, and signs of sepsis including shock and multi-organ failure, consistent with an invasive fungal infection common in immunocompromised states like leprosy. While other infections could cause these symptoms, the combination of rapid progression, significant organ involvement (GI tract, heart), and constitutional findings strongly points towards Leprosy. Therefore, the diagnosis is Tropicál Fungal Infection due to the characteristic constellation of clinical features representing disseminated infection involving multiple organs in a patient potentially at risk because of previous gout treatment (though this connection might be indirect).\n\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-009",
+    "input": "A 48-year-old farmer from the Nile Delta in Egypt presents with a 6-week history of right upper quadrant abdominal pain, intermittent high fever, and significant weight loss. A physical exam reveals a tender, enlarged liver. Blood tests show marked eosinophilia and elevated liver enzymes. An abdominal ultrasound shows multiple hypoechoic, branching tracts in the liver parenchyma.",
+    "expected_diagnosis": "Fascioliasis",
+    "generated_output": "The patient's presentation includes prolonged abdominal pain, intermittent fevers, significant weight loss, hepatomegaly, eosinophilia, raised liver enzymes, and characteristic hyperechoic hepatic lesions which are pathognomonic for this infection. Given his geographical location (Egypt) where leishmania parasites are prevalent, these findings strongly suggest visceral leishmaniasis, also known as kala-Azar fever due to the constellation of symptoms including fever, malaise, weight loss, and altered mental status sometimes associated with severe cases. Other potential diagnoses like malaria or amoebiasis were considered but are less likely given the distinct combination of features particularly the massive splenomegaly and prominent hepatic tracts seen on imaging in confirmed cases. Therefore, the diagnosis is Visceral Leishmaniasis because it encompasses the spectrum of symptoms including fever, malaise, weight loss, hepatomegaly, pancytopenia (indicated by eosinophilia), and characteristic radiological findings in a patient potentially exposed in an endemic region. \n\nDiagnosis: Leishmaniasis",
+    "structured_data": {
+      "diagnosis": "Leishmaniasis",
+      "reasoning": "The patient's presentation includes prolonged abdominal pain, intermittent fevers, significant weight loss, hepatomegaly, eosinophilia, raised liver enzymes, and characteristic hyperechoic hepatic lesions which are pathognomonic for this infection. Given his geographical location (Egypt) where leishmania parasites are prevalent, these findings strongly suggest visceral leishmaniasis, also known as kala-Azar fever due to the constellation of symptoms including fever, malaise, weight loss, and altered mental status sometimes associated with severe cases. Other potential diagnoses like malaria or amoebiasis were considered but are less likely given the distinct combination of features particularly the massive splenomegaly and prominent hepatic tracts seen on imaging in confirmed cases. Therefore, the diagnosis is Visceral Leishmaniasis because it encompasses the spectrum of symptoms including fever, malaise, weight loss, hepatomegaly, pancytopenia (indicated by eosinophilia), and characteristic radiological findings in a patient potentially exposed in an endemic region. "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Leishmaniasis\",  \n  \"reasoning\": \"The patient's presentation includes prolonged abdominal pain, intermittent fevers, significant weight loss, hepatomegaly, eosinophilia, raised liver enzymes, and characteristic hyperechoic hepatic lesions which are pathognomonic for this infection. Given his geographical location (Egypt) where leishmania parasites are prevalent, these findings strongly suggest visceral leishmaniasis, also known as kala-Azar fever due to the constellation of symptoms including fever, malaise, weight loss, and altered mental status sometimes associated with severe cases. Other potential diagnoses like malaria or amoebiasis were considered but are less likely given the distinct combination of features particularly the massive splenomegaly and prominent hepatic tracts seen on imaging in confirmed cases. Therefore, the diagnosis is Visceral Leishmaniasis because it encompasses the spectrum of symptoms including fever, malaise, weight loss, hepatomegaly, pancytopenia (indicated by eosinophilia), and characteristic radiological findings in a patient potentially exposed in an endemic region.\n\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-010",
+    "input": "A 35-year-old woman from rural Peru presents with fever, night sweats, and persistent abdominal pain. She has a history of eating wild watercress salads. Laboratory findings include severe anemia and profound peripheral eosinophilia. A CT scan of her abdomen reveals nodular lesions in the liver, and a subsequent endoscopic ultrasound (EUS) visualizes a flat, leaf-like worm in the biliary duct.",
+    "expected_diagnosis": "Fascioliasis",
+    "generated_output": "The patient's presentation includes fever, night sweats, abdominal pain, significant anemia, and eosinophilia, along with geographic location (Bolivia), which strongly points towards leptospirosis. The characteristic hepatic nodules seen on imaging further support this diagnosis. Other potential causes like cholangiocarcsinoma or lymphoma were considered but are less likely given the constellation of symptoms and epidemiological factors.\n\nDiagnosis: Leptospirosis\n\nDiagnostic Markers: hepatic nodules on CT scan, severe anemia, profound peripheral eosinophilia\n\nDifferential Diagnoses: Acute viral hepatitis: unlikely with prominent eosinophilia; Autoimmune thyroiditis: unrelated to the main finding",
+    "structured_data": {
+      "diagnosis": "Leptospirosis",
+      "reasoning": "The patient's presentation includes fever, night sweats, abdominal pain, significant anemia, and eosinophilia, along with geographic location (Bolivia), which strongly points towards leptospirosis. The characteristic hepatic nodules seen on imaging further support this diagnosis. Other potential causes like cholangiocarcsinoma or lymphoma were considered but are less likely given the constellation of symptoms and epidemiological factors.",
+      "diagnostic_markers": [
+        "hepatic nodules on CT scan",
+        "severe anemia",
+        "profound peripheral eosinophilia"
+      ],
+      "differential_diagnoses": [
+        "Acute viral hepatitis: unlikely with prominent eosinophilia",
+        "Autoimmune thyroiditis: unrelated to the main finding"
+      ]
+    },
+    "raw_response": "{\n  \"diagnosis\": \"Leptospirosis\",\n  \"reasoning\": \"The patient's presentation includes fever, night sweats, abdominal pain, significant anemia, and eosinophilia, along with geographic location (Bolivia), which strongly points towards leptospirosis. The characteristic hepatic nodules seen on imaging further support this diagnosis. Other potential causes like cholangiocarcsinoma or lymphoma were considered but are less likely given the constellation of symptoms and epidemiological factors.\",\n  \"diagnostic_markers\": [\n    \"hepatic nodules on CT scan\",\n    \"severe anemia\",\n    \"profound peripheral eosinophilia\"\n  ],\n  \"differential_diagnoses\": [\n    \"Acute viral hepatitis: unlikely with prominent eosinophilia\",\n    \"Autoimmune thyroiditis: unrelated to the main finding\"\n  ]\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-011",
+    "input": "A 27-year-old soldier returns from a deployment in Afghanistan. He presents with two non-healing skin lesions on his forearm that have been present for 3 months. The lesions are large, circular, painless ulcers with a raised, indurated border and a central crust. A skin biopsy from the border of the lesion reveals amastigotes within macrophages.",
+    "expected_diagnosis": "Cutaneous Leishmaniasis",
+    "generated_output": "The patient's presentation includes massive esophageal varices leading to difficulty swallowing, chest pain, and weight loss, along with pancytopenia suggested by low WBC and platelets. This constellation of findings strongly points towards visceral leishmaniasis, also known as kala-Azar fever due to its prevalence in endemic regions like South America and transmission via sandflies found in areas such as Afghanistan. Other potential diagnoses like malaria or viral infections were considered but are less likely given the characteristic venous malformations and lack of fever/jaundice; typhoid fever might explain some symptoms but typically doesn't cause massive varices or significant pancytopenia simultaneously. Therefore, the diagnosis is Visceral Leishmaniasis because it fits both the geographical context, pathophysiology involving cardiac tamponade physiology through megaoesophageal pressure, and clinical picture including dysphagia, constipation, chest pain, weight loss, hypoglycemia, tachycardia, bradycardia, hypertension, and thrombocytopenia. \n\nDiagnosis: Leishmaniasis",
+    "structured_data": {
+      "diagnosis": "Leishmaniasis",
+      "reasoning": "The patient's presentation includes massive esophageal varices leading to difficulty swallowing, chest pain, and weight loss, along with pancytopenia suggested by low WBC and platelets. This constellation of findings strongly points towards visceral leishmaniasis, also known as kala-Azar fever due to its prevalence in endemic regions like South America and transmission via sandflies found in areas such as Afghanistan. Other potential diagnoses like malaria or viral infections were considered but are less likely given the characteristic venous malformations and lack of fever/jaundice; typhoid fever might explain some symptoms but typically doesn't cause massive varices or significant pancytopenia simultaneously. Therefore, the diagnosis is Visceral Leishmaniasis because it fits both the geographical context, pathophysiology involving cardiac tamponade physiology through megaoesophageal pressure, and clinical picture including dysphagia, constipation, chest pain, weight loss, hypoglycemia, tachycardia, bradycardia, hypertension, and thrombocytopenia. "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Leishmaniasis\",  \n  \"reasoning\": \"The patient's presentation includes massive esophageal varices leading to difficulty swallowing, chest pain, and weight loss, along with pancytopenia suggested by low WBC and platelets. This constellation of findings strongly points towards visceral leishmaniasis, also known as kala-Azar fever due to its prevalence in endemic regions like South America and transmission via sandflies found in areas such as Afghanistan. Other potential diagnoses like malaria or viral infections were considered but are less likely given the characteristic venous malformations and lack of fever/jaundice; typhoid fever might explain some symptoms but typically doesn't cause massive varices or significant pancytopenia simultaneously. Therefore, the diagnosis is Visceral Leishmaniasis because it fits both the geographical context, pathophysiology involving cardiac tamponade physiology through megaoesophageal pressure, and clinical picture including dysphagia, constipation, chest pain, weight loss, hypoglycemia, tachycardia, bradycardia, hypertension, and thrombocytopenia.\n\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-012",
+    "input": "A 19-year-old man, an ecotourist who recently traveled through the Amazon rainforest in Brazil, seeks treatment for multiple skin sores. He has over 10 ulcerative lesions on his arms and face. The ulcers are 'punched-out' in appearance, with a 'volcano-like' raised edge. He recalls numerous sandfly bites during his trip. A smear from the ulcer edge confirms the diagnosis.",
+    "expected_diagnosis": "Cutaneous Leishmaniasis",
+    "generated_output": "The patient presents with multiple punched-out esophageal varices, significant narrowing of the esophagus due to fibrosis caused by chronic inflammation, and pitting oedema consistent with right heart failure secondary to tricuspid valve replacement surgery for acute endocarditis related to leishmaniasis. His travel history involving potential exposure to triatomine bugs in the Amazon region raises suspicion for Chagas disease, while other causes like achalasia or gastrointestinal malignancy were considered but found unlikely given the characteristic constellation of findings including megaesophagus and regional cutaneous abscesses typical of this infection. Therefore, the diagnosis is Leishmaniasis because the presentation strongly supports chronic cholangitis leading to obstructive jaundice despite negative bile cultures, which aligns well with the known epidemiology of this parasitic infection causing biliary tree damage. \n\nDiagnosis: Leishmaniasis",
+    "structured_data": {
+      "diagnosis": "Leishmaniasis",
+      "reasoning": "The patient presents with multiple punched-out esophageal varices, significant narrowing of the esophagus due to fibrosis caused by chronic inflammation, and pitting oedema consistent with right heart failure secondary to tricuspid valve replacement surgery for acute endocarditis related to leishmaniasis. His travel history involving potential exposure to triatomine bugs in the Amazon region raises suspicion for Chagas disease, while other causes like achalasia or gastrointestinal malignancy were considered but found unlikely given the characteristic constellation of findings including megaesophagus and regional cutaneous abscesses typical of this infection. Therefore, the diagnosis is Leishmaniasis because the presentation strongly supports chronic cholangitis leading to obstructive jaundice despite negative bile cultures, which aligns well with the known epidemiology of this parasitic infection causing biliary tree damage. "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Leishmaniasis\",  \n  \"reasoning\": \"The patient presents with multiple punched-out esophageal varices, significant narrowing of the esophagus due to fibrosis caused by chronic inflammation, and pitting oedema consistent with right heart failure secondary to tricuspid valve replacement surgery for acute endocarditis related to leishmaniasis. His travel history involving potential exposure to triatomine bugs in the Amazon region raises suspicion for Chagas disease, while other causes like achalasia or gastrointestinal malignancy were considered but found unlikely given the characteristic constellation of findings including megaesophagus and regional cutaneous abscesses typical of this infection. Therefore, the diagnosis is Leishmaniasis because the presentation strongly supports chronic cholangitis leading to obstructive jaundice despite negative bile cultures, which aligns well with the known epidemiology of this parasitic infection causing biliary tree damage.\n\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-013",
+    "input": "A 5-year-old child living in a densely populated, poverty-stricken area develops the sudden onset of profuse, painless, watery diarrhea. The stool is described as 'rice-water' in appearance. The child is severely dehydrated, with sunken eyes and poor skin turgor. There is no blood in the stool, and vomiting is present.",
+    "expected_diagnosis": "Cholera",
+    "generated_output": "The patient presents with acute onset of profuse rice-water stools, severe dehydration, sunken eyes, and poor skin turgor following exposure in a poverty-stricken area endemic for leptospires. While other gastrointestinal infections could cause diarrhea, the characteristic 'rice-water' stool appearance strongly points towards this diagnosis. Therefore, the diagnosis is Leptospirosis due to the classic symptom presentation including prodrome of fever and myalgia followed by coprochezia manifesting as profuse, painless, watery diarrhea with leukocytosis and thrombocytopenia in an immunocompromised state.\n\nDiagnosis: Leptospirosis\n\nDiagnostic Markers: severe dehydration, sunken eyes, poor skin turgor, profuse, painless, watery diarrhea with rice water stools",
+    "structured_data": {
+      "diagnosis": "Leptospirosis",
+      "reasoning": "The patient presents with acute onset of profuse rice-water stools, severe dehydration, sunken eyes, and poor skin turgor following exposure in a poverty-stricken area endemic for leptospires. While other gastrointestinal infections could cause diarrhea, the characteristic 'rice-water' stool appearance strongly points towards this diagnosis. Therefore, the diagnosis is Leptospirosis due to the classic symptom presentation including prodrome of fever and myalgia followed by coprochezia manifesting as profuse, painless, watery diarrhea with leukocytosis and thrombocytopenia in an immunocompromised state.",
+      "diagnostic_markers": [
+        "severe dehydration",
+        "sunken eyes",
+        "poor skin turgor",
+        "profuse, painless, watery diarrhea with rice water stools"
+      ],
+      "differential_diagnoses": []
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Leptospirosis\",  \n  \"reasoning\": \"The patient presents with acute onset of profuse rice-water stools, severe dehydration, sunken eyes, and poor skin turgor following exposure in a poverty-stricken area endemic for leptospires. While other gastrointestinal infections could cause diarrhea, the characteristic 'rice-water' stool appearance strongly points towards this diagnosis. Therefore, the diagnosis is Leptospirosis due to the classic symptom presentation including prodrome of fever and myalgia followed by coprochezia manifesting as profuse, painless, watery diarrhea with leukocytosis and thrombocytopenia in an immunocompromised state.\",\n  \"diagnostic_markers\": [  \n    \"severe dehydration\",  \n    \"sunken eyes\",  \n    \"poor skin turgor\",  \n    \"profuse, painless, watery diarrhea with rice water stools\"\n  ],  \n  \"differential_diagnoses\": []  \n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-014",
+    "input": "A 40-year-old male presents to a field hospital in Yemen during a major outbreak. He reports passing copious amounts of odorless, gray-white stool. He is in hypovolemic shock, with barely palpable radial pulses. Rapid diagnostic testing confirms the presence of *Vibrio cholerae* O1.",
+    "expected_diagnosis": "Cholera",
+    "generated_output": "The patient's presentation includes acute onset of profuse watery diarrhea resembling rice water stools, severe dehydration leading to shock, tachycardia, tachypnea, oliguria, and eosinophilia, consistent with a viral hemorrhagic fever. While other febrile illnesses could present with gastrointestinal symptoms, the combination of rapid progression, massive fecal output, systemic involvement including shock, and confirmed positive cholera toxin amplifies the suspicion for this diagnosis. Therefore, the most likely diagnosis given the constellation of findings including the characteristic stool appearance, severity of illness marked by shock, and epidemiological context is Cholera due to its pathogenic nature and transmission via contaminated food or water in an endemic region like Yemen during an outbreak. \n\nDiagnosis: Cholera",
+    "structured_data": {
+      "diagnosis": "Cholera",
+      "reasoning": "The patient's presentation includes acute onset of profuse watery diarrhea resembling rice water stools, severe dehydration leading to shock, tachycardia, tachypnea, oliguria, and eosinophilia, consistent with a viral hemorrhagic fever. While other febrile illnesses could present with gastrointestinal symptoms, the combination of rapid progression, massive fecal output, systemic involvement including shock, and confirmed positive cholera toxin amplifies the suspicion for this diagnosis. Therefore, the most likely diagnosis given the constellation of findings including the characteristic stool appearance, severity of illness marked by shock, and epidemiological context is Cholera due to its pathogenic nature and transmission via contaminated food or water in an endemic region like Yemen during an outbreak. "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Cholera\",  \n  \"reasoning\": \"The patient's presentation includes acute onset of profuse watery diarrhea resembling rice water stools, severe dehydration leading to shock, tachycardia, tachypnea, oliguria, and eosinophilia, consistent with a viral hemorrhagic fever. While other febrile illnesses could present with gastrointestinal symptoms, the combination of rapid progression, massive fecal output, systemic involvement including shock, and confirmed positive cholera toxin amplifies the suspicion for this diagnosis. Therefore, the most likely diagnosis given the constellation of findings including the characteristic stool appearance, severity of illness marked by shock, and epidemiological context is Cholera due to its pathogenic nature and transmission via contaminated food or water in an endemic region like Yemen during an outbreak.\n\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-015",
+    "input": "A 55-year-old man from an endemic area for *Strongyloides stercoralis* infection, who is also known to be HTLV-1 positive, is admitted with worsening abdominal pain, distension, and diarrhea. He has pulmonary infiltrates and is unresponsive to standard therapy. Lab work shows high-grade peripheral eosinophilia and stool examination reveals an unusually large number of filariform larvae.",
+    "expected_diagnosis": "HTLV-1-Associated Strongyloides stercoralis Hyperinfection Syndrome",
+    "generated_output": "The patient presents with chronic gastrointestinal symptoms including dysphagia, constipation, and diarrhea, along with constitutional symptoms like weight loss and fever, despite negative serology and culture results which can occur early or due to various factors. His geographical location in Bolivia, where triatomine bug infestation is common, combined with the presence of eosinophilia and larval findings in stool smears, strongly points towards leishmaniasis as the underlying cause of his symptoms. Other potential diagnoses such as malaria or dengue are less likely given the lack of fever response and specific laboratory abnormalities seen in this context. Therefore, the diagnosis is Leishmaniasis because the constellation of chronic intestinal symptoms, constitutional illness signs, geographic exposure risk, and parasitic findings in an immunocompromised state aligns perfectly with this condition. \n\nDiagnosis: Leishmaniasis",
+    "structured_data": {
+      "diagnosis": "Leishmaniasis",
+      "reasoning": "The patient presents with chronic gastrointestinal symptoms including dysphagia, constipation, and diarrhea, along with constitutional symptoms like weight loss and fever, despite negative serology and culture results which can occur early or due to various factors. His geographical location in Bolivia, where triatomine bug infestation is common, combined with the presence of eosinophilia and larval findings in stool smears, strongly points towards leishmaniasis as the underlying cause of his symptoms. Other potential diagnoses such as malaria or dengue are less likely given the lack of fever response and specific laboratory abnormalities seen in this context. Therefore, the diagnosis is Leishmaniasis because the constellation of chronic intestinal symptoms, constitutional illness signs, geographic exposure risk, and parasitic findings in an immunocompromised state aligns perfectly with this condition. "
+    },
+    "raw_response": "{\n  \"diagnosis\": \"Leishmaniasis\",\n  \"reasoning\": \"The patient presents with chronic gastrointestinal symptoms including dysphagia, constipation, and diarrhea, along with constitutional symptoms like weight loss and fever, despite negative serology and culture results which can occur early or due to various factors. His geographical location in Bolivia, where triatomine bug infestation is common, combined with the presence of eosinophilia and larval findings in stool smears, strongly points towards leishmaniasis as the underlying cause of his symptoms. Other potential diagnoses such as malaria or dengue are less likely given the lack of fever response and specific laboratory abnormalities seen in this context. Therefore, the diagnosis is Leishmaniasis because the constellation of chronic intestinal symptoms, constitutional illness signs, geographic exposure risk, and parasitic findings in an immunocompromised state aligns perfectly with this condition.\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-016",
+    "input": "A patient with newly diagnosed HTLV-1 associated myelopathy (HAM/TSP) is started on high-dose corticosteroids. Shortly after, he develops a life-threatening illness characterized by Gram-negative sepsis and multi-organ failure. Stool cultures and sputum reveal disseminated *Strongyloides stercoralis* larvae, indicating a massive autoinfection cycle exacerbated by immunosuppression.",
+    "expected_diagnosis": "HTLV-1-Associated Strongyloides stercoralis Hyperinfection Syndrome",
+    "generated_output": "The patient presents with severe systemic infection including sepsis, respiratory distress, hepatic dysfunction, renal impairment, and neurological complications following exposure in an endemic area like Bolivia. While other infections could cause some overlapping symptoms, the presence of jaundice, thrombocytopenia, elevated liver enzymes, decreased GCS, fever, tachycardia, hypotension, altered mental status consistent with cerebral involvement, and positive serology for HTLV-1 strongly points towards Leptospirosis as the most likely diagnosis given his geographical location and symptom profile which includes multi-system organ failure characteristic of this viral hemorrhagic febrile illness. \n\nDiagnosis: Leptospirosis",
+    "structured_data": {
+      "diagnosis": "Leptospirosis",
+      "reasoning": "The patient presents with severe systemic infection including sepsis, respiratory distress, hepatic dysfunction, renal impairment, and neurological complications following exposure in an endemic area like Bolivia. While other infections could cause some overlapping symptoms, the presence of jaundice, thrombocytopenia, elevated liver enzymes, decreased GCS, fever, tachycardia, hypotension, altered mental status consistent with cerebral involvement, and positive serology for HTLV-1 strongly points towards Leptospirosis as the most likely diagnosis given his geographical location and symptom profile which includes multi-system organ failure characteristic of this viral hemorrhagic febrile illness. "
+    },
+    "raw_response": "{\n  \"diagnosis\": \"Leptospirosis\",\n  \"reasoning\": \"The patient presents with severe systemic infection including sepsis, respiratory distress, hepatic dysfunction, renal impairment, and neurological complications following exposure in an endemic area like Bolivia. While other infections could cause some overlapping symptoms, the presence of jaundice, thrombocytopenia, elevated liver enzymes, decreased GCS, fever, tachycardia, hypotension, altered mental status consistent with cerebral involvement, and positive serology for HTLV-1 strongly points towards Leptospirosis as the most likely diagnosis given his geographical location and symptom profile which includes multi-system organ failure characteristic of this viral hemorrhagic febrile illness.\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-017",
+    "input": "A 28-year-old traveler returning from Mozambique presents with recurrent high fevers, chills, drenching sweats, and cyclical rigors every 48 hours. She is pale, and her spleen is palpable. A peripheral blood smear shows ring forms and gametocytes, confirming a diagnosis.",
+    "expected_diagnosis": "Malaria",
+    "generated_output": "The patient's presentation of recurrent fever, chills, sweating, and cyclicality along with splenomegaly points towards visceral leishmaniasis, which is prevalent in regions like South America and transmitted by sandflies; differential diagnoses such as malaria or typhoid were considered but are less likely given the characteristic cycle and lack of positive findings elsewhere. The confirmed presence of amastigotes in stool samples definitively identifies this pathogen.\n\nDiagnosis: Leishmaniasis\n\nDiagnostic Markers: recurrent high fevers, chills, sweating, cycle every 48 hours, splenomegaly\n\nDifferential Diagnoses: Malaria; Typhoid",
+    "structured_data": {
+      "diagnosis": "Leishmaniasis",
+      "reasoning": "The patient's presentation of recurrent fever, chills, sweating, and cyclicality along with splenomegaly points towards visceral leishmaniasis, which is prevalent in regions like South America and transmitted by sandflies; differential diagnoses such as malaria or typhoid were considered but are less likely given the characteristic cycle and lack of positive findings elsewhere. The confirmed presence of amastigotes in stool samples definitively identifies this pathogen.",
+      "diagnostic_markers": [
+        "recurrent high fevers",
+        "chills",
+        "sweating",
+        "cycle every 48 hours",
+        "splenomegaly"
+      ],
+      "differential_diagnoses": [
+        "Malaria",
+        "Typhoid"
+      ]
+    },
+    "raw_response": "{\"diagnosis\": \"Leishmaniasis\", \"reasoning\": \"The patient's presentation of recurrent fever, chills, sweating, and cyclicality along with splenomegaly points towards visceral leishmaniasis, which is prevalent in regions like South America and transmitted by sandflies; differential diagnoses such as malaria or typhoid were considered but are less likely given the characteristic cycle and lack of positive findings elsewhere. The confirmed presence of amastigotes in stool samples definitively identifies this pathogen.\", \"diagnostic_markers\": [\"recurrent high fevers\", \"chills\", \"sweating\", \"cycle every 48 hours\", \"splenomegaly\"], \"differential_diagnoses\": [\"Malaria\", \"Typhoid\"]}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-018",
+    "input": "A 5-year-old child in Nigeria is brought to the clinic with severe lethargy, inability to feed, and generalized convulsions. Labs show severe normocytic anemia and hypoglycemia. A blood slide reveals a high parasitemia count of *Plasmodium falciparum*.",
+    "expected_diagnosis": "Malaria",
+    "generated_output": "Rationale: The patient presents with fever, weakness, difficulty swallowing, constipation, significant anaemia, and neurological signs like convulsions, which are characteristic features of cerebral malaria caused by Plasmodium falciparum. Given the high parasite density confirmed by microscopy and the lack of response to antimalarial treatment despite symptomatic improvement, this strongly supports uncomplicated malaria; other differentials such as esophageal cancer or Kaposi's sarcoma are unlikely given the constellation of symptoms including severe anaemia and constitutional involvement. Therefore, the diagnosis is Cerebral Malaria due to the definitive finding of high P. falciparum parasitemia in a patient presenting with profound anaemia, neurological complications, and geographical location. \n\nDiagnosis: Malaria",
+    "structured_data": {
+      "diagnosis": "Malaria",
+      "reasoning": "Rationale: The patient presents with fever, weakness, difficulty swallowing, constipation, significant anaemia, and neurological signs like convulsions, which are characteristic features of cerebral malaria caused by Plasmodium falciparum. Given the high parasite density confirmed by microscopy and the lack of response to antimalarial treatment despite symptomatic improvement, this strongly supports uncomplicated malaria; other differentials such as esophageal cancer or Kaposi's sarcoma are unlikely given the constellation of symptoms including severe anaemia and constitutional involvement. Therefore, the diagnosis is Cerebral Malaria due to the definitive finding of high P. falciparum parasitemia in a patient presenting with profound anaemia, neurological complications, and geographical location. "
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Malaria\",  \n  \"reasoning\": \"Rationale: The patient presents with fever, weakness, difficulty swallowing, constipation, significant anaemia, and neurological signs like convulsions, which are characteristic features of cerebral malaria caused by Plasmodium falciparum. Given the high parasite density confirmed by microscopy and the lack of response to antimalarial treatment despite symptomatic improvement, this strongly supports uncomplicated malaria; other differentials such as esophageal cancer or Kaposi's sarcoma are unlikely given the constellation of symptoms including severe anaemia and constitutional involvement. Therefore, the diagnosis is Cerebral Malaria due to the definitive finding of high P. falciparum parasitemia in a patient presenting with profound anaemia, neurological complications, and geographical location.\n\n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-019",
+    "input": "A 50-year-old hiker returns from a trip to the Kruger National Park in South Africa. He presents with a low-grade fever, severe headache, and regional lymphadenopathy. Examination of his neck reveals a painless, dark, scab-like ulcer (eschar) at the site of a presumed tick bite a week prior. A skin biopsy is consistent with a rickettsial infection.",
+    "expected_diagnosis": "African Tick-Bite Fever",
+    "generated_output": "The patient presented with fever, headache, lymphadenopathy, eschar, and eosinophilia following potential exposure in South Africa; these findings strongly suggest scrub typhus transmitted by chigger bites common in areas like grasslands near water sources in KNP. Other differentials such as malaria or dengue were considered but are less likely given the constellation of symptoms including eschar and significant eosinophilia which points towards a rickettsial infection.\n\nDiagnosis: Rickettsial Infection\n\nDiagnostic Markers: {'type': 'symptom', 'description': 'Low-grade fever'}, {'type': 'finding', 'description': 'Severe headache'}, {'type': 'sign', 'description': 'Regional lymphadenopathy'}, {'type': 'lesion', 'description': 'Painless, dark eschar at tick bite site'}\n\nDifferential Diagnoses: Malaria; Dengue",
+    "structured_data": {
+      "diagnosis": "Rickettsial Infection",
+      "reasoning": "The patient presented with fever, headache, lymphadenopathy, eschar, and eosinophilia following potential exposure in South Africa; these findings strongly suggest scrub typhus transmitted by chigger bites common in areas like grasslands near water sources in KNP. Other differentials such as malaria or dengue were considered but are less likely given the constellation of symptoms including eschar and significant eosinophilia which points towards a rickettsial infection.",
+      "diagnostic_markers": [
+        {
+          "type": "symptom",
+          "description": "Low-grade fever"
+        },
+        {
+          "type": "finding",
+          "description": "Severe headache"
+        },
+        {
+          "type": "sign",
+          "description": "Regional lymphadenopathy"
+        },
+        {
+          "type": "lesion",
+          "description": "Painless, dark eschar at tick bite site"
+        }
+      ],
+      "differential_diagnoses": [
+        "Malaria",
+        "Dengue"
+      ]
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Rickettsial Infection\",  \n  \"reasoning\": \"The patient presented with fever, headache, lymphadenopathy, eschar, and eosinophilia following potential exposure in South Africa; these findings strongly suggest scrub typhus transmitted by chigger bites common in areas like grasslands near water sources in KNP. Other differentials such as malaria or dengue were considered but are less likely given the constellation of symptoms including eschar and significant eosinophilia which points towards a rickettsial infection.\",  \n  \"diagnostic_markers\": [  \n    {\"type\": \"symptom\", \"description\": \"Low-grade fever\"},  \n    {\"type\": \"finding\", \"description\": \"Severe headache\"},  \n    {\"type\": \"sign\", \"description\": \"Regional lymphadenopathy\"},  \n    {\"type\": \"lesion\", \"description\": \"Painless, dark eschar at tick bite site\"}  \n  ],  \n  \"differential_diagnoses\": [  \n    \"Malaria\",  \n    \"Dengue\"  \n  ]  \n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  },
+  {
+    "case_id": "case-020",
+    "input": "A 35-year-old woman in Kenya reports an abrupt onset of fever, myalgia, and a maculopapular rash that includes her palms and soles. She has a history of walking through tall grass on her farm. Multiple tender lymph nodes are found in the groin area, and two eschars are noted on her legs.",
+    "expected_diagnosis": "African Tick-Bite Fever",
+    "generated_output": "The patient presents with fever, myalgia, a characteristic maculopapular rash including palms/soles, significant weight loss, and multiple tender inguinal lymph nodes following potential exposure while working on her farm in Kenya. These findings strongly suggest visceral leishmaniasis, also known as kala-Azar, which is prevalent in parts of Africa and Asia; other differentials like malaria or typhoid fever are less likely given the constellation of symptoms and regional context.\n\nDiagnosis: Leishmaniasis\n\nDiagnostic Markers: {'type': 'symptom', 'description': 'Sudden-onset fever'}, {'type': 'symptom', 'description': 'Myalgia'}, {'type': 'sign', 'description': 'Characteristic maculopapular rash involving palms/soles'}, {'type': 'finding', 'description': 'Multiple tender inguinal lymph nodes'}\n\nDifferential Diagnoses: Malaria: Less likely due to lack of jaundice, thrombocytopenia, or cerebral involvement; Typhoid Fever: Also possible but typically lacks the distinct rash pattern and prominent lymphadenopathy seen here",
+    "structured_data": {
+      "diagnosis": "Leishmaniasis",
+      "reasoning": "The patient presents with fever, myalgia, a characteristic maculopapular rash including palms/soles, significant weight loss, and multiple tender inguinal lymph nodes following potential exposure while working on her farm in Kenya. These findings strongly suggest visceral leishmaniasis, also known as kala-Azar, which is prevalent in parts of Africa and Asia; other differentials like malaria or typhoid fever are less likely given the constellation of symptoms and regional context.",
+      "diagnostic_markers": [
+        {
+          "type": "symptom",
+          "description": "Sudden-onset fever"
+        },
+        {
+          "type": "symptom",
+          "description": "Myalgia"
+        },
+        {
+          "type": "sign",
+          "description": "Characteristic maculopapular rash involving palms/soles"
+        },
+        {
+          "type": "finding",
+          "description": "Multiple tender inguinal lymph nodes"
+        }
+      ],
+      "differential_diagnoses": [
+        "Malaria: Less likely due to lack of jaundice, thrombocytopenia, or cerebral involvement",
+        "Typhoid Fever: Also possible but typically lacks the distinct rash pattern and prominent lymphadenopathy seen here"
+      ]
+    },
+    "raw_response": "{  \n  \"diagnosis\": \"Leishmaniasis\",  \n  \"reasoning\": \"The patient presents with fever, myalgia, a characteristic maculopapular rash including palms/soles, significant weight loss, and multiple tender inguinal lymph nodes following potential exposure while working on her farm in Kenya. These findings strongly suggest visceral leishmaniasis, also known as kala-Azar, which is prevalent in parts of Africa and Asia; other differentials like malaria or typhoid fever are less likely given the constellation of symptoms and regional context.\",  \n  \"diagnostic_markers\": [  \n    {\"type\": \"symptom\", \"description\": \"Sudden-onset fever\"},  \n    {\"type\": \"symptom\", \"description\": \"Myalgia\"},  \n    {\"type\": \"sign\", \"description\": \"Characteristic maculopapular rash involving palms/soles\"},  \n    {\"type\": \"finding\", \"description\": \"Multiple tender inguinal lymph nodes\"}  \n  ],  \n  \"differential_diagnoses\": [  \n    \"Malaria: Less likely due to lack of jaundice, thrombocytopenia, or cerebral involvement\",  \n    \"Typhoid Fever: Also possible but typically lacks the distinct rash pattern and prominent lymphadenopathy seen here\"  \n  ]  \n}",
+    "json_parsed": true,
+    "generation_config": {
+      "max_new_tokens": 2048,
+      "temperature": 0.1
+    }
+  }
+]
